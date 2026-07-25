@@ -1,0 +1,11 @@
+season,round,event,baseline_s,lap_trend_s_per_lap,dirty_air_cost_s,resid_sd_s,n_laps,n_drivers,pseudo_r2
+2026,1,Australian Grand Prix,84.837,-0.0408,0.759,0.73,813,20,0.7921
+2026,2,Chinese Grand Prix,98.039,-0.0615,0.663,0.647,701,17,0.8041
+2026,3,Japanese Grand Prix,95.262,-0.0664,0.236,0.574,896,22,0.865
+2026,4,Miami Grand Prix,94.275,-0.0088,0.326,0.596,762,18,0.841
+2026,5,Canadian Grand Prix,77.053,-0.0327,0.145,0.939,919,21,0.7087
+2026,6,Monaco Grand Prix,78.725,-0.0249,2.531,1.056,1143,21,0.6073
+2026,7,Barcelona Grand Prix,83.66,-0.0606,0.141,0.621,986,21,0.8742
+2026,8,Austrian Grand Prix,72.81,-0.0355,0.356,0.557,1135,20,0.839
+2026,9,British Grand Prix,95.445,-0.0648,0.307,0.586,810,22,0.8804
+2026,10,Belgian Grand Prix,111.784,-0.0623,0.242,0.677,676,20,0.8461

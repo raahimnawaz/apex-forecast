@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# FastF1's HTTP cache and the raw per-session parquet are both reproducible from
+# the upstream API — regenerate with `make data` rather than committing them.
+data/cache/
+data/raw/
+
+# Derived tables are cheap to rebuild; the web payload is committed so the
+# published dashboard is self-contained.
+data/processed/

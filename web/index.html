@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>apex-forecast — F1 2026 pace deconvolution</title>
+<meta name="description" content="Fuel-, tyre- and traffic-corrected Formula 1 race pace for the 2026 regulation era.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="mark">apex<span>·</span>forecast</div>
+    <div class="tagline">Formula 1 2026 — pace deconvolution</div>
+    <div class="stamp" id="stamp"></div>
+  </div>
+
+  <section class="race-strip">
+    <div>
+      <div class="eyebrow">Next race</div>
+      <div class="race-name" id="race-name">—</div>
+      <div class="race-meta" id="race-meta"></div>
+    </div>
+    <div class="countdown">
+      <div class="num" id="cd-num">—</div>
+      <div class="unit" id="cd-unit"></div>
+    </div>
+  </section>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card">
+    <header><h2>Corrected race pace</h2></header>
+    <p class="desc">
+      What each car is actually worth over a lap, once fuel load, tyre age, track evolution and
+      dirty air are regressed out of every green-flag lap of the season. Zero is the field mean in
+      each race; bars are the across-race average, and the whisker is ±1 standard error of that
+      average. <b>Bar colour is not a variable</b> — the chip beside each driver carries team
+      identity, and length alone carries pace.
+    </p>
+    <div class="chart-scroll"><div id="pace-chart"></div></div>
+    <details class="table-view">
+      <summary>Table view</summary>
+      <div class="table-scroll">
+        <table id="pace-table">
+          <thead><tr>
+            <th>#</th><th>Driver</th><th>Team</th><th>Pace (s)</th>
+            <th>SE (s)</th><th>SD (s)</th><th>Races</th><th>Laps</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <div class="grid-2">
+    <section class="card">
+      <header><h2>Pace by round</h2></header>
+      <p class="desc">
+        The same measure per race, so form and one-off circuit strengths are visible rather than
+        averaged away. Colour carries the sign here because a cell has no length to spend on it.
+      </p>
+      <ul class="legend" id="form-legend"></ul>
+      <div class="chart-scroll"><div id="form-chart"></div></div>
+      <details class="table-view">
+        <summary>Table view</summary>
+        <div class="table-scroll">
+          <table id="form-table"><thead><tr></tr></thead><tbody></tbody></table>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <header><h2>Tyre degradation</h2></header>
+      <p class="desc">
+        Modelled time loss as a stint ages, per compound, estimated jointly with the pace terms
+        rather than eyeballed off stint plots.
+      </p>
+      <ul class="legend" id="deg-legend"></ul>
+      <div id="deg-chart"></div>
+      <details class="table-view">
+        <summary>Table view</summary>
+        <div class="table-scroll">
+          <table id="deg-table">
+            <thead><tr>
+              <th>Compound</th><th>s/lap</th><th>SD</th><th>Loss @30 laps</th><th>Races</th><th>Laps</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+  </div>
+
+  <section class="notes">
+    <h2>What this model does and does not know</h2>
+    <ul>
+      <li><b>It cannot separate driver from car.</b> Every team fields exactly two cars, so within a
+        single race the team effect is definitionally the mean of its two drivers. These numbers are
+        <em>driver-in-car</em> pace. Splitting them into constructor advantage and driver skill needs
+        variation across team-mate pairings and is the next layer's job, not this one's.</li>
+      <li><b>Fuel burn and track evolution are not separately identifiable</b> from race laps alone —
+        both are smooth functions of lap number. The model carries one combined trend term and
+        reports it as such rather than assuming a textbook kg/lap split.</li>
+      <li><b>Ten races of in-regulation data.</b> 2026 reset the power units, the aerodynamics and the
+        car dimensions, so pre-2026 pace does not transfer. The intervals here are wide because the
+        evidence is genuinely thin, and they should not be narrowed by borrowing from 2025.</li>
+      <li><b>Cadillac has no history at all.</b> Its estimates rest entirely on ten races as a debut
+        team and deserve more scepticism than the rest of the grid.</li>
+      <li><b class="caveat">Known bias:</b> backmarkers spend more time in traffic and lift for blue
+        flags. The dirty-air term absorbs some of that, but not all, so the tail of the field is
+        likely flattered less than it deserves.</li>
+      <li><b class="caveat">Compound ordering is not yet resolved:</b> medium and soft degradation
+        differ by less than their spread across races, so this data cannot rank them. Soft runs are
+        short, which limits the tyre-age range the slope is fitted over.</li>
+      <li><b>Fit quality:</b> <span id="fit-quality"></span> Monaco is the weakest fit of the season,
+        which is the expected place for a pace model to struggle — the race is traffic, not pace.</li>
+      <li><b>Why team colours never encode a value here.</b> Run through a colour-vision validator,
+        the 2026 constructor palette fails outright on the dark surface: Haas silver and Mercedes
+        teal are ΔE&nbsp;0.6 apart under deuteranopia — effectively the same colour — and Alpine
+        against Red&nbsp;Bull is ΔE&nbsp;9.2 apart under <em>normal</em> vision, below the
+        legibility floor. So team colour is a chip beside a text driver code and nothing more;
+        every quantitative scale on this page uses a validated ramp instead.</li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    Built from <a href="https://docs.fastf1.dev/">FastF1</a> timing data ·
+    robust (Huber) regression per race · no prediction is shown on this page yet —
+    Layer 0 only.
+  </footer>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
