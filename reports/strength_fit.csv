@@ -1,0 +1,2 @@
+n_races,n_2025,n_2026,n_drivers,n_constructors,shared_drivers,constructor_share,sigma_skill,sigma_delta,sigma_walk,worst_rhat,layer0_spearman,top_m
+34,24,10,24,11,19,0.7626,0.918654203414917,0.6236362457275391,0.3717797100543976,1.0071,0.9273,10

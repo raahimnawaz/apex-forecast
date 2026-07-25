@@ -1,0 +1,1317 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-07-25T09:25:39Z",
+ "season": 2026,
+ "rounds_complete": 10,
+ "teams": [
+  {
+   "team": "Mercedes",
+   "power_unit": "Mercedes",
+   "works": true,
+   "first_season": 2010,
+   "entry_note": null,
+   "points": 358.0,
+   "sprint_points": 47.0,
+   "wins": 8,
+   "podiums": 13,
+   "dnf": 2,
+   "starts": 20,
+   "best_finish": 1,
+   "avg_grid": 2.15,
+   "pace_s": -1.6202,
+   "pace_delta_s": 0.2343,
+   "strength": 1.1885,
+   "strength_lo": -0.481,
+   "strength_hi": 2.8615,
+   "development": -0.8315,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 2.0199,
+     "lo": 0.1492,
+     "hi": 3.9769
+    },
+    {
+     "round": 2,
+     "strength": 2.0226,
+     "lo": 0.2689,
+     "hi": 3.924
+    },
+    {
+     "round": 3,
+     "strength": 1.8792,
+     "lo": 0.2099,
+     "hi": 3.5965
+    },
+    {
+     "round": 4,
+     "strength": 1.6598,
+     "lo": 0.0726,
+     "hi": 3.279
+    },
+    {
+     "round": 5,
+     "strength": 1.3338,
+     "lo": -0.191,
+     "hi": 2.8126
+    },
+    {
+     "round": 6,
+     "strength": 0.8752,
+     "lo": -0.6436,
+     "hi": 2.2211
+    },
+    {
+     "round": 7,
+     "strength": 0.888,
+     "lo": -0.5849,
+     "hi": 2.2659
+    },
+    {
+     "round": 8,
+     "strength": 1.0888,
+     "lo": -0.4297,
+     "hi": 2.524
+    },
+    {
+     "round": 9,
+     "strength": 1.0383,
+     "lo": -0.5662,
+     "hi": 2.4815
+    },
+    {
+     "round": 10,
+     "strength": 1.1885,
+     "lo": -0.481,
+     "hi": 2.8615
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "ANT",
+     "name": "Kimi Antonelli",
+     "points": 204.0,
+     "sprint_points": 21.0,
+     "starts": 10,
+     "wins": 6,
+     "podiums": 8,
+     "best_finish": 1,
+     "dnf": 0,
+     "avg_grid": 1.7,
+     "pace_s": -1.7276,
+     "skill": 0.8953,
+     "skill_lo": -0.3895,
+     "skill_hi": 2.366
+    },
+    {
+     "code": "RUS",
+     "name": "George Russell",
+     "points": 154.0,
+     "sprint_points": 26.0,
+     "starts": 10,
+     "wins": 2,
+     "podiums": 5,
+     "best_finish": 1,
+     "dnf": 2,
+     "avg_grid": 2.6,
+     "pace_s": -1.501,
+     "skill": 0.9414,
+     "skill_lo": -0.2879,
+     "skill_hi": 2.3087
+    }
+   ],
+   "championship_position": 1
+  },
+  {
+   "team": "Ferrari",
+   "power_unit": "Ferrari",
+   "works": true,
+   "first_season": 1950,
+   "entry_note": null,
+   "points": 285.0,
+   "sprint_points": 39.0,
+   "wins": 2,
+   "podiums": 9,
+   "dnf": 1,
+   "starts": 20,
+   "best_finish": 1,
+   "avg_grid": 4.4,
+   "pace_s": -1.3161,
+   "pace_delta_s": -0.023,
+   "strength": 1.7593,
+   "strength_lo": 0.1249,
+   "strength_hi": 3.411,
+   "development": 0.4088,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 1.3505,
+     "lo": -0.05,
+     "hi": 2.8876
+    },
+    {
+     "round": 2,
+     "strength": 1.3535,
+     "lo": -0.0882,
+     "hi": 2.8284
+    },
+    {
+     "round": 3,
+     "strength": 1.3115,
+     "lo": -0.0833,
+     "hi": 2.7004
+    },
+    {
+     "round": 4,
+     "strength": 1.1997,
+     "lo": -0.1364,
+     "hi": 2.5241
+    },
+    {
+     "round": 5,
+     "strength": 1.3205,
+     "lo": -0.081,
+     "hi": 2.6738
+    },
+    {
+     "round": 6,
+     "strength": 1.3331,
+     "lo": -0.0913,
+     "hi": 2.6929
+    },
+    {
+     "round": 7,
+     "strength": 1.2675,
+     "lo": -0.1113,
+     "hi": 2.6038
+    },
+    {
+     "round": 8,
+     "strength": 1.42,
+     "lo": 0.0021,
+     "hi": 2.7959
+    },
+    {
+     "round": 9,
+     "strength": 1.6868,
+     "lo": 0.1408,
+     "hi": 3.2056
+    },
+    {
+     "round": 10,
+     "strength": 1.7593,
+     "lo": 0.1249,
+     "hi": 3.411
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "HAM",
+     "name": "Lewis Hamilton",
+     "points": 159.0,
+     "sprint_points": 18.0,
+     "starts": 10,
+     "wins": 1,
+     "podiums": 5,
+     "best_finish": 1,
+     "dnf": 0,
+     "avg_grid": 4.3,
+     "pace_s": -1.3133,
+     "skill": 0.95,
+     "skill_lo": -0.2643,
+     "skill_hi": 2.309
+    },
+    {
+     "code": "LEC",
+     "name": "Charles Leclerc",
+     "points": 126.0,
+     "sprint_points": 21.0,
+     "starts": 10,
+     "wins": 1,
+     "podiums": 4,
+     "best_finish": 1,
+     "dnf": 1,
+     "avg_grid": 4.5,
+     "pace_s": -1.3188,
+     "skill": 0.6109,
+     "skill_lo": -0.5849,
+     "skill_hi": 1.8237
+    }
+   ],
+   "championship_position": 2
+  },
+  {
+   "team": "McLaren",
+   "power_unit": "Mercedes",
+   "works": false,
+   "first_season": 1966,
+   "entry_note": null,
+   "points": 195.0,
+   "sprint_points": 43.0,
+   "wins": 0,
+   "podiums": 4,
+   "dnf": 5,
+   "starts": 20,
+   "best_finish": 2,
+   "avg_grid": 6.0,
+   "pace_s": -1.1773,
+   "pace_delta_s": 0.1259,
+   "strength": 0.7464,
+   "strength_lo": -0.7802,
+   "strength_hi": 2.1832,
+   "development": -0.0789,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 0.8253,
+     "lo": -0.5073,
+     "hi": 2.3735
+    },
+    {
+     "round": 2,
+     "strength": 0.901,
+     "lo": -0.51,
+     "hi": 2.4701
+    },
+    {
+     "round": 3,
+     "strength": 0.9665,
+     "lo": -0.462,
+     "hi": 2.4906
+    },
+    {
+     "round": 4,
+     "strength": 0.8864,
+     "lo": -0.5233,
+     "hi": 2.3691
+    },
+    {
+     "round": 5,
+     "strength": 0.5677,
+     "lo": -0.8407,
+     "hi": 1.9663
+    },
+    {
+     "round": 6,
+     "strength": 0.7304,
+     "lo": -0.6434,
+     "hi": 2.1741
+    },
+    {
+     "round": 7,
+     "strength": 0.8634,
+     "lo": -0.5751,
+     "hi": 2.3292
+    },
+    {
+     "round": 8,
+     "strength": 0.8343,
+     "lo": -0.5889,
+     "hi": 2.3004
+    },
+    {
+     "round": 9,
+     "strength": 0.731,
+     "lo": -0.7303,
+     "hi": 2.1231
+    },
+    {
+     "round": 10,
+     "strength": 0.7464,
+     "lo": -0.7802,
+     "hi": 2.1832
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "NOR",
+     "name": "Lando Norris",
+     "points": 103.0,
+     "sprint_points": 26.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 2,
+     "best_finish": 2,
+     "dnf": 3,
+     "avg_grid": 6.1,
+     "pace_s": -1.3536,
+     "skill": 1.1721,
+     "skill_lo": -0.0733,
+     "skill_hi": 2.5371
+    },
+    {
+     "code": "PIA",
+     "name": "Oscar Piastri",
+     "points": 92.0,
+     "sprint_points": 17.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 2,
+     "best_finish": 2,
+     "dnf": 2,
+     "avg_grid": 5.9,
+     "pace_s": -0.9791,
+     "skill": 0.7107,
+     "skill_lo": -0.5384,
+     "skill_hi": 2.0676
+    }
+   ],
+   "championship_position": 3
+  },
+  {
+   "team": "Red Bull Racing",
+   "power_unit": "Red Bull Powertrains",
+   "works": true,
+   "first_season": 2005,
+   "entry_note": null,
+   "points": 151.0,
+   "sprint_points": 9.0,
+   "wins": 0,
+   "podiums": 3,
+   "dnf": 4,
+   "starts": 20,
+   "best_finish": 2,
+   "avg_grid": 8.1,
+   "pace_s": -0.8686,
+   "pace_delta_s": -0.7634,
+   "strength": 0.9561,
+   "strength_lo": -0.2722,
+   "strength_hi": 2.2575,
+   "development": 0.7798,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 0.1763,
+     "lo": -0.923,
+     "hi": 1.318
+    },
+    {
+     "round": 2,
+     "strength": 0.1851,
+     "lo": -0.8809,
+     "hi": 1.3004
+    },
+    {
+     "round": 3,
+     "strength": 0.2587,
+     "lo": -0.8194,
+     "hi": 1.3681
+    },
+    {
+     "round": 4,
+     "strength": 0.5403,
+     "lo": -0.5399,
+     "hi": 1.6626
+    },
+    {
+     "round": 5,
+     "strength": 0.7919,
+     "lo": -0.311,
+     "hi": 1.9544
+    },
+    {
+     "round": 6,
+     "strength": 0.9313,
+     "lo": -0.2208,
+     "hi": 2.1658
+    },
+    {
+     "round": 7,
+     "strength": 1.0051,
+     "lo": -0.1654,
+     "hi": 2.2479
+    },
+    {
+     "round": 8,
+     "strength": 1.0085,
+     "lo": -0.1422,
+     "hi": 2.2544
+    },
+    {
+     "round": 9,
+     "strength": 0.8258,
+     "lo": -0.3118,
+     "hi": 2.0075
+    },
+    {
+     "round": 10,
+     "strength": 0.9561,
+     "lo": -0.2722,
+     "hi": 2.2575
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "VER",
+     "name": "Max Verstappen",
+     "points": 91.0,
+     "sprint_points": 9.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 3,
+     "best_finish": 2,
+     "dnf": 2,
+     "avg_grid": 6.8,
+     "pace_s": -1.1304,
+     "skill": 1.3352,
+     "skill_lo": 0.3698,
+     "skill_hi": 2.2832
+    },
+    {
+     "code": "HAD",
+     "name": "Isack Hadjar",
+     "points": 60.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 4,
+     "dnf": 2,
+     "avg_grid": 9.4,
+     "pace_s": -0.6068,
+     "skill": 0.422,
+     "skill_lo": -0.5241,
+     "skill_hi": 1.4399
+    }
+   ],
+   "championship_position": 4
+  },
+  {
+   "team": "Alpine",
+   "power_unit": "Mercedes",
+   "works": false,
+   "first_season": 2021,
+   "entry_note": null,
+   "points": 61.0,
+   "sprint_points": 1.0,
+   "wins": 0,
+   "podiums": 1,
+   "dnf": 1,
+   "starts": 20,
+   "best_finish": 3,
+   "avg_grid": 12.2,
+   "pace_s": -0.011,
+   "pace_delta_s": 0.1884,
+   "strength": 0.6302,
+   "strength_lo": -0.6808,
+   "strength_hi": 1.9722,
+   "development": 0.3545,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 0.2757,
+     "lo": -0.8918,
+     "hi": 1.4609
+    },
+    {
+     "round": 2,
+     "strength": 0.4506,
+     "lo": -0.6812,
+     "hi": 1.6493
+    },
+    {
+     "round": 3,
+     "strength": 0.6095,
+     "lo": -0.5611,
+     "hi": 1.8349
+    },
+    {
+     "round": 4,
+     "strength": 0.7704,
+     "lo": -0.4626,
+     "hi": 2.0629
+    },
+    {
+     "round": 5,
+     "strength": 0.8207,
+     "lo": -0.3751,
+     "hi": 2.0829
+    },
+    {
+     "round": 6,
+     "strength": 0.806,
+     "lo": -0.3962,
+     "hi": 2.0944
+    },
+    {
+     "round": 7,
+     "strength": 0.828,
+     "lo": -0.3907,
+     "hi": 2.1201
+    },
+    {
+     "round": 8,
+     "strength": 0.6644,
+     "lo": -0.5623,
+     "hi": 1.9431
+    },
+    {
+     "round": 9,
+     "strength": 0.7285,
+     "lo": -0.5007,
+     "hi": 2.0258
+    },
+    {
+     "round": 10,
+     "strength": 0.6302,
+     "lo": -0.6808,
+     "hi": 1.9722
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "GAS",
+     "name": "Pierre Gasly",
+     "points": 42.0,
+     "sprint_points": 1.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 1,
+     "best_finish": 3,
+     "dnf": 1,
+     "avg_grid": 11.0,
+     "pace_s": -0.1188,
+     "skill": 0.0951,
+     "skill_lo": -0.9756,
+     "skill_hi": 1.1209
+    },
+    {
+     "code": "COL",
+     "name": "Franco Colapinto",
+     "points": 19.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 6,
+     "dnf": 0,
+     "avg_grid": 13.4,
+     "pace_s": 0.0859,
+     "skill": -0.681,
+     "skill_lo": -1.8596,
+     "skill_hi": 0.3853
+    }
+   ],
+   "championship_position": 5
+  },
+  {
+   "team": "Racing Bulls",
+   "power_unit": "Red Bull Powertrains",
+   "works": false,
+   "first_season": 2024,
+   "entry_note": "Continues the Red Bull junior entry, which has changed name repeatedly; only the 2026 car is relevant under the new rules.",
+   "points": 61.0,
+   "sprint_points": 4.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 2,
+   "starts": 20,
+   "best_finish": 6,
+   "avg_grid": 10.8,
+   "pace_s": 0.0116,
+   "pace_delta_s": -0.4068,
+   "strength": 0.9437,
+   "strength_lo": -0.2709,
+   "strength_hi": 2.1784,
+   "development": 0.8593,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": 0.0844,
+     "lo": -1.0764,
+     "hi": 1.1438
+    },
+    {
+     "round": 2,
+     "strength": 0.1358,
+     "lo": -1.0072,
+     "hi": 1.1984
+    },
+    {
+     "round": 3,
+     "strength": 0.2812,
+     "lo": -0.8478,
+     "hi": 1.3659
+    },
+    {
+     "round": 4,
+     "strength": 0.4307,
+     "lo": -0.6272,
+     "hi": 1.4954
+    },
+    {
+     "round": 5,
+     "strength": 0.7152,
+     "lo": -0.3659,
+     "hi": 1.8094
+    },
+    {
+     "round": 6,
+     "strength": 0.9452,
+     "lo": -0.1445,
+     "hi": 2.126
+    },
+    {
+     "round": 7,
+     "strength": 1.0784,
+     "lo": -0.0761,
+     "hi": 2.2997
+    },
+    {
+     "round": 8,
+     "strength": 1.1014,
+     "lo": -0.0386,
+     "hi": 2.3369
+    },
+    {
+     "round": 9,
+     "strength": 1.1187,
+     "lo": -0.0836,
+     "hi": 2.4121
+    },
+    {
+     "round": 10,
+     "strength": 0.9437,
+     "lo": -0.2709,
+     "hi": 2.1784
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "LAW",
+     "name": "Liam Lawson",
+     "points": 39.0,
+     "sprint_points": 3.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 6,
+     "dnf": 1,
+     "avg_grid": 10.5,
+     "pace_s": 0.0318,
+     "skill": -0.1166,
+     "skill_lo": -1.058,
+     "skill_hi": 0.8148
+    },
+    {
+     "code": "LIN",
+     "name": "Arvid Lindblad",
+     "points": 22.0,
+     "sprint_points": 1.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 7,
+     "dnf": 1,
+     "avg_grid": 11.1,
+     "pace_s": -0.0085,
+     "skill": -0.3907,
+     "skill_lo": -1.4798,
+     "skill_hi": 0.6153
+    }
+   ],
+   "championship_position": 6
+  },
+  {
+   "team": "Haas F1 Team",
+   "power_unit": "Ferrari",
+   "works": false,
+   "first_season": 2016,
+   "entry_note": null,
+   "points": 21.0,
+   "sprint_points": 1.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 2,
+   "starts": 20,
+   "best_finish": 5,
+   "avg_grid": 14.65,
+   "pace_s": 0.3489,
+   "pace_delta_s": 0.8132,
+   "strength": -1.0624,
+   "strength_lo": -2.8098,
+   "strength_hi": 0.4314,
+   "development": -0.7775,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": -0.2849,
+     "lo": -1.4992,
+     "hi": 0.8778
+    },
+    {
+     "round": 2,
+     "strength": -0.3236,
+     "lo": -1.5443,
+     "hi": 0.8538
+    },
+    {
+     "round": 3,
+     "strength": -0.3748,
+     "lo": -1.5991,
+     "hi": 0.8043
+    },
+    {
+     "round": 4,
+     "strength": -0.547,
+     "lo": -1.732,
+     "hi": 0.5904
+    },
+    {
+     "round": 5,
+     "strength": -0.5595,
+     "lo": -1.79,
+     "hi": 0.6152
+    },
+    {
+     "round": 6,
+     "strength": -0.6022,
+     "lo": -1.9177,
+     "hi": 0.6039
+    },
+    {
+     "round": 7,
+     "strength": -0.7883,
+     "lo": -2.1845,
+     "hi": 0.4394
+    },
+    {
+     "round": 8,
+     "strength": -0.9189,
+     "lo": -2.4314,
+     "hi": 0.414
+    },
+    {
+     "round": 9,
+     "strength": -1.0059,
+     "lo": -2.6865,
+     "hi": 0.433
+    },
+    {
+     "round": 10,
+     "strength": -1.0624,
+     "lo": -2.8098,
+     "hi": 0.4314
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "BEA",
+     "name": "Oliver Bearman",
+     "points": 18.0,
+     "sprint_points": 1.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 5,
+     "dnf": 2,
+     "avg_grid": 14.2,
+     "pace_s": 0.267,
+     "skill": 0.0447,
+     "skill_lo": -1.025,
+     "skill_hi": 1.1367
+    },
+    {
+     "code": "OCO",
+     "name": "Esteban Ocon",
+     "points": 3.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 9,
+     "dnf": 0,
+     "avg_grid": 15.1,
+     "pace_s": 0.4308,
+     "skill": -0.5662,
+     "skill_lo": -1.7056,
+     "skill_hi": 0.5128
+    }
+   ],
+   "championship_position": 7
+  },
+  {
+   "team": "Williams",
+   "power_unit": "Mercedes",
+   "works": false,
+   "first_season": 1977,
+   "entry_note": null,
+   "points": 11.0,
+   "sprint_points": 0.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 5,
+   "starts": 20,
+   "best_finish": 8,
+   "avg_grid": 16.25,
+   "pace_s": 0.6149,
+   "pace_delta_s": 0.1726,
+   "strength": -0.8455,
+   "strength_lo": -2.489,
+   "strength_hi": 0.6177,
+   "development": -0.2628,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": -0.5827,
+     "lo": -1.8328,
+     "hi": 0.4969
+    },
+    {
+     "round": 2,
+     "strength": -0.4833,
+     "lo": -1.7155,
+     "hi": 0.6258
+    },
+    {
+     "round": 3,
+     "strength": -0.4442,
+     "lo": -1.6728,
+     "hi": 0.6982
+    },
+    {
+     "round": 4,
+     "strength": -0.2945,
+     "lo": -1.5502,
+     "hi": 0.8875
+    },
+    {
+     "round": 5,
+     "strength": -0.3101,
+     "lo": -1.6182,
+     "hi": 0.9303
+    },
+    {
+     "round": 6,
+     "strength": -0.418,
+     "lo": -1.6823,
+     "hi": 0.7982
+    },
+    {
+     "round": 7,
+     "strength": -0.5735,
+     "lo": -1.9501,
+     "hi": 0.6997
+    },
+    {
+     "round": 8,
+     "strength": -0.6952,
+     "lo": -2.1881,
+     "hi": 0.602
+    },
+    {
+     "round": 9,
+     "strength": -0.784,
+     "lo": -2.3584,
+     "hi": 0.6085
+    },
+    {
+     "round": 10,
+     "strength": -0.8455,
+     "lo": -2.489,
+     "hi": 0.6177
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "SAI",
+     "name": "Carlos Sainz",
+     "points": 6.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 9,
+     "dnf": 1,
+     "avg_grid": 16.0,
+     "pace_s": 0.5293,
+     "skill": -0.2638,
+     "skill_lo": -1.3623,
+     "skill_hi": 0.849
+    },
+    {
+     "code": "ALB",
+     "name": "Alexander Albon",
+     "points": 5.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 8,
+     "dnf": 4,
+     "avg_grid": 16.5,
+     "pace_s": 0.71,
+     "skill": -0.1626,
+     "skill_lo": -1.2739,
+     "skill_hi": 0.9484
+    }
+   ],
+   "championship_position": 8
+  },
+  {
+   "team": "Audi",
+   "power_unit": "Audi",
+   "works": true,
+   "first_season": 2026,
+   "entry_note": "Rebranded from Sauber for 2026 and now a works manufacturer, so pre-2026 history belongs to a different operation.",
+   "points": 10.0,
+   "sprint_points": 0.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 5,
+   "starts": 20,
+   "best_finish": 8,
+   "avg_grid": 12.2,
+   "pace_s": 0.053,
+   "pace_delta_s": -0.0147,
+   "strength": -0.4267,
+   "strength_lo": -1.9799,
+   "strength_hi": 1.1252,
+   "development": 0.3306,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": -0.7573,
+     "lo": -2.2023,
+     "hi": 0.5033
+    },
+    {
+     "round": 2,
+     "strength": -0.9212,
+     "lo": -2.4138,
+     "hi": 0.3633
+    },
+    {
+     "round": 3,
+     "strength": -1.0088,
+     "lo": -2.4954,
+     "hi": 0.2859
+    },
+    {
+     "round": 4,
+     "strength": -1.0579,
+     "lo": -2.5252,
+     "hi": 0.2612
+    },
+    {
+     "round": 5,
+     "strength": -1.0678,
+     "lo": -2.5239,
+     "hi": 0.3046
+    },
+    {
+     "round": 6,
+     "strength": -0.9987,
+     "lo": -2.4362,
+     "hi": 0.3833
+    },
+    {
+     "round": 7,
+     "strength": -0.8706,
+     "lo": -2.3115,
+     "hi": 0.5102
+    },
+    {
+     "round": 8,
+     "strength": -0.7174,
+     "lo": -2.1353,
+     "hi": 0.6675
+    },
+    {
+     "round": 9,
+     "strength": -0.4935,
+     "lo": -1.9862,
+     "hi": 0.9639
+    },
+    {
+     "round": 10,
+     "strength": -0.4267,
+     "lo": -1.9799,
+     "hi": 1.1252
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "BOR",
+     "name": "Gabriel Bortoleto",
+     "points": 10.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 8,
+     "dnf": 1,
+     "avg_grid": 12.8,
+     "pace_s": 0.0817,
+     "skill": -0.1558,
+     "skill_lo": -1.3727,
+     "skill_hi": 1.0156
+    },
+    {
+     "code": "HUL",
+     "name": "Nico Hulkenberg",
+     "points": 0.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 11,
+     "dnf": 4,
+     "avg_grid": 11.6,
+     "pace_s": 0.0207,
+     "skill": -0.7127,
+     "skill_lo": -2.1105,
+     "skill_hi": 0.4521
+    }
+   ],
+   "championship_position": 9
+  },
+  {
+   "team": "Aston Martin",
+   "power_unit": "Honda",
+   "works": false,
+   "first_season": 2021,
+   "entry_note": null,
+   "points": 1.0,
+   "sprint_points": 0.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 11,
+   "starts": 20,
+   "best_finish": 10,
+   "avg_grid": 20.5,
+   "pace_s": 2.2098,
+   "pace_delta_s": 0.7706,
+   "strength": -1.4167,
+   "strength_lo": -3.3827,
+   "strength_hi": 0.2952,
+   "development": -0.359,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": -1.0577,
+     "lo": -2.8222,
+     "hi": 0.3993
+    },
+    {
+     "round": 2,
+     "strength": -1.1407,
+     "lo": -2.86,
+     "hi": 0.3525
+    },
+    {
+     "round": 3,
+     "strength": -1.2191,
+     "lo": -2.9132,
+     "hi": 0.2626
+    },
+    {
+     "round": 4,
+     "strength": -1.2636,
+     "lo": -2.9673,
+     "hi": 0.1843
+    },
+    {
+     "round": 5,
+     "strength": -1.2397,
+     "lo": -3.0135,
+     "hi": 0.2839
+    },
+    {
+     "round": 6,
+     "strength": -1.1927,
+     "lo": -2.907,
+     "hi": 0.3389
+    },
+    {
+     "round": 7,
+     "strength": -1.2608,
+     "lo": -3.0687,
+     "hi": 0.309
+    },
+    {
+     "round": 8,
+     "strength": -1.3326,
+     "lo": -3.1612,
+     "hi": 0.2739
+    },
+    {
+     "round": 9,
+     "strength": -1.3781,
+     "lo": -3.2889,
+     "hi": 0.2749
+    },
+    {
+     "round": 10,
+     "strength": -1.4167,
+     "lo": -3.3827,
+     "hi": 0.2952
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "ALO",
+     "name": "Fernando Alonso",
+     "points": 1.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 10,
+     "dnf": 4,
+     "avg_grid": 19.9,
+     "pace_s": 2.1295,
+     "skill": -0.0828,
+     "skill_lo": -1.3468,
+     "skill_hi": 1.1565
+    },
+    {
+     "code": "STR",
+     "name": "Lance Stroll",
+     "points": 0.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 15,
+     "dnf": 7,
+     "avg_grid": 21.1,
+     "pace_s": 2.3103,
+     "skill": -0.8694,
+     "skill_lo": -2.251,
+     "skill_hi": 0.395
+    }
+   ],
+   "championship_position": 10
+  },
+  {
+   "team": "Cadillac",
+   "power_unit": "Ferrari",
+   "works": false,
+   "first_season": 2026,
+   "entry_note": "Debut season. No prior F1 history at all, so every estimate for this team rests on ten races and deserves more scepticism than the rest of the grid.",
+   "points": 0.0,
+   "sprint_points": 0.0,
+   "wins": 0,
+   "podiums": 0,
+   "dnf": 7,
+   "starts": 20,
+   "best_finish": 13,
+   "avg_grid": 19.25,
+   "pace_s": 1.9657,
+   "pace_delta_s": -0.2699,
+   "strength": -2.4729,
+   "strength_lo": -5.3797,
+   "strength_hi": -0.0785,
+   "development": -0.4234,
+   "strength_by_round": [
+    {
+     "round": 1,
+     "strength": -2.0495,
+     "lo": -4.484,
+     "hi": -0.0549
+    },
+    {
+     "round": 2,
+     "strength": -2.1796,
+     "lo": -4.5767,
+     "hi": -0.1884
+    },
+    {
+     "round": 3,
+     "strength": -2.2596,
+     "lo": -4.6978,
+     "hi": -0.2457
+    },
+    {
+     "round": 4,
+     "strength": -2.3242,
+     "lo": -4.8152,
+     "hi": -0.2735
+    },
+    {
+     "round": 5,
+     "strength": -2.3727,
+     "lo": -4.9627,
+     "hi": -0.2494
+    },
+    {
+     "round": 6,
+     "strength": -2.4095,
+     "lo": -5.0623,
+     "hi": -0.2222
+    },
+    {
+     "round": 7,
+     "strength": -2.4371,
+     "lo": -5.0712,
+     "hi": -0.1878
+    },
+    {
+     "round": 8,
+     "strength": -2.4534,
+     "lo": -5.1947,
+     "hi": -0.1695
+    },
+    {
+     "round": 9,
+     "strength": -2.4676,
+     "lo": -5.29,
+     "hi": -0.1323
+    },
+    {
+     "round": 10,
+     "strength": -2.4729,
+     "lo": -5.3797,
+     "hi": -0.0785
+    }
+   ],
+   "deg_s_per_lap": null,
+   "drivers": [
+    {
+     "code": "BOT",
+     "name": "Valtteri Bottas",
+     "points": 0.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 13,
+     "dnf": 4,
+     "avg_grid": 19.3,
+     "pace_s": 2.3231,
+     "skill": -0.7075,
+     "skill_lo": -2.6301,
+     "skill_hi": 0.95
+    },
+    {
+     "code": "PER",
+     "name": "Sergio Perez",
+     "points": 0.0,
+     "sprint_points": 0.0,
+     "starts": 10,
+     "wins": 0,
+     "podiums": 0,
+     "best_finish": 14,
+     "dnf": 3,
+     "avg_grid": 19.2,
+     "pace_s": 1.5636,
+     "skill": -0.7437,
+     "skill_lo": -2.5635,
+     "skill_hi": 0.8358
+    }
+   ],
+   "championship_position": 11
+  }
+ ]
+}

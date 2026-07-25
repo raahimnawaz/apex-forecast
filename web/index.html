@@ -3,16 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>apex-forecast — F1 2026 pace deconvolution</title>
-<meta name="description" content="Fuel-, tyre- and traffic-corrected Formula 1 race pace for the 2026 regulation era.">
-<link rel="stylesheet" href="assets/style.css">
+<title>apex-forecast — F1 2026 race forecasting</title>
+<meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and calibrated finishing-order predictions.">
+<!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
+     Bump ?v= whenever style.css or app.js changes. -->
+<link rel="stylesheet" href="assets/style.css?v=2">
 </head>
 <body>
 <div class="wrap">
 
   <div class="masthead">
     <div class="mark">apex<span>·</span>forecast</div>
-    <div class="tagline">Formula 1 2026 — pace deconvolution</div>
+    <div class="tagline">Formula 1 2026</div>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#forecast">Forecast</a>
+      <a href="#pace">Pace</a>
+      <a href="#split">Driver vs car</a>
+      <a href="#teams">Teams</a>
+      <a href="#news">News</a>
+      <a href="#notes">Limits</a>
+    </nav>
     <div class="stamp" id="stamp"></div>
   </div>
 
@@ -30,7 +40,47 @@
 
   <section class="tiles" id="tiles"></section>
 
+  <!-- ============ FORECAST ============ -->
+  <section class="card" id="forecast">
+    <header><h2>Race forecast</h2></header>
+    <p class="desc">
+      Finishing-order probabilities for the next race, from the Layer 1 strength posterior
+      pushed one round forward along each constructor's development trend. Sampled 400
+      times per posterior draw, so these are joint outcomes rather than independent guesses.
+      <b>Conditional on finishing</b> — retirements are a reliability process and are modelled
+      separately, so treat these as pace-driven probabilities among cars that see the flag.
+    </p>
+    <div class="chart-scroll"><div id="win-chart"></div></div>
+    <details class="table-view">
+      <summary>Table view</summary>
+      <div class="table-scroll">
+        <table id="forecast-table">
+          <thead><tr>
+            <th>Driver</th><th>Team</th><th>Win</th><th>Podium</th><th>Points</th><th>Exp. finish</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
   <section class="card">
+    <header><h2>Finishing-position distribution</h2></header>
+    <p class="desc">
+      The full shape of the forecast: for every driver, the probability of each finishing
+      position. A tight bright band means a confident prediction; a smeared row means the
+      model genuinely does not know. Darker is more likely.
+    </p>
+    <ul class="legend" id="matrix-legend"></ul>
+    <div class="chart-scroll"><div id="matrix-chart"></div></div>
+    <details class="table-view">
+      <summary>Table view</summary>
+      <div class="table-scroll"><table id="matrix-table"><thead><tr></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <!-- ============ PACE (LAYER 0) ============ -->
+  <section class="card" id="pace">
     <header><h2>Corrected race pace</h2></header>
     <p class="desc">
       What each car is actually worth over a lap, once fuel load, tyre age, track evolution and
@@ -93,46 +143,138 @@
     </section>
   </div>
 
-  <section class="notes">
+  <!-- ============ DRIVER VS CAR (LAYER 1) ============ -->
+  <section class="card" id="split">
+    <header><h2>Driver skill versus car</h2></header>
+    <p class="desc">
+      The hard question in Formula 1: how much of a result is the driver? A Bayesian
+      rank-ordered logit fitted across 2025 and 2026 separates the two, with driver skill
+      carried across the regulation change and constructor performance deliberately severed
+      at it. Units are log-odds — a gap of 1 means roughly <code>e</code> times the odds of
+      finishing ahead. <b>The intervals are wide on purpose</b>: within a fixed team-mate
+      pairing, skill and car can trade off, and only drivers changing teams pin the split down.
+    </p>
+    <div class="grid-2">
+      <div>
+        <h3 class="sub-h">Driver skill</h3>
+        <div class="chart-scroll"><div id="skill-chart"></div></div>
+      </div>
+      <div>
+        <h3 class="sub-h">Constructor strength, latest round</h3>
+        <div class="chart-scroll"><div id="cons-chart"></div></div>
+      </div>
+    </div>
+    <details class="table-view">
+      <summary>Table view</summary>
+      <div class="table-scroll">
+        <table id="skill-table">
+          <thead><tr><th>Driver</th><th>Skill</th><th>89% low</th><th>89% high</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <header><h2>Constructor development through 2026</h2></header>
+    <p class="desc">
+      Each team's strength as a random walk across the ten completed rounds — the development
+      race, measured. Lines are posterior means; the shaded band is the 89% interval for the
+      selected team.
+    </p>
+    <ul class="legend" id="dev-legend"></ul>
+    <div class="chart-scroll"><div id="dev-chart"></div></div>
+  </section>
+
+  <!-- ============ TEAMS ============ -->
+  <section class="card" id="teams">
+    <header><h2>Teams</h2></header>
+    <p class="desc">
+      Every constructor on the 2026 grid. Select a team to read its season, its two drivers,
+      how its car has developed, and the headlines that mention it.
+    </p>
+    <div class="team-chips" id="team-chips" role="tablist" aria-label="Select a team"></div>
+    <div id="team-detail" class="team-detail" role="tabpanel"></div>
+    <details class="table-view">
+      <summary>Constructor standings table</summary>
+      <div class="table-scroll">
+        <table id="standings-table">
+          <thead><tr>
+            <th>#</th><th>Team</th><th>Power unit</th><th>Points</th><th>Wins</th>
+            <th>Podiums</th><th>DNFs</th><th>Pace (s)</th><th>Strength</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="card" id="news">
+    <header><h2>Latest Formula 1 news</h2></header>
+    <p class="desc">
+      Headlines pulled from public feeds at build time and shown verbatim with a link to the
+      source. Nothing here is written or summarised by this project, and no article text is
+      reproduced beyond the publisher's own excerpt.
+    </p>
+    <div class="news-filter" id="news-filter"></div>
+    <ul class="news-list" id="news-list"></ul>
+    <div class="news-sources" id="news-sources"></div>
+  </section>
+
+  <!-- ============ LIMITS ============ -->
+  <section class="notes" id="notes">
     <h2>What this model does and does not know</h2>
     <ul>
-      <li><b>It cannot separate driver from car.</b> Every team fields exactly two cars, so within a
-        single race the team effect is definitionally the mean of its two drivers. These numbers are
-        <em>driver-in-car</em> pace. Splitting them into constructor advantage and driver skill needs
-        variation across team-mate pairings and is the next layer's job, not this one's.</li>
-      <li><b>Fuel burn and track evolution are not separately identifiable</b> from race laps alone —
-        both are smooth functions of lap number. The model carries one combined trend term and
-        reports it as such rather than assuming a textbook kg/lap split.</li>
-      <li><b>Ten races of in-regulation data.</b> 2026 reset the power units, the aerodynamics and the
-        car dimensions, so pre-2026 pace does not transfer. The intervals here are wide because the
-        evidence is genuinely thin, and they should not be narrowed by borrowing from 2025.</li>
-      <li><b>Cadillac has no history at all.</b> Its estimates rest entirely on ten races as a debut
-        team and deserve more scepticism than the rest of the grid.</li>
+      <li><b>Ten races of in-regulation data.</b> 2026 reset the power units, the aerodynamics and
+        the car dimensions, so pre-2026 pace does not transfer. The intervals here are wide because
+        the evidence is genuinely thin, and they should not be narrowed by borrowing from 2025.</li>
+      <li><b>The driver/car split is weakly identified.</b> Each team fields exactly two cars, so
+        adding a constant to both team-mates and subtracting it from their car leaves the
+        likelihood unchanged. What breaks that tie is drivers moving between teams — 19 drivers
+        appear in both seasons — plus hierarchical shrinkage. Read the split as indicative, and the
+        intervals as the real answer.</li>
+      <li><b>Retirements are excluded from the strength model.</b> A DNF is a reliability event, not
+        a pace event; keeping retired cars in the ranking would let a gearbox failure look like a
+        slow car. That means the forecast is conditional on finishing, and a full race prediction
+        needs the reliability and safety-car layers that are not built yet.</li>
+      <li><b>Only the top ten positions are modelled as an ordering.</b> Being classified 15th
+        usually means damage, a penalty or a bad stop — noise about pace. Modelling the full order
+        put a driver with six wins seventh in the forecast; truncating to the points positions
+        fixed it. Positions outside the top ten still inform every comparison, they are just not
+        read as a precise ranking.</li>
+      <li><b>Driver skill is constant within 2026.</b> With ten races and two cars per team, letting
+        both skill and car drift race-to-race is not identified. The flexibility went to the car,
+        which is where the in-season signal actually is.</li>
+      <li><b class="caveat">Cadillac has no history at all.</b> Its estimates rest entirely on ten
+        races as a debut team, and its interval is the widest on the grid for good reason.</li>
       <li><b class="caveat">Known bias:</b> backmarkers spend more time in traffic and lift for blue
         flags. The dirty-air term absorbs some of that, but not all, so the tail of the field is
         likely flattered less than it deserves.</li>
-      <li><b class="caveat">Compound ordering is not yet resolved:</b> medium and soft degradation
-        differ by less than their spread across races, so this data cannot rank them. Soft runs are
-        short, which limits the tyre-age range the slope is fitted over.</li>
-      <li><b>Fit quality:</b> <span id="fit-quality"></span> Monaco is the weakest fit of the season,
-        which is the expected place for a pace model to struggle — the race is traffic, not pace.</li>
+      <li><b class="caveat">Compound ordering is not resolved:</b> medium and soft degradation differ
+        by less than their spread across races, so this data cannot rank them.</li>
+      <li><b>Two independent checks agree.</b> Layer 0 measures pace from lap times; Layer 1 infers
+        strength from finishing order. They share no data representation, likelihood or fitting
+        method, and their constructor rankings correlate at <span id="rho-note">—</span>. Sampler
+        diagnostics: <span id="conv-note">—</span>.</li>
       <li><b>Why team colours never encode a value here.</b> Run through a colour-vision validator,
         the 2026 constructor palette fails outright on the dark surface: Haas silver and Mercedes
         teal are ΔE&nbsp;0.6 apart under deuteranopia — effectively the same colour — and Alpine
         against Red&nbsp;Bull is ΔE&nbsp;9.2 apart under <em>normal</em> vision, below the
-        legibility floor. So team colour is a chip beside a text driver code and nothing more;
-        every quantitative scale on this page uses a validated ramp instead.</li>
+        legibility floor. So team colour is a chip beside a text label and nothing more; every
+        quantitative scale on this page uses a validated ramp instead.</li>
     </ul>
   </section>
 
   <footer class="foot">
-    Built from <a href="https://docs.fastf1.dev/">FastF1</a> timing data ·
-    robust (Huber) regression per race · no prediction is shown on this page yet —
-    Layer 0 only.
+    Timing data <a href="https://docs.fastf1.dev/">FastF1</a> ·
+    history <a href="https://github.com/jolpica/jolpica-f1">Jolpica-F1</a> ·
+    headlines from publisher RSS feeds ·
+    <span id="foot-stamp"></span>
   </footer>
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=2"></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 PY := .venv/bin/python
 SEASON ?= 2026
 
-.PHONY: setup spike data pace web serve test lint all
+.PHONY: setup spike data pace strength web news serve test lint all
 
 setup:
 	uv venv --python python3.12
-	uv pip install -e ".[dev]"
+	uv pip install -e ".[dev,model]"
 
 spike:            ## verify FastF1 still parses a current-season session
 	$(PY) scripts/spike_fastf1.py
@@ -16,8 +16,14 @@ data:             ## ingest sessions -> parquet + data-quality report
 pace:             ## Layer 0 deconvolution -> pace + degradation tables
 	$(PY) scripts/build_pace.py --season $(SEASON)
 
+strength:         ## Layer 1 rank-ordered logit -> skill, car strength, forecast
+	$(PY) scripts/build_strength.py
+
 web:              ## serialise model output for the dashboard
 	$(PY) scripts/export_web.py --season $(SEASON)
+
+news:             ## refresh headlines only (seconds; no model refit needed)
+	$(PY) scripts/export_news.py
 
 serve:
 	$(PY) -m http.server 8731 --directory web
@@ -28,4 +34,4 @@ test:
 lint:
 	.venv/bin/ruff check src scripts tests
 
-all: data pace web
+all: data pace strength web news

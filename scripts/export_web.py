@@ -14,9 +14,10 @@ from datetime import UTC, datetime
 
 import fastf1
 import fastf1.plotting
+import numpy as np
 import pandas as pd
 
-from apex.paths import CACHE, PROCESSED, REPORTS, WEB_DATA
+from apex.paths import CACHE, PROCESSED, RAW, REPORTS, WEB_DATA
 
 fastf1.Cache.enable_cache(str(CACHE))
 
@@ -138,7 +139,79 @@ def main() -> int:
     print(f"wrote {out}  ({out.stat().st_size / 1024:.0f} KB)")
     print(f"  drivers: {len(agg)}  rounds: {payload['rounds_analysed']}")
     print(f"  laps modelled: {payload['totals']['laps_modelled']:,}")
+
+    export_strength(season, colors)
+    export_teams(season)
     return 0
+
+
+def _need(path):
+    if not path.exists():
+        raise SystemExit(f"missing {path.name} — run scripts/build_strength.py first")
+    return path
+
+
+def export_strength(season: int, colors: dict) -> None:
+    """Layer 1 posterior + the next-race forecast."""
+    skill = pd.read_parquet(_need(PROCESSED / f"skill_{season}.parquet"))
+    cons = pd.read_parquet(_need(PROCESSED / f"constructor_{season}.parquet"))
+    by_round = pd.read_parquet(PROCESSED / "constructor_by_round.parquet")
+    fc = pd.read_parquet(PROCESSED / "forecast_next.parquet")
+    entries = pd.read_parquet(PROCESSED / "forecast_entries.parquet")
+    probs = np.load(PROCESSED / "position_probs.npy")
+    diag = pd.read_csv(REPORTS / "strength_fit.csv").iloc[0].to_dict()
+
+    payload = {
+        "schema_version": 1,
+        "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "season": season,
+        "team_colors": colors,
+        "skill": clean(skill.round(4).to_dict(orient="records")),
+        "constructor": clean(cons.round(4).to_dict(orient="records")),
+        "constructor_by_round": clean(by_round.round(4).to_dict(orient="records")),
+        "forecast": clean(fc.round(5).to_dict(orient="records")),
+        "position_matrix": {
+            "drivers": entries["driver"].tolist(),
+            "teams": entries["team"].tolist(),
+            "probs": np.round(probs, 5).tolist(),
+        },
+        "diagnostics": {k: (None if isinstance(v, float) and not math.isfinite(v) else v)
+                        for k, v in diag.items()},
+    }
+    out = WEB_DATA / f"strength_{season}.json"
+    out.write_text(json.dumps(payload, indent=1))
+    print(f"wrote {out}  ({out.stat().st_size / 1024:.0f} KB)")
+    print(f"  constructor share {100 * diag['constructor_share']:.1f}% · "
+          f"R-hat {diag['worst_rhat']} · Layer-0 rho {diag['layer0_spearman']}")
+
+
+def export_teams(season: int) -> None:
+    import glob
+
+    from apex.teams import build_profiles
+
+    files = sorted(glob.glob(str(RAW / f"results_{season}_R*_R.parquet")))
+    results = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+    sprint_files = sorted(glob.glob(str(RAW / f"results_{season}_R*_S.parquet")))
+    sprint = (pd.concat([pd.read_parquet(f) for f in sprint_files], ignore_index=True)
+              if sprint_files else None)
+    pace = pd.read_parquet(PROCESSED / f"pace_{season}.parquet")
+    cons = pd.read_parquet(PROCESSED / f"constructor_{season}.parquet")
+    by_round = pd.read_parquet(PROCESSED / "constructor_by_round.parquet")
+    skill = pd.read_parquet(PROCESSED / f"skill_{season}.parquet")
+    deg = pd.read_parquet(PROCESSED / f"degradation_{season}.parquet")
+
+    profiles = build_profiles(results, pace, cons, by_round, skill, deg, sprint_2026=sprint)
+    payload = {
+        "schema_version": 1,
+        "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "season": season,
+        "rounds_complete": int(results["round"].nunique()),
+        "teams": profiles,
+    }
+    out = WEB_DATA / f"teams_{season}.json"
+    out.write_text(json.dumps(payload, indent=1))
+    print(f"wrote {out}  ({out.stat().st_size / 1024:.0f} KB) · {len(profiles)} teams")
 
 
 if __name__ == "__main__":

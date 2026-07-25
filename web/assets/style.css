@@ -181,6 +181,87 @@ tbody tr:hover td { background: var(--surface-2); }
 footer.foot { color: var(--ink-muted); font-size: 12px; margin-top: 28px; text-align: center; }
 footer.foot a { color: var(--ink-2); }
 
+/* ---------- top nav ---------- */
+
+.topnav { display: flex; gap: 16px; flex-wrap: wrap; }
+.topnav a {
+  color: var(--ink-muted); text-decoration: none; font-size: 13px;
+  padding: 2px 0; border-bottom: 1px solid transparent;
+}
+.topnav a:hover, .topnav a:focus-visible { color: var(--ink); border-bottom-color: var(--series-1); }
+
+.sub-h { font-size: 13px; font-weight: 500; color: var(--ink-2); margin: 0 0 10px; }
+
+/* ---------- team chips ---------- */
+
+.team-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.team-chips button {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface-2); color: var(--ink-2);
+  border: 1px solid var(--hairline); border-radius: 999px;
+  padding: 6px 13px; font: inherit; font-size: 12.5px; cursor: pointer;
+}
+.team-chips button:hover { color: var(--ink); border-color: rgba(255,255,255,0.2); }
+.team-chips button[aria-selected="true"] {
+  color: var(--ink); border-color: var(--series-1); background: rgba(57,135,229,0.12);
+}
+.team-chips button:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+/* ---------- team detail ---------- */
+
+.team-detail { border-top: 1px solid var(--hairline); padding-top: 20px; }
+.td-head { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.td-name { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.td-sub { color: var(--ink-muted); font-size: 12.5px; margin-bottom: 18px; }
+.td-note {
+  color: var(--ink-2); font-size: 13px; background: var(--surface-2);
+  border-left: 2px solid var(--status-warning); border-radius: 0 6px 6px 0;
+  padding: 10px 14px; margin-bottom: 18px;
+}
+.td-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: 14px; margin-bottom: 22px; }
+.td-stat .k { color: var(--ink-muted); font-size: 11.5px; margin-bottom: 3px; }
+.td-stat .v { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.td-stat .v small { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
+.td-section-h { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 10px; }
+.td-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+
+.driver-row {
+  display: flex; align-items: baseline; gap: 10px; padding: 9px 0;
+  border-bottom: 1px solid var(--grid); font-size: 13px;
+}
+.driver-row:last-child { border-bottom: none; }
+.driver-row .dr-code { font-weight: 600; width: 40px; flex: none; }
+.driver-row .dr-name { color: var(--ink-2); flex: 1; }
+.driver-row .dr-num { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- news ---------- */
+
+.news-filter { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.news-filter button {
+  background: none; color: var(--ink-muted); border: 1px solid var(--hairline);
+  border-radius: 999px; padding: 4px 11px; font: inherit; font-size: 12px; cursor: pointer;
+}
+.news-filter button:hover { color: var(--ink); }
+.news-filter button[aria-pressed="true"] { color: var(--ink); border-color: var(--series-1); }
+.news-filter button:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li { padding: 13px 0; border-bottom: 1px solid var(--grid); }
+.news-list li:last-child { border-bottom: none; }
+.news-list a { color: var(--ink); text-decoration: none; font-size: 14.5px; line-height: 1.4; font-weight: 500; }
+.news-list a:hover { color: var(--series-1); }
+.news-list a:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+.news-meta { color: var(--ink-muted); font-size: 12px; margin-top: 5px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.news-meta .src { color: var(--ink-2); }
+.news-summary { color: var(--ink-2); font-size: 13px; margin-top: 6px; line-height: 1.5; }
+.news-sources { color: var(--ink-muted); font-size: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.news-empty { color: var(--ink-muted); font-size: 13px; padding: 18px 0; }
+
+@media (max-width: 940px) {
+  .td-cols { grid-template-columns: 1fr; }
+  .topnav { order: 3; width: 100%; }
+}
+
 @media (max-width: 940px) {
   .tiles { grid-template-columns: repeat(2, 1fr); }
   .grid-2 { grid-template-columns: 1fr; }

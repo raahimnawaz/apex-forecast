@@ -17,28 +17,43 @@ relearned from in-regulation races only, and the resulting uncertainty is displa
 | 2 — Race simulation | Lap-by-lap Monte Carlo: starts, pit strategy, overtaking under energy constraints, safety cars, DNF hazard |
 | 3 — Calibration | Walk-forward backtest, ranked probability score, reliability diagrams, benchmarked against four naive baselines |
 
+## What it found
+
+- **Corrected pace and finishing-order strength agree at Spearman ρ = 0.93** across the
+  eleven constructors. The two layers share no data representation, likelihood or
+  fitting method, so the agreement is evidence rather than a self-consistency check.
+- **76% of the finishing-order spread is the car**, the rest the driver — lower than the
+  ~88% reported for the settled hybrid era, which is what a regulation reset should do.
+- **Monaco costs 2.53 s per lap in dirty air** against 0.14–0.76 s everywhere else. The
+  model was not told Monaco is different; it recovered that from lap times.
+
 ## Data
 
 - [FastF1](https://docs.fastf1.dev/) — laps, stints, tyre compound/age, telemetry, weather
-- [Jolpica-F1](https://github.com/jolpica/jolpica-f1) — historical results and standings (Ergast successor)
-- [Open-Meteo](https://open-meteo.com/) — race-day weather forecast
+- [Jolpica-F1](https://github.com/jolpica/jolpica-f1) — historical results (Ergast successor)
+- Publisher RSS feeds — headlines, shown verbatim with attribution and a source link
 
 ## Setup
 
 ```bash
-uv venv --python python3.12
-uv pip install -e .
+make setup
 ```
 
 ## Usage
 
 ```bash
-python scripts/spike_fastf1.py      # verify FastF1 against a 2026 session
-python scripts/ingest.py --season 2026
-python scripts/build_pace.py
-python scripts/export_web.py
+make spike     # verify FastF1 still parses a current-season session
+make all       # ingest -> pace -> strength -> web payloads -> news
+make serve     # dashboard at http://localhost:8731
+make test lint
 ```
+
+`make news` refreshes headlines on its own — it needs no fitted posterior and runs in
+seconds, so the news section can update on a different schedule to the models.
 
 ## Status
 
-Phase 0–1: data pipeline and pace deconvolution.
+Layers 0 and 1 are built and cross-validated. Layer 2 (race simulation with pit strategy,
+overtaking under energy constraints, safety cars and a DNF hazard model) and Layer 3
+(walk-forward calibration against naive baselines) are not built yet — so the published
+forecast is **conditional on finishing** and is labelled that way on the page.
