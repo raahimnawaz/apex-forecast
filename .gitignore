@@ -13,3 +13,6 @@ data/raw/
 # Derived tables are cheap to rebuild; the web payload is committed so the
 # published dashboard is self-contained.
 data/processed/
+
+# Run logs are noise; the data-quality CSV is the durable record.
+reports/*.log
