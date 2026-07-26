@@ -83,8 +83,6 @@ def main() -> int:
     agg = (pace.groupby(["Driver", "Team"], as_index=False)
                 .agg(pace_s=("pace_s", "mean"),
                      sd_s=("pace_s", "std"),
-                     best_s=("pace_s", "min"),
-                     worst_s=("pace_s", "max"),
                      races=("round", "nunique"),
                      laps=("n_laps", "sum")))
     agg["sd_s"] = agg["sd_s"].fillna(0.0)
@@ -123,13 +121,8 @@ def main() -> int:
         "pace": clean(agg.round(4).to_dict(orient="records")),
         "pace_by_round": clean(by_round.round(4).to_dict(orient="records")),
         "degradation": clean(deg_agg.round(4).to_dict(orient="records")),
-        "degradation_by_round": clean(deg.round(4).to_dict(orient="records")),
-        "event_fits": clean(fit.round(4).to_dict(orient="records")),
         "totals": {
             "laps_modelled": int(fit["n_laps"].sum()),
-            "races_fitted": len(fit),
-            "median_pseudo_r2": float(fit["pseudo_r2"].median()),
-            "mean_resid_sd_s": float(fit["resid_sd_s"].mean()),
             "mean_dirty_air_cost_s": float(fit["dirty_air_cost_s"].mean()),
         },
     }
@@ -159,21 +152,39 @@ def calibration_payload() -> dict | None:
     entire point of running the test.
     """
     summary = REPORTS / "calibration_summary.csv"
-    per_round = REPORTS / "calibration_walkforward.csv"
     if not summary.exists():
         return None
     s = pd.read_csv(summary)
     rows = clean(s.round(4).to_dict(orient="records"))
     best = min(rows, key=lambda r: r["rps"])["model"]
     grid_rps = next((r["rps"] for r in rows if r["model"] == "baseline: grid"), None)
+
+    # Winning on the mean is not the same as winning. With six races the margin has to be
+    # tested, not just reported — otherwise the page overclaims on a difference that a
+    # paired t-test cannot separate from noise.
+    per_race = REPORTS / "calibration_walkforward.csv"
+    sig = {}
+    if per_race.exists() and grid_rps is not None:
+        piv = pd.read_csv(per_race).pivot_table(index="round", columns="model", values="rps")
+        if best in piv and "baseline: grid" in piv:
+            d = piv["baseline: grid"] - piv[best]
+            n = len(d)
+            t = float(d.mean() / (d.std(ddof=1) / n ** 0.5)) if d.std(ddof=1) > 0 else 0.0
+            sig = {
+                "margin_mean": round(float(d.mean()), 5),
+                "margin_sd": round(float(d.std(ddof=1)), 5),
+                "races_won": int((d > 0).sum()),
+                "t_stat": round(t, 2),
+                "significant": bool(abs(t) > 2.57),   # two-sided 95%, 5 df
+            }
+
     return {
         "summary": rows,
-        "per_round": clean(pd.read_csv(per_round).round(4).to_dict(orient="records"))
-                     if per_round.exists() else [],
         "best_model": best,
         "grid_baseline_rps": grid_rps,
         "beats_grid_baseline": bool(best.startswith("model:")),
         "n_eval_races": int(s["races"].max()),
+        "significance": sig,
     }
 
 
@@ -224,16 +235,13 @@ def export_teams(season: int) -> None:
               if sprint_files else None)
     pace = pd.read_parquet(PROCESSED / f"pace_{season}.parquet")
     cons = pd.read_parquet(PROCESSED / f"constructor_{season}.parquet")
-    by_round = pd.read_parquet(PROCESSED / "constructor_by_round.parquet")
     skill = pd.read_parquet(PROCESSED / f"skill_{season}.parquet")
-    deg = pd.read_parquet(PROCESSED / f"degradation_{season}.parquet")
 
-    profiles = build_profiles(results, pace, cons, by_round, skill, deg, sprint_2026=sprint)
+    profiles = build_profiles(results, pace, cons, skill, sprint_2026=sprint)
     payload = {
         "schema_version": 1,
         "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "season": season,
-        "rounds_complete": int(results["round"].nunique()),
         "teams": profiles,
     }
     out = WEB_DATA / f"teams_{season}.json"

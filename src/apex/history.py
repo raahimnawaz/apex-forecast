@@ -12,7 +12,6 @@ regulation boundary.
 
 from __future__ import annotations
 
-import json
 import time
 
 import pandas as pd
@@ -84,25 +83,3 @@ def fetch_season_results(season: int, force: bool = False) -> pd.DataFrame:
         raise RuntimeError(f"no results returned for {season}")
     df.to_parquet(cache, index=False)
     return df
-
-
-def fetch_driver_standings(season: int, force: bool = False) -> pd.DataFrame:
-    cache = RAW / f"jolpica_standings_{season}.json"
-    if cache.exists() and not force:
-        data = json.loads(cache.read_text())
-    else:
-        data = _get(f"{BASE}/{season}/driverstandings/", {"limit": 100})
-        cache.write_text(json.dumps(data))
-    lists = data["MRData"]["StandingsTable"]["StandingsLists"]
-    if not lists:
-        return pd.DataFrame()
-    rows = [{
-        "season": season,
-        "position": int(s["position"]),
-        "code": s["Driver"].get("code") or s["Driver"]["driverId"][:3].upper(),
-        "driver_id": s["Driver"]["driverId"],
-        "points": float(s["points"]),
-        "wins": int(s["wins"]),
-        "constructor": s["Constructors"][-1]["name"],
-    } for s in lists[0]["DriverStandings"]]
-    return pd.DataFrame(rows)

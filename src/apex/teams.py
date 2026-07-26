@@ -47,9 +47,7 @@ ENTRY_NOTE = {
 def build_profiles(results_2026: pd.DataFrame,
                    pace: pd.DataFrame,
                    constructor: pd.DataFrame,
-                   cons_by_round: pd.DataFrame,
                    skill: pd.DataFrame,
-                   degradation: pd.DataFrame,
                    sprint_2026: pd.DataFrame | None = None) -> list[dict]:
     """One record per constructor, combining results with both model layers.
 
@@ -87,7 +85,6 @@ def build_profiles(results_2026: pd.DataFrame,
                 "code": code,
                 "name": str(dg["FullName"].iloc[0]),
                 "points": float(dg["Points"].sum()) + sp_d,
-                "sprint_points": sp_d,
                 "starts": len(dg),
                 "wins": int((dg["Position"] == 1).sum()),
                 "podiums": int((dg["Position"] <= 3).sum()),
@@ -98,8 +95,6 @@ def build_profiles(results_2026: pd.DataFrame,
                             else round(float(dg["GridPosition"].mean()), 2),
                 "pace_s": None if dp.empty else round(float(dp["pace_s"].mean()), 4),
                 "skill": None if sk is None else round(float(sk["skill"]), 4),
-                "skill_lo": None if sk is None else round(float(sk["lo"]), 4),
-                "skill_hi": None if sk is None else round(float(sk["hi"]), 4),
             })
         drivers.sort(key=lambda d: -d["points"])
 
@@ -110,10 +105,6 @@ def build_profiles(results_2026: pd.DataFrame,
         pace_delta = (late_pace - early_pace) if not (np.isnan(early_pace) or np.isnan(late_pace)) else None
 
         s = strength.loc[team] if team in strength.index else None
-        walk = cons_by_round[cons_by_round["constructor"] == team].sort_values("round")
-
-        deg = degradation[degradation["constructor"] == team] if "constructor" in degradation.columns \
-            else pd.DataFrame()
 
         ref = TEAM_REFERENCE.get(team, {})
         profiles.append({
@@ -124,7 +115,6 @@ def build_profiles(results_2026: pd.DataFrame,
             "entry_note": ENTRY_NOTE.get(team),
             "points": float(g["Points"].sum()) + (0.0 if sprint_team is None
                                                   else float(sprint_team.get(team, 0.0))),
-            "sprint_points": 0.0 if sprint_team is None else float(sprint_team.get(team, 0.0)),
             "wins": int((g["Position"] == 1).sum()),
             "podiums": int((g["Position"] <= 3).sum()),
             "dnf": int((~g["classified"]).sum()),
@@ -136,15 +126,7 @@ def build_profiles(results_2026: pd.DataFrame,
             "pace_s": None if tp.empty else round(float(tp["pace_s"].mean()), 4),
             "pace_delta_s": None if pace_delta is None else round(float(pace_delta), 4),
             "strength": None if s is None else round(float(s["car_2026_latest"]), 4),
-            "strength_lo": None if s is None else round(float(s["lo"]), 4),
-            "strength_hi": None if s is None else round(float(s["hi"]), 4),
             "development": None if s is None else round(float(s["development"]), 4),
-            "strength_by_round": [
-                {"round": int(x["round"]), "strength": round(float(x["strength"]), 4),
-                 "lo": round(float(x["lo"]), 4), "hi": round(float(x["hi"]), 4)}
-                for _, x in walk.iterrows()
-            ],
-            "deg_s_per_lap": None if deg.empty else round(float(deg["deg_s_per_lap"].mean()), 4),
             "drivers": drivers,
         })
 

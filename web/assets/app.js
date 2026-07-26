@@ -599,13 +599,21 @@ function renderCalibration(s) {
   const gridRow = rows.find((r) => r.model === "baseline: grid");
   const gap = modelRow && gridRow ? modelRow.rps - gridRow.rps : null;
 
+  const sig = c.significance || {};
   if (c.beats_grid_baseline) {
-    verdict.className = "verdict pass";
-    verdict.innerHTML = `<span class="v-head">Validated out of sample</span>`
-      + `<b>Beats every baseline on every metric</b> across ${c.n_eval_races} races it had `
-      + `never seen — including qualifying position `
-      + `(RPS ${modelRow ? modelRow.rps.toFixed(3) : "—"} vs ${c.grid_baseline_rps.toFixed(3)}). `
-      + `Small sample, narrow margin.`;
+    // "Best on the mean" and "better" are different claims. With six races the paired
+    // margin is nowhere near significant, and the banner has to say so — leading with
+    // the win and burying the t-statistic would be the dishonest version of this page.
+    verdict.className = "verdict" + (sig.significant ? " pass" : "");
+    verdict.innerHTML = `<span class="v-head">Best on the mean — not yet proven</span>`
+      + `<b>Lowest RPS of anything tested</b> across ${c.n_eval_races} unseen races, `
+      + `including qualifying position `
+      + `(${modelRow ? modelRow.rps.toFixed(3) : "—"} vs ${c.grid_baseline_rps.toFixed(3)}). `
+      + (sig.t_stat !== undefined
+          ? `But it wins only ${sig.races_won} of ${c.n_eval_races} races and the paired `
+            + `margin is <b>t = ${sig.t_stat}</b> — indistinguishable from noise at this `
+            + `sample size. Treat it as promising, not established.`
+          : "");
   } else {
     verdict.className = "verdict";
     verdict.innerHTML = `<span class="v-head">Read the forecast with this in mind</span>`

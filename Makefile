@@ -25,6 +25,9 @@ calibrate:        ## walk-forward backtest against naive baselines (slow: refits
 web:              ## serialise model output for the dashboard
 	$(PY) scripts/export_web.py --season $(SEASON)
 
+trackart:         ## regenerate the hero artwork (needs ROUND=n)
+	$(PY) scripts/build_trackart.py --season $(SEASON) --round $(ROUND)
+
 news:             ## refresh headlines only (seconds; no model refit needed)
 	$(PY) scripts/export_news.py
 

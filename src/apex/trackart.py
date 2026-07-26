@@ -25,9 +25,7 @@ class TrackArt:
     session: str
     points: list[list[float]]   # [[x, y], ...] normalised into a 0-1000 box
     speed: list[float]          # 0-1 normalised, aligned with points
-    speed_kph: list[float]
     fastest_ix: int
-    slowest_ix: int
     width: float
     height: float
 
@@ -80,9 +78,7 @@ def build(session, box: float = 1000.0, n_points: int = 320) -> TrackArt:
         session=str(session.name),
         points=[[round(float(a), 2), round(float(b), 2)] for a, b in zip(sx, sy)],
         speed=[round(float(s), 4) for s in vn],
-        speed_kph=[round(float(s), 1) for s in v],
         fastest_ix=int(np.argmax(v)),
-        slowest_ix=int(np.argmin(v)),
         width=round(float((x1 - x0) / span * box), 2),
         height=round(float((y1 - y0) / span * box), 2),
     )

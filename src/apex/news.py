@@ -133,4 +133,5 @@ def fetch_all(limit: int = 60) -> list[dict]:
             if key not in seen or it.published_ts > seen[key].published_ts:
                 seen[key] = it
     items = sorted(seen.values(), key=lambda i: i.published_ts, reverse=True)[:limit]
-    return [asdict(i) for i in items]
+    # published_ts exists only to sort and de-duplicate; the client reads `published`.
+    return [{k: v for k, v in asdict(i).items() if k != "published_ts"} for i in items]
