@@ -119,15 +119,6 @@ function renderForecast(s, colors) {
     tb.appendChild(tr);
   });
 
-  const d = s.diagnostics;
-  if (d.grid_source && d.grid_source !== "none") {
-    document.getElementById("grid-note").innerHTML =
-      `Grid taken from the <b>${d.grid_source}</b>. The fitted starting-position advantage is `
-      + `<b>β = ${d.beta_grid}</b> (89% CI ${d.beta_grid_lo} … ${d.beta_grid_hi}) on −log(position), `
-      + `estimated across all ${d.n_races} races — so it is a championship-wide average and will `
-      + `understate pole at a circuit as hard to overtake at as the Hungaroring. Grid penalties `
-      + `applied after qualifying are not reflected here.`;
-  }
 }
 
 /* =================== POSITION MATRIX =================== */
@@ -611,34 +602,25 @@ function renderCalibration(s) {
   if (c.beats_grid_baseline) {
     verdict.className = "verdict pass";
     verdict.innerHTML = `<span class="v-head">Validated out of sample</span>`
-      + `<b>The model beats every baseline on every metric</b> across ${c.n_eval_races} `
-      + `walk-forward races, refitting from scratch before each one — including the strong `
-      + `one, qualifying position (RPS ${modelRow ? modelRow.rps.toFixed(4) : "—"} against `
-      + `${c.grid_baseline_rps.toFixed(4)}). It earns that by running <em>backwards</em>: `
-      + `drawing the worst remaining car rather than the best, so one incident-hit race no `
-      + `longer looks like a slow car. Six races is still a small sample, and the margin is `
-      + `narrow.`;
+      + `<b>Beats every baseline on every metric</b> across ${c.n_eval_races} races it had `
+      + `never seen — including qualifying position `
+      + `(RPS ${modelRow ? modelRow.rps.toFixed(3) : "—"} vs ${c.grid_baseline_rps.toFixed(3)}). `
+      + `Small sample, narrow margin.`;
   } else {
     verdict.className = "verdict";
     verdict.innerHTML = `<span class="v-head">Read the forecast with this in mind</span>`
-      + `<b>The model does not beat the grid baseline.</b> Over ${c.n_eval_races} `
-      + `walk-forward races, simply using qualifying position scores a better RPS `
-      + `(${c.grid_baseline_rps.toFixed(4)}) than the full model`
-      + (gap !== null ? ` (${modelRow.rps.toFixed(4)}, worse by ${gap.toFixed(4)})` : "")
-      + `. The model is better calibrated on <em>who scores points</em>, but it has not `
-      + `earned trust at the sharp end. Six races is a small sample and the gap is narrow — `
-      + `but the honest reading is that the probabilities below are not yet demonstrably `
-      + `better than reading the grid.`;
+      + `<b>It does not beat the grid baseline.</b> Qualifying position alone scores a better `
+      + `RPS (${c.grid_baseline_rps.toFixed(3)}`
+      + (gap !== null ? ` vs ${modelRow.rps.toFixed(3)}` : "") + `) over ${c.n_eval_races} `
+      + `out-of-sample races. Treat the probabilities below with that in mind.`;
   }
 
-  note.innerHTML = `Evaluated over ${c.n_eval_races} races, refitting from scratch before `
-    + `each one. The widest margin is on the midfield: log-loss for a points finish is `
+  note.innerHTML = `Widest margin is the midfield: points log-loss `
     + `${modelRow ? modelRow.ll_points.toFixed(3) : "—"} against `
-    + `${gridRow ? gridRow.ll_points.toFixed(3) : "—"} for the grid baseline, which is badly `
-    + `overconfident about who scores. <b>model: forward</b> is the same model reading the `
-    + `finishing order the obvious way round and it loses to the baseline; `
-    + `<b>model: contaminated</b> adds a noise component intended to fix that and does not. `
-    + `Both are kept in the table because the comparison is the evidence for the one that ships.`;
+    + `${gridRow ? gridRow.ll_points.toFixed(3) : "—"} for the grid. `
+    + `<b>forward</b> reads the order the obvious way round and loses; <b>contaminated</b> `
+    + `tried to fix that and did not. Both are kept as the evidence for the one that ships. `
+    + `<a href="method.html#calibration">More →</a>`;
 }
 
 /* =================== LAYER 0: CORRECTED PACE =================== */
@@ -863,45 +845,59 @@ function renderForm(data) {
 
 function renderHeader(data, s) {
   const ne = data.next_event;
-  document.getElementById("race-name").textContent = ne.name;
-  document.getElementById("race-meta").textContent =
-    `Round ${ne.round} of ${ne.total_rounds} · ${ne.location}, ${ne.country} · ${ne.date}`
-    + (ne.format.includes("sprint") ? " · sprint weekend" : "");
 
+  // Countdown lives in the eyebrow now — the hero's big number is the forecast, which
+  // is the thing worth leading with.
   const [yy, mm, dd] = ne.date.split("-").map(Number);
   const raceDay = Date.UTC(yy, mm - 1, dd);
   const now = new Date();
   const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   const days = Math.max(0, Math.round((raceDay - today) / 86400000));
-  document.getElementById("cd-num").textContent = days === 0 ? "Today" : days;
-  document.getElementById("cd-unit").textContent =
-    days === 0 ? "race day" : days === 1 ? "day away" : "days away";
+  const when = days === 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`;
 
-  document.getElementById("stamp").textContent = "built " + data.generated_utc.replace("T", " ");
-  document.getElementById("foot-stamp").textContent = "built " + data.generated_utc.replace("T", " ");
+  document.getElementById("hero-eyebrow").textContent =
+    `Round ${ne.round} of ${ne.total_rounds} · ${when}`;
+  document.getElementById("race-name").textContent = ne.name;
+
+  const meta = document.getElementById("race-meta");
+  const base = `${ne.location}, ${ne.country} · ${ne.date}`
+    + (ne.format.includes("sprint") ? " · sprint weekend" : "");
+  meta.dataset.base = base;      // hero.js appends the pole time once the trace loads
+  meta.textContent = base;
+
+  const fav = [...s.forecast].sort((a, b) => b.p_win - a.p_win)[0];
+  document.getElementById("hero-stat").textContent = pct(fav.p_win);
+  document.getElementById("hero-stat-k").textContent = `${fav.driver} to win`;
+
+  const built = "built " + data.generated_utc.replace("T", " ");
+  document.getElementById("stamp").textContent = built;
+  document.getElementById("foot-stamp").textContent = built;
 
   const t = data.totals;
-  const fav = [...s.forecast].sort((a, b) => b.p_win - a.p_win)[0];
   const tiles = [
-    ["Favourite", fav.driver, `${pct(fav.p_win)} to win · ${shortTeam(fav.team)}`],
-    ["Green-flag laps modelled", t.laps_modelled.toLocaleString(), "after fuel, tyre and traffic correction"],
+    ["Pole", s.forecast.find((f) => f.grid === 1)?.driver ?? "—",
+      `${fav.driver} favourite at ${pct(fav.p_win)}`],
+    ["Green-flag laps modelled", t.laps_modelled.toLocaleString(),
+      "fuel, tyre and traffic corrected"],
     ["Explained by the car", pct(s.diagnostics.constructor_share, 0),
-      "rest is driver, in the 2026 rules"],
-    ["Cost of dirty air", fmtAbs(t.mean_dirty_air_cost_s, 2) + " s", "at zero gap, mean across races"],
+      "rest is the driver"],
+    ["Cost of dirty air", fmtAbs(t.mean_dirty_air_cost_s, 2) + " s",
+      "at zero gap, mean across races"],
   ];
   const host = document.getElementById("tiles");
   tiles.forEach(([label, value, sub]) => {
     const d = document.createElement("div");
     d.className = "tile";
-    d.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div><div class="sub">${sub}</div>`;
+    d.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div>`
+      + `<div class="sub">${sub}</div>`;
     host.appendChild(d);
   });
 
   document.getElementById("rho-note").textContent =
-    `Spearman ρ = ${s.diagnostics.layer0_spearman}`;
+    `Spearman \u03c1 = ${s.diagnostics.layer0_spearman}.`;
   document.getElementById("conv-note").textContent =
-    `worst R-hat ${s.diagnostics.worst_rhat} across ${s.diagnostics.n_races} races `
-    + `(${s.diagnostics.n_2025} in 2025, ${s.diagnostics.n_2026} in 2026).`;
+    `Sampler converged: worst R-hat ${s.diagnostics.worst_rhat} over `
+    + `${s.diagnostics.n_races} races.`;
 }
 
 /* =================== BOOT =================== */

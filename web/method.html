@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>apex-forecast — method</title>
+<meta name="description" content="How the apex-forecast Formula 1 model works: pace deconvolution, rank-ordered logit, the attrition likelihood, and out-of-sample calibration.">
+<link rel="stylesheet" href="assets/style.css?v=8">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="mark">apex<span>·</span>forecast</div>
+    <div class="tagline">Method</div>
+    <nav class="topnav" aria-label="Sections">
+      <a href="index.html">← Dashboard</a>
+      <a href="#layer0">Pace</a>
+      <a href="#split">Driver vs car</a>
+      <a href="#forecast">Forecast</a>
+      <a href="#calibration">Calibration</a>
+      <a href="#refs">References</a>
+    </nav>
+  </div>
+
+  <div class="prose">
+
+    <h1>How it works</h1>
+    <p class="lede">
+      Two models, stacked. One measures pace from lap times; the other infers strength from
+      finishing orders. They are deliberately independent, so when they agree it is evidence
+      rather than a model agreeing with itself.
+    </p>
+
+    <h2 id="layer0">Layer 0 — pace deconvolution</h2>
+    <p>
+      A raw lap time is mostly <em>not</em> car pace. It is fuel load, tyre age, track evolution
+      and traffic, with the thing you want buried inside. So one robust regression is fitted per
+      race:
+    </p>
+<pre>lap_time ~ C(Driver) + C(Compound) + C(Compound):tyre_age + lap_c + dirty_air</pre>
+    <p>Each term exists to stop the driver coefficient absorbing something it should not:</p>
+    <ul>
+      <li><code>C(Driver)</code> — the thing we actually want.</li>
+      <li><code>C(Compound):tyre_age</code> — a separate degradation slope per compound.</li>
+      <li><code>lap_c</code> — lap number, carrying fuel burn and track evolution together.</li>
+      <li><code>dirty_air</code> — <code>clip(2.5 − gap_ahead, 0, 2.5)</code>, reconstructed from
+        the session clock. Zero in clear air, rising to 2.5 right behind another car.</li>
+    </ul>
+    <p>
+      Fitted with Huber regression rather than least squares. Traffic laps and lift-and-coast
+      laps are real laps that lie about pace; a hard cutoff would need an arbitrary threshold,
+      so they are downweighted continuously instead. Laps are filtered to green flag only,
+      excluding in and out laps, the first two laps, and anything slower than 1.12× the race
+      median.
+    </p>
+
+    <h3>Two things it cannot do</h3>
+    <p>
+      <b>Driver and team are collinear within one race.</b> Every team runs exactly two cars, so
+      the team effect is definitionally the mean of its two drivers. Layer 0 gives
+      driver-<em>in-car</em> pace and cannot split it. That is Layer 1's job.
+    </p>
+    <p>
+      <b>Fuel burn and track evolution are not separately identifiable</b> from race laps alone —
+      both are smooth functions of lap number. Rather than assume a textbook kg/lap coefficient
+      and present the split as measured, the model carries one honest combined term. A related
+      constraint binds that term against degradation: within a stint, tyre age is an affine
+      function of lap number, so if every driver pitted on the same lap the two would be perfectly
+      collinear. Real races separate them only because drivers stop at different laps.
+    </p>
+
+    <h2 id="split">Layer 1 — separating driver from car</h2>
+    <p>
+      The generative story: to produce a finishing order, repeatedly draw a car from those still
+      unplaced, with probability proportional to <code>exp(θ)</code>, where
+      <code>θ = driver skill + constructor strength</code>. That is the Plackett-Luce model.
+    </p>
+    <p>The regulation change is encoded in the prior structure:</p>
+    <ul>
+      <li><b>Driver skill crosses the boundary</b>, because skill is a property of the human. Each
+        driver carries a 2025 level plus a partially-pooled 2026 delta, so the older season informs
+        the prior rather than competing as equal evidence.</li>
+      <li><b>Constructor strength is severed at it</b>, because 2026 reset the power units and
+        aerodynamics. The 2026 term is a fresh draw that then follows a random walk across the ten
+        rounds — that walk is how in-season development is measured.</li>
+    </ul>
+    <p>
+      Each vector has its mean subtracted. Without that the model is degenerate: you can add a
+      constant to every driver and subtract it from every car with no change in likelihood. Even
+      with it, the split is only weakly identified — within a fixed team-mate pairing skill and car
+      trade off freely, and what breaks the tie is the 19 drivers who appear in both seasons plus
+      hierarchical shrinkage. <b>The intervals are the real answer; the point estimates are
+      indicative.</b>
+    </p>
+
+    <h3>Why the model runs backwards</h3>
+    <p>
+      The obvious formulation draws the <em>best</em> remaining car first. It fails. Being
+      classified 15th after first-lap damage looks identical to being slow, and three such races
+      were enough to rate Mercedes' car below Ferrari's despite eight wins.
+    </p>
+    <p>
+      This model instead draws the <em>worst</em> remaining car and reads the order in reverse, so
+      the strongest cars are the ones that survive longest and an isolated bad result costs far
+      less. That is the attrition model of Graves, Reese &amp; Fitzgerald (2003), proposed for
+      NASCAR for precisely this reason — Henderson &amp; Kirrane summarise the problem as the
+      forward model "penalising the good drivers too harshly for the occasional lowly finish",
+      finishes that are "commonplace … due to reliability issues with the cars which are beyond
+      the driver's control, crashes and so on".
+    </p>
+    <p>
+      Switching to it moved the constructor share of explained spread from 76% to 90%, in line
+      with the 88% of van Kesteren &amp; Bergkamp and the 86% of Bell et al., and lifted agreement
+      with Layer 0 from ρ 0.93 to ρ 0.98.
+    </p>
+
+    <h3>A contamination model was tried and rejected</h3>
+    <p>
+      Mixing a uniform noise component into each selection step — so a share of positions are
+      decided by contact rather than pace — is the textbook robust answer and the rank-data
+      analogue of a contaminated-normal likelihood. It estimated a plausible 5.5–6% and forecast
+      no better than the model it was meant to repair. It is kept in the results table because a
+      negative result that cost real work is still a result.
+    </p>
+
+    <h3>Retirements are excluded</h3>
+    <p>
+      A DNF is a reliability event, not a pace event; keeping retired cars in the ranking would let
+      a gearbox failure look like a slow car. van Kesteren &amp; Bergkamp make the same choice and
+      note the consequence plainly: skill then excludes any measure of reliability. Positions
+      outside the top ten are modelled as an unordered group rather than a precise ranking,
+      following Henderson &amp; Kirrane, who motivate the same cut from the points system.
+    </p>
+
+    <h2 id="forecast">Producing a forecast</h2>
+    <p>
+      For each posterior draw, every constructor is pushed one step forward along its random walk,
+      so uncertainty grows with distance. Then an ordering is sampled by <b>Gumbel-max</b> — adding
+      standard Gumbel noise to each θ and sorting is an exact draw from the Plackett-Luce
+      distribution. Because whole orderings are sampled rather than marginal probabilities, joint
+      outcomes are correct: P(one driver beats another) is a real quantity in there, not
+      reconstructed from two independent marginals.
+    </p>
+    <p>
+      When qualifying has run, the grid is known and is the single strongest predictor available.
+      A starting-position term <code>β · −log(grid)</code> is fitted across all races — log,
+      because the gap between P1 and P2 is worth far more than P15 to P16. <b>β is a
+      championship-wide average</b>, so it understates pole at a circuit as hard to overtake at as
+      the Hungaroring, and grid penalties applied after qualifying are not reflected.
+    </p>
+    <p>
+      The model is fitted twice, because conditioning on the grid answers a different question:
+      qualifying is itself caused by skill and car, so a grid-conditional fit deliberately absorbs
+      part of the effect the unconditional fit is trying to measure. The driver-versus-car figures
+      come from the unconditional fit; the race forecast comes from the conditional one.
+    </p>
+
+    <h2 id="calibration">Calibration</h2>
+    <p>
+      For each evaluation round the model is refitted on everything before it and asked to predict
+      a race it has never seen. Nothing about that round touches the fit. Baselines are expressed
+      as the same kind of object — a Plackett-Luce distribution whose single scale parameter is
+      fitted by maximum likelihood on the training races — so "grid position predicts the finish"
+      is a genuinely strong opponent rather than a straw man.
+    </p>
+    <ul>
+      <li><b>RPS</b> (ranked probability score) — the right metric for ordered outcomes. It rewards
+        putting mass <em>near</em> the truth, unlike log-loss which only scores the exact cell.</li>
+      <li><b>Log-loss on win / podium / points</b> — calibration of the headline probabilities.</li>
+      <li><b>Spearman</b> — does the predicted order match the actual order at all.</li>
+    </ul>
+    <p>
+      Six evaluation races is a small sample and the margins are narrow. The results table on the
+      dashboard is published exactly as measured, including when a baseline wins.
+    </p>
+
+    <h2>Why team colours never encode a value</h2>
+    <p>
+      Run through a colour-vision validator against the dark surface, the 2026 constructor palette
+      fails outright: Haas silver and Mercedes teal are ΔE 0.6 apart under deuteranopia —
+      effectively the same colour — and Alpine against Red Bull is ΔE 9.2 apart under
+      <em>normal</em> vision, below the legibility floor. Haas silver also falls under the chroma
+      floor and reads as grey. So team colour is a chip beside a text label and nothing more; every
+      quantitative scale uses a validated ramp instead.
+    </p>
+
+    <h2 id="refs">References</h2>
+    <ul class="cite">
+      <li>Henderson, D. A. &amp; Kirrane, L. J. (2018). A Comparison of Truncated and Time-Weighted
+        Plackett–Luce Models for Probabilistic Forecasting of Formula One Results.
+        <em>Bayesian Analysis</em> 13(2), 335–358.
+        <a href="https://projecteuclid.org/journals/bayesian-analysis/volume-13/issue-2/A-Comparison-of-Truncated-and-Time-Weighted-PlackettLuce-Models-for/10.1214/17-BA1048.full">Project Euclid</a></li>
+      <li>Graves, T., Reese, C. S. &amp; Fitzgerald, M. (2003). Hierarchical models for permutations:
+        analysis of auto racing results. Source of the attrition (reverse Plackett-Luce) model.</li>
+      <li>van Kesteren, E.-J. &amp; Bergkamp, T. (2023). Bayesian analysis of Formula One race
+        results: disentangling driver skill and constructor advantage.
+        <em>Journal of Quantitative Analysis in Sports</em> 19(4), 273–293.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10660124/">PMC</a></li>
+      <li>Mollica, C. &amp; Tardella, L. (2017). Bayesian Plackett–Luce Mixture Models for Partially
+        Ranked Data. <em>Psychometrika</em> 82, 442–458.
+        <a href="https://arxiv.org/abs/1501.03519">arXiv</a></li>
+      <li>Data: <a href="https://docs.fastf1.dev/">FastF1</a> ·
+        <a href="https://github.com/jolpica/jolpica-f1">Jolpica-F1</a></li>
+      <li>Hero artwork: flow-field method after
+        <a href="https://www.tylerxhobbs.com/words/flow-fields">Tyler Hobbs</a>; liquid-glass
+        refraction after <a href="https://kube.io/blog/liquid-glass-css-svg/">kube.io</a> and the
+        <a href="https://github.com/nikdelvin/liquid-glass">nikdelvin</a> /
+        <a href="https://github.com/PallavAg/liquid-glass-web-react">PallavAg</a> implementations.
+        The track trace is the real pole lap, not an illustration.</li>
+    </ul>
+  </div>
+
+  <footer class="foot">
+    <span class="ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <a href="index.html">← back to the dashboard</a>
+  </footer>
+</div>
+</body>
+</html>
