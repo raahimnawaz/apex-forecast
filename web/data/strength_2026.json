@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-07-26T18:09:14Z",
+ "generated_utc": "2026-07-26T18:13:32Z",
  "season": 2026,
  "team_colors": {
   "Alpine": "#0093cc",
@@ -2179,78 +2179,85 @@
   "summary": [
    {
     "model": "model: attrition+grid",
-    "rps": 0.1094,
-    "ll_win": 0.0823,
-    "ll_podium": 0.2348,
-    "ll_points": 0.5694,
-    "spearman": 0.7436,
-    "races": 6
+    "rps": 0.1026,
+    "ll_win": 0.065,
+    "ll_podium": 0.2625,
+    "ll_points": 0.4914,
+    "spearman": 0.7546,
+    "races": 7
    },
    {
     "model": "baseline: grid",
-    "rps": 0.1132,
-    "ll_win": 0.0851,
-    "ll_podium": 0.2465,
-    "ll_points": 1.0261,
-    "spearman": 0.7371,
-    "races": 6
-   },
-   {
-    "model": "model: forward+grid",
-    "rps": 0.1208,
-    "ll_win": 0.1063,
-    "ll_podium": 0.2722,
-    "ll_points": 0.6201,
-    "spearman": 0.7169,
-    "races": 6
+    "rps": 0.1095,
+    "ll_win": 0.0817,
+    "ll_podium": 0.2532,
+    "ll_points": 0.9289,
+    "spearman": 0.7628,
+    "races": 7
    },
    {
     "model": "model: contaminated+grid",
-    "rps": 0.1212,
-    "ll_win": 0.1052,
-    "ll_podium": 0.2722,
-    "ll_points": 0.6276,
-    "spearman": 0.703,
-    "races": 6
+    "rps": 0.1139,
+    "ll_win": 0.0842,
+    "ll_podium": 0.3106,
+    "ll_points": 0.5843,
+    "spearman": 0.7086,
+    "races": 7
+   },
+   {
+    "model": "model: forward+grid",
+    "rps": 0.1144,
+    "ll_win": 0.0856,
+    "ll_podium": 0.3088,
+    "ll_points": 0.5994,
+    "spearman": 0.709,
+    "races": 7
    },
    {
     "model": "model: forward",
-    "rps": 0.1335,
-    "ll_win": 0.1555,
-    "ll_podium": 0.3445,
-    "ll_points": 0.7028,
-    "spearman": 0.6251,
-    "races": 6
+    "rps": 0.1244,
+    "ll_win": 0.1705,
+    "ll_podium": 0.3364,
+    "ll_points": 0.641,
+    "spearman": 0.6706,
+    "races": 7
    },
    {
     "model": "baseline: standings",
-    "rps": 0.1356,
-    "ll_win": 0.1259,
-    "ll_podium": 0.3253,
-    "ll_points": 1.1055,
-    "spearman": 0.6621,
-    "races": 6
+    "rps": 0.133,
+    "ll_win": 0.1381,
+    "ll_podium": 0.3241,
+    "ll_points": 1.0122,
+    "spearman": 0.6733,
+    "races": 7
    },
    {
     "model": "baseline: last race",
-    "rps": 0.1483,
-    "ll_win": 0.1498,
-    "ll_podium": 0.3942,
-    "ll_points": 0.9071,
-    "spearman": 0.4977,
-    "races": 6
+    "rps": 0.1441,
+    "ll_win": 0.1591,
+    "ll_podium": 0.3798,
+    "ll_points": 0.8491,
+    "spearman": 0.5261,
+    "races": 7
    }
   ],
   "best_model": "model: attrition+grid",
-  "grid_baseline_rps": 0.1132,
+  "grid_baseline_rps": 0.1095,
   "beats_grid_baseline": true,
-  "n_eval_races": 6,
+  "n_eval_races": 7,
   "significance": {
-   "margin_mean": 0.00379,
-   "margin_sd": 0.01113,
+   "margin_mean": 0.00692,
+   "margin_sd": 0.01234,
    "races_won": 4,
-   "t_stat": 0.83,
-   "significant": false
+   "t_stat": 1.48,
+   "t_critical": 2.45,
+   "significant": false,
+   "metrics_won": [
+    "rps",
+    "ll_win",
+    "ll_points"
+   ],
+   "metrics_total": 5
   }
  }
 }

@@ -170,12 +170,29 @@ def calibration_payload() -> dict | None:
             d = piv["baseline: grid"] - piv[best]
             n = len(d)
             t = float(d.mean() / (d.std(ddof=1) / n ** 0.5)) if d.std(ddof=1) > 0 else 0.0
+            # Critical value has to follow the sample size, not be pinned to whatever
+            # the sample happened to be the first time this ran.
+            from scipy.stats import t as tdist
+            crit = float(tdist.ppf(0.975, df=max(n - 1, 1)))
+
+            # Which metrics the model actually wins, rather than a blanket claim. On the
+            # current sample the baseline still takes podium log-loss and Spearman.
+            lower_better = {"rps": True, "ll_win": True, "ll_podium": True,
+                            "ll_points": True, "spearman": False}
+            bl = next((r for r in rows if r["model"] == "baseline: grid"), None)
+            md = next((r for r in rows if r["model"] == best), None)
+            beaten = ([k for k, lo in lower_better.items()
+                       if md and bl and ((md[k] < bl[k]) if lo else (md[k] > bl[k]))]
+                      if md and bl else [])
             sig = {
                 "margin_mean": round(float(d.mean()), 5),
                 "margin_sd": round(float(d.std(ddof=1)), 5),
                 "races_won": int((d > 0).sum()),
                 "t_stat": round(t, 2),
-                "significant": bool(abs(t) > 2.57),   # two-sided 95%, 5 df
+                "t_critical": round(crit, 2),
+                "significant": bool(abs(t) > crit),
+                "metrics_won": beaten,
+                "metrics_total": len(lower_better),
             }
 
     return {

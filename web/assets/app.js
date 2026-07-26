@@ -609,12 +609,16 @@ function renderCalibration(s) {
     verdict.className = "verdict" + (sig.significant ? " pass" : "");
     verdict.innerHTML = `<span class="v-head">Best on the mean — not yet proven</span>`
       + `<b>Lowest RPS of anything tested</b> across ${c.n_eval_races} unseen races, `
-      + `including qualifying position `
-      + `(${modelRow ? modelRow.rps.toFixed(3) : "—"} vs ${c.grid_baseline_rps.toFixed(3)}). `
+      + `beating qualifying position `
+      + `(${modelRow ? modelRow.rps.toFixed(3) : "—"} vs ${c.grid_baseline_rps.toFixed(3)}) `
+      + (sig.metrics_won
+          ? `and winning ${sig.metrics_won.length} of ${sig.metrics_total} metrics — the `
+            + `baseline still orders the field slightly better. `
+          : "")
       + (sig.t_stat !== undefined
-          ? `But it wins only ${sig.races_won} of ${c.n_eval_races} races and the paired `
-            + `margin is <b>t = ${sig.t_stat}</b> — indistinguishable from noise at this `
-            + `sample size. Treat it as promising, not established.`
+          ? `It wins ${sig.races_won} of ${c.n_eval_races} races and the paired margin is `
+            + `<b>t = ${sig.t_stat}</b> against a ${sig.t_critical} threshold — promising, `
+            + `not yet established.`
           : "");
   } else {
     verdict.className = "verdict";

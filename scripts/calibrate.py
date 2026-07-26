@@ -147,6 +147,9 @@ def main() -> int:
     r25 = fetch_season_results(2025)
     files = sorted(glob.glob(str(RAW / "results_2026_R*_R.parquet")))
     r26 = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+    sfiles = sorted(glob.glob(str(RAW / "results_2026_R*_S.parquet")))
+    sprints_all = (pd.concat([pd.read_parquet(f) for f in sfiles], ignore_index=True)
+                   if sfiles else pd.DataFrame())
 
     rows = []
     for rnd in range(args.from_round, args.to_round + 1):
@@ -161,7 +164,11 @@ def main() -> int:
         print(f"\n=== round {rnd}: {actual['event'].iloc[0]} ({n} classified) ===")
 
         train26 = r26[r26["round"] < rnd]
-        d = build(r25, train26)
+        # Sprints from earlier rounds only — a walk-forward that leaks the target
+        # weekend's own sprint would not be out of sample.
+        train_sp = (sprints_all[sprints_all["round"] < rnd]
+                    if not sprints_all.empty else pd.DataFrame())
+        d = build(r25, train26, sprints_2026=train_sp)
 
         # ---- baselines, each a fitted one-parameter Plackett-Luce --------------------
         train_feats_grid, train_feats_stand, train_feats_last = [], [], []
@@ -208,7 +215,8 @@ def main() -> int:
                        use_grid=use_grid, likelihood=lik)
             post = mcmc.get_samples()
             p, _ = predict_order(post, d, entries, n_sim=300, likelihood=lik,
-                                 grid=grid.tolist() if use_grid else None)
+                                 grid=grid.tolist() if use_grid else None,
+                                 circuit=str(actual["event"].iloc[0]))
             preds[name] = p
             if lik == "contaminated":
                 print(f"    eps (share of positions decided by chaos) = "
