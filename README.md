@@ -20,12 +20,12 @@ relearned from in-regulation races only, and the resulting uncertainty is displa
 
 ## What it found
 
-- **Corrected pace and finishing-order strength agree at Spearman ρ = 0.93** across the
+- **Corrected pace and finishing-order strength agree at Spearman ρ = 0.96** across the
   eleven constructors. The two layers share no data representation, likelihood or
   fitting method, so the agreement is evidence rather than a self-consistency check.
-- **76% of the finishing-order spread is the car**, the rest the driver — lower than the
-  ~88% reported for the settled hybrid era, which is what a regulation reset should do.
-- **Monaco costs 2.53 s per lap in dirty air** against 0.14–0.76 s everywhere else. The
+- **93% of the finishing-order spread is the car**, in line with the 88% and 86%
+  reported in the literature for the hybrid era.
+- **Monaco costs 2.53 s per lap in dirty air** against 0.14–0.83 s everywhere else. The
   model was not told Monaco is different; it recovered that from lap times.
 
 ## Data
@@ -52,29 +52,50 @@ make test lint
 `make news` refreshes headlines on its own — it needs no fitted posterior and runs in
 seconds, so the news section can update on a different schedule to the models.
 
-## Calibration — the model does not yet beat starting position
+## Calibration
 
-Walk-forward over six races, refitting from scratch before each one. Baselines are fitted
-Plackett-Luce distributions, not point predictions, so they compete on equal terms.
+Walk-forward over rounds 5–11, refitting from scratch before each race. Baselines are
+fitted Plackett-Luce distributions rather than point predictions, so "starting position
+predicts the finish" competes on equal terms.
 
 | model | RPS ↓ | ll win ↓ | ll podium ↓ | ll points ↓ | ρ ↑ |
 |---|---|---|---|---|---|
-| baseline: grid | **0.1132** | **0.0851** | **0.2465** | 1.0261 | **0.737** |
-| model: strength+grid | 0.1208 | 0.1063 | 0.2722 | **0.6201** | 0.717 |
-| model: strength | 0.1335 | 0.1555 | 0.3445 | 0.7028 | 0.625 |
-| baseline: standings | 0.1356 | 0.1259 | 0.3253 | 1.1055 | 0.662 |
-| baseline: last race | 0.1483 | 0.1498 | 0.3942 | 0.9071 | 0.498 |
+| **attrition+grid** (shipped) | **0.1026** | **0.0650** | 0.2625 | **0.4914** | 0.7546 |
+| baseline: grid | 0.1095 | 0.0817 | **0.2532** | 0.9289 | **0.7628** |
+| contaminated+grid | 0.1139 | 0.0842 | 0.3106 | 0.5843 | 0.7086 |
+| forward+grid | 0.1144 | 0.0856 | 0.3088 | 0.5994 | 0.7090 |
+| baseline: standings | 0.1330 | 0.1381 | 0.3241 | 1.0122 | 0.6733 |
+| baseline: last race | 0.1441 | 0.1591 | 0.3798 | 0.8491 | 0.5261 |
 
-Reading it honestly: **qualifying position alone forecasts the finishing order better than
-the full model** on RPS, win and podium. The model wins clearly on one thing — log-loss for
-a points finish, 0.62 against 1.03 — meaning the grid baseline is badly overconfident about
-the midfield while the model is not. Six races is a small sample and the RPS gap is 0.008,
-but the burden of proof is on the model and it has not met it yet.
+Reading it honestly: the model takes **3 of 5 metrics**, and the grid baseline still
+orders the field slightly better on podium log-loss and Spearman. The paired margin over
+the baseline is **t = 1.48 against a 2.45 threshold**, winning 4 of 7 races — promising,
+not established. The dashboard says exactly that, and computes the test from the data
+rather than asserting it in copy.
 
-The most likely cause is documented in the code: incident-affected finishes are still read
-as pace. Retirements are excluded, but a driver hit on lap 1 who limps home 15th looks
-identical to a slow car. Mercedes qualifies at the front almost every weekend and has the
-grid's worst grid-to-finish delta purely because of three such races.
+Where the model is clearly ahead is the midfield: points log-loss **0.49 against 0.93**.
+The grid baseline is badly overconfident about who scores.
+
+Two variants are kept in the table because they lost. The forward Plackett-Luce reads an
+incident-damaged 15th place as identical to being slow; the contamination model was the
+textbook fix for that and forecast no better. The comparison is the evidence for the
+variant that ships.
+
+## Live test — Hungarian Grand Prix, round 11
+
+The forecast was committed before the race existed, then scored by
+`scripts/score_race.py`:
+
+| scored | model | RPS ↓ | ll win ↓ | ll points ↓ |
+|---|---|---|---|---|
+| classified | **forecast** | **0.0762** | **0.0375** | **0.2250** |
+| classified | baseline: actual grid | 0.0821 | 0.0499 | 0.3182 |
+| full field | **forecast** | **0.0938** | **0.0328** | **0.3092** |
+| full field | baseline: actual grid | 0.1086 | 0.0491 | 0.4853 |
+
+It called the winner (Norris, 68.5% from pole) and got the podium 1 of 3. It also made
+one avoidable error: the forecast used the qualifying classification as the grid, and six
+drivers started elsewhere after penalties. The build now prefers the actual starting grid.
 
 ## Status
 
