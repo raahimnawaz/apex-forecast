@@ -214,6 +214,11 @@ def export_strength(season: int, colors: dict) -> None:
         },
         "diagnostics": {k: (None if isinstance(v, float) and not math.isfinite(v) else v)
                         for k, v in diag.items()},
+        "reliability": clean(pd.read_parquet(PROCESSED / "reliability.parquet")
+                             .round(4).to_dict(orient="records"))
+                       if (PROCESSED / "reliability.parquet").exists() else [],
+        "weather": json.loads((PROCESSED / "weather_next.json").read_text())
+                   if (PROCESSED / "weather_next.json").exists() else None,
         "calibration": calibration_payload(),
     }
     out = WEB_DATA / f"strength_{season}.json"

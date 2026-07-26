@@ -1,0 +1,5 @@
+scored,model,n,rps,ll_win,ll_podium,ll_points,spearman
+classified,published forecast,19,0.0762,0.0375,0.2811,0.225,0.8772
+classified,baseline: actual grid,19,0.0821,0.0499,0.2942,0.3182,0.9175
+full field,published forecast,22,0.0938,0.0328,0.2533,0.3092,0.7933
+full field,baseline: actual grid,22,0.1086,0.0491,0.2782,0.4853,0.7708

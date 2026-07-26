@@ -103,6 +103,7 @@ function renderForecast(s, colors) {
     const hit = el("rect", { class: "hit", x: 0, y, width: W, height: ROW }, svg);
     interactive(hit, `<div class="t-name"><span class="chip" style="background:${colors[r.team]}"></span>${r.driver}</div>`
       + tipRow("Team", r.team)
+      + (r.p_finish === undefined ? "" : tipRow("Finishes", pct(r.p_finish, 0)))
       + tipRow("Win", pct(r.p_win))
       + tipRow("Podium", pct(r.p_podium))
       + tipRow("Points", pct(r.p_points))
@@ -114,6 +115,7 @@ function renderForecast(s, colors) {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td class="name">${r.driver}</td><td class="name">${r.team}</td>`
       + `<td>${r.grid ?? "—"}</td>`
+      + `<td>${r.p_finish === undefined ? "—" : pct(r.p_finish, 0)}</td>`
       + `<td>${pct(r.p_win)}</td><td>${pct(r.p_podium)}</td><td>${pct(r.p_points)}</td>`
       + `<td>${r.exp_pos.toFixed(1)}</td>`;
     tb.appendChild(tr);

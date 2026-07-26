@@ -9,8 +9,10 @@ import pickle
 import numpy as np
 import pandas as pd
 
+from apex import weather as wx
 from apex.history import fetch_season_results
 from apex.paths import PROCESSED, RAW, REPORTS
+from apex.reliability import fit_reliability, simulate_race
 from apex.strength import build, fit, predict_order
 
 # Chosen by the walk-forward bake-off, not by preference: attrition beat the forward
@@ -25,6 +27,12 @@ def load_2026_results() -> pd.DataFrame:
     return pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
 
 
+def load_2026_sprints() -> pd.DataFrame:
+    files = sorted(glob.glob(str(RAW / "results_2026_R*_S.parquet")))
+    return (pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+            if files else pd.DataFrame())
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--warmup", type=int, default=1000)
@@ -34,9 +42,13 @@ def main() -> int:
 
     r25 = fetch_season_results(2025)
     r26 = load_2026_results()
-    d = build(r25, r26)
+    sprints = load_2026_sprints()
+    d = build(r25, r26, sprints_2026=sprints)
 
-    print(f"races: {len(d.races)}  ({(d.era == 0).sum()} in 2025, {(d.era == 1).sum()} in 2026)")
+    n_sprint = int(d.races["event"].str.contains(r"\(sprint\)").sum())
+    print(f"races: {len(d.races)}  ({(d.era == 0).sum()} in 2025, "
+          f"{(d.era == 1).sum()} in 2026, of which {n_sprint} sprints)")
+    print(f"circuits: {d.n_circuits}")
     print(f"drivers: {len(d.drivers)}   constructors: {len(d.constructors)}")
     shared = set(r25["code"]) & set(r26["Abbreviation"])
     print(f"drivers present in both seasons: {len(shared)}  -> these tie the eras together")
@@ -119,46 +131,114 @@ def main() -> int:
             print(f"cross-check vs Layer 0 corrected pace: Spearman rho = {rho:.3f} "
                   f"over {len(m)} constructors")
 
+    # --- Tier 1: reliability, so the forecast covers the whole field -------------------
+    laps_path = PROCESSED / "laps_2026.parquet"
+    laps = pd.read_parquet(laps_path) if laps_path.exists() else None
+    rel = fit_reliability(r25, r26, laps_2026=laps)
+    print(f"\n=== retirement risk (hierarchical, pooled toward the grid mean "
+          f"{100 * rel.grid_mean:.1f}%) ===")
+    print(rel.by_entry.head(8).round(3).to_string(index=False))
+    print(f"\nsafety car in {100 * rel.sc_rate:.0f}% of races, "
+          f"VSC in {100 * rel.vsc_rate:.0f}% (only the safety car is simulated)")
+
     # --- next-race forecast ------------------------------------------------------------
-    # If the upcoming race has already qualified, the grid is known and is by far the
-    # strongest single predictor available — especially somewhere like the Hungaroring
-    # where passing is hard. Fit a second, grid-conditional model and forecast from that.
     next_round = int(r26["round"].max()) + 1
     quali = RAW / f"results_2026_R{next_round:02d}_Q.parquet"
+    race_res = RAW / f"results_2026_R{next_round:02d}_R.parquet"
     entries, grid, grid_source = None, None, "none"
 
-    if quali.exists():
+    # The actual starting grid is not the qualifying classification. At round 11 six
+    # drivers started somewhere other than where they qualified — Hamilton P2 to P5,
+    # Antonelli P4 to P7 — and forecasting off the classification quietly got those
+    # wrong. Prefer the real grid whenever it exists.
+    if race_res.exists():
+        rr = pd.read_parquet(race_res)
+        rr = rr[pd.to_numeric(rr["GridPosition"], errors="coerce").notna()]
+        entries = [(r.Abbreviation, r.TeamName) for r in rr.itertuples()]
+        grid = pd.to_numeric(rr["GridPosition"]).astype(float).tolist()
+        grid_source = f"R{next_round} actual starting grid"
+    elif quali.exists():
         q = pd.read_parquet(quali).sort_values("Position")
         entries = [(r.Abbreviation, r.TeamName) for r in q.itertuples()]
         grid = q["Position"].astype(float).tolist()
-        grid_source = f"R{next_round} qualifying classification"
-        print(f"\nqualifying found for round {next_round}; fitting grid-conditional model")
+        grid_source = (f"R{next_round} qualifying classification "
+                       f"(grid penalties not yet applied)")
+
+    circuit = None
+    try:
+        import fastf1
+
+        from apex.paths import CACHE
+        fastf1.Cache.enable_cache(str(CACHE))
+        circuit = str(fastf1.get_event(2026, next_round)["EventName"])
+    except Exception as exc:  # noqa: BLE001 - a missing schedule must not stop the build
+        print(f"  circuit lookup failed ({type(exc).__name__}); "
+              "forecasting without a circuit-specific grid effect")
+
+    beta = beta_lo = beta_hi = circ_mult = None
+    if grid is not None:
+        print(f"\ngrid known ({grid_source}); fitting grid-conditional model")
         mcmc_g = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
                      use_grid=True, likelihood=LIKELIHOOD)
         post_g = mcmc_g.get_samples()
         beta = float(np.mean(post_g["beta_grid"]))
         beta_lo, beta_hi = np.percentile(post_g["beta_grid"], [5.5, 94.5])
         print(f"  grid advantage beta = {beta:.3f}  (89% CI {beta_lo:.3f} … {beta_hi:.3f})")
-        probs, _theta = predict_order(post_g, d, entries, grid=grid,
-                                      likelihood=LIKELIHOOD)
+        if circuit in d.circuits and "circuit_mult" in post_g:
+            circ_mult = float(np.mean(np.asarray(post_g["circuit_mult"])
+                                      [:, d.circuits.index(circuit)]))
+            print(f"  circuit multiplier for {circuit}: {circ_mult:.3f} "
+                  f"-> effective beta {beta * circ_mult:.3f}")
+        use_post, use_grid_arg = post_g, grid
     else:
         latest_race = r26[r26["round"] == r26["round"].max()]
         entries = sorted({(r.Abbreviation, r.TeamName) for r in latest_race.itertuples()})
-        beta = beta_lo = beta_hi = None
-        print("\nno qualifying data for the next round; forecasting without a grid term")
-        probs, _theta = predict_order(post, d, entries, likelihood=LIKELIHOOD)
+        print("\nno grid yet for the next round; forecasting without a grid term")
+        use_post, use_grid_arg = post, None
+
+    _, theta = predict_order(use_post, d, entries, grid=use_grid_arg,
+                             likelihood=LIKELIHOOD, circuit=circuit)
+
+    # --- Tier 2: weather ----------------------------------------------------------------
+    ev_date = ""
+    try:
+        ev_date = pd.Timestamp(fastf1.get_event(2026, next_round)["EventDate"]).strftime("%Y-%m-%d")
+    except Exception as exc:  # noqa: BLE001
+        print(f"  event date lookup failed ({type(exc).__name__}); skipping weather")
+    weather = wx.fetch(circuit or "", ev_date) if ev_date else wx.RaceWeather("", "", False)
+    wmult = wx.uncertainty_multiplier(weather)
+    if weather.available:
+        print(f"\nweather: rain probability {100 * (weather.rain_probability or 0):.0f}%, "
+              f"{weather.temperature_c} C -> uncertainty x{wmult}")
+
+    # --- full-field simulation: retirements + safety cars + weather --------------------
+    p_dnf = np.array([
+        float(rel.by_entry.loc[(rel.by_entry.driver == c) & (rel.by_entry.team == t),
+                               "p_dnf"].iloc[0])
+        if ((rel.by_entry.driver == c) & (rel.by_entry.team == t)).any() else rel.grid_mean
+        for c, t in entries])
+
+    sc = rel.sc_rate
+    if circuit and not rel.fcy_by_circuit.empty:
+        row = rel.fcy_by_circuit[rel.fcy_by_circuit["event"] == circuit]
+        if not row.empty:
+            sc = float(row["sc_rate"].iloc[0])
+
+    probs = simulate_race(theta / wmult, p_dnf, sc, likelihood=LIKELIHOOD)
+    print(f"\nsimulated: per-car retirement risk + safety car at {100 * sc:.0f}%")
 
     fc = pd.DataFrame({
         "driver": [e[0] for e in entries],
         "team": [e[1] for e in entries],
         "grid": grid if grid is not None else [None] * len(entries),
+        "p_finish": 1.0 - p_dnf,
         "p_win": probs[:, 0],
         "p_podium": probs[:, :3].sum(1),
         "p_points": probs[:, :10].sum(1),
         "exp_pos": (probs * np.arange(1, len(entries) + 1)).sum(1),
     }).sort_values("p_win", ascending=False).reset_index(drop=True)
 
-    print(f"\n=== round {next_round} forecast (conditional on finishing; grid: {grid_source}) ===")
+    print(f"\n=== round {next_round} forecast (full field, retirements included; grid: {grid_source}) ===")
     print(fc.round(4).to_string(index=False))
 
     PROCESSED.mkdir(parents=True, exist_ok=True)
@@ -198,9 +278,19 @@ def main() -> int:
         "forecast_round": next_round,
         "grid_source": grid_source,
         "beta_grid": None if beta is None else round(beta, 4),
+        "circuit": circuit,
+        "circuit_mult": None if circ_mult is None else round(circ_mult, 4),
+        "sc_rate": round(sc, 4),
+        "vsc_rate": round(rel.vsc_rate, 4),
+        "grid_mean_dnf": round(rel.grid_mean, 4),
+        "weather_multiplier": wmult,
+        "n_sprints": n_sprint,
         "beta_grid_lo": None if beta is None else round(float(beta_lo), 4),
         "beta_grid_hi": None if beta is None else round(float(beta_hi), 4),
     }
+    rel.by_entry.to_parquet(PROCESSED / "reliability.parquet", index=False)
+    import json as _json
+    (PROCESSED / "weather_next.json").write_text(_json.dumps(wx.to_dict(weather)))
     pd.DataFrame([diag]).to_csv(REPORTS / "strength_fit.csv", index=False)
     return 0
 

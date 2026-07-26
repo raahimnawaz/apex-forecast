@@ -84,9 +84,12 @@ class StrengthData:
     era: np.ndarray            # (R,) 0 = 2025, 1 = 2026
     round_ix: np.ndarray       # (R,) 0-based round within 2026 (0 for 2025 races)
     grid_adv: np.ndarray       # (R, N) starting-position advantage, centred per race
+    circuit_ix: np.ndarray     # (R,) index into `circuits`
     drivers: list[str]
     constructors: list[str]
+    circuits: list[str]
     n_2026_rounds: int
+    n_circuits: int
     races: pd.DataFrame        # one row per race, for reporting
 
 
@@ -105,8 +108,15 @@ def grid_advantage(grid: np.ndarray) -> np.ndarray:
     return -np.log(g)
 
 
-def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthData:
-    """Assemble both seasons into a single padded ranking dataset."""
+def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame,
+          sprints_2026: pd.DataFrame | None = None) -> StrengthData:
+    """Assemble both seasons into a single padded ranking dataset.
+
+    Sprint races are included when supplied. They are shorter and carry no mandatory
+    stop, so they are not identical events — but they are still a full field of the same
+    cars ranked on pace, and there are four of them against ten grands prix. Discarding a
+    40% increase in in-regulation ranking data to preserve purity is the worse trade.
+    """
     rows = []
 
     r25 = results_2025[results_2025["classified"]].copy()
@@ -128,10 +138,22 @@ def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthDat
                      "codes": g["Abbreviation"].tolist(), "teams": g["TeamName"].tolist(),
                      "grid": g["GridPosition"].tolist()})
 
+    if sprints_2026 is not None and not sprints_2026.empty:
+        sp = sprints_2026[sprints_2026["ClassifiedPosition"].astype(str).str.isdigit()]
+        for (rnd, event), g in sp.groupby(["round", "event"], sort=True):
+            g = g.sort_values("Position")
+            rows.append({"season": 2026, "round": int(rnd), "event": f"{event} (sprint)",
+                         "codes": g["Abbreviation"].tolist(),
+                         "teams": g["TeamName"].tolist(),
+                         "grid": g["GridPosition"].tolist()})
+
     races = pd.DataFrame(rows).sort_values(["season", "round"]).reset_index(drop=True)
 
     drivers = sorted({c for r in races["codes"] for c in r})
     constructors = sorted({t for r in races["teams"] for t in r})
+    # Circuit identity comes from the event name, which is stable across seasons for the
+    # venues that repeat and simply unique for the ones that do not.
+    circuits = sorted(races["event"].unique())
     d_ix = {d: i for i, d in enumerate(drivers)}
     c_ix = {c: i for i, c in enumerate(constructors)}
 
@@ -152,9 +174,11 @@ def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthDat
 
     era = (races["season"] == 2026).to_numpy().astype(np.int32)
     round_ix = np.where(era == 1, races["round"].to_numpy() - 1, 0).astype(np.int32)
+    circuit_ix = races["event"].map({c: i for i, c in enumerate(circuits)}).to_numpy().astype(np.int32)
 
     return StrengthData(order_driver, order_cons, valid, era, round_ix, grid_adv,
-                        drivers, constructors, int(round_ix[era == 1].max()) + 1, races)
+                        circuit_ix, drivers, constructors, circuits,
+                        int(round_ix[era == 1].max()) + 1, len(circuits), races)
 
 
 def _plackett_luce_loglik(theta: jnp.ndarray, valid: jnp.ndarray,
@@ -328,8 +352,21 @@ def model(d: StrengthData, top_m: int | None = TOP_M, use_grid: bool = False,
     if use_grid:
         # Positive beta = starting further forward helps. Half-normal keeps the sign
         # fixed: a negative track advantage would be a fitting artefact, not physics.
+        #
+        # One global beta says the Hungaroring and Monza are the same race, which is the
+        # single least defensible thing a grid term can assume. Each circuit gets its own
+        # multiplier, partially pooled toward the championship mean so a circuit seen once
+        # or twice cannot run away with an extreme value.
         beta_grid = numpyro.sample("beta_grid", dist.HalfNormal(2.0))
-        theta = theta + beta_grid * jnp.asarray(d.grid_adv)
+        sigma_circuit = numpyro.sample("sigma_circuit", dist.HalfNormal(0.35))
+        circ_raw = numpyro.sample("circuit_raw",
+                                  dist.Normal(0, 1).expand([d.n_circuits]).to_event(1))
+        # exp() keeps every circuit multiplier positive: track position can matter more
+        # or less, but starting further forward never becomes a disadvantage.
+        circ_mult = numpyro.deterministic("circuit_mult",
+                                          jnp.exp(circ_raw * sigma_circuit))
+        beta_c = beta_grid * circ_mult[d.circuit_ix][:, None]
+        theta = theta + beta_c * jnp.asarray(d.grid_adv)
 
     valid = jnp.asarray(d.valid)
     if likelihood == "attrition":
@@ -360,7 +397,8 @@ def fit(d: StrengthData, warmup: int = 1000, samples: int = 1000, chains: int = 
 def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
                   steps_ahead: int = 1, n_sim: int = 400, seed: int = 7,
                   grid: list[float] | None = None,
-                  likelihood: str = "forward") -> tuple[np.ndarray, np.ndarray]:
+                  likelihood: str = "forward",
+                  circuit: str | None = None) -> tuple[np.ndarray, np.ndarray]:
     """Finishing-order probabilities for an upcoming race.
 
     Each posterior draw is pushed `steps_ahead` rounds forward along the constructor
@@ -392,7 +430,13 @@ def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
 
     if grid is not None and "beta_grid" in post:
         adv = grid_advantage(np.asarray(grid, dtype=float))
-        theta = theta + np.asarray(post["beta_grid"])[:, None] * (adv - adv.mean())[None, :]
+        beta = np.asarray(post["beta_grid"])
+        # Use this circuit's own multiplier when we have seen it before. Overtaking
+        # difficulty is a property of the track, and a championship-wide average
+        # understates pole somewhere like the Hungaroring and overstates it at Monza.
+        if circuit is not None and "circuit_mult" in post and circuit in d.circuits:
+            beta = beta * np.asarray(post["circuit_mult"])[:, d.circuits.index(circuit)]
+        theta = theta + beta[:, None] * (adv - adv.mean())[None, :]
 
     counts = np.zeros((n, n))
     for _ in range(n_sim):

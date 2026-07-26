@@ -7,7 +7,7 @@
 <meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and out-of-sample calibrated finishing-order predictions.">
 <!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
      Bump ?v= whenever style.css, app.js or hero.js changes. -->
-<link rel="stylesheet" href="assets/style.css?v=9">
+<link rel="stylesheet" href="assets/style.css?v=10">
 </head>
 <body>
 <div class="wrap">
@@ -53,8 +53,7 @@
   <section class="card" id="forecast">
     <h2>Race forecast</h2>
     <p class="desc">
-      Win probability from the qualifying grid. <b>Conditional on finishing</b> — retirements
-      are a reliability process, modelled separately.
+      Win probability over the <b>whole field</b>, retirements and safety cars included.
       <a href="method.html#forecast">How this works →</a>
     </p>
     <div class="chart-scroll"><div id="win-chart"></div></div>
@@ -63,7 +62,7 @@
       <div class="table-scroll">
         <table id="forecast-table">
           <thead><tr>
-            <th>Driver</th><th>Team</th><th>Grid</th><th>Win</th><th>Podium</th><th>Points</th><th>Exp. finish</th>
+            <th>Driver</th><th>Team</th><th>Grid</th><th>Finishes</th><th>Win</th><th>Podium</th><th>Points</th><th>Exp. finish</th>
           </tr></thead>
           <tbody></tbody>
         </table>
@@ -226,8 +225,15 @@
       <li><b>Ten races of in-regulation data.</b> 2026 reset the power units, aerodynamics and car
         dimensions, so pre-2026 pace does not transfer. Wide intervals are thin evidence, not
         hedging.</li>
-      <li><b>No reliability, safety cars, weather or pit strategy.</b> The forecast is conditional
-        on finishing. A full race prediction needs all four, and none are built.</li>
+      <li><b class="caveat">Retirements are drawn independently.</b> Real races retire cars in
+        clumps — a first-lap pile-up takes three at once. Independent draws make a midfield win
+        need an implausible run of separate failures, so the tail is fatter than it was but still
+        too thin.</li>
+      <li><b>Safety cars are reduced-form.</b> A safety car raises the entropy of the finishing
+        order rather than being simulated lap by lap through the pit lane. It is a stand-in for
+        the mechanism, not the mechanism.</li>
+      <li><b>Still no pit strategy.</b> Degradation curves are computed and shown but the forecast
+        does not use them; a race is not yet modelled as a sequence of stints.</li>
       <li><b class="caveat">The tail is too thin.</b> Win probabilities from the back round below
         0.1%. Without a safety-car process there is no mechanism by which a midfield car ever wins,
         which really does happen. Treat anything under ~1% as "no opinion".</li>
@@ -257,7 +263,7 @@
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script src="assets/app.js?v=9"></script>
-<script type="module" src="assets/hero.js?v=9"></script>
+<script src="assets/app.js?v=10"></script>
+<script type="module" src="assets/hero.js?v=10"></script>
 </body>
 </html>
