@@ -1,7 +1,7 @@
 PY := .venv/bin/python
 SEASON ?= 2026
 
-.PHONY: setup spike data pace strength web news serve test lint all
+.PHONY: setup spike data pace strength calibrate web news serve test lint all
 
 setup:
 	uv venv --python python3.12
@@ -18,6 +18,9 @@ pace:             ## Layer 0 deconvolution -> pace + degradation tables
 
 strength:         ## Layer 1 rank-ordered logit -> skill, car strength, forecast
 	$(PY) scripts/build_strength.py
+
+calibrate:        ## walk-forward backtest against naive baselines (slow: refits per round)
+	$(PY) scripts/calibrate.py
 
 web:              ## serialise model output for the dashboard
 	$(PY) scripts/export_web.py --season $(SEASON)

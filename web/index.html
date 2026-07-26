@@ -7,7 +7,7 @@
 <meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and calibrated finishing-order predictions.">
 <!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
      Bump ?v= whenever style.css or app.js changes. -->
-<link rel="stylesheet" href="assets/style.css?v=2">
+<link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -17,6 +17,7 @@
     <div class="tagline">Formula 1 2026</div>
     <nav class="topnav" aria-label="Sections">
       <a href="#forecast">Forecast</a>
+      <a href="#calibration">Calibration</a>
       <a href="#pace">Pace</a>
       <a href="#split">Driver vs car</a>
       <a href="#teams">Teams</a>
@@ -41,22 +42,26 @@
   <section class="tiles" id="tiles"></section>
 
   <!-- ============ FORECAST ============ -->
+  <div class="verdict" id="verdict"></div>
+
   <section class="card" id="forecast">
     <header><h2>Race forecast</h2></header>
     <p class="desc">
       Finishing-order probabilities for the next race, from the Layer 1 strength posterior
-      pushed one round forward along each constructor's development trend. Sampled 400
-      times per posterior draw, so these are joint outcomes rather than independent guesses.
+      pushed one round forward along each constructor's development trend and conditioned on
+      the actual qualifying grid. Sampled 400 times per posterior draw, so these are joint
+      outcomes rather than independent guesses.
       <b>Conditional on finishing</b> — retirements are a reliability process and are modelled
       separately, so treat these as pace-driven probabilities among cars that see the flag.
     </p>
+    <p class="desc" id="grid-note"></p>
     <div class="chart-scroll"><div id="win-chart"></div></div>
     <details class="table-view">
       <summary>Table view</summary>
       <div class="table-scroll">
         <table id="forecast-table">
           <thead><tr>
-            <th>Driver</th><th>Team</th><th>Win</th><th>Podium</th><th>Points</th><th>Exp. finish</th>
+            <th>Driver</th><th>Team</th><th>Grid</th><th>Win</th><th>Podium</th><th>Points</th><th>Exp. finish</th>
           </tr></thead>
           <tbody></tbody>
         </table>
@@ -77,6 +82,29 @@
       <summary>Table view</summary>
       <div class="table-scroll"><table id="matrix-table"><thead><tr></tr></thead><tbody></tbody></table></div>
     </details>
+  </section>
+
+  <!-- ============ CALIBRATION ============ -->
+  <section class="card" id="calibration">
+    <header><h2>Is the forecast any good?</h2></header>
+    <p class="desc">
+      Walk-forward scoring: for each evaluation round the model is refitted on everything
+      before it and asked to predict a race it has never seen. Naive baselines are given the
+      same treatment — each is a fitted Plackett-Luce distribution rather than a point
+      prediction, so "starting position predicts the finish" competes on equal terms.
+      <b>Lower RPS and log-loss are better.</b> These numbers are published exactly as
+      measured.
+    </p>
+    <div class="table-scroll">
+      <table id="calib-table">
+        <thead><tr>
+          <th>Model</th><th>RPS</th><th>Log-loss: win</th><th>Log-loss: podium</th>
+          <th>Log-loss: points</th><th>Spearman</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="desc" id="calib-note" style="margin-top:16px"></p>
   </section>
 
   <!-- ============ PACE (LAYER 0) ============ -->
@@ -253,6 +281,14 @@
         likely flattered less than it deserves.</li>
       <li><b class="caveat">Compound ordering is not resolved:</b> medium and soft degradation differ
         by less than their spread across races, so this data cannot rank them.</li>
+      <li><b class="caveat">Incident races are read as pace, and it distorts the forecast.</b>
+        Retirements are excluded, but a race where a driver is hit and still finishes 15th is
+        kept — and looks identical to a slow car. Mercedes qualifies at the front almost every
+        weekend yet has the grid's worst average grid-to-finish delta, entirely because of three
+        incident races. Because the grid term already accounts for "they should win", that
+        residual lands on the car, which is why the forecast is harsher on Mercedes than their
+        pace deserves. A contamination component in the likelihood, and the reliability layer,
+        are what fix this.</li>
       <li><b>Two independent checks agree.</b> Layer 0 measures pace from lap times; Layer 1 infers
         strength from finishing order. They share no data representation, likelihood or fitting
         method, and their constructor rankings correlate at <span id="rho-note">—</span>. Sampler
@@ -275,6 +311,6 @@
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script src="assets/app.js?v=2"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>

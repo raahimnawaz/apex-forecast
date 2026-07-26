@@ -16,6 +16,7 @@ from apex.strength import (
     CONSTRUCTOR_CONTINUITY,
     _plackett_luce_loglik,
     build,
+    grid_advantage,
     predict_order,
 )
 
@@ -68,7 +69,8 @@ def _fake_seasons():
     for rnd in range(1, 6):
         for pos, (c, t) in enumerate(zip(codes, teams25), start=1):
             rows25.append({"season": 2025, "round": rnd, "event": f"R{rnd}", "code": c,
-                           "constructor_id": t, "position": pos, "classified": True})
+                           "constructor_id": t, "position": pos, "grid": pos,
+                           "classified": True})
     r25 = pd.DataFrame(rows25)
 
     rows26 = []
@@ -76,7 +78,8 @@ def _fake_seasons():
         for pos, c in enumerate(codes, start=1):
             rows26.append({"round": rnd, "event": f"E{rnd}", "Abbreviation": c,
                            "TeamName": "McLaren" if c in ("AAA", "BBB") else "Ferrari",
-                           "Position": pos, "ClassifiedPosition": str(pos)})
+                           "Position": pos, "GridPosition": float(pos),
+                           "ClassifiedPosition": str(pos)})
     return r25, pd.DataFrame(rows26)
 
 
@@ -111,6 +114,49 @@ def test_continuity_map_covers_the_2025_grid():
     assert CONSTRUCTOR_CONTINUITY["sauber"] == "Audi"
     assert CONSTRUCTOR_CONTINUITY["rb"] == "Racing Bulls"
     assert len(set(CONSTRUCTOR_CONTINUITY.values())) == len(CONSTRUCTOR_CONTINUITY)
+
+
+def test_grid_advantage_is_monotone_and_log_scaled():
+    """Further forward is better, and the P1-P2 gap dwarfs the P15-P16 gap."""
+    a = grid_advantage(np.array([1.0, 2.0, 3.0, 15.0, 16.0]))
+    assert a[0] > a[1] > a[2] > a[3] > a[4]
+    assert (a[0] - a[1]) > 5 * (a[3] - a[4])
+
+
+def test_pit_lane_start_is_treated_as_back_of_grid():
+    """Ergast encodes a pit-lane start as grid 0; it must not read as better than pole."""
+    a = grid_advantage(np.array([1.0, 2.0, 3.0, 0.0]))
+    assert a[3] == a.min()
+    assert a[3] < a[2]
+
+
+def test_grid_advantage_is_centred_per_race_in_build():
+    r25, r26 = _fake_seasons()
+    d = build(r25, r26)
+    for r in range(len(d.races)):
+        k = int(d.valid[r].sum())
+        assert d.grid_adv[r, :k].mean() == pytest.approx(0.0, abs=1e-6)
+
+
+def test_grid_term_shifts_the_forecast():
+    """A pole-sitter must gain win probability once the grid term is switched on."""
+    r25, r26 = _fake_seasons()
+    d = build(r25, r26)
+    S = 200
+    post = {
+        "skill": np.zeros((S, 4)),
+        "car26": np.zeros((S, len(d.constructors), d.n_2026_rounds)),
+        "sigma_walk": np.full(S, 0.01),
+        "sigma_skill": np.full(S, 1.0),
+        "beta_grid": np.full(S, 1.5),
+    }
+    entries = [("AAA", "McLaren"), ("BBB", "McLaren"), ("CCC", "Ferrari"), ("DDD", "Ferrari")]
+    flat, _ = predict_order(post, d, entries, n_sim=80, seed=3)
+    withgrid, _ = predict_order(post, d, entries, n_sim=80, seed=3, grid=[1, 2, 3, 4])
+    # With identical skill and car, only the grid can separate them.
+    assert flat[:, 0].std() < 0.05
+    assert withgrid[0, 0] > withgrid[1, 0] > withgrid[2, 0] > withgrid[3, 0]
+    assert withgrid[0, 0] > flat[0, 0]
 
 
 def test_predict_order_ranks_by_theta():

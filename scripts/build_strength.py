@@ -110,20 +110,44 @@ def main() -> int:
                   f"over {len(m)} constructors")
 
     # --- next-race forecast ------------------------------------------------------------
-    latest_race = r26[r26["round"] == r26["round"].max()]
-    entries = sorted({(r.Abbreviation, r.TeamName) for r in latest_race.itertuples()})
-    probs, _theta = predict_order(post, d, entries)
+    # If the upcoming race has already qualified, the grid is known and is by far the
+    # strongest single predictor available — especially somewhere like the Hungaroring
+    # where passing is hard. Fit a second, grid-conditional model and forecast from that.
+    next_round = int(r26["round"].max()) + 1
+    quali = RAW / f"results_2026_R{next_round:02d}_Q.parquet"
+    entries, grid, grid_source = None, None, "none"
+
+    if quali.exists():
+        q = pd.read_parquet(quali).sort_values("Position")
+        entries = [(r.Abbreviation, r.TeamName) for r in q.itertuples()]
+        grid = q["Position"].astype(float).tolist()
+        grid_source = f"R{next_round} qualifying classification"
+        print(f"\nqualifying found for round {next_round}; fitting grid-conditional model")
+        mcmc_g = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
+                     use_grid=True)
+        post_g = mcmc_g.get_samples()
+        beta = float(np.mean(post_g["beta_grid"]))
+        beta_lo, beta_hi = np.percentile(post_g["beta_grid"], [5.5, 94.5])
+        print(f"  grid advantage beta = {beta:.3f}  (89% CI {beta_lo:.3f} … {beta_hi:.3f})")
+        probs, _theta = predict_order(post_g, d, entries, grid=grid)
+    else:
+        latest_race = r26[r26["round"] == r26["round"].max()]
+        entries = sorted({(r.Abbreviation, r.TeamName) for r in latest_race.itertuples()})
+        beta = beta_lo = beta_hi = None
+        print("\nno qualifying data for the next round; forecasting without a grid term")
+        probs, _theta = predict_order(post, d, entries)
 
     fc = pd.DataFrame({
         "driver": [e[0] for e in entries],
         "team": [e[1] for e in entries],
+        "grid": grid if grid is not None else [None] * len(entries),
         "p_win": probs[:, 0],
         "p_podium": probs[:, :3].sum(1),
         "p_points": probs[:, :10].sum(1),
         "exp_pos": (probs * np.arange(1, len(entries) + 1)).sum(1),
     }).sort_values("p_win", ascending=False).reset_index(drop=True)
 
-    print("\n=== next-race forecast (conditional on finishing) ===")
+    print(f"\n=== round {next_round} forecast (conditional on finishing; grid: {grid_source}) ===")
     print(fc.round(4).to_string(index=False))
 
     PROCESSED.mkdir(parents=True, exist_ok=True)
@@ -131,7 +155,8 @@ def main() -> int:
     cs.to_parquet(PROCESSED / "constructor_2026.parquet", index=False)
     fc.to_parquet(PROCESSED / "forecast_next.parquet", index=False)
     np.save(PROCESSED / "position_probs.npy", probs)
-    pd.DataFrame({"driver": [e[0] for e in entries], "team": [e[1] for e in entries]}) \
+    pd.DataFrame({"driver": [e[0] for e in entries], "team": [e[1] for e in entries],
+                  "grid": grid if grid is not None else [None] * len(entries)}) \
         .to_parquet(PROCESSED / "forecast_entries.parquet", index=False)
 
     car_hist = []
@@ -158,6 +183,11 @@ def main() -> int:
         "worst_rhat": round(worst_rhat, 4),
         "layer0_spearman": None if rho is None else round(rho, 4),
         "top_m": 10,
+        "forecast_round": next_round,
+        "grid_source": grid_source,
+        "beta_grid": None if beta is None else round(beta, 4),
+        "beta_grid_lo": None if beta is None else round(float(beta_lo), 4),
+        "beta_grid_hi": None if beta is None else round(float(beta_hi), 4),
     }
     pd.DataFrame([diag]).to_csv(REPORTS / "strength_fit.csv", index=False)
     return 0

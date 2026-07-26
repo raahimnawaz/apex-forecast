@@ -181,6 +181,27 @@ tbody tr:hover td { background: var(--surface-2); }
 footer.foot { color: var(--ink-muted); font-size: 12px; margin-top: 28px; text-align: center; }
 footer.foot a { color: var(--ink-2); }
 
+/* ---------- verdict banner ----------
+   Sits above the forecast. If the model has not been shown to beat its baseline, the
+   page has to say so before it shows any probabilities. */
+
+.verdict {
+  border: 1px solid var(--hairline); border-left: 3px solid var(--status-warning);
+  border-radius: var(--r); background: var(--surface-1);
+  padding: 16px 20px; margin-bottom: var(--gap); font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-2);
+}
+.verdict.pass { border-left-color: var(--status-good); }
+.verdict b { color: var(--ink); font-weight: 600; }
+.verdict .v-head {
+  display: block; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-muted); margin-bottom: 6px;
+}
+
+tr.is-best td { color: var(--ink); }
+tr.is-best td:first-child { font-weight: 600; }
+td.win { color: var(--status-good); }
+
 /* ---------- top nav ---------- */
 
 .topnav { display: flex; gap: 16px; flex-wrap: wrap; }

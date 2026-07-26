@@ -83,10 +83,26 @@ class StrengthData:
     valid: np.ndarray          # (R, N) bool — is slot k a real finisher
     era: np.ndarray            # (R,) 0 = 2025, 1 = 2026
     round_ix: np.ndarray       # (R,) 0-based round within 2026 (0 for 2025 races)
+    grid_adv: np.ndarray       # (R, N) starting-position advantage, centred per race
     drivers: list[str]
     constructors: list[str]
     n_2026_rounds: int
     races: pd.DataFrame        # one row per race, for reporting
+
+
+def grid_advantage(grid: np.ndarray) -> np.ndarray:
+    """Turn starting positions into a covariate, as −log(position) centred per race.
+
+    Log, not linear: the gap between P1 and P2 is worth far more than the gap between
+    P15 and P16, and a log scale encodes that without spending a parameter per slot.
+    Negated so a positive coefficient reads as "starting further forward helps".
+    A grid of 0 is the Ergast convention for a pit-lane start, so it is mapped behind
+    the last classified slot rather than treated as pole.
+    """
+    g = np.asarray(grid, dtype=float).copy()
+    n = np.nanmax(g) if np.isfinite(g).any() else 20.0
+    g[(g <= 0) | ~np.isfinite(g)] = n + 1
+    return -np.log(g)
 
 
 def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthData:
@@ -101,14 +117,16 @@ def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthDat
     for (rnd, event), g in r25.groupby(["round", "event"], sort=True):
         g = g.sort_values("position")
         rows.append({"season": 2025, "round": int(rnd), "event": event,
-                     "codes": g["code"].tolist(), "teams": g["team"].tolist()})
+                     "codes": g["code"].tolist(), "teams": g["team"].tolist(),
+                     "grid": g["grid"].tolist()})
 
     r26 = results_2026.copy()
     r26 = r26[r26["ClassifiedPosition"].astype(str).str.isdigit()]
     for (rnd, event), g in r26.groupby(["round", "event"], sort=True):
         g = g.sort_values("Position")
         rows.append({"season": 2026, "round": int(rnd), "event": event,
-                     "codes": g["Abbreviation"].tolist(), "teams": g["TeamName"].tolist()})
+                     "codes": g["Abbreviation"].tolist(), "teams": g["TeamName"].tolist(),
+                     "grid": g["GridPosition"].tolist()})
 
     races = pd.DataFrame(rows).sort_values(["season", "round"]).reset_index(drop=True)
 
@@ -122,17 +140,20 @@ def build(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> StrengthDat
     order_driver = np.zeros((R, N), dtype=np.int32)
     order_cons = np.zeros((R, N), dtype=np.int32)
     valid = np.zeros((R, N), dtype=bool)
+    grid_adv = np.zeros((R, N), dtype=np.float32)
 
     for r, row in races.iterrows():
         k = len(row["codes"])
         order_driver[r, :k] = [d_ix[c] for c in row["codes"]]
         order_cons[r, :k] = [c_ix[t] for t in row["teams"]]
         valid[r, :k] = True
+        adv = grid_advantage(np.asarray(row["grid"], dtype=float))
+        grid_adv[r, :k] = adv - adv.mean()      # centred so it shifts no overall level
 
     era = (races["season"] == 2026).to_numpy().astype(np.int32)
     round_ix = np.where(era == 1, races["round"].to_numpy() - 1, 0).astype(np.int32)
 
-    return StrengthData(order_driver, order_cons, valid, era, round_ix,
+    return StrengthData(order_driver, order_cons, valid, era, round_ix, grid_adv,
                         drivers, constructors, int(round_ix[era == 1].max()) + 1, races)
 
 
@@ -174,7 +195,19 @@ def _plackett_luce_loglik(theta: jnp.ndarray, valid: jnp.ndarray,
 TOP_M = 10
 
 
-def model(d: StrengthData, top_m: int | None = TOP_M):
+def model(d: StrengthData, top_m: int | None = TOP_M, use_grid: bool = False):
+    """`use_grid` switches the model between two genuinely different questions.
+
+    Without it, the answer is "how good is this driver-car combination" — an unconditional
+    strength estimate, which is what the driver-versus-car analysis needs.
+
+    With it, the answer is "given where everyone starts, who wins" — the question you
+    actually have on a Sunday morning. The two are not interchangeable: qualifying is
+    itself caused by skill and car, so conditioning on grid deliberately absorbs part of
+    the very effect the unconditional model is trying to measure. The skill and car terms
+    in the grid-conditional fit mean "race-day performance beyond what qualifying already
+    revealed", which is why the project fits and reports both rather than picking one.
+    """
     n_d, n_c, n_t = len(d.drivers), len(d.constructors), d.n_2026_rounds
 
     sigma_skill = numpyro.sample("sigma_skill", dist.HalfNormal(1.0))
@@ -219,23 +252,29 @@ def model(d: StrengthData, top_m: int | None = TOP_M):
                           car25[d.order_cons])
     theta = theta_skill + theta_car
 
+    if use_grid:
+        # Positive beta = starting further forward helps. Half-normal keeps the sign
+        # fixed: a negative track advantage would be a fitting artefact, not physics.
+        beta_grid = numpyro.sample("beta_grid", dist.HalfNormal(2.0))
+        theta = theta + beta_grid * jnp.asarray(d.grid_adv)
+
     numpyro.factor("plackett_luce",
                    _plackett_luce_loglik(theta, jnp.asarray(d.valid), top_m))
 
 
 def fit(d: StrengthData, warmup: int = 1000, samples: int = 1000, chains: int = 4,
-        seed: int = 20260725) -> MCMC:
+        seed: int = 20260725, use_grid: bool = False) -> MCMC:
     numpyro.set_host_device_count(chains)
     kernel = NUTS(model, target_accept_prob=0.9)
     mcmc = MCMC(kernel, num_warmup=warmup, num_samples=samples, num_chains=chains,
                 progress_bar=False)
-    mcmc.run(jax.random.PRNGKey(seed), d)
+    mcmc.run(jax.random.PRNGKey(seed), d, TOP_M, use_grid)
     return mcmc
 
 
 def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
-                  steps_ahead: int = 1, n_sim: int = 400, seed: int = 7
-                  ) -> tuple[np.ndarray, np.ndarray]:
+                  steps_ahead: int = 1, n_sim: int = 400, seed: int = 7,
+                  grid: list[float] | None = None) -> tuple[np.ndarray, np.ndarray]:
     """Finishing-order probabilities for an upcoming race.
 
     Each posterior draw is pushed `steps_ahead` rounds forward along the constructor
@@ -264,6 +303,10 @@ def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
         s = skill[:, d_ix[code]] if code in d_ix else rng.normal(0, np.asarray(post["sigma_skill"]))
         c = car_next[:, c_ix[team]] if team in c_ix else np.zeros(S)
         theta[:, j] = s + c
+
+    if grid is not None and "beta_grid" in post:
+        adv = grid_advantage(np.asarray(grid, dtype=float))
+        theta = theta + np.asarray(post["beta_grid"])[:, None] * (adv - adv.mean())[None, :]
 
     counts = np.zeros((n, n))
     for _ in range(n_sim):

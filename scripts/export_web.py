@@ -151,6 +151,32 @@ def _need(path):
     return path
 
 
+def calibration_payload() -> dict | None:
+    """Walk-forward results, published whatever they say.
+
+    A forecast that has not been scored out of sample is an opinion. These numbers are
+    shipped to the page unchanged, including when the naive baseline wins — that is the
+    entire point of running the test.
+    """
+    summary = REPORTS / "calibration_summary.csv"
+    per_round = REPORTS / "calibration_walkforward.csv"
+    if not summary.exists():
+        return None
+    s = pd.read_csv(summary)
+    rows = clean(s.round(4).to_dict(orient="records"))
+    best = min(rows, key=lambda r: r["rps"])["model"]
+    grid_rps = next((r["rps"] for r in rows if r["model"] == "baseline: grid"), None)
+    return {
+        "summary": rows,
+        "per_round": clean(pd.read_csv(per_round).round(4).to_dict(orient="records"))
+                     if per_round.exists() else [],
+        "best_model": best,
+        "grid_baseline_rps": grid_rps,
+        "beats_grid_baseline": bool(best.startswith("model:")),
+        "n_eval_races": int(s["races"].max()),
+    }
+
+
 def export_strength(season: int, colors: dict) -> None:
     """Layer 1 posterior + the next-race forecast."""
     skill = pd.read_parquet(_need(PROCESSED / f"skill_{season}.parquet"))
@@ -177,6 +203,7 @@ def export_strength(season: int, colors: dict) -> None:
         },
         "diagnostics": {k: (None if isinstance(v, float) and not math.isfinite(v) else v)
                         for k, v in diag.items()},
+        "calibration": calibration_payload(),
     }
     out = WEB_DATA / f"strength_{season}.json"
     out.write_text(json.dumps(payload, indent=1))

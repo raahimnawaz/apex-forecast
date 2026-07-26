@@ -51,9 +51,32 @@ make test lint
 `make news` refreshes headlines on its own — it needs no fitted posterior and runs in
 seconds, so the news section can update on a different schedule to the models.
 
+## Calibration — the model does not yet beat starting position
+
+Walk-forward over six races, refitting from scratch before each one. Baselines are fitted
+Plackett-Luce distributions, not point predictions, so they compete on equal terms.
+
+| model | RPS ↓ | ll win ↓ | ll podium ↓ | ll points ↓ | ρ ↑ |
+|---|---|---|---|---|---|
+| baseline: grid | **0.1132** | **0.0851** | **0.2465** | 1.0261 | **0.737** |
+| model: strength+grid | 0.1208 | 0.1063 | 0.2722 | **0.6201** | 0.717 |
+| model: strength | 0.1335 | 0.1555 | 0.3445 | 0.7028 | 0.625 |
+| baseline: standings | 0.1356 | 0.1259 | 0.3253 | 1.1055 | 0.662 |
+| baseline: last race | 0.1483 | 0.1498 | 0.3942 | 0.9071 | 0.498 |
+
+Reading it honestly: **qualifying position alone forecasts the finishing order better than
+the full model** on RPS, win and podium. The model wins clearly on one thing — log-loss for
+a points finish, 0.62 against 1.03 — meaning the grid baseline is badly overconfident about
+the midfield while the model is not. Six races is a small sample and the RPS gap is 0.008,
+but the burden of proof is on the model and it has not met it yet.
+
+The most likely cause is documented in the code: incident-affected finishes are still read
+as pace. Retirements are excluded, but a driver hit on lap 1 who limps home 15th looks
+identical to a slow car. Mercedes qualifies at the front almost every weekend and has the
+grid's worst grid-to-finish delta purely because of three such races.
+
 ## Status
 
-Layers 0 and 1 are built and cross-validated. Layer 2 (race simulation with pit strategy,
-overtaking under energy constraints, safety cars and a DNF hazard model) and Layer 3
-(walk-forward calibration against naive baselines) are not built yet — so the published
-forecast is **conditional on finishing** and is labelled that way on the page.
+Layers 0, 1 and 3 are built. **Layer 2 is not** — no reliability hazard, no safety cars, no
+pit strategy, no overtaking model — so the published forecast is *conditional on finishing*
+and is labelled that way on the page.

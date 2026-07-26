@@ -161,11 +161,17 @@ def ingest_session(season: int, rnd: int, session: str, force: bool = False
 
 
 def ingest_season(season: int, sessions=("FP1", "FP2", "FP3", "Q", "R"), through_round: int | None = None,
-                  force: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Ingest every completed round of a season. Sprint weekends are handled by session availability."""
+                  force: bool = False, include_current: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Ingest every completed round of a season. Sprint weekends are handled by session availability.
+
+    `include_current` keeps the in-progress race weekend, whose practice and qualifying
+    sessions have run even though the grand prix has not. Sessions that have not happened
+    yet simply fail to load and are recorded as such, so this is safe to run mid-weekend.
+    """
     sched = fastf1.get_event_schedule(season, include_testing=False)
     today = pd.Timestamp.now().normalize()
-    sched = sched[sched["EventDate"] < today]
+    cutoff = today + pd.Timedelta(days=1) if include_current else today
+    sched = sched[sched["EventDate"] < cutoff]
     if through_round is not None:
         sched = sched[sched["RoundNumber"] <= through_round]
 

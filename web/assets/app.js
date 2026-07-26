@@ -109,10 +109,21 @@ function renderForecast(s, colors) {
   rows.forEach((r) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td class="name">${r.driver}</td><td class="name">${r.team}</td>`
+      + `<td>${r.grid ?? "—"}</td>`
       + `<td>${pct(r.p_win)}</td><td>${pct(r.p_podium)}</td><td>${pct(r.p_points)}</td>`
       + `<td>${r.exp_pos.toFixed(1)}</td>`;
     tb.appendChild(tr);
   });
+
+  const d = s.diagnostics;
+  if (d.grid_source && d.grid_source !== "none") {
+    document.getElementById("grid-note").innerHTML =
+      `Grid taken from the <b>${d.grid_source}</b>. The fitted starting-position advantage is `
+      + `<b>β = ${d.beta_grid}</b> (89% CI ${d.beta_grid_lo} … ${d.beta_grid_hi}) on −log(position), `
+      + `estimated across all ${d.n_races} races — so it is a championship-wide average and will `
+      + `understate pole at a circuit as hard to overtake at as the Hungaroring. Grid penalties `
+      + `applied after qualifying are not reflected here.`;
+  }
 }
 
 /* =================== POSITION MATRIX =================== */
@@ -550,6 +561,73 @@ function renderNews(news, teamNames) {
     + `Headlines and excerpts belong to their publishers; follow a link to read the article.`;
 }
 
+/* =================== CALIBRATION =================== */
+
+const METRICS = ["rps", "ll_win", "ll_podium", "ll_points", "spearman"];
+const LOWER_IS_BETTER = { rps: 1, ll_win: 1, ll_podium: 1, ll_points: 1, spearman: 0 };
+
+function renderCalibration(s) {
+  const c = s.calibration;
+  const verdict = document.getElementById("verdict");
+  const note = document.getElementById("calib-note");
+
+  if (!c) {
+    verdict.innerHTML = `<span class="v-head">Not yet validated</span>`
+      + `<b>This forecast has never been scored out of sample.</b> Until the walk-forward `
+      + `backtest is run, there is no evidence that these probabilities are any better than `
+      + `guessing from the grid.`;
+    return;
+  }
+
+  const rows = [...c.summary].sort((a, b) => a.rps - b.rps);
+  const best = {};
+  METRICS.forEach((m) => {
+    best[m] = rows.reduce((acc, r) =>
+      (LOWER_IS_BETTER[m] ? r[m] < acc[m] : r[m] > acc[m]) ? r : acc, rows[0])[m];
+  });
+
+  const tb = document.querySelector("#calib-table tbody");
+  tb.innerHTML = "";
+  rows.forEach((r) => {
+    const tr = document.createElement("tr");
+    if (r.model === c.best_model) tr.className = "is-best";
+    const cells = METRICS.map((m) =>
+      `<td class="${r[m] === best[m] ? "win" : ""}">${r[m].toFixed(4)}</td>`).join("");
+    tr.innerHTML = `<td class="name">${r.model}</td>${cells}`;
+    tb.appendChild(tr);
+  });
+
+  const modelRow = rows.find((r) => r.model === "model: strength+grid");
+  const gridRow = rows.find((r) => r.model === "baseline: grid");
+  const gap = modelRow && gridRow ? modelRow.rps - gridRow.rps : null;
+
+  if (c.beats_grid_baseline) {
+    verdict.className = "verdict pass";
+    verdict.innerHTML = `<span class="v-head">Validated out of sample</span>`
+      + `<b>The model beats every naive baseline on RPS</b> across ${c.n_eval_races} `
+      + `walk-forward races.`;
+  } else {
+    verdict.className = "verdict";
+    verdict.innerHTML = `<span class="v-head">Read the forecast with this in mind</span>`
+      + `<b>The model does not beat the grid baseline.</b> Over ${c.n_eval_races} `
+      + `walk-forward races, simply using qualifying position scores a better RPS `
+      + `(${c.grid_baseline_rps.toFixed(4)}) than the full model`
+      + (gap !== null ? ` (${modelRow.rps.toFixed(4)}, worse by ${gap.toFixed(4)})` : "")
+      + `. The model is better calibrated on <em>who scores points</em>, but it has not `
+      + `earned trust at the sharp end. Six races is a small sample and the gap is narrow — `
+      + `but the honest reading is that the probabilities below are not yet demonstrably `
+      + `better than reading the grid.`;
+  }
+
+  note.innerHTML = `Evaluated over ${c.n_eval_races} races, refitting from scratch before `
+    + `each one. Note where the models <em>do</em> win: log-loss on a points finish is `
+    + `${modelRow ? modelRow.ll_points.toFixed(3) : "—"} against `
+    + `${gridRow ? gridRow.ll_points.toFixed(3) : "—"} for the grid baseline, so the grid is `
+    + `badly overconfident about the midfield while the model is not. The sharp end is where `
+    + `it loses, and the incident-contamination problem described at the foot of this page is `
+    + `the most likely reason.`;
+}
+
 /* =================== LAYER 0: CORRECTED PACE =================== */
 
 function renderPace(data) {
@@ -830,6 +908,7 @@ Promise.all([
   teams.team_colors_local = colors;
 
   renderHeader(pace, strength);
+  renderCalibration(strength);
   renderForecast(strength, colors);
   renderMatrix(strength, colors);
   renderPace(pace);
