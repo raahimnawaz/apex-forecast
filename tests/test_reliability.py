@@ -110,3 +110,21 @@ def test_reliability_dataclass_roundtrip():
                       fcy_by_circuit=pd.DataFrame())
     assert rel.sc_rate < rel.vsc_rate
     assert not rel.by_entry.empty
+
+
+def test_did_not_start_is_not_a_retirement():
+    """A car that never took the start did not retire. Counting it inflates both the
+    numerator and the denominator, and a non-start is known before lights out anyway."""
+    r25 = pd.DataFrame([{"code": "AAA", "constructor_id": "t", "classified": True,
+                         "status": "Finished"}] * 10)
+    r26 = pd.DataFrame(
+        [{"Abbreviation": "AAA", "TeamName": "T", "ClassifiedPosition": "1",
+          "Status": "Finished"}] * 8
+        + [{"Abbreviation": "AAA", "TeamName": "T", "ClassifiedPosition": "R",
+            "Status": "Did not start"}] * 4)
+    rel = fit_reliability(r25, r26, warmup=150, samples=150, chains=1)
+    row = rel.by_entry[rel.by_entry.driver == "AAA"].iloc[0]
+    # Eight starts, zero in-race retirements — the four non-starts must not appear.
+    assert row["starts"] == 8
+    assert row["dnfs"] == 0
+    assert row["p_dnf"] < 0.30

@@ -51,19 +51,36 @@ class Reliability:
     fcy_by_circuit: pd.DataFrame  # circuit, races, sc_rate (shrunk)
 
 
+# A car that never took the start did not retire from the race. Counting it as one is
+# wrong twice over: it inflates the denominator with a start that never happened and the
+# numerator with a failure that was not an in-race failure. It also matters practically,
+# because a non-start is known *before* lights out, so a forecast has no business
+# treating it as a risk still to be run.
+DNS_STATUSES = {"did not start", "withdrew", "did not qualify", "did not prequalify"}
+
+
+def _not_started(df: pd.DataFrame, col: str) -> pd.Series:
+    """Mask of entries that never took the start. A frame without a status column simply
+    has no non-starts, rather than silently filtering everything away."""
+    if col not in df.columns:
+        return pd.Series(False, index=df.index)
+    return df[col].fillna("").astype(str).str.strip().str.lower().isin(DNS_STATUSES)
+
+
 def _dnf_frame(results_2025: pd.DataFrame, results_2026: pd.DataFrame) -> pd.DataFrame:
-    """One row per entry, with a retirement flag, across both seasons."""
+    """One row per *started* entry, with an in-race retirement flag, across both seasons."""
+    a25 = results_2025[~_not_started(results_2025, "status")]
     a = pd.DataFrame({
-        "driver": results_2025["code"],
-        "team": results_2025["constructor_id"],
-        "dnf": (~results_2025["classified"]).astype(int),
+        "driver": a25["code"],
+        "team": a25["constructor_id"],
+        "dnf": (~a25["classified"]).astype(int),
         "season": 2025,
     })
-    b = results_2026.copy()
+    b26 = results_2026[~_not_started(results_2026, "Status")]
     b = pd.DataFrame({
-        "driver": b["Abbreviation"],
-        "team": b["TeamName"],
-        "dnf": (~b["ClassifiedPosition"].astype(str).str.isdigit()).astype(int),
+        "driver": b26["Abbreviation"],
+        "team": b26["TeamName"],
+        "dnf": (~b26["ClassifiedPosition"].astype(str).str.isdigit()).astype(int),
         "season": 2026,
     })
     return pd.concat([a, b], ignore_index=True)
@@ -109,7 +126,7 @@ def fit_reliability(results_2025: pd.DataFrame, results_2026: pd.DataFrame,
     team_eff = np.asarray(post["team"])
     driver_eff = np.asarray(post["driver"])
 
-    cur = results_2026.copy()
+    cur = results_2026[~_not_started(results_2026, "Status")].copy()
     cur["dnf"] = (~cur["ClassifiedPosition"].astype(str).str.isdigit()).astype(int)
     pairs = (cur.groupby(["Abbreviation", "TeamName"])
                 .agg(starts=("dnf", "size"), dnfs=("dnf", "sum")).reset_index())
