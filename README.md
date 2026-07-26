@@ -15,7 +15,8 @@ relearned from in-regulation races only, and the resulting uncertainty is displa
 | 0 — Pace deconvolution | Strips fuel load, tyre age, traffic and track evolution out of raw lap times to recover true car pace and per-team degradation slopes |
 | 1 — Latent strength | Bayesian rank-ordered logit separating driver skill from constructor advantage, with a random-walk prior across rounds |
 | 2 — Race simulation | Lap-by-lap Monte Carlo: starts, pit strategy, overtaking under energy constraints, safety cars, DNF hazard |
-| 3 — Calibration | Walk-forward backtest, ranked probability score, reliability diagrams, benchmarked against four naive baselines |
+| 3 — Calibration | Walk-forward backtest, ranked probability score, benchmarked against three fitted baselines |
+| Reliability | Hierarchical retirement hazard and a safety-car process, so the forecast is unconditional |
 
 ## What it found
 
@@ -77,6 +78,11 @@ grid's worst grid-to-finish delta purely because of three such races.
 
 ## Status
 
-Layers 0, 1 and 3 are built. **Layer 2 is not** — no reliability hazard, no safety cars, no
-pit strategy, no overtaking model — so the published forecast is *conditional on finishing*
-and is labelled that way on the page.
+Layers 0, 1 and 3 are built, plus a reliability and safety-car layer, so the forecast now
+covers the **whole field** rather than only the cars that finish. Pit strategy is the
+largest remaining gap: degradation curves are computed and displayed but the forecast does
+not use them.
+
+**New here? Read [docs/HANDOFF.md](docs/HANDOFF.md).** It carries the design decisions and
+their evidence, and — more usefully — the list of improvements that have already been
+tried and measured as worse.
