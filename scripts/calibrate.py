@@ -193,15 +193,26 @@ def main() -> int:
         v = grid_advantage(np.array([lr.get(c, n + 1) for c in codes])); v = v - v.mean()
         preds["baseline: last race"] = pl_position_probs(fit_scale(train_feats_last) * v)
 
-        # ---- the two model variants ---------------------------------------------------
+        # ---- model variants ------------------------------------------------------------
+        # Three rank likelihoods, each a published answer to the same question, tested
+        # head to head rather than chosen by argument.
         entries = list(zip(codes, teams))
-        for name, use_grid in [("model: strength", False), ("model: strength+grid", True)]:
+        variants = [
+            ("model: forward",           False, "forward"),
+            ("model: forward+grid",      True,  "forward"),
+            ("model: attrition+grid",    True,  "attrition"),
+            ("model: contaminated+grid", True,  "contaminated"),
+        ]
+        for name, use_grid, lik in variants:
             mcmc = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
-                       use_grid=use_grid)
+                       use_grid=use_grid, likelihood=lik)
             post = mcmc.get_samples()
-            p, _ = predict_order(post, d, entries, n_sim=300,
+            p, _ = predict_order(post, d, entries, n_sim=300, likelihood=lik,
                                  grid=grid.tolist() if use_grid else None)
             preds[name] = p
+            if lik == "contaminated":
+                print(f"    eps (share of positions decided by chaos) = "
+                      f"{float(np.mean(post['eps'])):.3f}")
 
         for name, p in preds.items():
             s = score(p, pos)

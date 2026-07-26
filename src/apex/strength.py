@@ -189,13 +189,86 @@ def _plackett_luce_loglik(theta: jnp.ndarray, valid: jnp.ndarray,
     return terms.sum()
 
 
+def _attrition_loglik(theta: jnp.ndarray, valid: jnp.ndarray) -> jnp.ndarray:
+    """Reverse Plackett-Luce — the 'attrition' model of Graves, Reese & Fitzgerald (2003).
+
+    Instead of repeatedly drawing the *best* remaining car, this draws the *worst*: the
+    last-placed driver is the one beaten by everyone, then the second-from-last among
+    those who remain, and so on. The strongest drivers are the ones who survive longest.
+
+    Graves et al. proposed it for NASCAR precisely because the forward Plackett-Luce is,
+    in Henderson & Kirrane's summary, "strongly influenced by poor results and therefore
+    penalising the good drivers too harshly for the occasional lowly finish" — finishes
+    that in motor racing are "commonplace … due to reliability issues with the cars which
+    are beyond the driver's control, crashes and so on". That is exactly the failure this
+    project hit with Antonelli, so it is worth testing rather than assuming.
+
+    Mechanically it is the forward model with the ordering reversed and theta negated,
+    which here is a lower-triangular candidate mask instead of an upper-triangular one:
+    at slot k the candidate set is slots 0..k rather than k..N-1.
+    """
+    N = theta.shape[-1]
+    neg_inf = jnp.float32(-1e30)
+    nt = jnp.where(valid, -theta, neg_inf)
+
+    keep = jnp.tril(jnp.ones((N, N), dtype=bool))              # keep[k, j] = j <= k
+    cand = jnp.where(keep[None, :, :], nt[:, None, :], neg_inf)
+    denom = logsumexp(cand, axis=-1)
+
+    return jnp.where(valid, nt - denom, 0.0).sum()
+
+
+def _contaminated_loglik(theta: jnp.ndarray, valid: jnp.ndarray, eps: jnp.ndarray,
+                         top_m: int | None = None) -> jnp.ndarray:
+    """Plackett-Luce with a uniform contamination component.
+
+    At each selection step the next finisher is drawn by ability with probability 1−eps,
+    and uniformly at random from the cars still running with probability eps. So eps is
+    the share of positions decided by something other than pace — contact, a penalty, a
+    slow stop — and the model can attribute a wildly out-of-character result to chaos
+    instead of revising its estimate of the car.
+
+    This is the same idea as a contaminated-normal likelihood in robust regression, moved
+    onto rankings: a heavy tail that stops one bad race dominating the fit. eps is
+    estimated, not assumed, so the data decides how much chaos there is.
+    """
+    N = theta.shape[-1]
+    neg_inf = jnp.float32(-1e30)
+    theta_v = jnp.where(valid, theta, neg_inf)
+
+    keep = jnp.triu(jnp.ones((N, N), dtype=bool))
+    cand = jnp.where(keep[None, :, :], theta_v[:, None, :], neg_inf)
+    denom = logsumexp(cand, axis=-1)
+    ll_ability = theta_v - denom
+
+    # Uniform over the cars still to be placed: 1/(number remaining).
+    n_remaining = jnp.cumsum(valid[:, ::-1], axis=1)[:, ::-1]
+    ll_uniform = -jnp.log(jnp.maximum(n_remaining, 1))
+
+    mixed = jnp.logaddexp(jnp.log1p(-eps) + ll_ability, jnp.log(eps) + ll_uniform)
+
+    use = valid
+    if top_m is not None:
+        use = use & (jnp.arange(N) < top_m)[None, :]
+    return jnp.where(use, mixed, 0.0).sum()
+
+
 # Model the points-paying positions as an ordering; treat everything behind them as an
 # unordered tail. In F1 the top ten is the natural cut — it is where the racing is being
-# decided on pace rather than on attrition.
+# decided on pace rather than on attrition. Henderson & Kirrane (2018) motivate exactly
+# this cut from the points system: "Censoring the observations by pooling these lower
+# placed drivers together may be better at forecasting the winner or other high placed
+# finishing positions."
 TOP_M = 10
 
+# forward   — truncated Plackett-Luce (Henderson & Kirrane 2018)
+# attrition — reverse Plackett-Luce (Graves et al. 2003)
+# contaminated — Plackett-Luce with an estimated uniform noise component
+LIKELIHOODS = ("forward", "attrition", "contaminated")
 
-def model(d: StrengthData, top_m: int | None = TOP_M, use_grid: bool = False):
+
+def model(d: StrengthData, top_m: int | None = TOP_M, use_grid: bool = False,
+          likelihood: str = "forward"):
     """`use_grid` switches the model between two genuinely different questions.
 
     Without it, the answer is "how good is this driver-car combination" — an unconditional
@@ -258,23 +331,36 @@ def model(d: StrengthData, top_m: int | None = TOP_M, use_grid: bool = False):
         beta_grid = numpyro.sample("beta_grid", dist.HalfNormal(2.0))
         theta = theta + beta_grid * jnp.asarray(d.grid_adv)
 
-    numpyro.factor("plackett_luce",
-                   _plackett_luce_loglik(theta, jnp.asarray(d.valid), top_m))
+    valid = jnp.asarray(d.valid)
+    if likelihood == "attrition":
+        # The reverse model reads the whole order robustly, so it is not truncated:
+        # truncation and attrition are alternative answers to the same problem.
+        ll = _attrition_loglik(theta, valid)
+    elif likelihood == "contaminated":
+        eps = numpyro.sample("eps", dist.Beta(2.0, 20.0))
+        ll = _contaminated_loglik(theta, valid, eps, top_m)
+    else:
+        ll = _plackett_luce_loglik(theta, valid, top_m)
+    numpyro.factor("rank_likelihood", ll)
 
 
 def fit(d: StrengthData, warmup: int = 1000, samples: int = 1000, chains: int = 4,
-        seed: int = 20260725, use_grid: bool = False) -> MCMC:
+        seed: int = 20260725, use_grid: bool = False,
+        likelihood: str = "forward") -> MCMC:
+    if likelihood not in LIKELIHOODS:
+        raise ValueError(f"likelihood must be one of {LIKELIHOODS}, got {likelihood!r}")
     numpyro.set_host_device_count(chains)
     kernel = NUTS(model, target_accept_prob=0.9)
     mcmc = MCMC(kernel, num_warmup=warmup, num_samples=samples, num_chains=chains,
                 progress_bar=False)
-    mcmc.run(jax.random.PRNGKey(seed), d, TOP_M, use_grid)
+    mcmc.run(jax.random.PRNGKey(seed), d, TOP_M, use_grid, likelihood)
     return mcmc
 
 
 def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
                   steps_ahead: int = 1, n_sim: int = 400, seed: int = 7,
-                  grid: list[float] | None = None) -> tuple[np.ndarray, np.ndarray]:
+                  grid: list[float] | None = None,
+                  likelihood: str = "forward") -> tuple[np.ndarray, np.ndarray]:
     """Finishing-order probabilities for an upcoming race.
 
     Each posterior draw is pushed `steps_ahead` rounds forward along the constructor
@@ -311,7 +397,14 @@ def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
     counts = np.zeros((n, n))
     for _ in range(n_sim):
         g = rng.gumbel(size=(S, n))
-        order = np.argsort(-(theta + g), axis=1)
+        if likelihood == "attrition":
+            # The reverse model generates worst-first with weights exp(-theta), so the
+            # Gumbel draw is applied to -theta and the resulting order flipped. Gumbel is
+            # asymmetric, so this is genuinely not the same as sampling the forward model.
+            worst_first = np.argsort(-(-theta + g), axis=1)
+            order = worst_first[:, ::-1]
+        else:
+            order = np.argsort(-(theta + g), axis=1)
         for pos in range(n):
             np.add.at(counts, (order[:, pos], pos), 1)
     probs = counts / counts.sum(axis=1, keepdims=True)
