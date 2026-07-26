@@ -7,7 +7,7 @@
 <meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and calibrated finishing-order predictions.">
 <!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
      Bump ?v= whenever style.css or app.js changes. -->
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
 <div class="wrap">
@@ -281,14 +281,25 @@
         likely flattered less than it deserves.</li>
       <li><b class="caveat">Compound ordering is not resolved:</b> medium and soft degradation differ
         by less than their spread across races, so this data cannot rank them.</li>
-      <li><b class="caveat">Incident races are read as pace, and it distorts the forecast.</b>
-        Retirements are excluded, but a race where a driver is hit and still finishes 15th is
-        kept — and looks identical to a slow car. Mercedes qualifies at the front almost every
-        weekend yet has the grid's worst average grid-to-finish delta, entirely because of three
-        incident races. Because the grid term already accounts for "they should win", that
-        residual lands on the car, which is why the forecast is harsher on Mercedes than their
-        pace deserves. A contamination component in the likelihood, and the reliability layer,
-        are what fix this.</li>
+      <li><b>The model runs backwards, and that is what made it work.</b> The obvious
+        formulation repeatedly draws the <em>best</em> remaining car. It fails, because being
+        classified 15th after first-lap damage looks identical to being slow — three such races
+        were enough to drag Mercedes' estimate below Ferrari's despite eight wins. This model
+        instead draws the <em>worst</em> remaining car and reads the order in reverse, so the
+        strongest cars are the ones that survive longest and an isolated bad result costs far
+        less. That is the attrition model of Graves, Reese &amp; Fitzgerald (2003), proposed for
+        NASCAR for exactly this reason. Switching to it moved the constructor share from 76% to
+        90%, in line with the 86–88% published for the hybrid era, and lifted agreement with
+        Layer 0 from ρ&nbsp;0.93 to ρ&nbsp;0.98.</li>
+      <li><b>A contamination model was tried and rejected.</b> Mixing a uniform noise component
+        into each step — so a share of positions are decided by contact rather than pace — is the
+        textbook robust answer, and it estimated a plausible 5.5–6%. It forecast no better than
+        the model it was meant to fix and is not used. It is reported here because a negative
+        result that cost real work is still a result.</li>
+      <li><b class="caveat">The tail is too thin.</b> Win probabilities from the back of the grid
+        round to zero. With no safety-car process and no weather model, the forecast has no
+        mechanism by which a midfield car ever wins — which really does happen. Treat anything
+        below about 1% as "the model has no opinion" rather than as a considered estimate.</li>
       <li><b>Two independent checks agree.</b> Layer 0 measures pace from lap times; Layer 1 infers
         strength from finishing order. They share no data representation, likelihood or fitting
         method, and their constructor rankings correlate at <span id="rho-note">—</span>. Sampler
@@ -311,6 +322,6 @@
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script src="assets/app.js?v=3"></script>
+<script src="assets/app.js?v=5"></script>
 </body>
 </html>

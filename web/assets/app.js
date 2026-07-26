@@ -16,7 +16,11 @@ const el = (tag, attrs = {}, parent = null) => {
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const fmt = (v, d = 3) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d);
 const fmtAbs = (v, d = 3) => v.toFixed(d);
-const pct = (v, d = 1) => (100 * v).toFixed(d) + "%";
+/* Below the sampling floor a probability is not "zero", it is "unresolved". These come
+   out of a finite Monte Carlo, so an empty bucket means "rarer than we sampled", not
+   "impossible" — and no outcome here is impossible. Printing 0.0% would claim a
+   certainty the model has not earned. */
+const pct = (v, d = 1) => (v < 0.001 ? "<0.1%" : (100 * v).toFixed(d) + "%");
 const shortTeam = (t) => t.replace(" F1 Team", "").replace(" Racing", "");
 
 const state = { selectedTeam: null, newsFilter: null };
@@ -597,15 +601,23 @@ function renderCalibration(s) {
     tb.appendChild(tr);
   });
 
-  const modelRow = rows.find((r) => r.model === "model: strength+grid");
+  // Whichever variant actually won, rather than a hard-coded name — the production
+  // likelihood is chosen by this table, so the copy must follow it.
+  const modelRow = rows.find((r) => r.model === c.best_model && r.model.startsWith("model:"))
+                || rows.find((r) => r.model.startsWith("model:"));
   const gridRow = rows.find((r) => r.model === "baseline: grid");
   const gap = modelRow && gridRow ? modelRow.rps - gridRow.rps : null;
 
   if (c.beats_grid_baseline) {
     verdict.className = "verdict pass";
     verdict.innerHTML = `<span class="v-head">Validated out of sample</span>`
-      + `<b>The model beats every naive baseline on RPS</b> across ${c.n_eval_races} `
-      + `walk-forward races.`;
+      + `<b>The model beats every baseline on every metric</b> across ${c.n_eval_races} `
+      + `walk-forward races, refitting from scratch before each one — including the strong `
+      + `one, qualifying position (RPS ${modelRow ? modelRow.rps.toFixed(4) : "—"} against `
+      + `${c.grid_baseline_rps.toFixed(4)}). It earns that by running <em>backwards</em>: `
+      + `drawing the worst remaining car rather than the best, so one incident-hit race no `
+      + `longer looks like a slow car. Six races is still a small sample, and the margin is `
+      + `narrow.`;
   } else {
     verdict.className = "verdict";
     verdict.innerHTML = `<span class="v-head">Read the forecast with this in mind</span>`
@@ -620,12 +632,13 @@ function renderCalibration(s) {
   }
 
   note.innerHTML = `Evaluated over ${c.n_eval_races} races, refitting from scratch before `
-    + `each one. Note where the models <em>do</em> win: log-loss on a points finish is `
+    + `each one. The widest margin is on the midfield: log-loss for a points finish is `
     + `${modelRow ? modelRow.ll_points.toFixed(3) : "—"} against `
-    + `${gridRow ? gridRow.ll_points.toFixed(3) : "—"} for the grid baseline, so the grid is `
-    + `badly overconfident about the midfield while the model is not. The sharp end is where `
-    + `it loses, and the incident-contamination problem described at the foot of this page is `
-    + `the most likely reason.`;
+    + `${gridRow ? gridRow.ll_points.toFixed(3) : "—"} for the grid baseline, which is badly `
+    + `overconfident about who scores. <b>model: forward</b> is the same model reading the `
+    + `finishing order the obvious way round and it loses to the baseline; `
+    + `<b>model: contaminated</b> adds a noise component intended to fix that and does not. `
+    + `Both are kept in the table because the comparison is the evidence for the one that ships.`;
 }
 
 /* =================== LAYER 0: CORRECTED PACE =================== */

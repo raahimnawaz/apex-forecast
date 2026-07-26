@@ -13,6 +13,10 @@ from apex.history import fetch_season_results
 from apex.paths import PROCESSED, RAW, REPORTS
 from apex.strength import build, fit, predict_order
 
+# Chosen by the walk-forward bake-off, not by preference: attrition beat the forward
+# and contaminated likelihoods and the grid baseline on every metric.
+LIKELIHOOD = "attrition"
+
 
 def load_2026_results() -> pd.DataFrame:
     files = sorted(glob.glob(str(RAW / "results_2026_R*_R.parquet")))
@@ -38,7 +42,13 @@ def main() -> int:
     print(f"drivers present in both seasons: {len(shared)}  -> these tie the eras together")
     print()
 
-    mcmc = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains)
+    # Attrition (reverse Plackett-Luce) is the production likelihood because it won the
+    # walk-forward bake-off on every metric — see reports/calibration_summary.csv. It is
+    # also the right choice for the driver-versus-car split specifically: the forward
+    # model let three incident races drag Mercedes' car term down, which is the exact
+    # pathology Graves et al. (2003) designed the reverse model to avoid.
+    mcmc = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
+               likelihood=LIKELIHOOD)
     mcmc.print_summary(exclude_deterministic=True)
     post = mcmc.get_samples()
 
@@ -124,18 +134,19 @@ def main() -> int:
         grid_source = f"R{next_round} qualifying classification"
         print(f"\nqualifying found for round {next_round}; fitting grid-conditional model")
         mcmc_g = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
-                     use_grid=True)
+                     use_grid=True, likelihood=LIKELIHOOD)
         post_g = mcmc_g.get_samples()
         beta = float(np.mean(post_g["beta_grid"]))
         beta_lo, beta_hi = np.percentile(post_g["beta_grid"], [5.5, 94.5])
         print(f"  grid advantage beta = {beta:.3f}  (89% CI {beta_lo:.3f} … {beta_hi:.3f})")
-        probs, _theta = predict_order(post_g, d, entries, grid=grid)
+        probs, _theta = predict_order(post_g, d, entries, grid=grid,
+                                      likelihood=LIKELIHOOD)
     else:
         latest_race = r26[r26["round"] == r26["round"].max()]
         entries = sorted({(r.Abbreviation, r.TeamName) for r in latest_race.itertuples()})
         beta = beta_lo = beta_hi = None
         print("\nno qualifying data for the next round; forecasting without a grid term")
-        probs, _theta = predict_order(post, d, entries)
+        probs, _theta = predict_order(post, d, entries, likelihood=LIKELIHOOD)
 
     fc = pd.DataFrame({
         "driver": [e[0] for e in entries],
@@ -183,6 +194,7 @@ def main() -> int:
         "worst_rhat": round(worst_rhat, 4),
         "layer0_spearman": None if rho is None else round(rho, 4),
         "top_m": 10,
+        "likelihood": LIKELIHOOD,
         "forecast_round": next_round,
         "grid_source": grid_source,
         "beta_grid": None if beta is None else round(beta, 4),

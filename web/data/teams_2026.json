@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-07-26T06:05:35Z",
+ "generated_utc": "2026-07-26T07:05:13Z",
  "season": 2026,
  "rounds_complete": 10,
  "teams": [
@@ -20,70 +20,70 @@
    "avg_grid": 2.15,
    "pace_s": -1.6202,
    "pace_delta_s": 0.2343,
-   "strength": 1.1885,
-   "strength_lo": -0.481,
-   "strength_hi": 2.8615,
-   "development": -0.8315,
+   "strength": 3.0415,
+   "strength_lo": 1.7367,
+   "strength_hi": 4.363,
+   "development": -0.2534,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 2.0199,
-     "lo": 0.1492,
-     "hi": 3.9769
+     "strength": 3.2949,
+     "lo": 1.9181,
+     "hi": 4.6928
     },
     {
      "round": 2,
-     "strength": 2.0226,
-     "lo": 0.2689,
-     "hi": 3.924
+     "strength": 3.2857,
+     "lo": 1.9308,
+     "hi": 4.6273
     },
     {
      "round": 3,
-     "strength": 1.8792,
-     "lo": 0.2099,
-     "hi": 3.5965
+     "strength": 3.2265,
+     "lo": 1.9383,
+     "hi": 4.5162
     },
     {
      "round": 4,
-     "strength": 1.6598,
-     "lo": 0.0726,
-     "hi": 3.279
+     "strength": 3.1525,
+     "lo": 1.8908,
+     "hi": 4.3857
     },
     {
      "round": 5,
-     "strength": 1.3338,
-     "lo": -0.191,
-     "hi": 2.8126
+     "strength": 3.0812,
+     "lo": 1.8623,
+     "hi": 4.3179
     },
     {
      "round": 6,
-     "strength": 0.8752,
-     "lo": -0.6436,
-     "hi": 2.2211
+     "strength": 2.9516,
+     "lo": 1.731,
+     "hi": 4.1608
     },
     {
      "round": 7,
-     "strength": 0.888,
-     "lo": -0.5849,
-     "hi": 2.2659
+     "strength": 2.8825,
+     "lo": 1.6765,
+     "hi": 4.0767
     },
     {
      "round": 8,
-     "strength": 1.0888,
-     "lo": -0.4297,
-     "hi": 2.524
+     "strength": 2.9398,
+     "lo": 1.7254,
+     "hi": 4.1452
     },
     {
      "round": 9,
-     "strength": 1.0383,
-     "lo": -0.5662,
-     "hi": 2.4815
+     "strength": 2.9302,
+     "lo": 1.6997,
+     "hi": 4.217
     },
     {
      "round": 10,
-     "strength": 1.1885,
-     "lo": -0.481,
-     "hi": 2.8615
+     "strength": 3.0415,
+     "lo": 1.7367,
+     "hi": 4.363
     }
    ],
    "deg_s_per_lap": null,
@@ -100,9 +100,9 @@
      "dnf": 0,
      "avg_grid": 1.7,
      "pace_s": -1.7276,
-     "skill": 0.8953,
-     "skill_lo": -0.3895,
-     "skill_hi": 2.366
+     "skill": 0.4322,
+     "skill_lo": -0.5086,
+     "skill_hi": 1.4463
     },
     {
      "code": "RUS",
@@ -116,9 +116,9 @@
      "dnf": 2,
      "avg_grid": 2.6,
      "pace_s": -1.501,
-     "skill": 0.9414,
-     "skill_lo": -0.2879,
-     "skill_hi": 2.3087
+     "skill": 0.7154,
+     "skill_lo": -0.2541,
+     "skill_hi": 1.7183
     }
    ],
    "championship_position": 1
@@ -139,70 +139,70 @@
    "avg_grid": 4.4,
    "pace_s": -1.3161,
    "pace_delta_s": -0.023,
-   "strength": 1.7593,
-   "strength_lo": 0.1249,
-   "strength_hi": 3.411,
-   "development": 0.4088,
+   "strength": 2.5138,
+   "strength_lo": 1.2515,
+   "strength_hi": 3.8207,
+   "development": 0.5,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 1.3505,
-     "lo": -0.05,
-     "hi": 2.8876
+     "strength": 2.0138,
+     "lo": 0.8628,
+     "hi": 3.2116
     },
     {
      "round": 2,
-     "strength": 1.3535,
-     "lo": -0.0882,
-     "hi": 2.8284
+     "strength": 2.0036,
+     "lo": 0.8441,
+     "hi": 3.1432
     },
     {
      "round": 3,
-     "strength": 1.3115,
-     "lo": -0.0833,
-     "hi": 2.7004
+     "strength": 1.9993,
+     "lo": 0.8598,
+     "hi": 3.0837
     },
     {
      "round": 4,
-     "strength": 1.1997,
-     "lo": -0.1364,
-     "hi": 2.5241
+     "strength": 1.9842,
+     "lo": 0.8615,
+     "hi": 3.0774
     },
     {
      "round": 5,
-     "strength": 1.3205,
-     "lo": -0.081,
-     "hi": 2.6738
+     "strength": 2.1212,
+     "lo": 0.9996,
+     "hi": 3.2348
     },
     {
      "round": 6,
-     "strength": 1.3331,
-     "lo": -0.0913,
-     "hi": 2.6929
+     "strength": 2.2354,
+     "lo": 1.0627,
+     "hi": 3.3834
     },
     {
      "round": 7,
-     "strength": 1.2675,
-     "lo": -0.1113,
-     "hi": 2.6038
+     "strength": 2.3353,
+     "lo": 1.1539,
+     "hi": 3.506
     },
     {
      "round": 8,
-     "strength": 1.42,
-     "lo": 0.0021,
-     "hi": 2.7959
+     "strength": 2.356,
+     "lo": 1.1713,
+     "hi": 3.5465
     },
     {
      "round": 9,
-     "strength": 1.6868,
-     "lo": 0.1408,
-     "hi": 3.2056
+     "strength": 2.5046,
+     "lo": 1.2867,
+     "hi": 3.7256
     },
     {
      "round": 10,
-     "strength": 1.7593,
-     "lo": 0.1249,
-     "hi": 3.411
+     "strength": 2.5138,
+     "lo": 1.2515,
+     "hi": 3.8207
     }
    ],
    "deg_s_per_lap": null,
@@ -219,9 +219,9 @@
      "dnf": 0,
      "avg_grid": 4.3,
      "pace_s": -1.3133,
-     "skill": 0.95,
-     "skill_lo": -0.2643,
-     "skill_hi": 2.309
+     "skill": 0.228,
+     "skill_lo": -0.6524,
+     "skill_hi": 1.2426
     },
     {
      "code": "LEC",
@@ -235,9 +235,9 @@
      "dnf": 1,
      "avg_grid": 4.5,
      "pace_s": -1.3188,
-     "skill": 0.6109,
-     "skill_lo": -0.5849,
-     "skill_hi": 1.8237
+     "skill": 0.6603,
+     "skill_lo": -0.2491,
+     "skill_hi": 1.6147
     }
    ],
    "championship_position": 2
@@ -258,70 +258,70 @@
    "avg_grid": 6.0,
    "pace_s": -1.1773,
    "pace_delta_s": 0.1259,
-   "strength": 0.7464,
-   "strength_lo": -0.7802,
-   "strength_hi": 2.1832,
-   "development": -0.0789,
+   "strength": 1.1096,
+   "strength_lo": -0.312,
+   "strength_hi": 2.4269,
+   "development": -0.4005,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 0.8253,
-     "lo": -0.5073,
-     "hi": 2.3735
+     "strength": 1.5101,
+     "lo": 0.1613,
+     "hi": 2.8166
     },
     {
      "round": 2,
-     "strength": 0.901,
-     "lo": -0.51,
-     "hi": 2.4701
+     "strength": 1.5854,
+     "lo": 0.2068,
+     "hi": 2.8688
     },
     {
      "round": 3,
-     "strength": 0.9665,
-     "lo": -0.462,
-     "hi": 2.4906
+     "strength": 1.6513,
+     "lo": 0.3349,
+     "hi": 2.9137
     },
     {
      "round": 4,
-     "strength": 0.8864,
-     "lo": -0.5233,
-     "hi": 2.3691
+     "strength": 1.6146,
+     "lo": 0.2721,
+     "hi": 2.848
     },
     {
      "round": 5,
-     "strength": 0.5677,
-     "lo": -0.8407,
-     "hi": 1.9663
+     "strength": 1.4152,
+     "lo": 0.1234,
+     "hi": 2.6603
     },
     {
      "round": 6,
-     "strength": 0.7304,
-     "lo": -0.6434,
-     "hi": 2.1741
+     "strength": 1.3235,
+     "lo": -0.0096,
+     "hi": 2.5727
     },
     {
      "round": 7,
-     "strength": 0.8634,
-     "lo": -0.5751,
-     "hi": 2.3292
+     "strength": 1.302,
+     "lo": -0.008,
+     "hi": 2.5375
     },
     {
      "round": 8,
-     "strength": 0.8343,
-     "lo": -0.5889,
-     "hi": 2.3004
+     "strength": 1.2366,
+     "lo": -0.0685,
+     "hi": 2.4477
     },
     {
      "round": 9,
-     "strength": 0.731,
-     "lo": -0.7303,
-     "hi": 2.1231
+     "strength": 1.1337,
+     "lo": -0.2276,
+     "hi": 2.3757
     },
     {
      "round": 10,
-     "strength": 0.7464,
-     "lo": -0.7802,
-     "hi": 2.1832
+     "strength": 1.1096,
+     "lo": -0.312,
+     "hi": 2.4269
     }
    ],
    "deg_s_per_lap": null,
@@ -338,9 +338,9 @@
      "dnf": 3,
      "avg_grid": 6.1,
      "pace_s": -1.3536,
-     "skill": 1.1721,
-     "skill_lo": -0.0733,
-     "skill_hi": 2.5371
+     "skill": 0.8403,
+     "skill_lo": -0.1861,
+     "skill_hi": 2.0397
     },
     {
      "code": "PIA",
@@ -354,9 +354,9 @@
      "dnf": 2,
      "avg_grid": 5.9,
      "pace_s": -0.9791,
-     "skill": 0.7107,
-     "skill_lo": -0.5384,
-     "skill_hi": 2.0676
+     "skill": 0.7649,
+     "skill_lo": -0.2701,
+     "skill_hi": 1.9912
     }
    ],
    "championship_position": 3
@@ -377,70 +377,70 @@
    "avg_grid": 8.1,
    "pace_s": -0.8686,
    "pace_delta_s": -0.7634,
-   "strength": 0.9561,
-   "strength_lo": -0.2722,
-   "strength_hi": 2.2575,
-   "development": 0.7798,
+   "strength": 1.121,
+   "strength_lo": 0.1214,
+   "strength_hi": 2.1723,
+   "development": 0.9228,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 0.1763,
-     "lo": -0.923,
-     "hi": 1.318
+     "strength": 0.1982,
+     "lo": -0.9046,
+     "hi": 1.2535
     },
     {
      "round": 2,
-     "strength": 0.1851,
-     "lo": -0.8809,
-     "hi": 1.3004
+     "strength": 0.2277,
+     "lo": -0.7814,
+     "hi": 1.2394
     },
     {
      "round": 3,
-     "strength": 0.2587,
-     "lo": -0.8194,
-     "hi": 1.3681
+     "strength": 0.305,
+     "lo": -0.633,
+     "hi": 1.2895
     },
     {
      "round": 4,
-     "strength": 0.5403,
-     "lo": -0.5399,
-     "hi": 1.6626
+     "strength": 0.4983,
+     "lo": -0.4123,
+     "hi": 1.4264
     },
     {
      "round": 5,
-     "strength": 0.7919,
-     "lo": -0.311,
-     "hi": 1.9544
+     "strength": 0.6887,
+     "lo": -0.1589,
+     "hi": 1.5803
     },
     {
      "round": 6,
-     "strength": 0.9313,
-     "lo": -0.2208,
-     "hi": 2.1658
+     "strength": 0.83,
+     "lo": -0.047,
+     "hi": 1.7534
     },
     {
      "round": 7,
-     "strength": 1.0051,
-     "lo": -0.1654,
-     "hi": 2.2479
+     "strength": 0.9589,
+     "lo": 0.0755,
+     "hi": 1.8922
     },
     {
      "round": 8,
-     "strength": 1.0085,
-     "lo": -0.1422,
-     "hi": 2.2544
+     "strength": 1.1104,
+     "lo": 0.2158,
+     "hi": 2.0939
     },
     {
      "round": 9,
-     "strength": 0.8258,
-     "lo": -0.3118,
-     "hi": 2.0075
+     "strength": 1.075,
+     "lo": 0.1547,
+     "hi": 2.0752
     },
     {
      "round": 10,
-     "strength": 0.9561,
-     "lo": -0.2722,
-     "hi": 2.2575
+     "strength": 1.121,
+     "lo": 0.1214,
+     "hi": 2.1723
     }
    ],
    "deg_s_per_lap": null,
@@ -457,9 +457,9 @@
      "dnf": 2,
      "avg_grid": 6.8,
      "pace_s": -1.1304,
-     "skill": 1.3352,
-     "skill_lo": 0.3698,
-     "skill_hi": 2.2832
+     "skill": 1.5505,
+     "skill_lo": 0.7919,
+     "skill_hi": 2.3131
     },
     {
      "code": "HAD",
@@ -473,9 +473,9 @@
      "dnf": 2,
      "avg_grid": 9.4,
      "pace_s": -0.6068,
-     "skill": 0.422,
-     "skill_lo": -0.5241,
-     "skill_hi": 1.4399
+     "skill": 0.1932,
+     "skill_lo": -0.5187,
+     "skill_hi": 0.9138
     }
    ],
    "championship_position": 4
@@ -496,70 +496,70 @@
    "avg_grid": 12.2,
    "pace_s": -0.011,
    "pace_delta_s": 0.1884,
-   "strength": 0.6302,
-   "strength_lo": -0.6808,
-   "strength_hi": 1.9722,
-   "development": 0.3545,
+   "strength": 0.3304,
+   "strength_lo": -0.7663,
+   "strength_hi": 1.4469,
+   "development": 0.1733,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 0.2757,
-     "lo": -0.8918,
-     "hi": 1.4609
+     "strength": 0.1571,
+     "lo": -0.953,
+     "hi": 1.2559
     },
     {
      "round": 2,
-     "strength": 0.4506,
-     "lo": -0.6812,
-     "hi": 1.6493
+     "strength": 0.2757,
+     "lo": -0.7667,
+     "hi": 1.3366
     },
     {
      "round": 3,
-     "strength": 0.6095,
-     "lo": -0.5611,
-     "hi": 1.8349
+     "strength": 0.4271,
+     "lo": -0.582,
+     "hi": 1.468
     },
     {
      "round": 4,
-     "strength": 0.7704,
-     "lo": -0.4626,
-     "hi": 2.0629
+     "strength": 0.5685,
+     "lo": -0.4541,
+     "hi": 1.6403
     },
     {
      "round": 5,
-     "strength": 0.8207,
-     "lo": -0.3751,
-     "hi": 2.0829
+     "strength": 0.589,
+     "lo": -0.4426,
+     "hi": 1.6712
     },
     {
      "round": 6,
-     "strength": 0.806,
-     "lo": -0.3962,
-     "hi": 2.0944
+     "strength": 0.5406,
+     "lo": -0.5148,
+     "hi": 1.6159
     },
     {
      "round": 7,
-     "strength": 0.828,
-     "lo": -0.3907,
-     "hi": 2.1201
+     "strength": 0.443,
+     "lo": -0.5722,
+     "hi": 1.4935
     },
     {
      "round": 8,
-     "strength": 0.6644,
-     "lo": -0.5623,
-     "hi": 1.9431
+     "strength": 0.3049,
+     "lo": -0.7194,
+     "hi": 1.3758
     },
     {
      "round": 9,
-     "strength": 0.7285,
-     "lo": -0.5007,
-     "hi": 2.0258
+     "strength": 0.308,
+     "lo": -0.7252,
+     "hi": 1.3814
     },
     {
      "round": 10,
-     "strength": 0.6302,
-     "lo": -0.6808,
-     "hi": 1.9722
+     "strength": 0.3304,
+     "lo": -0.7663,
+     "hi": 1.4469
     }
    ],
    "deg_s_per_lap": null,
@@ -576,9 +576,9 @@
      "dnf": 1,
      "avg_grid": 11.0,
      "pace_s": -0.1188,
-     "skill": 0.0951,
-     "skill_lo": -0.9756,
-     "skill_hi": 1.1209
+     "skill": 0.0452,
+     "skill_lo": -0.8595,
+     "skill_hi": 0.9171
     },
     {
      "code": "COL",
@@ -592,9 +592,9 @@
      "dnf": 0,
      "avg_grid": 13.4,
      "pace_s": 0.0859,
-     "skill": -0.681,
-     "skill_lo": -1.8596,
-     "skill_hi": 0.3853
+     "skill": -0.7876,
+     "skill_lo": -1.7285,
+     "skill_hi": 0.067
     }
    ],
    "championship_position": 5
@@ -615,70 +615,70 @@
    "avg_grid": 10.8,
    "pace_s": 0.0116,
    "pace_delta_s": -0.4068,
-   "strength": 0.9437,
-   "strength_lo": -0.2709,
-   "strength_hi": 2.1784,
-   "development": 0.8593,
+   "strength": 0.4214,
+   "strength_lo": -0.5905,
+   "strength_hi": 1.4789,
+   "development": 0.5408,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": 0.0844,
-     "lo": -1.0764,
-     "hi": 1.1438
+     "strength": -0.1194,
+     "lo": -1.1098,
+     "hi": 0.8596
     },
     {
      "round": 2,
-     "strength": 0.1358,
-     "lo": -1.0072,
-     "hi": 1.1984
+     "strength": -0.1266,
+     "lo": -1.0621,
+     "hi": 0.8102
     },
     {
      "round": 3,
-     "strength": 0.2812,
-     "lo": -0.8478,
-     "hi": 1.3659
+     "strength": -0.0893,
+     "lo": -1.0524,
+     "hi": 0.8338
     },
     {
      "round": 4,
-     "strength": 0.4307,
-     "lo": -0.6272,
-     "hi": 1.4954
+     "strength": -0.0345,
+     "lo": -0.9829,
+     "hi": 0.8978
     },
     {
      "round": 5,
-     "strength": 0.7152,
-     "lo": -0.3659,
-     "hi": 1.8094
+     "strength": 0.0897,
+     "lo": -0.8097,
+     "hi": 1.0058
     },
     {
      "round": 6,
-     "strength": 0.9452,
-     "lo": -0.1445,
-     "hi": 2.126
+     "strength": 0.1979,
+     "lo": -0.6859,
+     "hi": 1.1263
     },
     {
      "round": 7,
-     "strength": 1.0784,
-     "lo": -0.0761,
-     "hi": 2.2997
+     "strength": 0.3047,
+     "lo": -0.5929,
+     "hi": 1.2331
     },
     {
      "round": 8,
-     "strength": 1.1014,
-     "lo": -0.0386,
-     "hi": 2.3369
+     "strength": 0.4097,
+     "lo": -0.4955,
+     "hi": 1.3844
     },
     {
      "round": 9,
-     "strength": 1.1187,
-     "lo": -0.0836,
-     "hi": 2.4121
+     "strength": 0.4632,
+     "lo": -0.4844,
+     "hi": 1.4576
     },
     {
      "round": 10,
-     "strength": 0.9437,
-     "lo": -0.2709,
-     "hi": 2.1784
+     "strength": 0.4214,
+     "lo": -0.5905,
+     "hi": 1.4789
     }
    ],
    "deg_s_per_lap": null,
@@ -695,9 +695,9 @@
      "dnf": 1,
      "avg_grid": 10.5,
      "pace_s": 0.0318,
-     "skill": -0.1166,
-     "skill_lo": -1.058,
-     "skill_hi": 0.8148
+     "skill": -0.0008,
+     "skill_lo": -0.7085,
+     "skill_hi": 0.7265
     },
     {
      "code": "LIN",
@@ -711,9 +711,9 @@
      "dnf": 1,
      "avg_grid": 11.1,
      "pace_s": -0.0085,
-     "skill": -0.3907,
-     "skill_lo": -1.4798,
-     "skill_hi": 0.6153
+     "skill": -0.3486,
+     "skill_lo": -1.2328,
+     "skill_hi": 0.508
     }
    ],
    "championship_position": 6
@@ -734,70 +734,70 @@
    "avg_grid": 14.65,
    "pace_s": 0.3489,
    "pace_delta_s": 0.8132,
-   "strength": -1.0624,
-   "strength_lo": -2.8098,
-   "strength_hi": 0.4314,
-   "development": -0.7775,
+   "strength": -1.2552,
+   "strength_lo": -2.4824,
+   "strength_hi": -0.0227,
+   "development": -1.0133,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": -0.2849,
-     "lo": -1.4992,
-     "hi": 0.8778
+     "strength": -0.2419,
+     "lo": -1.2818,
+     "hi": 0.8414
     },
     {
      "round": 2,
-     "strength": -0.3236,
-     "lo": -1.5443,
-     "hi": 0.8538
+     "strength": -0.3031,
+     "lo": -1.3426,
+     "hi": 0.7524
     },
     {
      "round": 3,
-     "strength": -0.3748,
-     "lo": -1.5991,
-     "hi": 0.8043
+     "strength": -0.4353,
+     "lo": -1.4294,
+     "hi": 0.612
     },
     {
      "round": 4,
-     "strength": -0.547,
-     "lo": -1.732,
-     "hi": 0.5904
+     "strength": -0.6679,
+     "lo": -1.6808,
+     "hi": 0.3638
     },
     {
      "round": 5,
-     "strength": -0.5595,
-     "lo": -1.79,
-     "hi": 0.6152
+     "strength": -0.8399,
+     "lo": -1.8648,
+     "hi": 0.2032
     },
     {
      "round": 6,
-     "strength": -0.6022,
-     "lo": -1.9177,
-     "hi": 0.6039
+     "strength": -0.9522,
+     "lo": -1.9879,
+     "hi": 0.1027
     },
     {
      "round": 7,
-     "strength": -0.7883,
-     "lo": -2.1845,
-     "hi": 0.4394
+     "strength": -1.1021,
+     "lo": -2.179,
+     "hi": -0.0214
     },
     {
      "round": 8,
-     "strength": -0.9189,
-     "lo": -2.4314,
-     "hi": 0.414
+     "strength": -1.1561,
+     "lo": -2.2449,
+     "hi": -0.0633
     },
     {
      "round": 9,
-     "strength": -1.0059,
-     "lo": -2.6865,
-     "hi": 0.433
+     "strength": -1.1961,
+     "lo": -2.3033,
+     "hi": -0.0548
     },
     {
      "round": 10,
-     "strength": -1.0624,
-     "lo": -2.8098,
-     "hi": 0.4314
+     "strength": -1.2552,
+     "lo": -2.4824,
+     "hi": -0.0227
     }
    ],
    "deg_s_per_lap": null,
@@ -814,9 +814,9 @@
      "dnf": 2,
      "avg_grid": 14.2,
      "pace_s": 0.267,
-     "skill": 0.0447,
-     "skill_lo": -1.025,
-     "skill_hi": 1.1367
+     "skill": 0.1017,
+     "skill_lo": -0.7609,
+     "skill_hi": 0.9618
     },
     {
      "code": "OCO",
@@ -830,9 +830,9 @@
      "dnf": 0,
      "avg_grid": 15.1,
      "pace_s": 0.4308,
-     "skill": -0.5662,
-     "skill_lo": -1.7056,
-     "skill_hi": 0.5128
+     "skill": -0.5019,
+     "skill_lo": -1.3982,
+     "skill_hi": 0.3572
     }
    ],
    "championship_position": 7
@@ -853,70 +853,70 @@
    "avg_grid": 16.25,
    "pace_s": 0.6149,
    "pace_delta_s": 0.1726,
-   "strength": -0.8455,
-   "strength_lo": -2.489,
-   "strength_hi": 0.6177,
-   "development": -0.2628,
+   "strength": -1.6216,
+   "strength_lo": -2.8826,
+   "strength_hi": -0.3802,
+   "development": -0.5079,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": -0.5827,
-     "lo": -1.8328,
-     "hi": 0.4969
+     "strength": -1.1138,
+     "lo": -2.1745,
+     "hi": -0.0286
     },
     {
      "round": 2,
-     "strength": -0.4833,
-     "lo": -1.7155,
-     "hi": 0.6258
+     "strength": -1.0759,
+     "lo": -2.0823,
+     "hi": -0.0282
     },
     {
      "round": 3,
-     "strength": -0.4442,
-     "lo": -1.6728,
-     "hi": 0.6982
+     "strength": -1.0979,
+     "lo": -2.0887,
+     "hi": -0.0608
     },
     {
      "round": 4,
-     "strength": -0.2945,
-     "lo": -1.5502,
-     "hi": 0.8875
+     "strength": -0.9901,
+     "lo": -1.9788,
+     "hi": 0.077
     },
     {
      "round": 5,
-     "strength": -0.3101,
-     "lo": -1.6182,
-     "hi": 0.9303
+     "strength": -1.04,
+     "lo": -2.0418,
+     "hi": 0.0183
     },
     {
      "round": 6,
-     "strength": -0.418,
-     "lo": -1.6823,
-     "hi": 0.7982
+     "strength": -1.2002,
+     "lo": -2.227,
+     "hi": -0.17
     },
     {
      "round": 7,
-     "strength": -0.5735,
-     "lo": -1.9501,
-     "hi": 0.6997
+     "strength": -1.3346,
+     "lo": -2.3758,
+     "hi": -0.2887
     },
     {
      "round": 8,
-     "strength": -0.6952,
-     "lo": -2.1881,
-     "hi": 0.602
+     "strength": -1.4916,
+     "lo": -2.6129,
+     "hi": -0.3558
     },
     {
      "round": 9,
-     "strength": -0.784,
-     "lo": -2.3584,
-     "hi": 0.6085
+     "strength": -1.5941,
+     "lo": -2.8161,
+     "hi": -0.3823
     },
     {
      "round": 10,
-     "strength": -0.8455,
-     "lo": -2.489,
-     "hi": 0.6177
+     "strength": -1.6216,
+     "lo": -2.8826,
+     "hi": -0.3802
     }
    ],
    "deg_s_per_lap": null,
@@ -933,9 +933,9 @@
      "dnf": 1,
      "avg_grid": 16.0,
      "pace_s": 0.5293,
-     "skill": -0.2638,
-     "skill_lo": -1.3623,
-     "skill_hi": 0.849
+     "skill": -0.1606,
+     "skill_lo": -1.0547,
+     "skill_hi": 0.7094
     },
     {
      "code": "ALB",
@@ -949,9 +949,9 @@
      "dnf": 4,
      "avg_grid": 16.5,
      "pace_s": 0.71,
-     "skill": -0.1626,
-     "skill_lo": -1.2739,
-     "skill_hi": 0.9484
+     "skill": -0.0901,
+     "skill_lo": -0.9707,
+     "skill_hi": 0.7715
     }
    ],
    "championship_position": 8
@@ -972,70 +972,70 @@
    "avg_grid": 12.2,
    "pace_s": 0.053,
    "pace_delta_s": -0.0147,
-   "strength": -0.4267,
-   "strength_lo": -1.9799,
-   "strength_hi": 1.1252,
-   "development": 0.3306,
+   "strength": -0.0287,
+   "strength_lo": -1.1381,
+   "strength_hi": 1.1075,
+   "development": 0.4184,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": -0.7573,
-     "lo": -2.2023,
-     "hi": 0.5033
+     "strength": -0.4471,
+     "lo": -1.502,
+     "hi": 0.6184
     },
     {
      "round": 2,
-     "strength": -0.9212,
-     "lo": -2.4138,
-     "hi": 0.3633
+     "strength": -0.5364,
+     "lo": -1.5899,
+     "hi": 0.5188
     },
     {
      "round": 3,
-     "strength": -1.0088,
-     "lo": -2.4954,
-     "hi": 0.2859
+     "strength": -0.5587,
+     "lo": -1.5887,
+     "hi": 0.4794
     },
     {
      "round": 4,
-     "strength": -1.0579,
-     "lo": -2.5252,
-     "hi": 0.2612
+     "strength": -0.6157,
+     "lo": -1.648,
+     "hi": 0.4517
     },
     {
      "round": 5,
-     "strength": -1.0678,
-     "lo": -2.5239,
-     "hi": 0.3046
+     "strength": -0.6628,
+     "lo": -1.7448,
+     "hi": 0.3888
     },
     {
      "round": 6,
-     "strength": -0.9987,
-     "lo": -2.4362,
-     "hi": 0.3833
+     "strength": -0.6079,
+     "lo": -1.6523,
+     "hi": 0.4716
     },
     {
      "round": 7,
-     "strength": -0.8706,
-     "lo": -2.3115,
-     "hi": 0.5102
+     "strength": -0.4332,
+     "lo": -1.4437,
+     "hi": 0.6281
     },
     {
      "round": 8,
-     "strength": -0.7174,
-     "lo": -2.1353,
-     "hi": 0.6675
+     "strength": -0.2445,
+     "lo": -1.2482,
+     "hi": 0.7871
     },
     {
      "round": 9,
-     "strength": -0.4935,
-     "lo": -1.9862,
-     "hi": 0.9639
+     "strength": -0.103,
+     "lo": -1.1549,
+     "hi": 1.007
     },
     {
      "round": 10,
-     "strength": -0.4267,
-     "lo": -1.9799,
-     "hi": 1.1252
+     "strength": -0.0287,
+     "lo": -1.1381,
+     "hi": 1.1075
     }
    ],
    "deg_s_per_lap": null,
@@ -1052,9 +1052,9 @@
      "dnf": 1,
      "avg_grid": 12.8,
      "pace_s": 0.0817,
-     "skill": -0.1558,
-     "skill_lo": -1.3727,
-     "skill_hi": 1.0156
+     "skill": -0.2706,
+     "skill_lo": -1.1646,
+     "skill_hi": 0.5654
     },
     {
      "code": "HUL",
@@ -1068,9 +1068,9 @@
      "dnf": 4,
      "avg_grid": 11.6,
      "pace_s": 0.0207,
-     "skill": -0.7127,
-     "skill_lo": -2.1105,
-     "skill_hi": 0.4521
+     "skill": -0.22,
+     "skill_lo": -1.1071,
+     "skill_hi": 0.6247
     }
    ],
    "championship_position": 9
@@ -1091,70 +1091,70 @@
    "avg_grid": 20.5,
    "pace_s": 2.2098,
    "pace_delta_s": 0.7706,
-   "strength": -1.4167,
-   "strength_lo": -3.3827,
-   "strength_hi": 0.2952,
-   "development": -0.359,
+   "strength": -3.1652,
+   "strength_lo": -4.6328,
+   "strength_hi": -1.7472,
+   "development": -0.6902,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": -1.0577,
-     "lo": -2.8222,
-     "hi": 0.3993
+     "strength": -2.475,
+     "lo": -3.8665,
+     "hi": -1.0695
     },
     {
      "round": 2,
-     "strength": -1.1407,
-     "lo": -2.86,
-     "hi": 0.3525
+     "strength": -2.5407,
+     "lo": -3.8782,
+     "hi": -1.2255
     },
     {
      "round": 3,
-     "strength": -1.2191,
-     "lo": -2.9132,
-     "hi": 0.2626
+     "strength": -2.6107,
+     "lo": -3.8716,
+     "hi": -1.3417
     },
     {
      "round": 4,
-     "strength": -1.2636,
-     "lo": -2.9673,
-     "hi": 0.1843
+     "strength": -2.6389,
+     "lo": -3.8227,
+     "hi": -1.4375
     },
     {
      "round": 5,
-     "strength": -1.2397,
-     "lo": -3.0135,
-     "hi": 0.2839
+     "strength": -2.6193,
+     "lo": -3.7898,
+     "hi": -1.4406
     },
     {
      "round": 6,
-     "strength": -1.1927,
-     "lo": -2.907,
-     "hi": 0.3389
+     "strength": -2.6088,
+     "lo": -3.7745,
+     "hi": -1.4653
     },
     {
      "round": 7,
-     "strength": -1.2608,
-     "lo": -3.0687,
-     "hi": 0.309
+     "strength": -2.7871,
+     "lo": -4.0336,
+     "hi": -1.5474
     },
     {
      "round": 8,
-     "strength": -1.3326,
-     "lo": -3.1612,
-     "hi": 0.2739
+     "strength": -2.9706,
+     "lo": -4.2746,
+     "hi": -1.6932
     },
     {
      "round": 9,
-     "strength": -1.3781,
-     "lo": -3.2889,
-     "hi": 0.2749
+     "strength": -3.0916,
+     "lo": -4.4697,
+     "hi": -1.7582
     },
     {
      "round": 10,
-     "strength": -1.4167,
-     "lo": -3.3827,
-     "hi": 0.2952
+     "strength": -3.1652,
+     "lo": -4.6328,
+     "hi": -1.7472
     }
    ],
    "deg_s_per_lap": null,
@@ -1171,9 +1171,9 @@
      "dnf": 4,
      "avg_grid": 19.9,
      "pace_s": 2.1295,
-     "skill": -0.0828,
-     "skill_lo": -1.3468,
-     "skill_hi": 1.1565
+     "skill": 0.0124,
+     "skill_lo": -0.9194,
+     "skill_hi": 0.9242
     },
     {
      "code": "STR",
@@ -1187,9 +1187,9 @@
      "dnf": 7,
      "avg_grid": 21.1,
      "pace_s": 2.3103,
-     "skill": -0.8694,
-     "skill_lo": -2.251,
-     "skill_hi": 0.395
+     "skill": -0.8272,
+     "skill_lo": -1.8452,
+     "skill_hi": 0.0571
     }
    ],
    "championship_position": 10
@@ -1210,70 +1210,70 @@
    "avg_grid": 19.25,
    "pace_s": 1.9657,
    "pace_delta_s": -0.2699,
-   "strength": -2.4729,
-   "strength_lo": -5.3797,
-   "strength_hi": -0.0785,
-   "development": -0.4234,
+   "strength": -2.4669,
+   "strength_lo": -3.8166,
+   "strength_hi": -1.0354,
+   "development": 0.3101,
    "strength_by_round": [
     {
      "round": 1,
-     "strength": -2.0495,
-     "lo": -4.484,
-     "hi": -0.0549
+     "strength": -2.777,
+     "lo": -4.1763,
+     "hi": -1.3607
     },
     {
      "round": 2,
-     "strength": -2.1796,
-     "lo": -4.5767,
-     "hi": -0.1884
+     "strength": -2.7955,
+     "lo": -4.1196,
+     "hi": -1.4207
     },
     {
      "round": 3,
-     "strength": -2.2596,
-     "lo": -4.6978,
-     "hi": -0.2457
+     "strength": -2.8173,
+     "lo": -4.0961,
+     "hi": -1.461
     },
     {
      "round": 4,
-     "strength": -2.3242,
-     "lo": -4.8152,
-     "hi": -0.2735
+     "strength": -2.871,
+     "lo": -4.1873,
+     "hi": -1.5101
     },
     {
      "round": 5,
-     "strength": -2.3727,
-     "lo": -4.9627,
-     "hi": -0.2494
+     "strength": -2.8231,
+     "lo": -4.1352,
+     "hi": -1.46
     },
     {
      "round": 6,
-     "strength": -2.4095,
-     "lo": -5.0623,
-     "hi": -0.2222
+     "strength": -2.7099,
+     "lo": -3.9261,
+     "hi": -1.3929
     },
     {
      "round": 7,
-     "strength": -2.4371,
-     "lo": -5.0712,
-     "hi": -0.1878
+     "strength": -2.5694,
+     "lo": -3.799,
+     "hi": -1.2562
     },
     {
      "round": 8,
-     "strength": -2.4534,
-     "lo": -5.1947,
-     "hi": -0.1695
+     "strength": -2.4945,
+     "lo": -3.7499,
+     "hi": -1.126
     },
     {
      "round": 9,
-     "strength": -2.4676,
-     "lo": -5.29,
-     "hi": -0.1323
+     "strength": -2.4299,
+     "lo": -3.6739,
+     "hi": -1.1033
     },
     {
      "round": 10,
-     "strength": -2.4729,
-     "lo": -5.3797,
-     "hi": -0.0785
+     "strength": -2.4669,
+     "lo": -3.8166,
+     "hi": -1.0354
     }
    ],
    "deg_s_per_lap": null,
@@ -1290,9 +1290,9 @@
      "dnf": 4,
      "avg_grid": 19.3,
      "pace_s": 2.3231,
-     "skill": -0.7075,
-     "skill_lo": -2.6301,
-     "skill_hi": 0.95
+     "skill": -0.5986,
+     "skill_lo": -1.787,
+     "skill_hi": 0.5145
     },
     {
      "code": "PER",
@@ -1306,9 +1306,9 @@
      "dnf": 3,
      "avg_grid": 19.2,
      "pace_s": 1.5636,
-     "skill": -0.7437,
-     "skill_lo": -2.5635,
-     "skill_hi": 0.8358
+     "skill": -0.0772,
+     "skill_lo": -1.2729,
+     "skill_hi": 0.9916
     }
    ],
    "championship_position": 11
