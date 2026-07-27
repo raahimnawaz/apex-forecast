@@ -30,50 +30,33 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize_scalar
-from scipy.stats import spearmanr
 
 from apex.history import fetch_season_results
 from apex.paths import PROCESSED, RAW, REPORTS
+from apex.scoring import score
+from apex.strategy import (
+    fit_team_degradation,
+    season_average_profile,
+    seconds_to_theta,
+    theta_offsets,
+    with_circuit_profile,
+)
 from apex.strength import TOP_M, build, fit, grid_advantage, predict_order
 
 warnings.filterwarnings("ignore")
-EPS = 1e-12
 
+ALL_VARIANTS = [
+    ("model: forward",           False, "forward"),
+    ("model: forward+grid",      True,  "forward"),
+    ("model: attrition+grid",    True,  "attrition"),
+    ("model: contaminated+grid", True,  "contaminated"),
+]
 
-# --------------------------------------------------------------------------------------
-# scoring
-# --------------------------------------------------------------------------------------
-
-def rps(probs: np.ndarray, actual_ix: np.ndarray) -> float:
-    """Mean ranked probability score over the drivers in one race.
-
-    probs[i, p] = P(driver i finishes in position p). actual_ix[i] = true position index.
-    """
-    n = probs.shape[1]
-    out = []
-    for i, a in enumerate(actual_ix):
-        cdf = np.cumsum(probs[i])
-        step = (np.arange(n) >= a).astype(float)
-        out.append(np.sum((cdf - step) ** 2) / (n - 1))
-    return float(np.mean(out))
-
-
-def logloss(p: np.ndarray, y: np.ndarray) -> float:
-    p = np.clip(p, EPS, 1 - EPS)
-    return float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p)))
-
-
-def score(probs: np.ndarray, actual_pos: np.ndarray) -> dict:
-    n = probs.shape[0]
-    ix = actual_pos.astype(int) - 1
-    exp_pos = (probs * np.arange(1, n + 1)).sum(1)
-    return {
-        "rps": rps(probs, ix),
-        "ll_win": logloss(probs[:, 0], (ix == 0).astype(float)),
-        "ll_podium": logloss(probs[:, :3].sum(1), (ix < 3).astype(float)),
-        "ll_points": logloss(probs[:, :10].sum(1), (ix < 10).astype(float)),
-        "spearman": float(spearmanr(exp_pos, actual_pos).statistic),
-    }
+# Layer 2a is not a separate fit. It is the shipped variant plus a per-entry theta offset,
+# so it is scored against the very posterior it modifies — a paired comparison in which the
+# only difference is the strategy term.
+STRATEGY_BASE = "model: attrition+grid"
+STRATEGY_NAME = "model: attrition+grid+strategy"
 
 
 # --------------------------------------------------------------------------------------
@@ -135,6 +118,40 @@ def last_race_order(r26: pd.DataFrame, rnd: int) -> dict[str, int]:
 
 # --------------------------------------------------------------------------------------
 
+def strategy_theta(laps: pd.DataFrame, r26: pd.DataFrame, rnd: int, event: str,
+                   teams: list[str], pace: pd.DataFrame,
+                   strength: pd.DataFrame) -> np.ndarray | None:
+    """Layer 2a offsets for round `rnd`, built without touching round `rnd`.
+
+    Everything here is restricted to rounds strictly before the target: the per-team
+    degradation pooling, the pit-loss estimates and the reference circuits the offset is
+    measured against. The target circuit itself gets a season-average tyre profile, since
+    its own race is the thing being forecast — see `strategy.season_average_profile` for
+    why Friday practice cannot stand in for it.
+    """
+    prior_laps = laps[laps["round"] < rnd]
+    if prior_laps.empty:
+        return None
+    tyres = fit_team_degradation(prior_laps, 2026)
+    if tyres.by_circuit.empty or tyres.by_team.empty:
+        return None
+
+    # Race distance is published before the weekend, so using it is not leakage. It is
+    # read from the target round's laps only because that is where this repo stores it.
+    tgt = laps[laps["round"] == rnd]
+    n_laps = int(tgt["LapNumber"].max()) if not tgt.empty else None
+    tyres = with_circuit_profile(tyres, season_average_profile(tyres, event, rnd),
+                                 n_laps=n_laps)
+
+    scale = seconds_to_theta(pace[pace["round"] < rnd], strength)
+    if scale <= 0:
+        return None
+    ref = [e for e in tyres.race_laps["event"].unique() if e != event]
+    if not ref:
+        return None
+    return theta_offsets(tyres, event, teams, scale, training_events=ref)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-round", type=int, default=5)
@@ -142,6 +159,9 @@ def main() -> int:
     ap.add_argument("--warmup", type=int, default=400)
     ap.add_argument("--samples", type=int, default=400)
     ap.add_argument("--chains", type=int, default=2)
+    ap.add_argument("--variants", type=str, default="all",
+                    help="comma-separated variant names, or 'all'. A focused A/B is far "
+                         "cheaper than the full bake-off when testing one new layer.")
     args = ap.parse_args()
 
     r25 = fetch_season_results(2025)
@@ -150,6 +170,24 @@ def main() -> int:
     sfiles = sorted(glob.glob(str(RAW / "results_2026_R*_S.parquet")))
     sprints_all = (pd.concat([pd.read_parquet(f) for f in sfiles], ignore_index=True)
                    if sfiles else pd.DataFrame())
+
+    wanted = {x.strip() for x in args.variants.split(",")} if args.variants != "all" else None
+
+    def want(name: str) -> bool:
+        return wanted is None or name in wanted or name.replace("model: ", "") in wanted
+
+    strategy = want(STRATEGY_NAME)
+    laps26 = pace26 = None
+    if strategy:
+        lp = PROCESSED / "laps_2026.parquet"
+        pp = PROCESSED / "pace_2026.parquet"
+        if lp.exists() and pp.exists():
+            laps26 = pd.read_parquet(lp)
+            laps26 = laps26[(laps26["season"] == 2026) & (laps26["session"] == "R")]
+            pace26 = pd.read_parquet(pp)
+        else:
+            print("no laps/pace tables — skipping the strategy variant")
+            strategy = False
 
     rows = []
     for rnd in range(args.from_round, args.to_round + 1):
@@ -204,20 +242,36 @@ def main() -> int:
         # Three rank likelihoods, each a published answer to the same question, tested
         # head to head rather than chosen by argument.
         entries = list(zip(codes, teams))
-        variants = [
-            ("model: forward",           False, "forward"),
-            ("model: forward+grid",      True,  "forward"),
-            ("model: attrition+grid",    True,  "attrition"),
-            ("model: contaminated+grid", True,  "contaminated"),
-        ]
+        # The strategy variant has no fit of its own, so it drags its base variant in.
+        variants = [v for v in ALL_VARIANTS if want(v[0]) or (strategy and v[0] == STRATEGY_BASE)]
         for name, use_grid, lik in variants:
             mcmc = fit(d, warmup=args.warmup, samples=args.samples, chains=args.chains,
                        use_grid=use_grid, likelihood=lik)
             post = mcmc.get_samples()
+            event = str(actual["event"].iloc[0])
+
+            # Layer 2a rides on top of an already-fitted variant rather than being its own
+            # model, so it is applied to the attrition+grid posterior and scored against
+            # that same posterior without it. That makes the comparison paired: any
+            # difference is the strategy offsets and nothing else.
+            offs = None
+            if strategy and name == STRATEGY_BASE:
+                car = np.asarray(post["car26"])[:, :, -1]
+                strength_now = pd.DataFrame({"constructor": d.constructors,
+                                             "car_2026_latest": car.mean(0)})
+                offs = strategy_theta(laps26, r26, rnd, event, teams, pace26, strength_now)
+
             p, _ = predict_order(post, d, entries, n_sim=300, likelihood=lik,
                                  grid=grid.tolist() if use_grid else None,
-                                 circuit=str(actual["event"].iloc[0]))
+                                 circuit=event)
             preds[name] = p
+            if offs is not None:
+                p2, _ = predict_order(post, d, entries, n_sim=300, likelihood=lik,
+                                      grid=grid.tolist() if use_grid else None,
+                                      circuit=event, theta_offset=offs)
+                preds[STRATEGY_NAME] = p2
+                print(f"    strategy offsets: spread {offs.max() - offs.min():.3f} theta, "
+                      f"max |offset| {np.abs(offs).max():.3f}")
             if lik == "contaminated":
                 print(f"    eps (share of positions decided by chaos) = "
                       f"{float(np.mean(post['eps'])):.3f}")

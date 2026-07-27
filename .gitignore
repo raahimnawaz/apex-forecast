@@ -16,3 +16,6 @@ data/processed/
 
 # Run logs are noise; the data-quality CSV is the durable record.
 reports/*.log
+
+# Editor and agent tooling, not project source.
+.claude/

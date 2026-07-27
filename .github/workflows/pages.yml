@@ -1,0 +1,59 @@
+# Publishes web/ to GitHub Pages.
+#
+# The dashboard is already static — hand-rolled HTML, ES modules and committed JSON, with
+# no build step and no Node — so there is nothing to compile here. This workflow only
+# uploads the directory. That is also why Pages is the right host rather than a build
+# platform: `git push` is the whole deploy.
+#
+# Pages serves from the repository root or /docs, and this dashboard lives in /web while
+# /docs holds the design notes, so the directory is selected explicitly below.
+#
+# Before the first run, enable it once in the repository: Settings -> Pages -> Build and
+# deployment -> Source: GitHub Actions. Until that is done this workflow will fail on the
+# deploy step, which is the intended behaviour rather than a silent publish.
+name: pages
+
+on:
+  push:
+    branches: [main]
+    # Model refits and data changes do not alter the page, so only republish when
+    # something the browser actually loads has changed.
+    paths:
+      - "web/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead, and do not cancel one that is mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fail if the dashboard is missing its data
+        # The page loads these at view time and renders empty without them. Catching it
+        # here is better than publishing a blank dashboard to a public URL.
+        run: |
+          test -f web/index.html
+          for f in strength_2026 pace_2026 teams_2026; do
+            test -s "web/data/$f.json" || { echo "missing web/data/$f.json"; exit 1; }
+          done
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deploy
+        uses: actions/deploy-pages@v4

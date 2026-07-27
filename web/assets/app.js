@@ -125,15 +125,18 @@ function renderForecast(s, colors) {
 
 /* =================== POSITION MATRIX =================== */
 
-// Sequential bins. On a dark surface the low end recedes toward the surface and the
-// high end is the brightest step, so "more likely" reads as "brighter".
+// Sequential bins, monotonic in luminance so "more likely" reads as "brighter". The two
+// lowest are pulled nearly into the surface so the eye goes where the model has an opinion.
+// Floor on the bottom bin: a cell under 0.5% is not drawn at all, so 0.5-2% has to stay
+// separable from bare card or "rare" and "never sampled" look identical. 1.30:1 is the
+// darkest that still reads as a cell.
 const MATRIX_BINS = [
   { min: 0.35, hex: "#9ec5f4", label: "≥ 35%" },
   { min: 0.20, hex: "#6da7ec", label: "20–35%" },
   { min: 0.10, hex: "#3987e5", label: "10–20%" },
   { min: 0.05, hex: "#256abf", label: "5–10%" },
-  { min: 0.02, hex: "#184f95", label: "2–5%" },
-  { min: 0.005, hex: "#0d366b", label: "0.5–2%" },
+  { min: 0.02, hex: "#153f76", label: "2–5%" },      // a shade darker than #184f95
+  { min: 0.005, hex: "#0d2b50", label: "0.5–2%" },   // nearly black, 1.30:1 on the card
 ];
 const binColor = (p) => (MATRIX_BINS.find((b) => p >= b.min) || {}).hex || null;
 
@@ -857,6 +860,223 @@ function renderForm(data) {
 
 /* =================== HEADER / TILES =================== */
 
+/* =================== POST-RACE: THE ONE TEST THAT CANNOT BE RE-RUN =================== */
+
+/* The walk-forward table above is an average over refits. This is the single race where a
+   forecast was published, committed, and then scored — no refitting, no hindsight. It has
+   been written to reports/ since the beginning and never shown. */
+function renderPostRace(season) {
+  const host = document.getElementById("postrace");
+  const ls = season && season.last_scored;
+  if (!host || !ls || !ls.forecast || !ls.baseline) return;
+
+  const f = ls.forecast, b = ls.baseline;
+  const METS = [
+    ["RPS", "rps"], ["Win", "ll_win"], ["Podium", "ll_podium"], ["Points", "ll_points"],
+  ];
+  const cells = METS.map(([label, k]) => {
+    const win = f[k] < b[k];
+    return `<div class="pr-metric">`
+      + `<div class="pr-k">${label}</div>`
+      + `<div class="pr-v ${win ? "gain" : ""}">${f[k].toFixed(4)}</div>`
+      + `<div class="pr-b">vs ${b[k].toFixed(4)}</div></div>`;
+  }).join("");
+
+  const call = ls.call;
+  const verdict = ls.beat_baseline
+    ? `<b class="gain">Beat</b> a fitted baseline built on the grid that actually formed`
+    : `<b>Lost to</b> a fitted baseline built on the grid that actually formed`;
+
+  host.innerHTML =
+    `<div class="pr-head"><b>Last race scored — Round ${ls.round}, ${ls.event}</b></div>`
+    + `<p class="pr-lede">${verdict}, over the <b>whole field</b> including retirements. `
+    + (call
+      ? `Called ${call.favourite} at ${pct(call.p_win)} — `
+        + `<span class="${call.hit ? "gain" : "loss"}">${call.hit ? "correct" : "wrong"}</span>. `
+      : "")
+    + `The forecast was committed before the race existed; nothing here was refitted.</p>`
+    + `<div class="pr-grid">${cells}</div>`
+    + `<p class="pr-foot">Lower is better on all four. `
+    + (call && call.grid_source
+      ? `Grid assumed: ${call.grid_source}.` : "") + `</p>`;
+  host.hidden = false;
+}
+
+/* =================== THE ANSWER, BEFORE THE EVIDENCE =================== */
+
+/* Most readers want two things: who is likely to win, and how sure the model is. The
+   22-bar chart answers neither at a glance — it answers "what is every probability", which
+   is a different question and belongs behind a disclosure. */
+function renderContenders(s, colors) {
+  const host = document.getElementById("contenders");
+  const read = document.getElementById("forecast-read");
+  const open = document.getElementById("openness");
+  if (!host) return;
+
+  const fc = [...s.forecast].sort((a, b) => b.p_win - a.p_win);
+  const top = fc.slice(0, 3);
+
+  top.forEach((f, i) => {
+    const d = document.createElement("div");
+    d.className = "contender" + (i === 0 ? " lead" : "");
+    const col = colors[f.team] || "#898781";
+    // The bar is the probability, scaled against the leader so the comparison is between
+    // these three rather than against an invisible 100%.
+    const w = Math.max(4, 100 * f.p_win / top[0].p_win);
+    d.innerHTML =
+      `<div class="fill" style="width:${w}%;background:${col}"></div>`
+      + `<div class="who"><span class="chip" style="background:${col}"></span>${f.driver}</div>`
+      + `<div class="team">${f.team}</div>`
+      + `<div class="p">${pct(f.p_win)}</div>`
+      + `<div class="sub">${pct(f.p_podium)} podium`
+      + (f.grid ? ` · from P${f.grid}` : "") + `</div>`;
+    host.appendChild(d);
+  });
+
+  // How open is this race? The leader's share is the honest summary: a 68% favourite and
+  // a 22% favourite are completely different situations and the bars alone do not say so.
+  const lead = top[0];
+  const spread = lead.p_win - (fc[3]?.p_win ?? 0);
+  const shape = lead.p_win > 0.5
+    ? `<b>${lead.driver}</b> is a strong favourite at ${pct(lead.p_win)}.`
+    : lead.p_win > 0.3
+      ? `<b>${lead.driver}</b> leads at ${pct(lead.p_win)}, but is far from safe.`
+      : `<b>Wide open.</b> ${lead.driver} leads on only ${pct(lead.p_win)}, `
+        + `and ${fc.filter((f) => f.p_win > 0.1).length} drivers are above 10%.`;
+  if (open) {
+    open.innerHTML = shape
+      + ` The gap from first to fourth is ${(100 * spread).toFixed(0)} points of probability.`
+      + ` Every number here is over the <b>whole field</b>, retirements and safety cars`
+      + ` included.`;
+  }
+  if (read) {
+    const g = s.diagnostics?.grid_source;
+    read.innerHTML = g && g !== "none"
+      ? `Conditional on the starting grid (${g}).`
+      : `No grid yet — this is the race before qualifying has run, so it uses pace and `
+        + `reliability alone. <a href="method.html#forecast">How this works →</a>`;
+  }
+}
+
+/* =================== SEASON SO FAR =================== */
+
+function renderSeason(season, colors) {
+  if (!season) return;
+
+  const swatch = (team) =>
+    `<span class="chip" style="background:${colors[team] || "#898781"}"></span>`;
+
+  // --- races -------------------------------------------------------------------------
+  const rt = document.querySelector("#season-races tbody");
+  season.races.forEach((r) => {
+    const tr = document.createElement("tr");
+    const podium = r.podium.map((p) => `${swatch(p.team)}${p.driver}`).join("  ");
+    // A forecast is shown only where one was logged *before* the race. Rounds run before
+    // the prediction log existed get a dash rather than a number computed after the fact,
+    // which would be precisely the retrospective scoring the log exists to prevent.
+    let fc = "—";
+    if (r.forecast) {
+      const f = r.forecast;
+      fc = `${f.favourite} ${pct(f.p_win)}`
+        + (f.hit ? ' <span class="hit">hit</span>' : " miss");
+    }
+    tr.innerHTML = `<td>${r.round}</td>`
+      + `<td class="name">${r.event.replace(" Grand Prix", "")}`
+      + `${r.sprint ? " <small>S</small>" : ""}</td>`
+      + `<td class="name">${r.pole ?? "—"}</td>`
+      + `<td class="name podium">${podium}</td>`
+      + `<td>${r.retirements}</td>`
+      + `<td class="name">${fc}</td>`;
+    tr.tabIndex = 0;
+    tr.setAttribute("role", "button");
+    tr.setAttribute("aria-label", `Full result for round ${r.round}, ${r.event}`);
+    const open = () => selectRace(r, colors, rt);
+    tr.addEventListener("click", open);
+    tr.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+    });
+    rt.appendChild(tr);
+  });
+
+  // --- championships -----------------------------------------------------------------
+  const dt = document.querySelector("#season-drivers tbody");
+  season.drivers.forEach((d, i) => {
+    const tr = document.createElement("tr");
+    if (i === 0) tr.className = "is-best";
+    tr.innerHTML = `<td>${i + 1}</td>`
+      + `<td class="name">${swatch(d.team)}${d.driver}</td>`
+      + `<td>${d.points}</td><td>${d.wins || ""}</td>`
+      + `<td>${d.podiums || ""}</td><td>${d.poles || ""}</td>`;
+    dt.appendChild(tr);
+  });
+
+  const ct = document.querySelector("#season-constructors tbody");
+  season.constructors.forEach((c, i) => {
+    const tr = document.createElement("tr");
+    if (i === 0) tr.className = "is-best";
+    tr.innerHTML = `<td>${i + 1}</td>`
+      + `<td class="name">${swatch(c.team)}${c.team}</td>`
+      + `<td>${c.points}</td>`;
+    ct.appendChild(tr);
+  });
+
+  const tr = season.track_record;
+  const note = document.getElementById("season-note");
+  note.textContent = `${season.rounds_complete} of 22 rounds complete. `
+    + (tr.scored
+      ? `${tr.winner_called} of ${tr.scored} published forecast`
+        + `${tr.scored === 1 ? "" : "s"} called the winner. `
+      : "")
+    + "Points include sprints. Forecasts are shown only where one was logged before the race.";
+}
+
+/* One race, opened. Positions gained and lost are computed here rather than shipped,
+   because grid minus finish is arithmetic and the payload should not carry derived columns. */
+function selectRace(race, colors, tbody) {
+  const host = document.getElementById("race-detail");
+  if (!host) return;
+
+  [...tbody.querySelectorAll("tr")].forEach((tr) => tr.classList.remove("sel"));
+  const row = [...tbody.querySelectorAll("tr")]
+    .find((tr) => tr.firstChild.textContent === String(race.round));
+  if (row) row.classList.add("sel");
+
+  const rows = (race.results || []).map((r) => {
+    const moved = r.classified && r.grid && r.pos ? r.grid - r.pos : null;
+    const arrow = moved === null || moved === 0 ? ""
+      : moved > 0 ? `<span class="gain">+${moved}</span>`
+        : `<span class="loss">${moved}</span>`;
+    return `<tr class="${r.classified ? "" : "dnf"}">`
+      + `<td>${r.classified ? r.pos : "—"}</td>`
+      + `<td class="name"><span class="chip" style="background:${colors[r.team] || "#898781"}"></span>${r.driver}</td>`
+      + `<td class="name">${r.team}</td>`
+      + `<td>${r.grid ?? "—"}</td>`
+      + `<td>${arrow}</td>`
+      + `<td>${r.points || ""}</td>`
+      + `<td class="name">${r.classified ? "" : r.status}</td></tr>`;
+  }).join("");
+
+  const f = race.forecast;
+  const fLine = f
+    ? ` · forecast favourite ${f.favourite} at ${pct(f.p_win)} — `
+      + `<span class="${f.hit ? "gain" : ""}">${f.hit ? "hit" : "miss"}</span>`
+    : " · no forecast was logged before this race";
+
+  host.innerHTML =
+    `<div class="rd-head"><b>Round ${race.round} — ${race.event}</b>`
+    + `<span class="rd-meta">${race.entries} starters · ${race.retirements} retired`
+    + `${fLine}</span>`
+    + `<button class="rd-close" aria-label="Close">close ✕</button></div>`
+    + `<div class="table-scroll"><table><thead><tr>`
+    + `<th>Pos</th><th>Driver</th><th>Team</th><th>Grid</th><th>+/−</th><th>Pts</th><th>Status</th>`
+    + `</tr></thead><tbody>${rows}</tbody></table></div>`;
+  host.hidden = false;
+  host.querySelector(".rd-close").addEventListener("click", () => {
+    host.hidden = true;
+    [...tbody.querySelectorAll("tr")].forEach((tr) => tr.classList.remove("sel"));
+  });
+}
+
 function renderHeader(data, s) {
   const ne = data.next_event;
 
@@ -916,7 +1136,14 @@ function renderHeader(data, s) {
 
 /* =================== BOOT =================== */
 
-const load = (p) => fetch(p).then((r) => {
+/* `cache: "no-cache"` forces a revalidation rather than a blind refetch: the browser sends
+   If-None-Match / If-Modified-Since and takes a 304 when nothing has changed, so this costs
+   a round trip and not a download.
+   It is necessary because the payloads carry no version query — they change on every model
+   rebuild, independently of the asset `?v=`, so there is no number to bump. Without it a
+   returning visitor keeps whatever forecast their cache holds and the page silently shows
+   last week's numbers under this week's build stamp. */
+const load = (p) => fetch(p, { cache: "no-cache" }).then((r) => {
   if (!r.ok) throw new Error(`${p} → HTTP ${r.status}`);
   return r.json();
 });
@@ -926,12 +1153,18 @@ Promise.all([
   load("data/strength_2026.json"),
   load("data/teams_2026.json"),
   load("data/news.json").catch(() => ({ items: [], sources: [], generated_utc: new Date().toISOString() })),
-]).then(([pace, strength, teams, news]) => {
+  // Season results are additive: an older payload without them should still render the
+  // rest of the page rather than take the whole dashboard down.
+  load("data/season_2026.json").catch(() => null),
+]).then(([pace, strength, teams, news, season]) => {
   const colors = pace.team_colors;
   teams.team_colors_local = colors;
 
   renderHeader(pace, strength);
   renderCalibration(strength);
+  renderSeason(season, colors);
+  renderPostRace(season);
+  renderContenders(strength, colors);
   renderForecast(strength, colors);
   renderMatrix(strength, colors);
   renderPace(pace);

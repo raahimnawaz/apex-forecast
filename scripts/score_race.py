@@ -1,15 +1,24 @@
 """Score a published forecast against the race that actually happened.
 
-This is the only test that cannot be gamed: the forecast JSON was written and committed
-before the race existed. Nothing here refits anything — it reads what was published and
-compares it to the result.
+This is the only test that cannot be gamed: the forecast was written and committed before
+the race existed. Nothing here refits anything — it reads what was published and compares
+it to the result.
+
+That claim depends entirely on reading the right file. `strength_{season}.json` always
+holds the *next* race and is overwritten on every build, so scoring a past round against it
+silently grades a different forecast and prints confident numbers for it. The forecast is
+therefore read from `web/data/predictions/{season}_R{round}.json`, the write-once
+prediction log, and this script refuses to score at all rather than fall back to a payload
+that belongs to another round.
 
 Scored two ways on purpose:
-  classified — against finishers only, which is what the model claims to predict
+  classified — against finishers only, which is the pace model's own claim
   full       — against the whole field including retirements, which is how a reader
                would actually use the numbers
 
-The gap between those two is the cost of having no reliability model.
+The gap between those two is what the reliability layer has to earn. Before that layer
+existed the full-field score was strictly the worse of the two; it is now the forecast's
+to win or lose on its own terms.
 """
 
 from __future__ import annotations
@@ -20,41 +29,12 @@ import json
 import fastf1
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
 
 from apex.paths import CACHE, REPORTS, WEB_DATA
+from apex.scoring import score
 from apex.strength import grid_advantage
 
 fastf1.Cache.enable_cache(str(CACHE))
-EPS = 1e-12
-
-
-def rps(probs: np.ndarray, actual_ix: np.ndarray) -> float:
-    n = probs.shape[1]
-    out = []
-    for i, a in enumerate(actual_ix):
-        cdf = np.cumsum(probs[i])
-        step = (np.arange(n) >= a).astype(float)
-        out.append(np.sum((cdf - step) ** 2) / (n - 1))
-    return float(np.mean(out))
-
-
-def logloss(p: np.ndarray, y: np.ndarray) -> float:
-    p = np.clip(p, EPS, 1 - EPS)
-    return float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p)))
-
-
-def score(probs: np.ndarray, actual_pos: np.ndarray) -> dict:
-    n = probs.shape[1]
-    ix = np.clip(actual_pos.astype(int) - 1, 0, n - 1)
-    exp_pos = (probs * np.arange(1, n + 1)).sum(1)
-    return {
-        "rps": round(rps(probs, ix), 4),
-        "ll_win": round(logloss(probs[:, 0], (ix == 0).astype(float)), 4),
-        "ll_podium": round(logloss(probs[:, :3].sum(1), (ix < 3).astype(float)), 4),
-        "ll_points": round(logloss(probs[:, :10].sum(1), (ix < 10).astype(float)), 4),
-        "spearman": round(float(spearmanr(exp_pos, actual_pos).statistic), 4),
-    }
 
 
 def pl_probs(theta: np.ndarray, n_sim: int = 20000, seed: int = 3) -> np.ndarray:
@@ -73,7 +53,26 @@ def main() -> int:
     ap.add_argument("--round", type=int, required=True)
     args = ap.parse_args()
 
-    published = json.loads((WEB_DATA / f"strength_{args.season}.json").read_text())
+    logged = WEB_DATA / "predictions" / f"{args.season}_R{args.round:02d}.json"
+    if logged.exists():
+        published = json.loads(logged.read_text())
+        src = f"prediction log {logged.name}"
+    else:
+        # Falling back to the live payload used to be the default, and it is a trap:
+        # strength_{season}.json always holds the *next* race, so after the following
+        # round is built this silently grades the wrong forecast and prints confident
+        # numbers for it. Refuse instead of guessing.
+        live = json.loads((WEB_DATA / f"strength_{args.season}.json").read_text())
+        live_round = (live.get("diagnostics") or {}).get("forecast_round")
+        if live_round != args.round:
+            raise SystemExit(
+                f"no prediction log for {args.season} R{args.round}, and the live payload "
+                f"holds round {live_round}. Scoring it would grade the wrong forecast. "
+                f"Expected {logged}."
+            )
+        published = live
+        src = f"live payload (round {live_round})"
+
     fc = pd.DataFrame(published["forecast"])
     matrix = published["position_matrix"]
     drivers = matrix["drivers"]
@@ -87,13 +86,22 @@ def main() -> int:
     res["classified"] = res["ClassifiedPosition"].astype(str).str.isdigit()
 
     print(f"=== {ses.event['EventName']} — forecast published "
-          f"{published['generated_utc']} ===\n")
+          f"{published['generated_utc']} ===")
+    print(f"    source: {src}\n")
 
     # ---- the grid the model assumed vs the grid that actually formed -------------------
+    # A forecast published before qualifying has no grid at all, which is the normal state
+    # for a next-race forecast rather than an error. Entries without one are skipped: there
+    # is no assumed position to compare against, and coercing None to an int here used to
+    # abort the whole scoring run over a section that is only commentary.
     q = fc.set_index("driver")["grid"].to_dict()
     actual_grid = res.set_index("Abbreviation")["GridPosition"].to_dict()
-    moved = [(d, int(q[d]), int(actual_grid[d]))
-             for d in q if d in actual_grid and int(q[d]) != int(actual_grid[d])]
+    known = {d: v for d, v in q.items() if v is not None and np.isfinite(float(v))}
+    if not known:
+        print("the published forecast carried no grid — it was made before qualifying\n")
+    moved = [(d, int(known[d]), int(actual_grid[d]))
+             for d in known
+             if d in actual_grid and int(known[d]) != int(actual_grid[d])]
     if moved:
         print("GRID PENALTIES the forecast did not know about:")
         for d, assumed, real in sorted(moved, key=lambda x: x[2]):
@@ -112,7 +120,7 @@ def main() -> int:
         p = probs_all[np.ix_(ix, range(len(drivers)))][:, : len(codes)]
         p = p / p.sum(axis=1, keepdims=True)
 
-        s = score(p, pos)
+        s = score(p, pos, digits=4)
         s.update({"scored": label, "model": "published forecast", "n": len(codes)})
         rows.append(s)
 
@@ -120,7 +128,7 @@ def main() -> int:
         g = np.array([actual_grid[c] for c in codes], dtype=float)
         adv = grid_advantage(g)
         b = pl_probs(1.75 * (adv - adv.mean()))
-        sb = score(b, pos)
+        sb = score(b, pos, digits=4)
         sb.update({"scored": label, "model": "baseline: actual grid", "n": len(codes)})
         rows.append(sb)
 
@@ -140,8 +148,15 @@ def main() -> int:
           f"   -> {len(podium & top3)}/3")
     dnf = res.loc[~res["classified"], "Abbreviation"].tolist()
     print(f"  retirements: {dnf}  ({100*(~res['classified']).mean():.1f}% of the field)")
-    print("  the model assigned these a finishing distribution anyway — it has no "
-          "reliability process")
+    # The reliability layer publishes a per-car finishing probability, so the retirements
+    # are a scoreable call rather than something the forecast was silent about. If the
+    # cars that stopped were not rated riskier than the field, the layer added nothing here.
+    if "p_finish" in fc.columns and dnf:
+        risk = (1.0 - fc.set_index("driver")["p_finish"]).dropna()
+        hit = risk.reindex(dnf).dropna()
+        if not hit.empty:
+            print(f"  forecast retirement risk: {100*hit.mean():.1f}% for the cars that "
+                  f"stopped vs {100*risk.mean():.1f}% across the field")
 
     REPORTS.mkdir(exist_ok=True)
     out.to_csv(REPORTS / f"race_score_{args.season}_R{args.round:02d}.csv", index=False)

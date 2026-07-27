@@ -7,9 +7,13 @@
 <meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and out-of-sample calibrated finishing-order predictions.">
 <!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
      Bump ?v= whenever style.css, app.js or hero.js changes. -->
-<link rel="stylesheet" href="assets/style.css?v=12">
+<link rel="stylesheet" href="assets/style.css?v=23">
 </head>
 <body>
+<!-- The field sits behind the whole document and flows with the scroll. Fixed, so it
+     drifts rather than scrolling with the content; aria-hidden, because it carries no
+     information. -->
+<canvas id="silk-bg" aria-hidden="true"></canvas>
 <div class="wrap">
 
   <div class="masthead">
@@ -18,6 +22,7 @@
     <nav class="topnav" aria-label="Sections">
       <a href="#forecast">Forecast</a>
       <a href="#calibration">Calibration</a>
+      <a href="#season">Season</a>
       <a href="#pace">Pace</a>
       <a href="#split">Driver vs car</a>
       <a href="#teams">Teams</a>
@@ -51,14 +56,19 @@
 
   <!-- ============ FORECAST ============ -->
   <section class="card" id="forecast">
-    <h2>Race forecast</h2>
-    <p class="desc">
+    <h2>Who wins?</h2>
+    <p class="desc" id="forecast-read">
       Win probability over the <b>whole field</b>, retirements and safety cars included.
-      <a href="method.html#forecast">How this works →</a>
     </p>
-    <div class="chart-scroll"><div id="win-chart"></div></div>
-    <details class="table-view">
-      <summary>Table view</summary>
+
+    <!-- The answer first, in three tiles. The chart below is the detail; most readers
+         want the headline and a sense of how open the race is, not 22 bars. -->
+    <div class="contenders" id="contenders"></div>
+    <p class="openness" id="openness"></p>
+
+    <details class="more">
+      <summary>All 22 drivers</summary>
+      <div class="chart-scroll"><div id="win-chart"></div></div>
       <div class="table-scroll">
         <table id="forecast-table">
           <thead><tr>
@@ -98,6 +108,55 @@
       </table>
     </div>
     <p class="desc" id="calib-note" style="margin-top:14px"></p>
+
+    <!-- The last race, scored against the forecast published before it. The walk-forward
+         above is the model's average; this is the single result it cannot re-run. -->
+    <div class="postrace" id="postrace" hidden></div>
+  </section>
+
+  <!-- ============ SEASON SO FAR ============ -->
+  <section class="card" id="season">
+    <h2>The year so far</h2>
+    <p class="desc">
+      What has actually happened, with no model in it. <b>Select a round</b> for its full
+      classification; the championship tables below are the season to date.
+    </p>
+    <div class="table-scroll">
+      <table id="season-races">
+        <thead><tr>
+          <th>R</th><th>Grand Prix</th><th>Pole</th><th>Podium</th>
+          <th>DNF</th><th>Forecast</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <!-- Full result for whichever round is selected. Progressive disclosure: the table
+         above is the season at a glance, this is the one race you asked about. -->
+    <div class="race-detail" id="race-detail" hidden></div>
+
+    <div class="grid-2" style="margin-top:26px">
+      <div>
+        <h3 class="sub-h">Drivers</h3>
+        <div class="table-scroll">
+          <table id="season-drivers">
+            <thead><tr>
+              <th>#</th><th>Driver</th><th>Pts</th><th>W</th><th>Pod</th><th>Pole</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-h">Constructors</h3>
+        <div class="table-scroll">
+          <table id="season-constructors">
+            <thead><tr><th>#</th><th>Constructor</th><th>Pts</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="desc" id="season-note" style="margin-top:14px"></p>
   </section>
 
   <!-- ============ PACE ============ -->
@@ -225,18 +284,26 @@
       <li><b>Ten races of in-regulation data.</b> 2026 reset the power units, aerodynamics and car
         dimensions, so pre-2026 pace does not transfer. Wide intervals are thin evidence, not
         hedging.</li>
-      <li><b class="caveat">Retirements are drawn independently.</b> Real races retire cars in
-        clumps — a first-lap pile-up takes three at once. Independent draws make a midfield win
-        need an implausible run of separate failures, so the tail is fatter than it was but still
-        too thin.</li>
+      <li><b>Retirements are drawn independently — and that turns out to be fine.</b> The obvious
+        objection is that real races retire cars in clumps. Tested: 6 of 41 timed retirements fall
+        within a lap of another, against 5.5 expected by chance (sd 3.0), p = 0.52. There is no
+        clustering to model, so the independent draw stands and the correlated version was dropped.</li>
       <li><b>Safety cars are reduced-form.</b> A safety car raises the entropy of the finishing
         order rather than being simulated lap by lap through the pit lane. It is a stand-in for
-        the mechanism, not the mechanism.</li>
-      <li><b>Still no pit strategy.</b> Degradation curves are computed and shown but the forecast
-        does not use them; a race is not yet modelled as a sequence of stints.</li>
-      <li><b class="caveat">The tail is too thin.</b> Win probabilities from the back round below
-        0.1%. Without a safety-car process there is no mechanism by which a midfield car ever wins,
-        which really does happen. Treat anything under ~1% as "no opinion".</li>
+        the mechanism, not the mechanism — and now that a strategy layer exists, the sharpest
+        thing it misses is that a safety car is a half-price pit stop.</li>
+      <li><b class="caveat">Pit strategy is built and does not ship.</b> Each car's minimum-time
+        stop plan is computed from its own measured degradation and the circuit's measured pit
+        loss. Scored out of sample it forecast no better than leaving it out — RPS 0.1028 against
+        0.1026 — so it stays a calibration variant rather than part of the forecast.</li>
+      <li><b class="caveat">The tail is thin.</b> Win probabilities from the back round below 0.1%.
+        The safety-car process gives a midfield car some route to the front, but it is a
+        reduced-form one. Treat anything under ~1% as "no opinion".</li>
+      <li><b class="caveat">Team form is circuit-dependent and the model does not know it.</b> A
+        team's corrected pace varies by circuit far beyond noise (p = 5e-07; adjusted R² 0.860 →
+        0.923). It is the largest unexploited signal here and it is not yet forecastable: every
+        circuit is raced once a season, so each team-circuit pair has one race of evidence and
+        nothing carries across the regulation reset.</li>
       <li><b>The driver/car split is weakly identified.</b> Each team runs two cars, so adding a
         constant to both team-mates and subtracting it from their car changes nothing. Only drivers
         moving between teams break the tie — read the intervals, not the point estimates.</li>
@@ -263,7 +330,8 @@
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script src="assets/app.js?v=12"></script>
-<script type="module" src="assets/hero.js?v=12"></script>
+<script type="module" src="assets/bg.js?v=23"></script>
+<script src="assets/app.js?v=23"></script>
+<script type="module" src="assets/hero.js?v=23"></script>
 </body>
 </html>

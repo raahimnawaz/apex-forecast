@@ -398,13 +398,20 @@ def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
                   steps_ahead: int = 1, n_sim: int = 400, seed: int = 7,
                   grid: list[float] | None = None,
                   likelihood: str = "forward",
-                  circuit: str | None = None) -> tuple[np.ndarray, np.ndarray]:
+                  circuit: str | None = None,
+                  theta_offset: np.ndarray | None = None) -> tuple[np.ndarray, np.ndarray]:
     """Finishing-order probabilities for an upcoming race.
 
     Each posterior draw is pushed `steps_ahead` rounds forward along the constructor
     random walk (so forecast uncertainty grows with distance, as it should), then the
     Plackett-Luce order is sampled exactly via the Gumbel-max trick: adding standard
     Gumbel noise to each theta and sorting yields a draw from the PL distribution.
+
+    `theta_offset` is a per-entry shift applied to every posterior draw, which is how
+    Layer 2a feeds pit strategy in (see `strategy.theta_offsets`). It is added as a
+    constant rather than as a distribution because it is a deterministic consequence of the
+    tyre model, not a separately uncertain quantity — its uncertainty lives upstream in the
+    degradation estimates and is already shrunk there.
 
     Returns (position_probs (n_entries, n_entries), theta_draws (n_draws, n_entries)).
     """
@@ -437,6 +444,9 @@ def predict_order(post: dict, d: StrengthData, entries: list[tuple[str, str]],
         if circuit is not None and "circuit_mult" in post and circuit in d.circuits:
             beta = beta * np.asarray(post["circuit_mult"])[:, d.circuits.index(circuit)]
         theta = theta + beta[:, None] * (adv - adv.mean())[None, :]
+
+    if theta_offset is not None:
+        theta = theta + np.asarray(theta_offset, dtype=float)[None, :]
 
     counts = np.zeros((n, n))
     for _ in range(n_sim):

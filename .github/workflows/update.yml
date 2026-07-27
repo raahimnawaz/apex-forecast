@@ -1,0 +1,96 @@
+# Refresh the model after a race, and forecast the next one.
+#
+# Runs Tuesday 06:00 UTC — after every 2026 race weekend, with enough delay that FastF1's
+# upstream timing data has settled. Also runnable by hand for a specific round.
+#
+# What it does, in order: ingest any new sessions, refit Layers 0 and 1, publish the
+# forecast for the next round, score the race that just ran against the prediction log
+# written *before* it, and commit the result.
+#
+# What it deliberately does not do: apply grid penalties. Those are not in any machine
+# -readable feed this project can reach, so a fully automatic pre-race forecast is built
+# off the qualifying classification and says so. To correct it, add
+# grids/{season}_R{round}.csv and re-run this workflow by hand — see grids/README.md.
+name: update
+
+on:
+  schedule:
+    - cron: "0 6 * * 2"
+  workflow_dispatch:
+    inputs:
+      score_round:
+        description: "Round to score against its prediction log (blank = skip)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"          # 3.14 breaks the scientific stack
+
+      # The accumulated training set. `data/` is gitignored because it is reproducible in
+      # principle, but reproducing it means re-downloading every session of the season from
+      # a volunteer-run API on every run. Restoring it instead means each week only the new
+      # race weekend is fetched and the model trains on the whole season as it grows.
+      #
+      # The key rotates per run and falls back to the newest prior cache, so each run
+      # publishes an updated snapshot rather than pinning the first one forever. Losing
+      # this cache costs time, never correctness: `ingest.py` is idempotent and simply
+      # re-fetches whatever is missing.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            data/cache
+            data/raw
+          key: apex-data-${{ github.run_id }}
+          restore-keys: apex-data-
+
+      - name: Install
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -e ".[dev,model]"
+
+      - name: Verify FastF1 still parses a current session
+        # FastF1 is pinned to a version that predates most of the 2026 season. If upstream
+        # changes shape, fail here with a clear cause rather than silently ingesting junk.
+        run: make spike
+
+      - name: Ingest, refit, publish
+        run: make all
+
+      - name: Score the race that just ran
+        # Only scores where a prediction log written before the race exists; score_race.py
+        # refuses rather than grading a forecast belonging to another round.
+        if: inputs.score_round != ''
+        run: .venv/bin/python scripts/score_race.py --round ${{ inputs.score_round }}
+
+      - name: Test and lint
+        run: make test lint
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # data/ is gitignored and reproducible; only the published payloads, the
+          # write-once prediction log and the reports are worth committing.
+          git add web/data reports || true
+          if git diff --staged --quiet; then
+            echo "nothing changed"
+          else
+            git commit -m "Refresh the model and forecast the next round"
+            git push
+          fi

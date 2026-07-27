@@ -1,7 +1,10 @@
 PY := .venv/bin/python
 SEASON ?= 2026
 
-.PHONY: setup spike data pace strength calibrate web news serve test lint all
+.PHONY: setup spike status data pace strength calibrate web news serve test lint all
+
+status:           ## where the season is and the one thing to do next
+	@$(PY) scripts/status.py --season $(SEASON)
 
 setup:
 	uv venv --python python3.12

@@ -11,7 +11,7 @@ import pandas as pd
 
 from apex import weather as wx
 from apex.history import fetch_season_results
-from apex.paths import PROCESSED, RAW, REPORTS
+from apex.paths import GRIDS, PROCESSED, RAW, REPORTS
 from apex.reliability import fit_reliability, simulate_race
 from apex.strength import build, fit, predict_order
 
@@ -151,18 +151,45 @@ def main() -> int:
     # drivers started somewhere other than where they qualified — Hamilton P2 to P5,
     # Antonelli P4 to P7 — and forecasting off the classification quietly got those
     # wrong. Prefer the real grid whenever it exists.
+    override = GRIDS / f"2026_R{next_round:02d}.csv"
+
     if race_res.exists():
         rr = pd.read_parquet(race_res)
         rr = rr[pd.to_numeric(rr["GridPosition"], errors="coerce").notna()]
         entries = [(r.Abbreviation, r.TeamName) for r in rr.itertuples()]
         grid = pd.to_numeric(rr["GridPosition"]).astype(float).tolist()
         grid_source = f"R{next_round} actual starting grid"
+    elif override.exists() and quali.exists():
+        # Penalties are published on Saturday evening but appear in no machine-readable
+        # feed this project can reach: FastF1 leaves GridPosition empty on a qualifying
+        # session and only fills it in on the race session, which does not exist until the
+        # race has run. So the corrected grid is typed in by hand and read here.
+        q = pd.read_parquet(quali).sort_values("Position")
+        ov = pd.read_csv(override)
+        missing = set(q["Abbreviation"]) - set(ov["driver"])
+        if missing:
+            raise SystemExit(f"{override.name} is missing {sorted(missing)} — a partial "
+                             f"grid would silently mix penalised and unpenalised positions")
+        pos = ov.set_index("driver")["grid"].astype(float)
+        q = q.assign(_g=q["Abbreviation"].map(pos)).sort_values("_g")
+        entries = [(r.Abbreviation, r.TeamName) for r in q.itertuples()]
+        grid = q["_g"].astype(float).tolist()
+        moved = int((q["_g"].to_numpy() != q["Position"].to_numpy()).sum())
+        grid_source = (f"R{next_round} starting grid from {override.name} "
+                       f"({moved} of {len(q)} moved by penalty)")
     elif quali.exists():
         q = pd.read_parquet(quali).sort_values("Position")
         entries = [(r.Abbreviation, r.TeamName) for r in q.itertuples()]
         grid = q["Position"].astype(float).tolist()
         grid_source = (f"R{next_round} qualifying classification "
-                       f"(grid penalties not yet applied)")
+                       f"(grid penalties NOT applied)")
+        # This is the error that cost the round 11 forecast: six drivers started somewhere
+        # other than where they qualified, Hamilton P2 -> P5 and Antonelli P4 -> P7. Across
+        # 2026 it is 16% of entries in 5 of 11 races, and once 20 of 22 cars. Loud, because
+        # the forecast is still perfectly usable and the fix takes two minutes.
+        print("\n  !! WARNING: forecasting off the qualifying classification.")
+        print("     Grid penalties are NOT applied. Historically this moves ~16% of the")
+        print(f"     field. Write {override} with columns driver,grid to correct it.")
 
     circuit = None
     try:

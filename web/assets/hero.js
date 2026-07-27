@@ -5,8 +5,13 @@
  * renders exactly as before.
  */
 
-import { mountSilk } from "./silk.js";
-import { mountLiquidGlass } from "./glass.js";
+// The version query has to be repeated here, not just on the <script> tag in the HTML.
+// A module's imports are fetched as their own requests with their own cache entries, so
+// `hero.js?v=N` busts hero.js alone and leaves silk.js and glass.js served from cache —
+// which is exactly how a rewritten background can appear not to have changed at all.
+// Keep these in step with the ?v= in index.html.
+import { mountSilk } from "./silk.js?v=23";
+import { mountLiquidGlass } from "./glass.js?v=23";
 
 const NS = "http://www.w3.org/2000/svg";
 const mk = (t, a = {}, p = null) => {
@@ -17,7 +22,7 @@ const mk = (t, a = {}, p = null) => {
 };
 
 const silk = document.getElementById("silk");
-if (silk) mountSilk(silk, { seed: 23, curves: 820, alpha: 0.26 });
+if (silk) mountSilk(silk, { seed: 23 });
 
 /* The trace: Norris's actual pole lap, brightness carrying real speed. Rotated so the
    portrait-shaped circuit fills a landscape frame, and shifted right so the glass card

@@ -61,6 +61,14 @@
 
 * { box-sizing: border-box; }
 
+html {
+  /* Anchor jumps from the top nav glide instead of teleporting. Wheel and trackpad are
+     deliberately left to the OS — hijacking those breaks scrollbars, find-in-page and
+     keyboard paging, and the field's own easing already supplies the sense of flow. */
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 body {
   margin: 0;
   background: var(--plane);
@@ -70,14 +78,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 24px 96px; }
+/* The page-wide flow field. Fixed rather than absolute, so it drifts behind the content
+   under its own easing instead of scrolling with it. Negative z-index keeps it beneath
+   everything without needing a stacking context on .wrap. */
+#silk-bg {
+  position: fixed; inset: 0; z-index: -1;
+  width: 100%; height: 100%; display: block;
+  pointer-events: none;
+}
+
+/* A scrim over the sheet, not under it. The sheen bands are brightest where they are
+   least wanted — behind the masthead and the footer, which are text on open background
+   with no card to sit on. This darkens the top and bottom just enough that type always
+   has stable ground, while the middle of the viewport keeps the material at full
+   strength. Sits above the canvas and below the content. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--plane) 0%, rgba(8,8,10,.72) 5%, transparent 15%,
+                    transparent 85%, rgba(8,8,10,.80) 96%, var(--plane) 100%);
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 24px 96px; position: relative; }
 
 /* ---------- masthead ---------- */
 
 .masthead {
   display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
-  padding-bottom: 16px; margin-bottom: 22px;
-  border-bottom: 1px solid var(--hairline);
+  padding: 14px 18px 13px; margin-bottom: 22px;
+  border: 1px solid var(--hairline);
+  /* The masthead is the one block of text with no card under it, so on a lit field its
+     ink fell to 3.6:1 against the brightest strand — under the 4.5:1 floor for body text.
+     A gradient scrim heavy enough to fix that would have had to be ~90% opaque and would
+     have erased the silk across the whole top of the page. Giving the masthead its own
+     glass surface fixes the contrast locally, costs the field nothing elsewhere, and is
+     the same material the cards already use. */
+  /* 0.94, not 0.90: at 0.90 the muted nav ink still measured 4.2:1 against a worst-case
+     fully-lit strand sitting directly behind it. This clears 4.5:1 even in that bound,
+     which the backdrop blur means never actually occurs. */
+  background: color-mix(in srgb, var(--surface-1) 94%, transparent);
+  backdrop-filter: blur(16px) saturate(125%);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  border-radius: var(--r);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .masthead { background: var(--surface-1); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 .mark { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
 .mark span { color: var(--series-1); }
@@ -183,8 +228,29 @@ body {
 /* ---------- cards ---------- */
 
 .card {
-  background: var(--surface-1); border: 1px solid var(--hairline);
+  /* A lighter glass than the hero's: translucent, blurred, with a lit top edge. The hero
+     gets true refraction because it is one panel and can afford an SVG displacement pass;
+     ten cards cannot, so these take the frosted half of the same material. Held at 0.86
+     — the field behind is near-black, so this costs little contrast, and anything lower
+     starts to compete with the numbers. */
+  position: relative;
+  background: color-mix(in srgb, var(--surface-1) 86%, transparent);
+  backdrop-filter: blur(14px) saturate(128%);
+  -webkit-backdrop-filter: blur(14px) saturate(128%);
+  border: 1px solid var(--hairline);
+  border-top-color: color-mix(in srgb, var(--trim-hi) 60%, transparent);
   border-radius: var(--r); padding: 20px 22px 18px; margin-bottom: var(--gap);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 18px 44px rgba(0,0,0,.34);
+}
+/* The specular run along the top edge — the one detail that makes a panel read as glass
+   rather than as a translucent rectangle. Narrower and dimmer than the hero's. */
+.card::after {
+  content: ""; position: absolute; left: 14%; right: 14%; top: 0; height: 1px;
+  border-radius: 1px; pointer-events: none; opacity: .34;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .card { background: var(--surface-1); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 .card h2 { font-size: 16px; font-weight: 600; margin: 0; letter-spacing: -.01em; }
 .card .desc { color: var(--ink-2); font-size: 13px; margin: 6px 0 16px; max-width: 78ch; }
@@ -258,6 +324,95 @@ tbody tr:hover td { background: var(--surface-2); }
 tr.is-best td { color: var(--ink); }
 tr.is-best td:first-child { font-weight: 600; }
 td.win { color: var(--status-good); }
+
+/* Season table: the podium cell holds three driver chips, so it needs to lay out inline
+   rather than inherit the plain right-aligned numeric cell. */
+td.podium { display: flex; align-items: center; gap: 6px; }
+/* The flex cell lays its chips out from the left, so its header has to follow it there —
+   inherited right-alignment would leave "Podium" floating over the next column. */
+#season-races th:nth-child(4) { text-align: left; }
+td.podium .chip { margin-right: -2px; }
+.hit { color: var(--status-good); }
+#season-races small { color: var(--ink-muted); font-size: 10.5px; }
+
+/* ---------- post-race scorecard ---------- */
+
+.postrace {
+  margin-top: 18px; padding: 15px 17px 12px;
+  background: var(--surface-2); border: 1px solid var(--hairline);
+  border-left: 2px solid var(--series-1); border-radius: 12px;
+}
+.postrace .pr-head { font-size: 13.5px; margin-bottom: 5px; }
+.postrace .pr-lede { color: var(--ink-2); font-size: 13px; margin: 0 0 13px; max-width: 78ch; }
+.postrace .pr-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+}
+.postrace .pr-k { color: var(--ink-muted); font-size: 11px; }
+.postrace .pr-v {
+  font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px;
+}
+.postrace .pr-b { color: var(--ink-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.postrace .pr-foot { color: var(--ink-muted); font-size: 11.5px; margin: 12px 0 0; }
+@media (max-width: 620px) { .postrace .pr-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- contenders: the answer, before the evidence ---------- */
+
+.contenders {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 14px;
+}
+.contender {
+  position: relative; overflow: hidden;
+  background: var(--surface-2); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 13px 15px 12px;
+}
+/* Probability as a filled bar behind the number, so the three tiles are comparable at a
+   glance without reading digits. Width is the probability; that is the whole encoding. */
+.contender .fill { position: absolute; inset: 0 auto 0 0; opacity: .16; pointer-events: none; }
+.contender .who { display: flex; align-items: center; gap: 7px; font-weight: 600; }
+.contender .team { color: var(--ink-muted); font-size: 11.5px; margin-top: 2px; }
+.contender .p {
+  font-size: 27px; font-weight: 600; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums; margin-top: 7px; line-height: 1;
+}
+.contender .sub { color: var(--ink-2); font-size: 11.5px; margin-top: 4px; }
+.contender.lead { border-color: var(--trim-hi); }
+
+.openness { color: var(--ink-2); font-size: 13px; margin: 0 0 4px; max-width: 78ch; }
+
+details.more { margin-top: 12px; }
+details.more > summary {
+  cursor: pointer; color: var(--ink-2); font-size: 12.5px; list-style: none;
+  padding: 7px 0; user-select: none;
+}
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::before { content: "▸ "; color: var(--ink-muted); }
+details.more[open] > summary::before { content: "▾ "; }
+details.more > summary:hover { color: var(--ink); }
+
+/* ---------- one race, opened ---------- */
+
+#season-races tbody tr { cursor: pointer; }
+#season-races tbody tr.sel td { background: var(--surface-2); color: var(--ink); }
+
+.race-detail {
+  margin-top: 16px; padding: 16px 18px 8px;
+  background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 12px;
+}
+.race-detail .rd-head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.race-detail .rd-head b { font-size: 15px; }
+.race-detail .rd-meta { color: var(--ink-2); font-size: 12.5px; }
+.race-detail .rd-close {
+  margin-left: auto; background: none; border: 0; cursor: pointer;
+  color: var(--ink-muted); font-size: 12.5px; padding: 2px 6px;
+}
+.race-detail .rd-close:hover { color: var(--ink); }
+.race-detail tr.dnf td { color: var(--ink-muted); }
+.gain { color: var(--status-good); }
+.loss { color: var(--div-warm); }
+
+@media (max-width: 720px) { .contenders { grid-template-columns: 1fr; } }
 
 /* ---------- team chips + detail ---------- */
 

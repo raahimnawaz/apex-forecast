@@ -8,8 +8,10 @@ Jolpica/FastF1 out of the request path.
 from __future__ import annotations
 
 import argparse
+import glob
 import json
 import math
+import re
 from datetime import UTC, datetime
 
 import fastf1
@@ -134,6 +136,7 @@ def main() -> int:
     print(f"  laps modelled: {payload['totals']['laps_modelled']:,}")
 
     export_strength(season, colors)
+    export_season(season)
     export_teams(season)
     return 0
 
@@ -243,6 +246,196 @@ def export_strength(season: int, colors: dict) -> None:
     print(f"wrote {out}  ({out.stat().st_size / 1024:.0f} KB)")
     print(f"  constructor share {100 * diag['constructor_share']:.1f}% · "
           f"R-hat {diag['worst_rhat']} · Layer-0 rho {diag['layer0_spearman']}")
+    _append_prediction_log(season, payload, diag)
+
+
+def _append_prediction_log(season: int, payload: dict, diag: dict) -> None:
+    """Write this forecast to an immutable per-round file, if one is not already there.
+
+    `strength_{season}.json` always holds the *next* race, so it is overwritten on every
+    build. That makes it useless as a record: scoring round 11 after the round 12 build has
+    run silently grades the wrong forecast and reports plausible numbers for it. This is the
+    prediction log `PLAN.md` calls the credibility feature — one file per round, written
+    once and never rewritten, so a published forecast can still be checked months later.
+
+    **Never overwritten by design.** A forecast that could be revised after the race is not
+    evidence of anything, so a second build for the same round leaves the first file alone
+    and says so. Delete the file by hand if a genuine re-publish is intended.
+    """
+    rnd = diag.get("forecast_round")
+    if rnd is None or (isinstance(rnd, float) and not math.isfinite(rnd)):
+        print("  no forecast round recorded — prediction log not written")
+        return
+
+    log_dir = WEB_DATA / "predictions"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    path = log_dir / f"{season}_R{int(rnd):02d}.json"
+    if path.exists():
+        print(f"  prediction log already exists for R{int(rnd)} — left untouched")
+        return
+
+    # Only what is needed to score the forecast later, so the log stays small enough to
+    # commit for every round of a season.
+    entry = {
+        "schema_version": 1,
+        "season": season,
+        "round": int(rnd),
+        "generated_utc": payload["generated_utc"],
+        "circuit": diag.get("circuit"),
+        "grid_source": diag.get("grid_source"),
+        "likelihood": diag.get("likelihood"),
+        "forecast": payload["forecast"],
+        "position_matrix": payload["position_matrix"],
+        "weather": payload.get("weather"),
+    }
+    path.write_text(json.dumps(entry, indent=1))
+    print(f"  prediction log: {path.name}  (grid: {diag.get('grid_source')})")
+
+
+def export_season(season: int) -> None:
+    """Year so far: every race run, the podium, and both championship tables.
+
+    Straight results, no model output. The dashboard is otherwise wall-to-wall inference,
+    and a reader who wants to know what has actually happened this season should not have
+    to infer it from a forecast. It doubles as the check on everything else: if the
+    standings here disagree with the strength model's ordering, one of them is wrong.
+
+    Where a forecast was published for a race, its scored result is attached from the
+    prediction log, so the track record sits next to the results rather than in a report
+    nobody opens.
+    """
+    files = sorted(glob.glob(str(RAW / f"results_{season}_R*_R.parquet")))
+    if not files:
+        print("no race results to export")
+        return
+    res = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+    res["Position"] = pd.to_numeric(res["Position"], errors="coerce")
+    res["Points"] = pd.to_numeric(res["Points"], errors="coerce").fillna(0.0)
+    res["GridPosition"] = pd.to_numeric(res["GridPosition"], errors="coerce")
+    res["classified"] = res["ClassifiedPosition"].astype(str).str.isdigit()
+
+    sfiles = sorted(glob.glob(str(RAW / f"results_{season}_R*_S.parquet")))
+    sprints = (pd.concat([pd.read_parquet(f) for f in sfiles], ignore_index=True)
+               if sfiles else pd.DataFrame())
+    if not sprints.empty:
+        sprints["Points"] = pd.to_numeric(sprints["Points"], errors="coerce").fillna(0.0)
+
+    scored = {}
+    for p in sorted((WEB_DATA / "predictions").glob(f"{season}_R*.json")) \
+            if (WEB_DATA / "predictions").exists() else []:
+        try:
+            log = json.loads(p.read_text())
+        except (OSError, ValueError):
+            continue
+        fc = {f["driver"]: f for f in log.get("forecast", [])}
+        rnd = int(log["round"])
+        got = res[(res["round"] == rnd) & (res["Position"] == 1)]
+        if got.empty or not fc:
+            continue
+        winner = str(got["Abbreviation"].iloc[0])
+        fav = max(fc.values(), key=lambda f: f.get("p_win") or 0.0)
+        scored[rnd] = {
+            "favourite": fav["driver"],
+            "p_win": round(float(fav.get("p_win") or 0.0), 4),
+            "hit": fav["driver"] == winner,
+            "p_win_of_actual_winner": round(float((fc.get(winner) or {}).get("p_win") or 0.0), 4),
+            "grid_source": log.get("grid_source"),
+        }
+
+    races = []
+    for (rnd, event), g in res.groupby(["round", "event"], sort=True):
+        g = g.sort_values("Position")
+        podium = [{"pos": int(r.Position), "driver": r.Abbreviation, "team": r.TeamName}
+                  for r in g[g["Position"] <= 3].itertuples()]
+        pole = g[g["GridPosition"] == 1]
+        # Full classification, so any past round can be opened rather than showing only its
+        # podium. Twenty-two rows a race is small enough to ship in the same payload.
+        results = [{
+            "pos": None if pd.isna(r.Position) else int(r.Position),
+            "driver": r.Abbreviation, "team": r.TeamName,
+            "grid": None if pd.isna(r.GridPosition) else int(r.GridPosition),
+            "points": float(r.Points),
+            "status": str(r.Status),
+            "classified": bool(r.classified),
+        } for r in g.itertuples()]
+
+        races.append({
+            "round": int(rnd),
+            "event": event,
+            "podium": podium,
+            "pole": str(pole["Abbreviation"].iloc[0]) if not pole.empty else None,
+            "retirements": int((~g["classified"]).sum()),
+            "entries": len(g),
+            "sprint": bool(not sprints.empty and (sprints["round"] == rnd).any()),
+            "forecast": scored.get(int(rnd)),
+            "results": results,
+        })
+
+    all_pts = pd.concat([res[["Abbreviation", "TeamName", "Points"]],
+                         sprints[["Abbreviation", "TeamName", "Points"]]
+                         if not sprints.empty else pd.DataFrame()], ignore_index=True)
+
+    wins = res[res["Position"] == 1]["Abbreviation"].value_counts()
+    poles = res[res["GridPosition"] == 1]["Abbreviation"].value_counts()
+    pods = res[res["Position"] <= 3]["Abbreviation"].value_counts()
+    drv = (all_pts.groupby(["Abbreviation", "TeamName"], as_index=False)["Points"].sum()
+                  .sort_values("Points", ascending=False))
+    drivers = [{"driver": r.Abbreviation, "team": r.TeamName, "points": float(r.Points),
+                "wins": int(wins.get(r.Abbreviation, 0)),
+                "podiums": int(pods.get(r.Abbreviation, 0)),
+                "poles": int(poles.get(r.Abbreviation, 0))}
+               for r in drv.itertuples()]
+
+    con = (all_pts.groupby("TeamName", as_index=False)["Points"].sum()
+                  .sort_values("Points", ascending=False))
+    constructors = [{"team": r.TeamName, "points": float(r.Points)} for r in con.itertuples()]
+
+    # --- how the most recently scored forecast actually did --------------------------
+    # `score_race.py` writes these but nothing ever read them back, so the one test that
+    # cannot be gamed lived only in a CSV. It belongs on the page.
+    last_scored = None
+    score_files = sorted(glob.glob(str(REPORTS / f"race_score_{season}_R*.csv")))
+    if score_files:
+        m = re.search(rf"race_score_{season}_R(\d+)\.csv", score_files[-1])
+        rnd = int(m.group(1)) if m else None
+        try:
+            sc = pd.read_csv(score_files[-1])
+        except OSError:
+            sc = pd.DataFrame()
+        if rnd is not None and not sc.empty:
+            ev = next((r["event"] for r in races if r["round"] == rnd), f"Round {rnd}")
+            def _row(scope, model):
+                q = sc[(sc["scored"] == scope) & (sc["model"] == model)]
+                return None if q.empty else q.iloc[0].to_dict()
+            fc_full = _row("full field", "published forecast")
+            bl_full = _row("full field", "baseline: actual grid")
+            last_scored = {
+                "round": rnd, "event": ev,
+                "forecast": clean([fc_full])[0] if fc_full else None,
+                "baseline": clean([bl_full])[0] if bl_full else None,
+                "beat_baseline": bool(fc_full and bl_full and fc_full["rps"] < bl_full["rps"]),
+                "call": scored.get(rnd),
+            }
+
+    hits = [v for v in scored.values()]
+    payload = {
+        "schema_version": 1,
+        "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "season": season,
+        "rounds_complete": int(res["round"].nunique()),
+        "races": races,
+        "drivers": drivers,
+        "constructors": constructors,
+        "track_record": {
+            "scored": len(hits),
+            "winner_called": sum(1 for h in hits if h["hit"]),
+        },
+        "last_scored": last_scored,
+    }
+    out = WEB_DATA / f"season_{season}.json"
+    out.write_text(json.dumps(payload, indent=1))
+    print(f"wrote {out}  ({len(races)} races, {len(drivers)} drivers, "
+          f"{len(hits)} scored forecasts)")
 
 
 def export_teams(season: int) -> None:

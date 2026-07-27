@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>apex-forecast — method</title>
 <meta name="description" content="How the apex-forecast Formula 1 model works: pace deconvolution, rank-ordered logit, the attrition likelihood, and out-of-sample calibration.">
-<link rel="stylesheet" href="assets/style.css?v=12">
+<link rel="stylesheet" href="assets/style.css?v=23">
 </head>
 <body>
+<canvas id="silk-bg" aria-hidden="true"></canvas>
 <div class="wrap">
 
   <div class="masthead">
@@ -200,6 +201,16 @@
       <li>Mollica, C. &amp; Tardella, L. (2017). Bayesian Plackett–Luce Mixture Models for Partially
         Ranked Data. <em>Psychometrika</em> 82, 442–458.
         <a href="https://arxiv.org/abs/1501.03519">arXiv</a></li>
+      <li>Bekker, J. &amp; Lotz, W. (2009). Planning Formula One race strategies using
+        discrete-event simulation. <em>Journal of the Operational Research Society</em> 60(7),
+        952–961. Source of the pit strategy formulation — built and measured, not shipped.</li>
+      <li>Heilmeier, A., Graf, M. &amp; Lienkamp, M. (2018). A Race Simulation for Strategy
+        Decisions in Circuit Motorsports. <em>IEEE ITSC</em>, 2986–2993. Source of the lap-time
+        decomposition the strategy optimiser minimises.</li>
+      <li>Heilmeier, A., Graf, M., Betz, J. &amp; Lienkamp, M. (2020). Application of Monte Carlo
+        Methods to Consider Probabilistic Effects in a Race Simulation for Circuit Motorsport.
+        <em>Applied Sciences</em> 10(12), 4229. Source of the retirement and full-course-yellow
+        processes.</li>
       <li>Data: <a href="https://docs.fastf1.dev/">FastF1</a> ·
         <a href="https://github.com/jolpica/jolpica-f1">Jolpica-F1</a></li>
       <li>Hero artwork: flow-field method after
@@ -216,5 +227,6 @@
     <a href="index.html">← back to the dashboard</a>
   </footer>
 </div>
+<script type="module" src="assets/bg.js?v=23"></script>
 </body>
 </html>

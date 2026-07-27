@@ -13,5 +13,11 @@ REPORTS = ROOT / "reports"
 WEB = ROOT / "web"
 WEB_DATA = WEB / "data"
 
-for _p in (CACHE, RAW, PROCESSED, REPORTS, WEB_DATA):
+# Hand-entered starting grids, and the one data directory that is *not* under `data/`.
+# Everything in `data/` is gitignored because it can be rebuilt from FastF1 and Jolpica;
+# a grid corrected for penalties cannot be, because no upstream source publishes it before
+# the race. It is typed in from the stewards' decisions, so it is source, not cache.
+GRIDS = ROOT / "grids"
+
+for _p in (CACHE, RAW, PROCESSED, REPORTS, WEB_DATA, GRIDS):
     _p.mkdir(parents=True, exist_ok=True)
