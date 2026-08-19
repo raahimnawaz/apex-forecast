@@ -1,21 +1,35 @@
 # Refresh the model after a race, and forecast the next one.
 #
-# Runs Tuesday 06:00 UTC — after every 2026 race weekend, with enough delay that FastF1's
-# upstream timing data has settled. Also runnable by hand for a specific round.
+# This does NOT run on a schedule, and the reason is measured rather than assumed.
+# FastF1 reads race data from livetiming.formula1.com, which answers 403 to datacenter
+# IP ranges. FastF1 then falls back to its mirror, which does not carry archived
+# sessions and answers 404. Probed 2026-08-19 against the R11 race feed:
 #
-# What it does, in order: ingest any new sessions, refit Layers 0 and 1, publish the
-# forecast for the next round, score the race that just ran against the prediction log
-# written *before* it, and commit the result.
+#   from a GitHub-hosted runner   primary 403   mirror 404
+#   from a residential connection primary 200 (7.2 MB)   mirror 404
+#
+# Same pin, same session, same code. So no retry, no cache key and no version bump makes
+# a hosted runner able to ingest a race weekend. Four consecutive Tuesday runs failed
+# this way before the schedule was removed; the cache never helped because actions/cache
+# is post-if:success(), so a job that fails never seeds the cache it needed to succeed.
+#
+# The refresh therefore runs locally, where the feed is readable:
+#
+#   make all                          # ingest, refit Layers 0/1, publish, refresh news
+#   python scripts/score_race.py --round N   # grade the round against its prediction log
+#   git add web/data reports && git commit
+#
+# This workflow is kept for a runner that can reach live timing (self-hosted, or a local
+# act run). On a hosted runner the spike reports exit 2 and it stops cleanly instead of
+# going red for a reason that is not a defect in this project.
 #
 # What it deliberately does not do: apply grid penalties. Those are not in any machine
 # -readable feed this project can reach, so a fully automatic pre-race forecast is built
 # off the qualifying classification and says so. To correct it, add
-# grids/{season}_R{round}.csv and re-run this workflow by hand — see grids/README.md.
+# grids/{season}_R{round}.csv and re-run — see grids/README.md.
 name: update
 
 on:
-  schedule:
-    - cron: "0 6 * * 2"
   workflow_dispatch:
     inputs:
       score_round:
@@ -42,14 +56,12 @@ jobs:
           python-version: "3.12"          # 3.14 breaks the scientific stack
 
       # The accumulated training set. `data/` is gitignored because it is reproducible in
-      # principle, but reproducing it means re-downloading every session of the season from
-      # a volunteer-run API on every run. Restoring it instead means each week only the new
-      # race weekend is fetched and the model trains on the whole season as it grows.
+      # principle, but reproducing it means re-downloading every session of the season on
+      # every run. Restoring it instead means only the new race weekend is fetched.
       #
-      # The key rotates per run and falls back to the newest prior cache, so each run
-      # publishes an updated snapshot rather than pinning the first one forever. Losing
-      # this cache costs time, never correctness: `ingest.py` is idempotent and simply
-      # re-fetches whatever is missing.
+      # Note this can only ever help on a runner that can read live timing at all: the
+      # save step is post-if:success(), so a run that dies at the spike leaves no cache
+      # behind for the next one.
       - uses: actions/cache@v4
         with:
           path: |
@@ -64,24 +76,42 @@ jobs:
           .venv/bin/pip install --upgrade pip
           .venv/bin/pip install -e ".[dev,model]"
 
+      # Three outcomes, kept distinct on purpose:
+      #   0  the feed parses -> refresh
+      #   2  no host will serve this runner -> stop, cleanly, this is not a defect
+      #   1  a host served data that does not parse -> schema drift, fail loudly
       - name: Verify FastF1 still parses a current session
-        # FastF1 is pinned to a version that predates most of the 2026 season. If upstream
-        # changes shape, fail here with a clear cause rather than silently ingesting junk.
-        run: make spike
+        id: spike
+        run: |
+          set +e
+          make spike
+          code=$?
+          set -e
+          if [ "$code" = "0" ]; then
+            echo "usable=true" >> "$GITHUB_OUTPUT"
+          elif [ "$code" = "2" ]; then
+            echo "usable=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Refresh skipped::Live timing refuses this runner (403). Run 'make all' locally."
+          else
+            exit $code
+          fi
 
       - name: Ingest, refit, publish
+        if: steps.spike.outputs.usable == 'true'
         run: make all
 
       - name: Score the race that just ran
         # Only scores where a prediction log written before the race exists; score_race.py
         # refuses rather than grading a forecast belonging to another round.
-        if: inputs.score_round != ''
+        if: steps.spike.outputs.usable == 'true' && inputs.score_round != ''
         run: .venv/bin/python scripts/score_race.py --round ${{ inputs.score_round }}
 
+      # Needs no network, so it runs either way and the dispatch is never wasted.
       - name: Test and lint
         run: make test lint
 
       - name: Commit
+        if: steps.spike.outputs.usable == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
