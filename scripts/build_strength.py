@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 
 from apex import weather as wx
+from apex.championship import FAN_QUANTILES, project_championship
 from apex.history import fetch_season_results
 from apex.paths import GRIDS, PROCESSED, RAW, REPORTS
 from apex.reliability import fit_reliability, simulate_race
@@ -31,6 +32,39 @@ def load_2026_sprints() -> pd.DataFrame:
     files = sorted(glob.glob(str(RAW / "results_2026_R*_S.parquet")))
     return (pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
             if files else pd.DataFrame())
+
+
+def remaining_rounds(season: int, from_round: int) -> list[tuple[int, bool]]:
+    """[(round, is_sprint), ...] for every round still to run, in order.
+
+    The sprint flag comes from the schedule's EventFormat rather than from a hardcoded
+    list, because it decides how many points are still on the table: 2026 runs six sprint
+    weekends and two of them are still to come, worth 16 points on top of the 300.
+    """
+    import fastf1
+
+    from apex.paths import CACHE
+    fastf1.Cache.enable_cache(str(CACHE))
+    sched = fastf1.get_event_schedule(season, include_testing=False)
+    rows = sched[sched["RoundNumber"] >= from_round].sort_values("RoundNumber")
+    return [(int(r["RoundNumber"]),
+             "sprint" in str(r["EventFormat"]).lower()) for _, r in rows.iterrows()]
+
+
+def season_points(r26: pd.DataFrame, sprints: pd.DataFrame) -> tuple[dict, dict]:
+    """Driver and constructor points so far, sprints included.
+
+    Kept separate rather than summed one from the other: 24 drivers have held 22 seats
+    this season, so a driver's points follow the driver while the constructor points they
+    earned stay with the team that earned them.
+    """
+    frames = [r26[["Abbreviation", "TeamName", "Points"]]]
+    if not sprints.empty:
+        frames.append(sprints[["Abbreviation", "TeamName", "Points"]])
+    allp = pd.concat(frames, ignore_index=True)
+    allp["Points"] = pd.to_numeric(allp["Points"], errors="coerce").fillna(0.0)
+    return (allp.groupby("Abbreviation")["Points"].sum().to_dict(),
+            allp.groupby("TeamName")["Points"].sum().to_dict())
 
 
 def main() -> int:
@@ -253,6 +287,63 @@ def main() -> int:
 
     probs = simulate_race(theta / wmult, p_dnf, sc, likelihood=LIKELIHOOD)
     print(f"\nsimulated: per-car retirement risk + safety car at {100 * sc:.0f}%")
+
+    # --- championship projection (PLAN.md section 3, view 5) --------------------------
+    # Deliberately off the *grid-free* posterior and without the circuit or weather terms:
+    # none of qualifying, circuit or weather is known for December, and a projection that
+    # borrowed this weekend's values for all twelve rounds would be a different claim than
+    # the one it appears to make. See src/apex/championship.py.
+    champ = None
+    try:
+        remaining = remaining_rounds(2026, next_round)
+        drv_pts, team_pts = season_points(r26, sprints)
+        _, theta_free = predict_order(post, d, entries, grid=None,
+                                      likelihood=LIKELIHOOD, circuit=None)
+        champ = project_championship(
+            theta_free, p_dnf, rel.sc_rate, entries,
+            np.array([float(drv_pts.get(c, 0.0)) for c, _ in entries]),
+            remaining, team_points_now=team_pts, likelihood=LIKELIHOOD)
+        n_sp = sum(1 for _, sp in remaining if sp)
+        print(f"\n=== championship: {len(remaining)} rounds left "
+              f"({n_sp} sprints), {champ.n_sim} seasons simulated ===")
+        lead = np.argsort(-champ.title_prob)[:5]
+        print(pd.DataFrame({
+            "driver": [champ.drivers[i] for i in lead],
+            "points": [champ.points_now[i] for i in lead],
+            "title%": [round(100 * champ.title_prob[i], 1) for i in lead],
+            "exp_final": [round(champ.exp_points[i]) for i in lead],
+        }).to_string(index=False))
+        print(f"  still mathematically possible: {int(champ.still_possible.sum())} "
+              f"of {len(entries)}")
+
+        import json as _cj
+        order = np.argsort(-champ.title_prob)
+        (PROCESSED / "championship.json").write_text(_cj.dumps({
+            "rounds": champ.rounds,
+            "n_sim": champ.n_sim,
+            "quantiles": list(FAN_QUANTILES),
+            "sprints_remaining": n_sp,
+            "drivers": [{
+                "driver": champ.drivers[i], "team": champ.teams[i],
+                "points_now": round(float(champ.points_now[i]), 1),
+                "title_prob": round(float(champ.title_prob[i]), 5),
+                "exp_points": round(float(champ.exp_points[i]), 1),
+                "still_possible": bool(champ.still_possible[i]),
+                # The fan is only carried for drivers who can still win it; for anyone
+                # else it is a band around a number the page does not plot.
+                "fan": ([[round(float(v), 1) for v in champ.fan[q, :, i]]
+                         for q in range(len(FAN_QUANTILES))]
+                        if champ.still_possible[i] else None),
+            } for i in order],
+            "constructors": [{
+                "team": champ.team_names[j],
+                "points_now": round(float(champ.team_points_now[j]), 1),
+                "title_prob": round(float(champ.team_title_prob[j]), 5),
+                "exp_points": round(float(champ.team_exp_points[j]), 1),
+            } for j in np.argsort(-champ.team_title_prob)],
+        }))
+    except Exception as exc:  # noqa: BLE001 - a schedule lookup must not stop the build
+        print(f"\nchampionship projection skipped ({type(exc).__name__}: {exc})")
 
     fc = pd.DataFrame({
         "driver": [e[0] for e in entries],

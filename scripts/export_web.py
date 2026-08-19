@@ -240,6 +240,10 @@ def export_strength(season: int, colors: dict) -> None:
         "weather": json.loads((PROCESSED / "weather_next.json").read_text())
                    if (PROCESSED / "weather_next.json").exists() else None,
         "calibration": calibration_payload(),
+        # Absent rather than empty when build_strength could not reach the schedule, so
+        # the page can tell "no projection" from "a projection saying nothing".
+        "championship": json.loads((PROCESSED / "championship.json").read_text())
+                        if (PROCESSED / "championship.json").exists() else None,
     }
     out = WEB_DATA / f"strength_{season}.json"
     out.write_text(json.dumps(payload, indent=1))

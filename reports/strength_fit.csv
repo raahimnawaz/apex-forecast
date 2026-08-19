@@ -1,2 +1,2 @@
 n_races,n_2025,n_2026,n_drivers,n_constructors,shared_drivers,constructor_share,sigma_skill,sigma_delta,sigma_walk,worst_rhat,layer0_spearman,top_m,likelihood,forecast_round,grid_source,beta_grid,circuit,circuit_mult,sc_rate,vsc_rate,grid_mean_dnf,weather_multiplier,n_sprints,beta_grid_lo,beta_grid_hi
-39,24,15,24,11,19,0.9279,0.8289931416511536,0.25445252656936646,0.4097665846347809,1.0029,0.9636,10,attrition,12,none,,Dutch Grand Prix,,0.5455,0.6364,0.1308,1.2,4,,
+39,24,15,24,11,19,0.9279,0.8289931416511536,0.25445252656936646,0.4097665846347809,1.0029,0.9636,10,attrition,12,none,,Dutch Grand Prix,,0.5455,0.6364,0.1308,1.344,4,,
