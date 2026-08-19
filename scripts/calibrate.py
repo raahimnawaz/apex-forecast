@@ -155,7 +155,11 @@ def strategy_theta(laps: pd.DataFrame, r26: pd.DataFrame, rnd: int, event: str,
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-round", type=int, default=5)
-    ap.add_argument("--to-round", type=int, default=10)
+    ap.add_argument("--to-round", type=int, default=None,
+                    help="last round to evaluate. Defaults to the newest round with "
+                         "race results on disk, so the sample grows as the season "
+                         "runs instead of staying frozen at whatever was current "
+                         "when this default was written.")
     ap.add_argument("--warmup", type=int, default=400)
     ap.add_argument("--samples", type=int, default=400)
     ap.add_argument("--chains", type=int, default=2)
@@ -170,6 +174,14 @@ def main() -> int:
     sfiles = sorted(glob.glob(str(RAW / "results_2026_R*_S.parquet")))
     sprints_all = (pd.concat([pd.read_parquet(f) for f in sfiles], ignore_index=True)
                    if sfiles else pd.DataFrame())
+
+    # A hardcoded end round silently stops the sample growing: every later race is
+    # ingested, scored and published, but never enters the backtest that decides whether
+    # the model is any good. The published 7-race summary was produced by passing
+    # --to-round by hand, which a plain `make calibrate` then could not reproduce.
+    if args.to_round is None:
+        args.to_round = int(r26["round"].max())
+        print(f"evaluating through round {args.to_round} (newest with results on disk)")
 
     wanted = {x.strip() for x in args.variants.split(",")} if args.variants != "all" else None
 
