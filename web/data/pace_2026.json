@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-07-26T18:19:46Z",
+ "generated_utc": "2026-08-19T04:58:27Z",
  "season": 2026,
  "rounds_analysed": [
   1,
@@ -16,13 +16,13 @@
   11
  ],
  "next_event": {
-  "round": 11,
-  "name": "Hungarian Grand Prix",
-  "location": "Budapest",
-  "country": "Hungary",
-  "date": "2026-07-26",
-  "format": "conventional",
-  "total_rounds": 22
+  "round": 12,
+  "name": "Dutch Grand Prix",
+  "location": "Zandvoort",
+  "country": "Netherlands",
+  "date": "2026-08-23",
+  "format": "sprint_qualifying",
+  "total_rounds": 23
  },
  "team_colors": {
   "Alpine": "#0093cc",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-07-26T18:19:46Z",
+ "generated_utc": "2026-08-19T04:58:27Z",
  "season": 2026,
  "teams": [
   {
@@ -18,8 +18,8 @@
    "avg_grid": 2.55,
    "pace_s": -1.5915,
    "pace_delta_s": 0.1933,
-   "strength": 3.148,
-   "development": -0.5249,
+   "strength": 3.1361,
+   "development": -0.5503,
    "drivers": [
     {
      "code": "ANT",
@@ -32,7 +32,7 @@
      "dnf": 0,
      "avg_grid": 2.18,
      "pace_s": -1.7081,
-     "skill": 0.3796
+     "skill": 0.3789
     },
     {
      "code": "RUS",
@@ -45,7 +45,7 @@
      "dnf": 2,
      "avg_grid": 2.91,
      "pace_s": -1.4633,
-     "skill": 0.6698
+     "skill": 0.6721
     }
    ],
    "championship_position": 1
@@ -65,8 +65,8 @@
    "avg_grid": 4.32,
    "pace_s": -1.328,
    "pace_delta_s": -0.2047,
-   "strength": 2.7464,
-   "development": 0.2463,
+   "strength": 2.7542,
+   "development": 0.2459,
    "drivers": [
     {
      "code": "HAM",
@@ -79,7 +79,7 @@
      "dnf": 0,
      "avg_grid": 4.36,
      "pace_s": -1.3316,
-     "skill": 0.2095
+     "skill": 0.1997
     },
     {
      "code": "LEC",
@@ -92,7 +92,7 @@
      "dnf": 1,
      "avg_grid": 4.27,
      "pace_s": -1.3244,
-     "skill": 0.6452
+     "skill": 0.6508
     }
    ],
    "championship_position": 2
@@ -112,8 +112,8 @@
    "avg_grid": 5.64,
    "pace_s": -1.2129,
    "pace_delta_s": -0.0678,
-   "strength": 2.3097,
-   "development": 0.325,
+   "strength": 2.3069,
+   "development": 0.3363,
    "drivers": [
     {
      "code": "NOR",
@@ -126,7 +126,7 @@
      "dnf": 3,
      "avg_grid": 5.64,
      "pace_s": -1.3906,
-     "skill": 0.9868
+     "skill": 0.9931
     },
     {
      "code": "PIA",
@@ -139,7 +139,7 @@
      "dnf": 3,
      "avg_grid": 5.64,
      "pace_s": -1.0154,
-     "skill": 0.551
+     "skill": 0.5577
     }
    ],
    "championship_position": 3
@@ -159,8 +159,8 @@
    "avg_grid": 7.91,
    "pace_s": -0.8922,
    "pace_delta_s": -0.7651,
-   "strength": 1.6803,
-   "development": 1.9835,
+   "strength": 1.6965,
+   "development": 2.006,
    "drivers": [
     {
      "code": "VER",
@@ -173,7 +173,7 @@
      "dnf": 2,
      "avg_grid": 6.55,
      "pace_s": -1.1535,
-     "skill": 1.6582
+     "skill": 1.6516
     },
     {
      "code": "HAD",
@@ -186,7 +186,7 @@
      "dnf": 2,
      "avg_grid": 9.27,
      "pace_s": -0.6309,
-     "skill": 0.0704
+     "skill": 0.0764
     }
    ],
    "championship_position": 4
@@ -206,8 +206,8 @@
    "avg_grid": 10.73,
    "pace_s": 0.0166,
    "pace_delta_s": -0.351,
-   "strength": 0.6298,
-   "development": 0.6169,
+   "strength": 0.6266,
+   "development": 0.6297,
    "drivers": [
     {
      "code": "LAW",
@@ -220,7 +220,7 @@
      "dnf": 1,
      "avg_grid": 10.55,
      "pace_s": 0.0363,
-     "skill": -0.0308
+     "skill": -0.0238
     },
     {
      "code": "LIN",
@@ -233,7 +233,7 @@
      "dnf": 1,
      "avg_grid": 10.91,
      "pace_s": -0.0031,
-     "skill": -0.4318
+     "skill": -0.4171
     }
    ],
    "championship_position": 5
@@ -253,8 +253,8 @@
    "avg_grid": 12.23,
    "pace_s": 0.036,
    "pace_delta_s": 0.2319,
-   "strength": -0.3473,
-   "development": -0.192,
+   "strength": -0.3553,
+   "development": -0.1912,
    "drivers": [
     {
      "code": "GAS",
@@ -267,7 +267,7 @@
      "dnf": 1,
      "avg_grid": 11.09,
      "pace_s": -0.077,
-     "skill": 0.0187
+     "skill": 0.0398
     },
     {
      "code": "COL",
@@ -280,7 +280,7 @@
      "dnf": 0,
      "avg_grid": 13.36,
      "pace_s": 0.1388,
-     "skill": -0.7751
+     "skill": -0.7734
     }
    ],
    "championship_position": 6
@@ -300,8 +300,8 @@
    "avg_grid": 14.77,
    "pace_s": 0.4125,
    "pace_delta_s": 0.8801,
-   "strength": -2.1831,
-   "development": -2.1377,
+   "strength": -2.183,
+   "development": -2.1414,
    "drivers": [
     {
      "code": "BEA",
@@ -314,7 +314,7 @@
      "dnf": 2,
      "avg_grid": 14.45,
      "pace_s": 0.3629,
-     "skill": 0.0661
+     "skill": 0.0645
     },
     {
      "code": "OCO",
@@ -327,7 +327,7 @@
      "dnf": 0,
      "avg_grid": 15.09,
      "pace_s": 0.4621,
-     "skill": -0.4121
+     "skill": -0.4165
     }
    ],
    "championship_position": 7
@@ -347,8 +347,8 @@
    "avg_grid": 12.18,
    "pace_s": 0.043,
    "pace_delta_s": -0.0791,
-   "strength": -0.0269,
-   "development": 0.5766,
+   "strength": -0.022,
+   "development": 0.5736,
    "drivers": [
     {
      "code": "BOR",
@@ -361,7 +361,7 @@
      "dnf": 1,
      "avg_grid": 12.91,
      "pace_s": 0.0786,
-     "skill": -0.242
+     "skill": -0.2448
     },
     {
      "code": "HUL",
@@ -374,7 +374,7 @@
      "dnf": 4,
      "avg_grid": 11.45,
      "pace_s": 0.0034,
-     "skill": -0.2357
+     "skill": -0.2395
     }
    ],
    "championship_position": 8
@@ -394,8 +394,8 @@
    "avg_grid": 16.45,
    "pace_s": 0.6926,
    "pace_delta_s": 0.3059,
-   "strength": -2.6933,
-   "development": -1.36,
+   "strength": -2.7012,
+   "development": -1.371,
    "drivers": [
     {
      "code": "SAI",
@@ -408,7 +408,7 @@
      "dnf": 1,
      "avg_grid": 16.18,
      "pace_s": 0.611,
-     "skill": -0.0171
+     "skill": -0.0145
     },
     {
      "code": "ALB",
@@ -421,7 +421,7 @@
      "dnf": 4,
      "avg_grid": 16.73,
      "pace_s": 0.7824,
-     "skill": -0.214
+     "skill": -0.216
     }
    ],
    "championship_position": 9
@@ -441,8 +441,8 @@
    "avg_grid": 20.27,
    "pace_s": 2.028,
    "pace_delta_s": 0.2761,
-   "strength": -2.4406,
-   "development": 0.1305,
+   "strength": -2.4299,
+   "development": 0.1291,
    "drivers": [
     {
      "code": "ALO",
@@ -455,7 +455,7 @@
      "dnf": 4,
      "avg_grid": 19.55,
      "pace_s": 1.9803,
-     "skill": -0.0692
+     "skill": -0.076
     },
     {
      "code": "STR",
@@ -468,7 +468,7 @@
      "dnf": 7,
      "avg_grid": 21.0,
      "pace_s": 2.0862,
-     "skill": -0.6646
+     "skill": -0.666
     }
    ],
    "championship_position": 10
@@ -488,8 +488,8 @@
    "avg_grid": 19.45,
    "pace_s": 1.9705,
    "pace_delta_s": -0.1774,
-   "strength": -2.8231,
-   "development": 0.3359,
+   "strength": -2.829,
+   "development": 0.3333,
    "drivers": [
     {
      "code": "BOT",
@@ -502,7 +502,7 @@
      "dnf": 5,
      "avg_grid": 19.45,
      "pace_s": 2.2696,
-     "skill": -0.5416
+     "skill": -0.5476
     },
     {
      "code": "PER",
@@ -515,7 +515,7 @@
      "dnf": 4,
      "avg_grid": 19.45,
      "pace_s": 1.6383,
-     "skill": -0.0453
+     "skill": -0.0461
     }
    ],
    "championship_position": 11
