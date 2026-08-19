@@ -267,6 +267,19 @@ def _append_prediction_log(season: int, payload: dict, diag: dict) -> None:
         print("  no forecast round recorded — prediction log not written")
         return
 
+    # A grid-free forecast is provisional. `status.py` calls it "correct until qualifying
+    # runs", and limitation #1 is that the real forecast conditions on the grid and so
+    # cannot exist until Saturday evening. Writing one into a write-once file would
+    # permanently foreclose the grid-conditional forecast this project actually ships, and
+    # put a different kind of prediction into the same track record — R11 was scored
+    # against its qualifying classification, so a gridless R12 would not be comparable.
+    #
+    # Revisit when a qualifying model exists: at that point a pre-weekend forecast is the
+    # product rather than a placeholder, and this guard becomes the wrong behaviour.
+    if diag.get("grid_source") in (None, "none"):
+        print("  forecast is grid-free — prediction log deferred until qualifying")
+        return
+
     log_dir = WEB_DATA / "predictions"
     log_dir.mkdir(parents=True, exist_ok=True)
     path = log_dir / f"{season}_R{int(rnd):02d}.json"
