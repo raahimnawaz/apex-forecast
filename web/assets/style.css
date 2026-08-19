@@ -393,6 +393,7 @@ details.more > summary:hover { color: var(--ink); }
 
 #season-races tbody tr { cursor: pointer; }
 #season-races tbody tr.sel td { background: var(--surface-2); color: var(--ink); }
+#champ-drivers tbody tr.sel td { background: var(--surface-2); color: var(--ink); }
 
 .race-detail {
   margin-top: 16px; padding: 16px 18px 8px;

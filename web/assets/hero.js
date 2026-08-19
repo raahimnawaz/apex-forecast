@@ -10,8 +10,8 @@
 // `hero.js?v=N` busts hero.js alone and leaves silk.js and glass.js served from cache —
 // which is exactly how a rewritten background can appear not to have changed at all.
 // Keep these in step with the ?v= in index.html.
-import { mountSilk } from "./silk.js?v=24";
-import { mountLiquidGlass } from "./glass.js?v=24";
+import { mountSilk } from "./silk.js?v=26";
+import { mountLiquidGlass } from "./glass.js?v=26";
 
 const NS = "http://www.w3.org/2000/svg";
 const mk = (t, a = {}, p = null) => {

@@ -471,6 +471,7 @@ function selectTeam(name) {
   host.appendChild(cols);
 
   if (devRedraw) devRedraw();
+  if (champRedraw) champRedraw();
 }
 
 /* =================== NEWS =================== */
@@ -967,6 +968,187 @@ function renderContenders(s, colors) {
   }
 }
 
+/* =================== CHAMPIONSHIP =================== */
+
+let champRedraw = null;
+let champSelected = null;
+
+/* Title probability and the points fan to December.
+
+   Colour follows the same rule as the rest of the page: the band and the leading line use
+   the validated ramp, and team colour appears only as a chip beside a text label. Eleven
+   team hues cannot be told apart on this surface, and here they would also be encoding a
+   value, which they are never allowed to do. */
+function renderChampionship(s, colors) {
+  const c = s.championship;
+  const section = document.getElementById("championship");
+  if (!c || !c.drivers?.length || !section) return;
+  section.hidden = false;
+
+  const contenders = c.drivers.filter((d) => d.fan);
+  const shown = contenders.slice(0, 6);
+  champSelected = champSelected && shown.some((d) => d.driver === champSelected)
+    ? champSelected : shown[0]?.driver;
+
+  // --- tables ------------------------------------------------------------------------
+  // The tables are the championship as it stands, so they rank on points — "#" means the
+  // position a reader already knows. `c.drivers` arrives in title-probability order, which
+  // is the right order for the chart but would print a Pts column that jumps around.
+  const standings = [...c.drivers].sort((a, b) => b.points_now - a.points_now);
+  const dbody = document.querySelector("#champ-drivers tbody");
+  dbody.innerHTML = "";
+  standings.slice(0, 10).forEach((d, i) => {
+    const tr = document.createElement("tr");
+    const col = colors[d.team] || "#898781";
+    if (d.driver === champSelected) tr.className = "sel";
+    tr.innerHTML = `<td>${i + 1}</td>`
+      + `<td><span class="chip" style="background:${col}"></span>${d.driver}</td>`
+      + `<td>${d.points_now.toFixed(0)}</td>`
+      + `<td><b>${d.still_possible ? pct(d.title_prob) : "out"}</b></td>`
+      + `<td>${d.exp_points.toFixed(0)}</td>`;
+    if (d.fan) {
+      tr.style.cursor = "pointer";
+      tr.onclick = () => { champSelected = d.driver; renderChampionship(s, colors); };
+    }
+    dbody.appendChild(tr);
+  });
+
+  const tbody = document.querySelector("#champ-teams tbody");
+  tbody.innerHTML = "";
+  [...c.constructors].sort((a, b) => b.points_now - a.points_now)
+    .slice(0, 8).forEach((t, i) => {
+    const col = colors[t.team] || "#898781";
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${i + 1}</td>`
+      + `<td><span class="chip" style="background:${col}"></span>${shortTeam(t.team)}</td>`
+      + `<td>${t.points_now.toFixed(0)}</td>`
+      + `<td><b>${pct(t.title_prob)}</b></td>`;
+    tbody.appendChild(tr);
+  });
+
+  // --- the read ----------------------------------------------------------------------
+  // The points leader and the title favourite are not always the same driver, and saying
+  // so is the interesting case rather than an edge case to paper over.
+  const ptsLeader = standings[0];
+  const fav = c.drivers[0];
+  const gap = ptsLeader.points_now - (standings[1]?.points_now ?? 0);
+  const read = document.getElementById("champ-read");
+  if (read) {
+    read.innerHTML = `<b>${ptsLeader.driver}</b> leads by ${gap.toFixed(0)} points with `
+      + `${c.rounds.length} rounds left`
+      + (fav.driver === ptsLeader.driver
+        ? `, and takes the title in <b>${pct(fav.title_prob)}</b> of `
+          + `${c.n_sim.toLocaleString()} simulated seasons. `
+        : `, but <b>${fav.driver}</b> is the favourite, taking the title in `
+          + `<b>${pct(fav.title_prob)}</b> of ${c.n_sim.toLocaleString()} simulated seasons. `)
+      + `Each simulated season draws one version of the field and races it all the way to `
+      + `December, so a quick car stays quick — the alternative would treat every round as `
+      + `an unrelated coin flip. <b>Select a driver</b> to see their range.`;
+  }
+
+  // --- fan chart ---------------------------------------------------------------------
+  const host = document.getElementById("champ-chart");
+  const steps = c.rounds.length + 1;                  // index 0 is today
+  const qMid = c.quantiles.indexOf(50);
+  const W = 860, H = 340, L = 52, R = 118, T = 18, B = 44;
+  const sel = () => shown.find((d) => d.driver === champSelected) || shown[0];
+
+  const lo = 0;
+  const hi = Math.max(...shown.map((d) => d.fan[d.fan.length - 1].at(-1))) * 1.04;
+  const x = (i) => L + (i / (steps - 1)) * (W - L - R);
+  const y = (v) => H - B - ((v - lo) / (hi - lo)) * (H - T - B);
+
+  function draw() {
+    host.innerHTML = "";
+    const svg = el("svg", { class: "chart", viewBox: `0 0 ${W} ${H}`, role: "img",
+      "aria-label": "Projected championship points for the remaining rounds of 2026" }, host);
+
+    for (let i = 0; i <= 4; i++) {
+      const v = lo + ((hi - lo) * i) / 4;
+      el("line", { class: "gridline", x1: L, x2: W - R, y1: y(v), y2: y(v) }, svg);
+      const t = el("text", { class: "tick-label", x: L - 8, y: y(v) + 4, "text-anchor": "end" }, svg);
+      t.textContent = v.toFixed(0);
+    }
+    for (let i = 0; i < steps; i++) {
+      // Twelve round labels do not fit; every other one reads cleanly and the last is
+      // always drawn, because where the season ends is the point of the chart.
+      if (i !== 0 && i !== steps - 1 && i % 2) continue;
+      const t = el("text", { class: "tick-label", x: x(i), y: H - B + 17, "text-anchor": "middle" }, svg);
+      t.textContent = i === 0 ? "now" : "R" + c.rounds[i - 1];
+    }
+    const xl = el("text", { x: (L + W - R) / 2, y: H - 8, "text-anchor": "middle" }, svg);
+    xl.textContent = "round";
+    const yl = el("text", { x: -(H / 2), y: 12, "text-anchor": "middle", transform: "rotate(-90)" }, svg);
+    yl.textContent = "championship points";
+
+    const cur = sel();
+
+    // Two nested bands: the outer is the 10-90 range, the inner the 25-75. Reading the
+    // darker core as "likely" and the pale edge as "possible" is the whole point of a fan.
+    const band = (qLo, qHi, opacity) => {
+      const up = cur.fan[qHi].map((v, i) => `${x(i)},${y(v)}`).join(" ");
+      const down = [...cur.fan[qLo]].map((v, i) => [x(i), y(v)])
+        .reverse().map(([px, py]) => `${px},${py}`).join(" ");
+      el("polygon", { points: `${up} ${down}`, fill: css("--series-1"), opacity }, svg);
+    };
+    if (c.quantiles.length >= 5) {
+      band(0, c.quantiles.length - 1, 0.10);
+      band(1, c.quantiles.length - 2, 0.18);
+    }
+
+    shown.forEach((d) => {
+      const isSel = d.driver === champSelected;
+      const med = d.fan[qMid < 0 ? Math.floor(d.fan.length / 2) : qMid];
+      const path = med.map((v, i) => `${i ? "L" : "M"}${x(i)},${y(v)}`).join(" ");
+      el("path", { d: path, fill: "none",
+        stroke: isSel ? css("--series-1") : css("--axis"),
+        "stroke-width": isSel ? 2 : 1.25,
+        "stroke-linecap": "round", "stroke-linejoin": "round",
+        opacity: isSel ? 1 : 0.45 }, svg);
+
+      el("circle", { cx: x(steps - 1), cy: y(med.at(-1)), r: isSel ? 4.5 : 3,
+        fill: isSel ? css("--series-1") : css("--axis"),
+        stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+      const lab = el("text", { class: isSel ? "val-label" : "", x: x(steps - 1) + 9,
+        y: y(med.at(-1)) + 4, "font-size": isSel ? "12" : "10.5",
+        opacity: isSel ? 1 : 0.5 }, svg);
+      lab.textContent = d.driver;
+
+      const hit = el("rect", { class: "hit", x: L, y: y(med.at(-1)) - 8,
+        width: W - L - R, height: 16 }, svg);
+      interactive(hit, `<div class="t-name"><span class="chip" style="background:${colors[d.team] || "#898781"}"></span>${d.driver}</div>`
+        + tipRow("Now", d.points_now.toFixed(0))
+        + tipRow("Median final", med.at(-1).toFixed(0))
+        + tipRow("10-90 range", `${d.fan[0].at(-1).toFixed(0)} – ${d.fan[d.fan.length - 1].at(-1).toFixed(0)}`)
+        + tipRow("Title", pct(d.title_prob)));
+      hit.style.cursor = "pointer";
+      hit.onclick = () => { champSelected = d.driver; renderChampionship(s, colors); };
+    });
+  }
+
+  champRedraw = draw;
+  draw();
+
+  const lg = document.getElementById("champ-legend");
+  if (lg) {
+    lg.innerHTML = `<li><span class="swatch line" style="background:${css("--series-1")}"></span>${sel().driver} (median)</li>`
+      + `<li><span class="swatch" style="background:${css("--series-1")};opacity:0.18"></span>25–75%</li>`
+      + `<li><span class="swatch" style="background:${css("--series-1")};opacity:0.10"></span>10–90%</li>`
+      + `<li><span class="swatch line" style="background:${css("--axis")}"></span>other contenders</li>`;
+  }
+
+  const note = document.getElementById("champ-note");
+  if (note) {
+    const sp = c.sprints_remaining;
+    note.innerHTML = `${c.rounds.length} rounds remain, ${sp} of them sprint weekends, so `
+      + `<b>${(25 * c.rounds.length + 8 * sp)} points</b> are still on the table. `
+      + `The projection has no grid, no circuit effect and no car development in it: each `
+      + `car's strength is its posterior today, held flat to December, which understates `
+      + `how uncertain December really is. `
+      + `<a href="method.html#championship">How this works →</a>`;
+  }
+}
+
 /* =================== SEASON SO FAR =================== */
 
 function renderSeason(season, colors) {
@@ -1174,6 +1356,7 @@ Promise.all([
   renderSeason(season, colors);
   renderPostRace(season);
   renderContenders(strength, colors);
+  renderChampionship(strength, colors);
   renderForecast(strength, colors);
   renderMatrix(strength, colors);
   renderPace(pace);

@@ -7,7 +7,7 @@
 <meta name="description" content="Probabilistic Formula 1 race forecasting for the 2026 regulation era: pace deconvolution, driver-versus-car separation, and out-of-sample calibrated finishing-order predictions.">
 <!-- Assets carry a version query so a redeploy cannot be served from a stale cache.
      Bump ?v= whenever style.css, app.js or hero.js changes. -->
-<link rel="stylesheet" href="assets/style.css?v=24">
+<link rel="stylesheet" href="assets/style.css?v=26">
 </head>
 <body>
 <!-- The field sits behind the whole document and flows with the scroll. Fixed, so it
@@ -157,6 +157,36 @@
       </div>
     </div>
     <p class="desc" id="season-note" style="margin-top:14px"></p>
+  </section>
+
+  <!-- ============ CHAMPIONSHIP ============ -->
+  <section class="card" id="championship" hidden>
+    <h2>How the title ends</h2>
+    <p class="desc" id="champ-read"></p>
+    <div class="grid-2">
+      <div>
+        <h3 class="sub-h">Drivers</h3>
+        <div class="table-scroll">
+          <table id="champ-drivers">
+            <thead><tr><th>#</th><th>Driver</th><th>Pts</th><th>Title</th><th>Final</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-h">Constructors</h3>
+        <div class="table-scroll">
+          <table id="champ-teams">
+            <thead><tr><th>#</th><th>Constructor</th><th>Pts</th><th>Title</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <h3 class="sub-h" style="margin-top:26px">Points to December</h3>
+    <ul class="legend" id="champ-legend"></ul>
+    <div class="chart-scroll"><div id="champ-chart"></div></div>
+    <p class="desc" id="champ-note" style="margin-top:14px"></p>
   </section>
 
   <!-- ============ PACE ============ -->
@@ -330,8 +360,8 @@
 </div>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
-<script type="module" src="assets/bg.js?v=24"></script>
-<script src="assets/app.js?v=24"></script>
-<script type="module" src="assets/hero.js?v=24"></script>
+<script type="module" src="assets/bg.js?v=26"></script>
+<script src="assets/app.js?v=26"></script>
+<script type="module" src="assets/hero.js?v=26"></script>
 </body>
 </html>

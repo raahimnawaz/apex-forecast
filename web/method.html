@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>apex-forecast — method</title>
 <meta name="description" content="How the apex-forecast Formula 1 model works: pace deconvolution, rank-ordered logit, the attrition likelihood, and out-of-sample calibration.">
-<link rel="stylesheet" href="assets/style.css?v=24">
+<link rel="stylesheet" href="assets/style.css?v=26">
 </head>
 <body>
 <canvas id="silk-bg" aria-hidden="true"></canvas>
@@ -157,6 +157,36 @@
       come from the unconditional fit; the race forecast comes from the conditional one.
     </p>
 
+    <h2 id="championship">Championship projection</h2>
+    <p>
+      A title is not twelve independent races. The per-race forecast gives <em>marginal</em>
+      finishing probabilities — the chance a car finishes third on Sunday, averaged over everything
+      the model is still unsure about. Multiplying twelve of those together would quietly assume the
+      car that is quick in September is a fresh coin flip in October, and a championship is decided
+      by exactly the persistence that assumption throws away.
+    </p>
+    <p>
+      So each simulated season draws <b>one</b> version of the field from the posterior and races it
+      through every remaining round, redrawing only what genuinely varies week to week: retirements,
+      safety cars and race-day noise. Uncertainty about how good a car <em>is</em> stays correlated
+      across the season; uncertainty about what <em>happens</em> on a given Sunday does not. Four
+      thousand such seasons give the title probabilities and the points fan.
+    </p>
+    <p>
+      Both points tables are read off the season rather than transcribed from the rulebook: grouping
+      every 2026 result by finishing position returns 25/18/15/12/10/8/6/4/2/1 for a race and
+      8/7/6/5/4/3/2/1 for a sprint with zero variance, which also rules out a fastest-lap bonus.
+      Sprint retirement risk is measured the same way — 5 retirements in 86 sprint starts against 41
+      in 235 race starts, a ratio of 0.333 against a distance share of 100/305 — so the race-fitted
+      risk is scaled to sprint distance instead of being reused whole.
+    </p>
+    <p>
+      What it does not contain, because none of it is known for December: a starting grid, a
+      circuit effect, weather, or car development. Each car's strength is its posterior today held
+      flat to the end of the season, which <b>understates</b> how uncertain December really is —
+      the fitted random walk is not propagated forward.
+    </p>
+
     <h2 id="calibration">Calibration</h2>
     <p>
       For each evaluation round the model is refitted on everything before it and asked to predict
@@ -227,6 +257,6 @@
     <a href="index.html">← back to the dashboard</a>
   </footer>
 </div>
-<script type="module" src="assets/bg.js?v=24"></script>
+<script type="module" src="assets/bg.js?v=26"></script>
 </body>
 </html>

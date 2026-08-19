@@ -7,7 +7,7 @@
  * a module's imports are fetched as separate requests with their own cache entries, so
  * `bg.js?v=N` alone would leave a rewritten silk.js served from cache.
  */
-import { mountSilkBackground } from "./silk.js?v=24";
+import { mountSilkBackground } from "./silk.js?v=26";
 
 const el = document.getElementById("silk-bg");
 if (el) mountSilkBackground(el, { seed: 41 });

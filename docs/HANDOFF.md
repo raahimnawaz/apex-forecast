@@ -27,7 +27,7 @@ of the model structure exists to respect that asymmetry.
 | Next race | R12 Dutch GP, 2026-08-23 (sprint weekend) |
 | Data | 32,248 laps, 24 drivers, 11 constructors, 29 circuits |
 | Training set | 39 races (24 in 2025, 15 in 2026 including 4 sprints) |
-| Tests | 62 passing |
+| Tests | 70 passing |
 | Lint | ruff clean |
 
 **Measured performance** — walk-forward, rounds 5–11, refitting before each race:
@@ -189,8 +189,13 @@ prior. Neither exists yet.
    forecast as a stated assumption.
 8. **Backmarkers flattered less than they deserve** — blue-flag lifting is only partly
    absorbed by the dirty-air term.
-9. **No championship projection.** Specified in `PLAN.md` §3, not built. (The prediction
-   log, the other item from that section, now exists — see below.)
+9. **The championship projection holds car strength flat.** It now exists (see below),
+   but each car's strength is its posterior today, carried unchanged to December. The
+   fitted constructor random walk is *not* propagated forward, so the fan understates how
+   uncertain the end of the season is — the December band should be wider than the
+   September one and currently is not. Propagating it is the obvious next improvement and
+   needs the walk innovation applied per simulated season, not per round, or it destroys
+   the correlation the projection is built on.
 10. **Team form is circuit-dependent and the model does not know it.** A team's corrected
     pace varies by circuit far beyond noise — F = 2.68, p = 5e-07, interaction spread
     0.59 s/lap against a 0.21 s/lap team-mate noise floor, adjusted R² 0.860 → 0.923. It is
@@ -205,6 +210,36 @@ prior. Neither exists yet.
 ---
 
 ## Fixed since this document was written
+
+**The championship projection is built** (was limitation 9, the last unbuilt item in
+`PLAN.md` §3). `src/apex/championship.py`, surfaced as "How the title ends" on the
+dashboard and `method.html#championship`.
+
+The one thing to understand before changing it: **a season is correlated, and the
+per-race machinery cannot express that.** `simulate_race` returns *marginal* position
+probabilities; multiplying twelve of them would treat each round as independent and
+assume the car that is quick in September is a fresh coin flip in October. So a projected
+season draws **one posterior sample and holds it for all twelve rounds**, redrawing only
+retirements, safety cars and race-day noise within each round.
+`test_a_season_is_correlated_not_twelve_coin_flips` pins exactly this and will fail if
+anyone "simplifies" it back to per-round draws.
+
+Two inputs were measured rather than assumed, in keeping with the rest of the repo:
+
+- **Both points tables are derived from the season on disk.** Grouping 2026 by finishing
+  position gives 25/18/15/12/10/8/6/4/2/1 and 8/7/6/5/4/3/2/1 with *zero variance* at
+  every position, which also rules out a fastest-lap bonus.
+- **Sprint retirement risk is a third of race risk**: 5 in 86 sprint starts against 41 in
+  235 race starts, ratio 0.333 against a distance share of 100/305 = 0.328 (Fisher
+  p = 0.0069). Reusing the race-fitted `p_dnf` whole would roughly triple sprint attrition.
+
+Constructor standings are passed in rather than summed from driver totals: 24 drivers have
+held 22 seats this season, and a driver's points follow the driver while the constructor
+points stay with the team that earned them.
+
+Current output: Antonelli 67.9% on 219 points, Mercedes 84.3%, 12 rounds and 316 points
+left. See limitation 9 for what it does not do.
+
 
 **Undated news items no longer claim to be the newest** (was limitation 11).
 `_parse_date` used to fall back to `datetime.now(UTC)` when a feed omitted or malformed
