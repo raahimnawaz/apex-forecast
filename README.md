@@ -1,5 +1,8 @@
 # apex-forecast
 
+[![CI](https://github.com/raahimnawaz/apex-forecast/actions/workflows/ci.yml/badge.svg)](https://github.com/raahimnawaz/apex-forecast/actions/workflows/ci.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+
 Probabilistic Formula 1 race forecasting for the 2026 regulation era, with a dark analytical dashboard.
 
 2026 is a ground-up regulation reset — new power units (350 kW MGU-K, ~8 MJ/lap, 50/50 ICE/electric),

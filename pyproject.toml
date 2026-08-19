@@ -23,7 +23,9 @@ model = [
 ]
 dev = [
     "pytest>=8.0",
-    "ruff>=0.5",
+    # Pinned, not floated. Ruff ships new rules in its default set between minor
+    # releases, so an unpinned linter turns a green repo red with no source change.
+    "ruff==0.16.0",
 ]
 
 [build-system]

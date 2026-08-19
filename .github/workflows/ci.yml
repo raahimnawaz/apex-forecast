@@ -1,0 +1,39 @@
+# Tests and lint.
+#
+# Kept separate from `update` on purpose. That workflow ingests race data and cannot run
+# on a GitHub-hosted runner at all — live timing answers 403 to datacenter IPs, measured,
+# see the header of update.yml. Everything in this file is offline, so this is the
+# workflow that can honestly stay green, and it is what the badge points at.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"          # 3.14 breaks the scientific stack
+
+      - name: Install
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -e ".[dev,model]"
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
