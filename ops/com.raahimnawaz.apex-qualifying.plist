@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.raahimnawaz.apex-qualifying</string>
+
+  <!-- Saturday evening, to catch the grid once qualifying has run.
+       The prediction log is write-once and now defers while the forecast is grid-free,
+       so this is the run that actually locks in a scoreable forecast for Sunday. It is
+       a second attempt at the same job, not a different one: F1 qualifies at wildly
+       different local times, so firing early is expected and harmless — the log simply
+       defers again and Tuesday's run carries on as normal. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>6</integer>
+    <key>Hour</key><integer>18</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/raahimnawaz/apex-forecast/ops/refresh.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/raahimnawaz/apex-forecast</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/raahimnawaz/apex-forecast/reports/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/raahimnawaz/apex-forecast/reports/launchd.err.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

@@ -297,6 +297,51 @@ anything else. `web/data/*.json` **is** committed so the dashboard is self-conta
 
 ---
 
+## How it stays current
+
+The refresh runs on this Mac, not in GitHub Actions. `livetiming.formula1.com` answers
+403 to datacenter IPs and FastF1's mirror does not carry archived sessions, so a hosted
+runner cannot ingest a race weekend at all — measured, see the header of
+`.github/workflows/update.yml`. CI there runs tests and lint only.
+
+`ops/refresh.sh` does the whole job: pull, spike, `make all`, score the round that just
+ran, test, lint, commit, push. Pushing `web/data` triggers `pages.yml`, so the live
+dashboard redeploys itself. Two LaunchAgents run it, both installed from `ops/`:
+
+| agent | when | what it is for |
+|---|---|---|
+| `com.raahimnawaz.apex-refresh` | Tuesday 09:00 | ingest the race that just ran, refit, score |
+| `com.raahimnawaz.apex-qualifying` | Saturday 18:00 | catch the grid once qualifying has run |
+
+The Saturday run exists because the prediction log is write-once and now defers while a
+forecast is grid-free. Without it, a round can only ever be logged grid-free, which is
+not the forecast this project ships and is not comparable to the rounds already scored.
+F1 qualifies at very different local times, so the Saturday agent will sometimes fire
+early; that is harmless, the log just defers again.
+
+Guards worth knowing about, because each one exists for something that actually
+happened:
+
+- **Refuses to run on a dirty tree.** It commits on your behalf; it will not do that on
+  top of a half-finished edit.
+- **Stops quietly if the feed refuses the machine** (spike exit 2) rather than failing.
+  A genuine parse failure (exit 1) still fails loudly.
+- **Will not publish if tests or lint fail.**
+- **Ignores `generated_utc` and `published` when deciding whether anything changed.**
+  Every build restamps the clock, so without this it would commit and redeploy every
+  week with nothing new. See limitation 11.
+
+Logs are in `reports/refresh.log` (gitignored). That is the first place to look if a
+round is missing from the calibration sample.
+
+To reinstall after a machine move:
+
+    cp ops/com.raahimnawaz.apex-*.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.raahimnawaz.apex-refresh.plist
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.raahimnawaz.apex-qualifying.plist
+
+---
+
 ## If you change the model
 
 Run `make calibrate` and let the numbers decide. Every model choice in this repo was
