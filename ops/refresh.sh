@@ -69,8 +69,19 @@ make test lint || { echo "FAIL: tests or lint — not publishing"; exit 1; }
 # data/ is gitignored and reproducible; only the published payloads, the write-once
 # prediction log and the reports are worth committing.
 git add web/data reports
+
+# Every build restamps generated_utc even when the output is otherwise identical, so a
+# plain "did anything change" test is always true. Left alone that produces a no-op
+# commit every week, a pointless dashboard redeploy, and a message claiming a refresh
+# that did not happen. Only a change outside the timestamps counts as real.
+substantive=$(git diff --staged -U0 \
+  | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' | grep -vc '"generated_utc"')
+
 if git diff --staged --quiet; then
   echo "nothing changed"
+elif [ "$substantive" -eq 0 ]; then
+  echo "only timestamps changed — nothing to publish"
+  git restore --staged --worktree web/data reports
 else
   # Every fit is seeded, so an unchanged season refits byte-identically and only the
   # headlines move. Say which of the two actually happened rather than claiming a model
