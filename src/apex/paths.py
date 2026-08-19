@@ -19,5 +19,10 @@ WEB_DATA = WEB / "data"
 # the race. It is typed in from the stewards' decisions, so it is source, not cache.
 GRIDS = ROOT / "grids"
 
-for _p in (CACHE, RAW, PROCESSED, REPORTS, WEB_DATA, GRIDS):
+# Build state that cannot be re-derived from any upstream source, for the same reason
+# GRIDS cannot: once the record of when a link was first seen is lost, no feed will tell
+# you again. It is written by the build rather than typed in, but it is source, not cache.
+STATE = ROOT / "state"
+
+for _p in (CACHE, RAW, PROCESSED, REPORTS, WEB_DATA, GRIDS, STATE):
     _p.mkdir(parents=True, exist_ok=True)

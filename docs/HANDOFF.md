@@ -23,11 +23,11 @@ of the model structure exists to respect that asymmetry.
 
 | | |
 |---|---|
-| Season | 2026, 11 of 22 rounds complete |
+| Season | 2026, 11 of 23 rounds complete |
 | Next race | R12 Dutch GP, 2026-08-23 (sprint weekend) |
 | Data | 32,248 laps, 24 drivers, 11 constructors, 29 circuits |
 | Training set | 39 races (24 in 2025, 15 in 2026 including 4 sprints) |
-| Tests | 39 passing |
+| Tests | 62 passing |
 | Lint | ruff clean |
 
 **Measured performance** — walk-forward, rounds 5–11, refitting before each race:
@@ -201,15 +201,42 @@ prior. Neither exists yet.
     degradation, lap length) buy +0.012 adjusted R² for 22 parameters — BIC rejects them
     outright. Real circuit geometry is the missing input, and it needs telemetry, which
     `ingest.py` currently loads with `telemetry=False`.
-11. **Undated news items claim to be the newest.** `_parse_date` falls back to
-    `datetime.now(UTC)` when a feed omits or malforms `pubDate`, and the list is sorted
-    newest-first. Measured 2026-08-19: **10 of 60 items** carried a fabricated timestamp,
-    all identical, so they occupied the entire top of the dashboard ahead of genuinely
-    recent headlines — and re-dated themselves on every fetch, which is why the weekly
-    refresh has to ignore `published` to tell a real change from a clock tick. The honest
-    fix is to stop inventing a time: either carry forward the timestamp from the first
-    fetch that saw the link, or sort unknown dates last instead of first. Both need a
-    decision about what the dashboard should show for an item whose age is unknown.
+
+---
+
+## Fixed since this document was written
+
+**Undated news items no longer claim to be the newest** (was limitation 11).
+`_parse_date` used to fall back to `datetime.now(UTC)` when a feed omitted or malformed
+`pubDate`, and the list sorts newest-first. Measured 2026-08-19: **10 of 60 items**
+carried a fabricated timestamp, all identical — every one of them from Formula1.com's
+`all.xml`, which ships no `pubDate` at all — so they occupied the entire top of the
+dashboard ahead of genuinely recent headlines, and re-dated themselves on every fetch.
+
+`_parse_date` now returns `None` rather than inventing a time, and `fetch_all` dates an
+undated item from **the first fetch that saw its link**, carried forward in
+`state/news_seen.json`. Re-measured across two consecutive fetches: **0 of 10 timestamps
+moved**, against 10 of 10 before.
+
+Three consequences worth knowing:
+
+- **`state/` is committed, and has to be.** Once the record of when a link was first seen
+  is lost, no feed will tell you again — the same reason `grids/` is committed. Only
+  undated links are stored, and an entry is forgotten 30 days after it last appeared in
+  any feed, so the file stays small. `refresh.sh` stages it.
+- **The refresh no longer ignores `published`.** It was ignored only because undated items
+  restamped themselves; they do not any more, so a change in `published` is real news
+  again. `last_seen` is now the one field that still ticks every run and is ignored in its
+  place. A genuinely new undated link writes a `first_seen`, which is *not* ignored and
+  correctly counts as a change.
+- **An estimated date is labelled as one.** The client renders it as "seen 3d ago" rather
+  than "3d ago". First-seen is still an inference, and the module's rule is that nothing
+  here is generated — so it is shown as an inference rather than as the feed's own answer.
+
+The residual: on the very first fetch that sees an undated item, first-seen *is* now, so
+it still sorts to the top that once. It then stays put while real news arrives above it,
+which is the part that was broken. There is no better information available — the feed
+does not say when it was published.
 
 ---
 
@@ -327,9 +354,12 @@ happened:
 - **Stops quietly if the feed refuses the machine** (spike exit 2) rather than failing.
   A genuine parse failure (exit 1) still fails loudly.
 - **Will not publish if tests or lint fail.**
-- **Ignores `generated_utc` and `published` when deciding whether anything changed.**
-  Every build restamps the clock, so without this it would commit and redeploy every
-  week with nothing new. See limitation 11.
+- **Ignores `generated_utc` and `last_seen` when deciding whether anything changed.**
+  Every build restamps both, so without this it would commit and redeploy every week with
+  nothing new. It used to ignore `published` as well; it no longer needs to, because
+  undated items stopped re-dating themselves. See "Fixed since this document was written".
+- **Stages `state/` as well as `web/data` and `reports`.** The first-seen store is not
+  reproducible from any feed, so a refresh that did not commit it would lose it.
 
 Logs are in `reports/refresh.log` (gitignored). That is the first place to look if a
 round is missing from the calibration sample.

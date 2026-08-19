@@ -503,7 +503,16 @@ function newsItem(item, compact = false) {
   src.className = "src";
   src.textContent = item.source;
   const when = document.createElement("span");
-  when.textContent = relTime(item.published);
+  // An estimated date is the time this build first saw the link, not a publication
+  // time the feed supplied. Say which, rather than presenting a guess as the feed's
+  // own answer — same rule as the rest of the news layer.
+  if (item.date_estimated) {
+    when.textContent = `seen ${relTime(item.published)}`;
+    when.title = "This feed gave no publication date. Shown from when it was first fetched.";
+    when.style.opacity = "0.72";
+  } else {
+    when.textContent = relTime(item.published);
+  }
   meta.append(src, when);
   if (!compact && item.teams.length) {
     const tg = document.createElement("span");

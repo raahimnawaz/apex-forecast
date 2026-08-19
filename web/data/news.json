@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-08-19T05:04:18Z",
+ "generated_utc": "2026-08-19T23:05:07Z",
  "sources": [
   "Autosport",
   "Motorsport.com",
@@ -9,99 +9,332 @@
  ],
  "items": [
   {
-   "title": "Mercedes open up on Antonelli and Russell \u2018healthy rivalry\u2019",
-   "link": "https://www.formula1.com/en/latest/article/no-games-nothing-being-hidden-mercedes-open-up-on-healthy-rivalry-between-antonelli-and-russell-amid-title-fight.gxq2hjDO6OWpTVxq4W1aZ",
+   "title": "Our early Bet Builder picks for the Dutch Grand Prix",
+   "link": "https://www.formula1.com/en/latest/article/our-early-bet-builder-selections-made-for-the-dutch-grand-prix.7Fb6H2xno5JhXrkIQa2eQb",
    "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "Mercedes' Kimi Antonelli and George Russell are both fighting for the title, but the team believe that the drivers have maintained a good relationship.",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Our expert betting writers have picked a four-leg early Bet Builder, including a podium finish, top-six finish and Virtual Safety Car.",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "Why Lawson\u2019s Red Bull call-up is such a huge opportunity",
+   "link": "https://www.formula1.com/en/latest/article/analysis-why-lawsons-red-bull-call-up-is-such-a-huge-opportunity.2ARsOWE56XDkDyJ7yBScFC",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "F1.com's Lawrence Barretto takes a look at Red Bull\u2019s decision to give Liam Lawson another chance, with Yuki Tsunoda also set to return to the grid in Zandvoort.",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Who is the latest Brazilian prodigy eyeing a place in F1?",
+   "link": "https://www.formula1.com/en/latest/article/the-latest-brazilian-prodigy-eyeing-a-place-in-formula-1-who-is-ferrari-junior-rafael-camara.7rQS6bm1E1gdCizXn13CxK",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Find out all you need to know about Rafael Camara, the Ferrari junior fighting to join the F1 grid in the near future.",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "What are the F1 Fantasy strategies for the Dutch GP?",
+   "link": "https://www.formula1.com/en/latest/article/f1-fantasy-strategist-preview-what-you-need-to-know-for-the-dutch-grand-prix.2bBlmguc36rYcXurzQcz2O",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Formula 1 returns from the summer break with a Sprint weekend in Zandvoort and an extra scoring session. Who deserves a place in your line-up?",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "Hill opens up on \u2018psychological battle\u2019 to beat Schumacher",
+   "link": "https://www.formula1.com/en/latest/article/i-had-to-get-myself-together-hill-opens-up-on-psychological-battle-to-beat-schumacher.4UF1qBPhoUim61JYLLP6ul",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Damon Hill has looked back on how he mentally prepared for his journey to the 1996 Drivers\u2019 Championship.",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "Madring circuit shares new photos ahead of Madrid\u2019s maiden GP",
+   "link": "https://www.formula1.com/en/latest/article/gallery-madring-circuit-shares-new-photos-ahead-of-madrids-maiden-grand-prix.vTxESDb75rcZnMyPrf9Ul",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Ahead of the Spanish Grand Prix in September, new photos have revealed the preparations being carried out at the Madring circuit in Madrid for its first Grand Prix.",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "How to stream the 2026 Dutch Grand Prix on F1 TV Premium",
+   "link": "https://www.formula1.com/en/latest/article/how-to-stream-the-2026-dutch-grand-prix-on-f1-tv-premium.Z5u9yxG7Nk0hT6lpvNvIS",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Here is all the information you need to follow the Dutch Grand Prix weekend live on F1 TV.",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "How Mercedes\u2019 2026 season has played out so far",
+   "link": "https://www.formula1.com/en/latest/article/half-term-report-mercedes-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.QM9JIE7lNuHZjNH5EYiLa",
+   "source": "Formula1.com",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "To round out our series of half term reports, let\u2019s take a look at Mercedes\u2019 highs and lows from this season.",
    "teams": [
     "Mercedes"
-   ]
+   ],
+   "date_estimated": true
   },
   {
-   "title": "How Ferrari\u2019s 2026 season has played out so far",
-   "link": "https://www.formula1.com/en/latest/article/half-term-report-ferraris-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.15yr3uIrZEu25KACsnEu1o",
+   "title": "Why Sainz has put his faith in Williams once again",
+   "link": "https://www.formula1.com/en/latest/article/analysis-why-sainz-has-put-his-faith-in-williams-once-again.nJAcXFHWOYFoqVlVqlMK2",
    "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "There has been progress for Ferrari in 2026, but can the Scuderia improve further in the second half?",
-   "teams": [
-    "Ferrari"
-   ]
-  },
-  {
-   "title": "Our writers build their ultimate F1 teams",
-   "link": "https://www.formula1.com/en/latest/article/dream-driver-pairings-and-smart-leaders-our-writers-build-their-ultimate-f1-teams.4CIog9Lva7oc4rhK4Lb7GL",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "Before the second half of the 2026 season kicks off, we asked our writers to create their ideal F1 team by picking two drivers and a Team Principal.",
-   "teams": []
-  },
-  {
-   "title": "Williams confirm Albon will remain with the team in 2027",
-   "link": "https://www.formula1.com/en/latest/article/williams-confirm-albon-will-remain-with-the-team-in-2027.3ZwdrAmEY4MGL5Ce1eXHIQ",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "Alex Albon is set to extend his stay with the Williams team, having been confirmed to race for the outfit in 2027.",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "Lawrence Barretto dissects the thinking behind Carlos Sainz's decision to stay at Williams.",
    "teams": [
     "Williams"
-   ]
+   ],
+   "date_estimated": true
   },
   {
-   "title": "What F1 drivers have been up to ahead of the Dutch Grand Prix",
-   "link": "https://www.formula1.com/en/latest/article/pool-days-proposals-and-paddock-preparations-what-f1-drivers-have-been-up-to-ahead-of-the-dutch-grand-prix.2KrA7OHtUqcWbCbym44NpT",
+   "title": "Sainz agrees new contract with Williams",
+   "link": "https://www.formula1.com/en/latest/article/sainz-agrees-new-multi-year-contract-with-williams-as-team-complete-2027-driver-line-up.66fBQTFaXXt7oIUfzi8NiO",
    "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "George Russell got engaged, Kimi Antonelli soaked up the Sardinian sun and Lewis Hamilton got back in the gym. Find out how the F1 drivers have been spending their summer ahead of the Dutch Grand Prix.",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ]
-  },
-  {
-   "title": "Why Albon and Williams have decided to stick rather than twist",
-   "link": "https://www.formula1.com/en/latest/article/analysis-why-albon-and-williams-have-decided-to-stick-rather-than-twist.3DaiBYb4RvRJ08R5QNeycL",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "F1.com's Lawrence Barretto assesses the reasons behind Alex Albon's commitment to Williams for the 2027 season.",
+   "published": "2026-08-19T23:04:52Z",
+   "summary": "One day on from the news that Alex Albon had extended his stay with Williams, Carlos Sainz has also agreed a new contract with the team.",
    "teams": [
     "Williams"
-   ]
+   ],
+   "date_estimated": true
   },
   {
-   "title": "Dutch Grand Prix betting guide and predictions",
-   "link": "https://www.formula1.com/en/latest/article/dutch-grand-prix-betting-guide-and-what-the-markets-predict-will-happen.2techVLNXe140aAQ6YOSVC",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "Formula 1 makes its final visit to Zandvoort this weekend and our handy guide gives you everything you need to know before placing your bets.",
-   "teams": []
-  },
-  {
-   "title": "Palmer indicates what Ferrari must do for chance at title",
-   "link": "https://www.formula1.com/en/latest/article/palmer-indicates-what-ferrari-must-do-to-have-a-chance-at-the-title.7iQhZQDV3xMceYMYMvC74V",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "In the latest episode of F1 Nation, former F1 driver Jolyon Palmer has given his take on how Ferrari can ensure that they stay in the title fight during the second half of the season.",
+   "title": "The full circle moment given to Lawson at the 2026 Dutch GP",
+   "link": "https://www.autosport.com/f1/news/full-circle-moment-for-lawson-at-dutch-gp/10847409/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T17:03:55Z",
+   "summary": "Call it cosmic karma or poetic justice, but on the scene of Liam Lawson's Formula 1 debut, deputising for Daniel Ricciardo in 2023, the New Zealander is again replacing a driver in the Red Bull stable at Zandvoort because of a hand injury. Lawson eventually us\u2026",
    "teams": [
-    "Ferrari"
-   ]
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": false
   },
   {
-   "title": "ASK LAWRENCE: Who is the biggest threat to Antonelli?",
-   "link": "https://www.formula1.com/en/latest/article/ask-lawrence-barretto-who-is-the-biggest-threat-to-antonelli-and-will-we-see-a-new-face-in-2027.101RPGqwqffouqsCwqsagJ",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "Lawrence Barretto answers F1 Unlocked reader questions on the 2026 title race, whether we could see a new face on the 2027 grid and more.",
+   "title": "Liam Lawson's unexpected Red Bull call-up rewards his perseverance",
+   "link": "https://www.motorsport.com/f1/news/liam-lawsons-unexpected-red-bull-call-up-rewards-his-perseverance/10847406/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T16:58:08Z",
+   "summary": "Call it cosmic karma or poetic justice, but on the scene of Liam Lawson's Formula 1 debut, deputising for Daniel Ricciardo in 2023, the New Zealander is again replacing a driver in the Red Bull stable at Zandvoort because of a hand injury. Lawson eventually us\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Five things to look out for at the F1 Dutch GP",
+   "link": "https://www.motorsport.com/f1/news/five-things-to-watch-out-for-at-the-f1-dutch-gp/10847372/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T15:40:01Z",
+   "summary": "This weekend\u2019s Dutch Grand Prix marks the return of Formula 1 from its 2026 summer shutdown with the end of the season now firmly in sight. Zandvoort represents the halfway point of the campaign with championships being decided, legacies made and grid seats fo\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "'Leader' Sainz commits to Williams with new deal",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cly8ervvyggo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-08-19T14:43:49Z",
+   "summary": "Carlos Sainz signs a new contract to stay at the Williams team into 2027 and beyond.",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Who belongs on F1's Mount Rushmore? Pick your four greatest drivers",
+   "link": "https://www.motorsport.com/f1/news/who-belongs-on-f1s-mount-rushmore-pick-your-four-greatest-drivers/10847339/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T14:00:02Z",
+   "summary": "Trying to name Formula 1's single greatest driver is difficult enough. Narrowing more than 75 years of grand prix racing down to four drivers is arguably even harder. Earlier this summer, Motorsport assembled a panel of 10 journalists from Motorsport, Autospor\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Williams confirms F1 2027 line-up with Sainz extension",
+   "link": "https://www.autosport.com/f1/news/carlos-sainz-extends-williams-contract/10847353/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T13:32:45Z",
+   "summary": "Williams has confirmed its driver line-up for the 2027 Formula 1 season after announcing the commitment of Carlos Sainz on a multi-year deal. The Spaniard\u2019s news comes a day after team-mate Alex Albon agreed just a one-season extension for next year, which wil\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Carlos Sainz to remain at Williams for F1 2027",
+   "link": "https://www.motorsport.com/f1/news/carlos-sainz-to-remain-at-williams-for-f1-2027/10847351/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T13:30:08Z",
+   "summary": "Williams has confirmed its driver line-up for the 2027 Formula 1 season after announcing the commitment of Carlos Sainz on a multi-year deal. The Spaniard\u2019s news comes a day after team-mate Alex Albon agreed just a one-season extension for next year, which wil\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Guenther Steiner \"wouldn't discount\" F1-MotoGP double-header within five years",
+   "link": "https://www.motorsport.com/f1/news/f1-and-motogp-double-header-could-happen-within-five-years-says-guenther-steiner/10847334/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T12:51:44Z",
+   "summary": "Former Haas Formula 1 team principal Guenther Steiner believes a joint race weekend featuring both F1 and MotoGP could become a reality within the next five years, identifying venues such as Silverstone as potential hosts for a historic one-off event. Speculat\u2026",
+   "teams": [
+    "Haas F1 Team"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "David Coulthard predicts Zandvoort will never return to F1 calendar",
+   "link": "https://www.motorsport.com/f1/news/david-coulthard-predicts-zandvoort-will-never-return-to-f1-calendar/10847326/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T12:25:03Z",
+   "summary": "Former Formula 1 driver David Coulthard believes the championship will never return to Zandvoort, citing severe physical and commercial constraints ahead of the venue's final Dutch Grand Prix. The coastal circuit is preparing to host its final scheduled F1 eve\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "FIA to hear McLaren and Red Bull's Monaco GP appeal next week",
+   "link": "https://www.autosport.com/f1/news/fia-to-hear-mclaren-red-bull-monaco-gp-appeal-next-week/10847321/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T11:58:18Z",
+   "summary": "Next week, the FIA will hear the appeals from McLaren and Red Bull against the decision to reinstate Pierre Gasly\u2019s podium at the Monaco Grand Prix. The Alpine driver crossed the line in third on 7 June but two five-second penalties for pitlane speeding demote\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "FIA sets date for McLaren and Red Bull's Monaco GP appeal",
+   "link": "https://www.motorsport.com/f1/news/fia-sets-date-for-mclaren-and-red-bulls-monaco-gp-appeal/10847318/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T11:55:46Z",
+   "summary": "Next week, the FIA will hear the appeals from McLaren and Red Bull against the decision to reinstate Pierre Gasly\u2019s podium at the Monaco Grand Prix. The Alpine driver crossed the line in third on 7 June but two five-second penalties for pitlane speeding demote\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lawson to replace Hadjar at Red Bull for Dutch GP",
+   "link": "https://www.autosport.com/f1/news/lawson-to-replace-hadjar-at-dutch-gp/10847307/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T11:09:43Z",
+   "summary": "Red Bull has officially confirmed that Liam Lawson will replace the injured Isack Hadjar at this weekend\u2019s Formula 1 Dutch Grand Prix. News emerged on Wednesday morning that Hadjar had sustained a wrist injury from a gym session and was therefore set to skip Z\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Isack Hadjar to miss F1 Dutch GP, Red Bull replacement confirmed",
+   "link": "https://www.motorsport.com/f1/news/isack-hadjar-to-miss-f1-dutch-gp-red-bulls-replacement-confirmed/10847292/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T11:05:48Z",
+   "summary": "Red Bull has officially confirmed that Liam Lawson will replace the injured Isack Hadjar at this weekend\u2019s Formula 1 Dutch Grand Prix. News emerged on Wednesday morning that Hadjar had sustained a wrist injury from a gym session and was therefore set to skip Z\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "How F1 drivers spent the 2026 summer beak",
+   "link": "https://www.motorsport.com/f1/news/how-f1-drivers-spent-the-2026-summer-beak/10847288/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T10:24:09Z",
+   "summary": "Formula 1's mandatory summer shutdown has given the paddock a much-needed chance to recharge ahead of the Dutch Grand Prix. With the drivers now returning to work in the lead-up to the race at Zandvoort, they have shared a glimpse of how they spent their time\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "F1 pre-start procedure to stay despite FIA saying it is no longer a safety issue",
+   "link": "https://www.motorsport.com/f1/news/f1-pre-start-procedure-to-stay-despite-fia-saying-it-is-no-longer-a-safety-issue/10847147/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T09:34:03Z",
+   "summary": "After the practice starts during winter testing in Bahrain proved rather problematic for several Formula 1 outfits, the issue quickly sparked a political debate in the paddock. Many teams wanted more time during the starting procedure to spool their turbocharg\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Pre-start procedure set to remain for F1 2027",
+   "link": "https://www.autosport.com/f1/news/pre-start-procedure-set-to-remain-for-f1-2027/10847275/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T09:32:37Z",
+   "summary": "After the practice starts during winter testing in Bahrain proved rather problematic for several Formula 1 outfits, the issue quickly sparked a political debate in the paddock. Many teams wanted more time during the starting procedure to spool their turbocharg\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Hadjar to miss Dutch Grand Prix with wrist injury",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/crrvyzz0w0vo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-08-19T09:22:22Z",
+   "summary": "Red Bull's Isack Hadjar will miss this weekend's Dutch Grand Prix after injuring his wrist during the summer break.",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Cadillac \"wouldn't be on the grid\" without Graeme Lowdon, says former F1 TV host",
+   "link": "https://www.motorsport.com/f1/news/cadillac-wouldnt-be-on-the-grid-without-graeme-lowdon-says-former-f1-tv-host/10847263/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T09:02:15Z",
+   "summary": "Former Formula 1 broadcaster Will Buxton has praised Graeme Lowdon following his abrupt exit from his role as Cadillac team principal, insisting the American outfit would not be on the grid today without him. Cadillac announced during the summer break that aft\u2026",
+   "teams": [
+    "Cadillac"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Hadjar could miss F1 Dutch GP with Red Bull replacement plan already in place",
+   "link": "https://www.autosport.com/f1/news/hadjar-could-miss-f1-dutch-gp/10847250/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-08-19T07:52:47Z",
+   "summary": "Max Verstappen could have a different team-mate alongside him for his final home race on the Formula 1 calendar. Isack Hadjar is dealing with a wrist injury sustained during a gym session ahead of the race weekend at Zandvoort, Autosport has learned, and could\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Isack Hadjar could miss F1 Dutch GP with Red Bull replacement plan already in place",
+   "link": "https://www.motorsport.com/f1/news/isack-hadjar-could-miss-f1-dutch-gp-with-red-bull-replacement-plan-already-in-place/10847237/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-08-19T07:48:49Z",
+   "summary": "Max Verstappen could have a different team-mate alongside him for his final home race on the Formula 1 calendar. Isack Hadjar is dealing with a wrist injury sustained during a gym session ahead of the race weekend at Zandvoort, Motorsport.com has learned, and\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Antonelli - the boy 'born in a garage' who started driving on dad's lap",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/c0rdvxdwwwwo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-08-19T06:06:58Z",
+   "summary": "Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he went on to lead the F1 drivers' championship at the age of 19.",
    "teams": [
     "Mercedes"
-   ]
-  },
-  {
-   "title": "5 drivers most likely to win the Dutch Grand Prix",
-   "link": "https://www.formula1.com/en/latest/article/the-5-drivers-most-likely-to-win-the-dutch-grand-prix-according-to-betting-markets.7Jv1sYoLshaVRD1A0CfZhw",
-   "source": "Formula1.com",
-   "published": "2026-08-19T05:04:18Z",
-   "summary": "We look at the betting markets to see who bookmakers expect to win at Circuit Zandvoort.",
-   "teams": []
+   ],
+   "date_estimated": false
   },
   {
    "title": "\"No nine to five cruise\" - The challenge of assembling Cadillac's trackside F1 team from scratch",
@@ -112,7 +345,8 @@
    "teams": [
     "Haas F1 Team",
     "Cadillac"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "\"No nine to five cruise\" - The rewarding challenge of assembling Cadillac's trackside team from scratch",
@@ -123,7 +357,8 @@
    "teams": [
     "Haas F1 Team",
     "Cadillac"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Albon to stay with Williams for 2027 season",
@@ -133,7 +368,8 @@
    "summary": "Alex Albon will stay at Williams for the 2027 season after signing a one-year contract extension.",
    "teams": [
     "Williams"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Ukraine appeals to FIA to overturn Russia inclusion",
@@ -141,7 +377,8 @@
    "source": "BBC Sport",
    "published": "2026-08-18T13:29:41Z",
    "summary": "Ukraine's government appeals against FIA's decision to welcome back Russian and Belarussian drivers.",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "Albon commits to Williams F1 team for 2027",
@@ -151,7 +388,8 @@
    "summary": "Alex Albon will stay at Williams for a sixth consecutive Formula 1 season in 2027 after agreeing a short-term contract extension. Albon joined Williams ahead of the 2022 season and was one of several drivers out of contract at the end of this year, amid specul\u2026",
    "teams": [
     "Williams"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Alex Albon commits to Williams F1 team for 2027",
@@ -161,7 +399,8 @@
    "summary": "Alex Albon will stay at Williams for a sixth consecutive Formula 1 season in 2027 after agreeing a short-term contract extension. Albon joined Williams ahead of the 2022 season and was one of several drivers out of contract at the end of this year, amid specul\u2026",
    "teams": [
     "Williams"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Lewis Hamilton vs Michael Schumacher: You decide F1's greatest driver",
@@ -171,7 +410,8 @@
    "summary": "Our Top 25 Formula 1 drivers ranking produced the one result nobody could ignore: a dead heat at number one. After 10 journalists from Motorsport, Autosport and Yahoo Sports submitted their individual top-25 rankings, a clear result emerged: Lewis Hamilton and\u2026",
    "teams": [
     "Ferrari"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "\"We need to put a limit on it\" \u2013 Franco Colapinto opens up about online abuse in F1",
@@ -181,7 +421,8 @@
    "summary": "Formula 1 has grown significantly in recent years, not least on social media. While that is essentially a positive development, one downside has been the considerable increase in online abuse aimed at drivers and others working in the pinnacle of motorsport. T\u2026",
    "teams": [
     "Alpine"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Guenther Steiner opens up on breakdown of relationship with Gene Haas",
@@ -191,7 +432,8 @@
    "summary": "Former Haas Formula 1 team principal Guenther Steiner has shed new light on his relationship with team owner Gene Haas following his exit from the team, confirming that he currently has \"no relationship\" with his former boss. Steiner parted ways with the Ameri\u2026",
    "teams": [
     "Haas F1 Team"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "FIA: F1's Macarena wings to stay, but Red Bull had to do \"more work\"",
@@ -202,7 +444,8 @@
    "teams": [
     "Ferrari",
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "FIA happy for F1's Macarena wings to stay, Red Bull had to do \"more work\"",
@@ -213,7 +456,8 @@
    "teams": [
     "Ferrari",
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "What's going on at Cadillac and Haas? F1 Q&A",
@@ -224,7 +468,8 @@
    "teams": [
     "Haas F1 Team",
     "Cadillac"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "F1 fans praise Gabriel Bortoleto's brutally honest \"Passenger Princess\" appearance",
@@ -234,7 +479,8 @@
    "summary": "Audi Formula 1 driver Gabriel Bortoleto has featured on Amelia Dimoldenberg's Passenger Princess YouTube series. Filmed during the Austrian Grand Prix weekend, the Brazilian driver taught the presenter speed control and how to hit the apex. As they took on the\u2026",
    "teams": [
     "Audi"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Christian Horner announces UK book tour for new memoir following Red Bull F1 exit",
@@ -244,7 +490,8 @@
    "summary": "Former Red Bull Racing CEO and team principal Christian Horner has announced a UK book tour this autumn to coincide with the release of his new memoir, Drive. The 52-year-old revealed the tour will provide fans with the rare opportunity to speak with him direc\u2026",
    "teams": [
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "F1 launches new \"Five Lights\" campaign narrated by Colin Farrell",
@@ -252,7 +499,8 @@
    "source": "Motorsport.com",
    "published": "2026-08-17T21:15:15Z",
    "summary": "Formula 1 has launched a new global marketing campaign, Five Lights, ahead of its return from the summer break with the Dutch Grand Prix. The campaign will be narrated by Academy Award-nominated actor Colin Farrell. The 90-second film, which debuted on 16 Augu\u2026",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "Former F1 team boss reveals bizarre way he warned staff about \"Drive to Survive\" microphones",
@@ -260,7 +508,8 @@
    "source": "Motorsport.com",
    "published": "2026-08-17T18:00:03Z",
    "summary": "Former Formula 1 team principal Otmar Szafnauer has revealed the bizarre method he used to warn his colleagues that he was wearing a microphone for Netflix's Drive to Survive cameras. The popular docuseries gave fans unprecedented access to the F1 paddock, but\u2026",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "F1 veteran Yuki Tsunoda in talks for 2027 IndyCar seat with Meyer Shank",
@@ -268,7 +517,8 @@
    "source": "Motorsport.com",
    "published": "2026-08-17T17:24:41Z",
    "summary": "Formula 1 veteran Yuki Tsunoda could be preparing for a major career pivot and cross the Atlantic for a 2027 IndyCar Series campaign. Motorsport.com understands Tsunoda is vying for the #66 Meyer Shank Racing (MSR) Honda entry, marking a potential second act i\u2026",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "The 25 greatest Formula 1 drivers of all time, ranked",
@@ -276,7 +526,8 @@
    "source": "Motorsport.com",
    "published": "2026-08-17T16:00:02Z",
    "summary": "Ranking Formula 1 drivers across generations is an exercise almost designed to start an argument. Cars, calendars, safety standards and levels of competition have changed enormously since the world championship began, making direct comparisons between eras inh\u2026",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "Guenther Steiner admits he stayed at Haas F1 team \"two years too long\"",
@@ -286,7 +537,8 @@
    "summary": "Former Haas Formula 1 team principal Guenther Steiner has admitted that he stayed at the American outfit \"two years too long\". Steiner, who built the team from scratch ahead of its 2016 F1 debut with the backing of team owner Gene Haas, left the role at the en\u2026",
    "teams": [
     "Haas F1 Team"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Mercedes: \"Too early\" to favour Kimi Antonelli in F1 2026 title fight",
@@ -297,7 +549,8 @@
    "teams": [
     "Mercedes",
     "Ferrari"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Isack Hadjar turns viral Dutch GP trophy moment into special Red Bull helmet design",
@@ -307,7 +560,8 @@
    "summary": "Red Bull has revealed special-edition helmets and race suits for four-time Formula 1 champion Max Verstappen and his team-mate Isack Hadjar for the upcoming Dutch Grand Prix, with Hadjar's helmet design incorporating his broken trophy from last season. With Za\u2026",
    "teams": [
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Allan McNish reveals qualities that give Gabriel Bortoleto \u201ca lot of potential\u201d",
@@ -317,7 +571,8 @@
    "summary": "Audi racing director Allan McNish has delved into the mindset that makes Gabriel Bortoleto a competent Formula 1 driver. Back-to-back Formula 3 and Formula 2 champion Bortoleto made his world championship debut with the Hinwil-based outfit (then Sauber) last y\u2026",
    "teams": [
     "Audi"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Rob Smedley reveals why he turned down F1 team principal roles",
@@ -329,7 +584,8 @@
     "Ferrari",
     "Alpine",
     "Williams"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Why Honda's F1 project looks completely different from its Red Bull years",
@@ -339,7 +595,8 @@
    "summary": "When Adrian Newey appeared at the FIA team principals' press conference during the Formula 1 season opener in Melbourne, the legendary designer attracted attention for several reasons. Newey spoke openly about Honda's battery problems, acknowledged that his ro\u2026",
    "teams": [
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "What makes Honda's F1 project completely different from its Red Bull years",
@@ -349,7 +606,8 @@
    "summary": "When Adrian Newey appeared at the FIA team principals' press conference during the Formula 1 season opener in Melbourne, the legendary designer attracted attention for several reasons. Newey spoke openly about Honda's battery problems, acknowledged that his ro\u2026",
    "teams": [
     "Red Bull Racing"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "Otmar Szafnauer opens door to F1 comeback but hints at different role",
@@ -360,7 +618,8 @@
    "teams": [
     "Aston Martin",
     "Alpine"
-   ]
+   ],
+   "date_estimated": false
   },
   {
    "title": "What is the format for F1 sprint races in 2026?",
@@ -368,7 +627,8 @@
    "source": "BBC Sport",
    "published": "2026-08-17T09:31:35Z",
    "summary": "There are six sprint races in the 2026 season and here is all you need to know about how the format works.",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "How to follow Dutch Grand Prix on the BBC",
@@ -376,7 +636,8 @@
    "source": "BBC Sport",
    "published": "2026-08-17T09:01:42Z",
    "summary": "All the key BBC coverage details for the Dutch Grand Prix at Zandvoort, from 21-23 August.",
-   "teams": []
+   "teams": [],
+   "date_estimated": false
   },
   {
    "title": "Arvid Lindblad opens up on Liam Lawson relationship at Racing Bulls",
@@ -386,221 +647,8 @@
    "summary": "Racing Bulls Formula 1 rookie Arvid Lindblad has shed light on his partnership with team-mate Liam Lawson. The 19-year-old Briton has impressed during the first half of his debut campaign. After picking up four points at the season-opening Australian Grand Pri\u2026",
    "teams": [
     "Racing Bulls"
-   ]
-  },
-  {
-   "title": "The biggest driver transfers in F1 history",
-   "link": "https://www.motorsport.com/f1/news/the-biggest-driver-transfers-in-f1-history/10845686/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-17T08:11:49Z",
-   "summary": "The motorsport world is waiting with bated breath for Fernando Alonso and Max Verstappen to decide their Formula 1 futures, as the two world champions are pipped as the first dominoes that need to fall to kick off a raft of driver transfers ahead of 2027. Whil\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "Aston Martin"
-   ]
-  },
-  {
-   "title": "Dutch GP in pictures as F1 prepares for Zandvoort farewell",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c0l58802270o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-08-17T06:31:36Z",
-   "summary": "A selection of images from the Dutch Grand Prix, as Zandvoort prepares to host a Formula 1 race for the final time.",
-   "teams": []
-  },
-  {
-   "title": "Honda reveals timeline to become a \"top competitor\" in F1 again",
-   "link": "https://www.motorsport.com/f1/news/honda-reveals-timeline-to-become-a-top-competitor-in-f1-again/10846301/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-16T13:00:02Z",
-   "summary": "The first months of Honda's partnership with Aston Martin have been downright painful, but the Japanese manufacturer is now looking ahead again. Honda\u2019s F1 project looks completely different from its glory years with Red Bull in terms of personnel, which led H\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "Aston Martin"
-   ]
-  },
-  {
-   "title": "F1 2026 mid-season grades: Mercedes' early dominance evaporates as reliability woes strike",
-   "link": "https://www.motorsport.com/f1/news/f1-2026-mid-season-grades-mercedes-early-dominance-evaporates-as-reliability-woes-strike/10846644/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-16T11:30:02Z",
-   "summary": "After four years in the doldrums with a tough to tame ground-effect car, Toto Wolff's Mercedes empire was desperate to strike back. The combined efforts of its chassis team in Brackley and its power unit division in Brixworth came up with a rocket ship, but en\u2026",
-   "teams": [
-    "Mercedes"
-   ]
-  },
-  {
-   "title": "The best drives of the 2026 F1 season so far, according to our writers",
-   "link": "https://www.motorsport.com/f1/news/sun-the-best-drives-of-the-2026-f1-season-so-far-according-to-our-writers/10846338/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-16T08:29:56Z",
-   "summary": "Formula 1\u2019s competitive order was shaken up in 2026 with the roll out of sweeping new regulations across the chassis, aerodynamics and power units. Mercedes came out on top, with it now leading the constructors\u2019 standings and Kimi Antonelli is on top in the dr\u2026",
-   "teams": [
-    "Mercedes"
-   ]
-  },
-  {
-   "title": "The best drives of F1 2026 so far, according to our writers",
-   "link": "https://www.autosport.com/f1/news/the-best-drives-of-the-2026-f1-season-so-far-according-to-our-writers/10846635/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-08-16T08:29:50Z",
-   "summary": "Formula 1\u2019s competitive order was shaken up in 2026 with the roll out of sweeping new regulations across the chassis, aerodynamics and power units. Mercedes came out on top, with it now leading the constructors\u2019 standings and Kimi Antonelli is on top in the dr\u2026",
-   "teams": [
-    "Mercedes"
-   ]
-  },
-  {
-   "title": "F1 2026 mid-season grades: Innovative Ferrari impresses with strong start",
-   "link": "https://www.motorsport.com/f1/news/f1-2026-mid-season-grades-innovative-ferrari-impresses-with-strong-start/10846497/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-15T13:09:32Z",
-   "summary": "Was Fred Vasseur playing with fire when he decided Ferrari should switch focus to 2026 as early as April last year? Perhaps so, but with the Scuderia unable to catch McLaren, the Frenchman made the rational and correct call, even if it didn't necessarily go do\u2026",
-   "teams": [
-    "Ferrari",
-    "McLaren"
-   ]
-  },
-  {
-   "title": "Gabriel Bortoleto expects long-term stay at Audi's F1 team",
-   "link": "https://www.motorsport.com/f1/news/bortoleto-expects-long-term-stay-at-audis-f1-team/10846331/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-15T12:00:02Z",
-   "summary": "Gabriel Bortoleto expects to remain at Audi for the long-term, stating that he has a deal with the Swiss-German Formula 1 outfit to cover the next few seasons. The Brazilian joined the team in 2025 for its final season as Sauber and scored 19 points in his roo\u2026",
-   "teams": [
-    "Audi"
-   ]
-  },
-  {
-   "title": "Mercedes no longer needs Max Verstappen, says Guenther Steiner",
-   "link": "https://www.motorsport.com/f1/news/mercedes-no-longer-needs-max-verstappen-says-guenther-steiner/10846482/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-15T11:30:12Z",
-   "summary": "Former Haas Formula 1 team principal Guenther Steiner believes Mercedes' need to sign Max Verstappen has faded, suggesting the Brackley outfit has already found \"the next Max Verstappen\" in Kimi Antonelli. Verstappen's F1 future has been the subject of paddock\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing",
-    "Haas F1 Team"
-   ]
-  },
-  {
-   "title": "Max Verstappen pinpoints Red Bull's \"big priority\" for second half of F1 2026",
-   "link": "https://www.motorsport.com/f1/news/max-verstappen-pinpoints-red-bulls-big-priority-for-second-half-of-f1-2026/10846420/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-15T08:24:28Z",
-   "summary": "During Formula 1's summer break, Max Verstappen finds himself no fewer than 110 points behind championship leader Kimi Antonelli. Last season, the four-time world champion launched a spectacular comeback from Zandvoort onwards and finished on the podium in eve\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ]
-  },
-  {
-   "title": "Verstappen highlights \"big priority\" for Red Bull in second half of F1 2026",
-   "link": "https://www.autosport.com/f1/news/max-verstappen-pinpoints-red-bulls-big-priority-for-second-half-of-f1-2026/10846451/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-08-15T08:24:23Z",
-   "summary": "During Formula 1's summer break, Max Verstappen finds himself no fewer than 110 points behind championship leader Kimi Antonelli. Last season, the four-time world champion launched a spectacular comeback from Zandvoort onwards and finished on the podium in eve\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ]
-  },
-  {
-   "title": "George Russell still carries scars from 2020 Mercedes F1 call-up",
-   "link": "https://www.motorsport.com/f1/news/george-russell-still-carries-scars-from-2020-mercedes-f1-call-up/10846449/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-15T08:20:12Z",
-   "summary": "Mercedes Formula 1 driver George Russell has revealed he still carries scars on his hips from squeezing into seven-time champion Lewis Hamilton's race seat during his appearance for the Brackley outfit at the 2020 Sakhir Grand Prix. Russell, who was driving fo\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ]
-  },
-  {
-   "title": "King Willem-Alexander to present F1 Dutch GP winner's trophy at Zandvoort",
-   "link": "https://www.motorsport.com/f1/news/king-willem-alexander-to-present-f1-dutch-gp-winners-trophy-at-zandvoort/10846416/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T20:46:54Z",
-   "summary": "King Willem-Alexander of the Netherlands will present the winner's trophy at the Dutch Grand Prix at Zandvoort. It will be his first 'official' visit to a sporting event in the Netherlands to present a prize. While King Willem-Alexander and Queen M\u00e1xima have a\u2026",
-   "teams": []
-  },
-  {
-   "title": "F1 2026 mid-season grades: McLaren starts on back foot but makes rapid progress",
-   "link": "https://www.motorsport.com/f1/news/f1-2026-mid-season-grades-mclaren-starts-on-the-back-foot-but-makes-rapid-progress/10846244/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T15:51:25Z",
-   "summary": "McLaren faced the challenge over following up its back-to-back world titles across an entirely different set of regulations. On paper, it felt like the Woking-based squad was well equipped to do so, but a combination of its 2025 title race hangover and its cha\u2026",
-   "teams": [
-    "McLaren"
-   ]
-  },
-  {
-   "title": "Why Mercedes finds other F1 teams' upgrades \"scary\" with its out-of-phase plan",
-   "link": "https://www.motorsport.com/f1/news/mercedes-explains-out-of-phase-developments-with-other-f1-teams/10846275/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T13:02:03Z",
-   "summary": "Mercedes technical director James Allison says the team's decision to keep developing its 2026 Formula 1 car late has put it \"out of phase\" with the other teams around it, causing a leapfrog effect as in-season updates produce large performance gains. The W17\u2026",
-   "teams": [
-    "Mercedes"
-   ]
-  },
-  {
-   "title": "Mercedes explains \"out of phase\" developments compared with other F1 teams",
-   "link": "https://www.autosport.com/f1/news/why-mercedes-finds-other-f1-teams-upgrades-scary-with-its-out-of-phase-plan/10846296/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-08-14T13:00:37Z",
-   "summary": "Mercedes technical director James Allison says the team's decision to keep developing its 2026 Formula 1 car late has put it \"out of phase\" with the other teams around it, causing a leapfrog effect as in-season updates produce large performance gains. The W17\u2026",
-   "teams": [
-    "Mercedes"
-   ]
-  },
-  {
-   "title": "How F1 drivers were \"drooling over\" Formula E's Gen4 car",
-   "link": "https://www.motorsport.com/formula-e/news/f1-drivers-drooling-over-gen4/10846265/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T12:14:27Z",
-   "summary": "Formula E boss Jeff Dodds beamed with pride when several Formula 1 drivers attended the Monaco E-Prix, labelling their comments about Gen4 as his highlight of the 2025-26 season. Reigning F1 world champion Lando Norris and several others attended Formula E\u2019s M\u2026",
-   "teams": [
-    "McLaren"
-   ]
-  },
-  {
-   "title": "Max Verstappen unveils special helmet for final F1 Dutch Grand Prix",
-   "link": "https://www.motorsport.com/f1/news/max-verstappen-unveils-special-helmet-for-final-f1-dutch-grand-prix/10846299/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T11:37:07Z",
-   "summary": "Four-time Formula 1 champion Max Verstappen has unveiled a special-edition helmet design ahead of what will be his final home race at the 2026 Dutch Grand Prix. The Dutchman's home race helmet design abandons his standard 2026 design for a white and blue colou\u2026",
-   "teams": [
-    "Red Bull Racing"
-   ]
-  },
-  {
-   "title": "What exactly was behind Franco Colapinto's Miami breakthrough at Alpine?",
-   "link": "https://www.motorsport.com/f1/news/what-exactly-was-behind-franco-colapintos-miami-breakthrough-at-alpine/10846004/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T10:48:48Z",
-   "summary": "According to Pierre Gasly and Franco Colapinto, Alpine was overtaken by Racing Bulls in the final weeks before Formula 1's summer break. Both drivers say it is simply a matter of car development \u2013 Red Bull's sister team has introduced more upgrades, and more e\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "Alpine",
-    "Racing Bulls"
-   ]
-  },
-  {
-   "title": "FIA lifts sanctions on Russian, Belarusian drivers",
-   "link": "https://www.autosport.com/general/news/fia-lifts-sanctions-on-russian-belarusian-drivers/10846260/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-08-14T09:55:54Z",
-   "summary": "The FIA has revised its emergency measures to lift restrictions on Russian and Belarusian drivers and no longer binds them to a commitment of 'neutrality', walking back on the measures placed on them following the outbreak of the war in Ukraine. After Russia's\u2026",
-   "teams": []
-  },
-  {
-   "title": "Interview - The life and racing lessons Allan McNish learned from Ayrton Senna and Audi",
-   "link": "https://www.motorsport.com/f1/news/the-life-and-racing-lessons-allan-mcnish-learned-from-ayrton-senna-and-audi/10846242/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-08-14T09:35:38Z",
-   "summary": "For long-time Audi stalwart and Le Mans winner Allan McNish, becoming Audi's first racing director in Formula 1 feels like the natural progression of his storied career on both sides of the pitwall. After climbing the UK single-seater ladder in the late '80s a\u2026",
-   "teams": [
-    "Audi"
-   ]
+   ],
+   "date_estimated": false
   }
  ]
 }

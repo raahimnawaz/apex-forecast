@@ -67,26 +67,34 @@ fi
 make test lint || { echo "FAIL: tests or lint — not publishing"; exit 1; }
 
 # data/ is gitignored and reproducible; only the published payloads, the write-once
-# prediction log and the reports are worth committing.
-git add web/data reports
+# prediction log, the reports and the first-seen store are worth committing. state/ has
+# to be committed for the same reason grids/ does: once the record of when a link was
+# first seen is lost, no feed will tell you again.
+git add web/data reports state
 
-# Every build restamps generated_utc even when the output is otherwise identical, and
-# news items whose feed omits a pubDate are stamped with now() on every fetch (see the
-# news-dating limitation in docs/HANDOFF.md), so a plain "did anything change" test is
-# always true. Left alone that produces a no-op commit every week, a pointless dashboard
-# redeploy, and a message claiming a refresh that did not happen.
+# Every build restamps generated_utc even when the output is otherwise identical, so a
+# plain "did anything change" test is always true. Left alone that produces a no-op
+# commit every week, a pointless dashboard redeploy, and a message claiming a refresh
+# that did not happen.
 #
-# Real news arrives as new titles, links and summaries, so ignoring the two timestamp
-# fields still detects it; what it stops detecting is a clock ticking.
+# `published` used to be ignored here too, because an item whose feed omitted a pubDate
+# was stamped with now() on every fetch. It is not ignored any more: undated items now
+# carry the time of the first fetch that saw them, which does not move, so a change in
+# `published` is once again real news rather than a clock tick.
+#
+# `last_seen` in the first-seen store is the one field that still restamps every run —
+# it exists to expire links that have dropped out of every feed, not to say anything
+# about the news. A genuinely new undated link also writes a `first_seen`, which is not
+# ignored and correctly counts as a change.
 substantive=$(git diff --staged -U0 \
   | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' \
-  | grep -v '"generated_utc"' | grep -vc '"published"')
+  | grep -v '"generated_utc"' | grep -vc '"last_seen"')
 
 if git diff --staged --quiet; then
   echo "nothing changed"
 elif [ "$substantive" -eq 0 ]; then
   echo "only timestamps changed — nothing to publish"
-  git restore --staged --worktree web/data reports
+  git restore --staged --worktree web/data reports state
 else
   # Every fit is seeded, so an unchanged season refits byte-identically and only the
   # headlines move. Say which of the two actually happened rather than claiming a model
