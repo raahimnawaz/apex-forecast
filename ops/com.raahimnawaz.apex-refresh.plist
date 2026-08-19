@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.raahimnawaz.apex-refresh</string>
+
+  <!-- Tuesday morning: after the race weekend, with enough delay for FastF1's upstream
+       timing data to settle. Same cadence as the GitHub schedule this replaced, but on
+       a machine that live timing will actually serve. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>2</integer>
+    <key>Hour</key><integer>9</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/raahimnawaz/apex-forecast/ops/refresh.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/raahimnawaz/apex-forecast</string>
+
+  <!-- The script logs its own run to reports/refresh.log. These two catch anything that
+       fails before the script can redirect — a missing interpreter, a bad path. -->
+  <key>StandardOutPath</key>
+  <string>/Users/raahimnawaz/apex-forecast/reports/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/raahimnawaz/apex-forecast/reports/launchd.err.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
