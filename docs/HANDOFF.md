@@ -201,6 +201,15 @@ prior. Neither exists yet.
     degradation, lap length) buy +0.012 adjusted R² for 22 parameters — BIC rejects them
     outright. Real circuit geometry is the missing input, and it needs telemetry, which
     `ingest.py` currently loads with `telemetry=False`.
+11. **Undated news items claim to be the newest.** `_parse_date` falls back to
+    `datetime.now(UTC)` when a feed omits or malforms `pubDate`, and the list is sorted
+    newest-first. Measured 2026-08-19: **10 of 60 items** carried a fabricated timestamp,
+    all identical, so they occupied the entire top of the dashboard ahead of genuinely
+    recent headlines — and re-dated themselves on every fetch, which is why the weekly
+    refresh has to ignore `published` to tell a real change from a clock tick. The honest
+    fix is to stop inventing a time: either carry forward the timestamp from the first
+    fetch that saw the link, or sort unknown dates last instead of first. Both need a
+    decision about what the dashboard should show for an item whose age is unknown.
 
 ---
 

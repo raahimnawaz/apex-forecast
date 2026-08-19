@@ -70,12 +70,17 @@ make test lint || { echo "FAIL: tests or lint — not publishing"; exit 1; }
 # prediction log and the reports are worth committing.
 git add web/data reports
 
-# Every build restamps generated_utc even when the output is otherwise identical, so a
-# plain "did anything change" test is always true. Left alone that produces a no-op
-# commit every week, a pointless dashboard redeploy, and a message claiming a refresh
-# that did not happen. Only a change outside the timestamps counts as real.
+# Every build restamps generated_utc even when the output is otherwise identical, and
+# news items whose feed omits a pubDate are stamped with now() on every fetch (see the
+# news-dating limitation in docs/HANDOFF.md), so a plain "did anything change" test is
+# always true. Left alone that produces a no-op commit every week, a pointless dashboard
+# redeploy, and a message claiming a refresh that did not happen.
+#
+# Real news arrives as new titles, links and summaries, so ignoring the two timestamp
+# fields still detects it; what it stops detecting is a clock ticking.
 substantive=$(git diff --staged -U0 \
-  | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' | grep -vc '"generated_utc"')
+  | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' \
+  | grep -v '"generated_utc"' | grep -vc '"published"')
 
 if git diff --staged --quiet; then
   echo "nothing changed"
