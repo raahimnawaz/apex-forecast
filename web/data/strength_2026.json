@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-08-30T01:00:51Z",
+ "generated_utc": "2026-09-01T16:05:57Z",
  "season": 2026,
  "team_colors": {
   "Alpine": "#0093cc",
@@ -2264,10 +2264,10 @@
   "event": "Italian Grand Prix",
   "date": "2026-09-06",
   "available": true,
-  "rain_probability": 0.0,
+  "rain_probability": 0.01,
   "precipitation_mm": 0.0,
-  "temperature_c": 33.2,
-  "wind_kph": 7.0,
+  "temperature_c": 31.4,
+  "wind_kph": 5.3,
   "note": "",
   "uncertainty_multiplier": 1.0,
   "wet_risk": false
