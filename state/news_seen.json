@@ -1,6 +1,10 @@
 {
  "schema_version": 1,
  "links": {
+  "https://www.formula1.com/en/latest/article/5-winners-and-5-losers-from-madrid-2026-spanish-grand-prix.EHx7H0e24uJ5ZwVXZD90q": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
+  },
   "https://www.formula1.com/en/latest/article/alpine-targeting-monza-win-as-team-react-to-class-act-gasly-claiming-pole-position.56KmlrAXqTURL57SepFqdj": {
    "first_seen": "2026-09-06T01:38:10Z",
    "last_seen": "2026-09-06T01:38:10Z"
@@ -20,6 +24,10 @@
   "https://www.formula1.com/en/latest/article/aron-set-for-next-fp1-run-with-alpine-at-monza.3X5Psl55Co2cFyrpqwzrGt": {
    "first_seen": "2026-09-01T16:05:58Z",
    "last_seen": "2026-09-01T16:05:58Z"
+  },
+  "https://www.formula1.com/en/latest/article/audi-junior-and-f3-runner-up-freddie-slater-to-race-in-f2-in-2027.3OE1AvmCWpQuuHXW9GJs4O": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
   },
   "https://www.formula1.com/en/latest/article/david-tremayne-compares-five-current-drivers-to-f1-stars-of-the-past.2QTVbiXpqnd5BrH9SMS09g": {
    "first_seen": "2026-09-01T16:05:58Z",
@@ -73,6 +81,10 @@
    "first_seen": "2026-08-30T01:00:53Z",
    "last_seen": "2026-08-30T01:00:53Z"
   },
+  "https://www.formula1.com/en/latest/article/how-sainzs-home-race-in-madrid-unravelled-as-williams-struggle.31dSI72gYFXpOTfpr37Jp0": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
+  },
   "https://www.formula1.com/en/latest/article/how-to-stream-the-2026-dutch-grand-prix-on-f1-tv-premium.Z5u9yxG7Nk0hT6lpvNvIS": {
    "first_seen": "2026-08-19T23:04:52Z",
    "last_seen": "2026-08-19T23:05:07Z"
@@ -92,6 +104,14 @@
   "https://www.formula1.com/en/latest/article/lando-norris-commits-future-to-mclaren-as-he-signs-new-deal-until-the-end-of-2030.7ErHTktjoW2mAo5zEEtuA0": {
    "first_seen": "2026-08-30T01:00:53Z",
    "last_seen": "2026-08-30T01:00:53Z"
+  },
+  "https://www.formula1.com/en/latest/article/lando-norris-madring-misery-creates-fresh-baku-betting-value-for-title-hopeful.3d9zXvQBVHuPWYgJF2KLEc": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
+  },
+  "https://www.formula1.com/en/latest/article/mekies-praises-lawsons-very-strong-red-bull-stint-after-sixth-in-madrid.2LEwblt3NqOTvbiH6ccqwW": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
   },
   "https://www.formula1.com/en/latest/article/norris-denies-russell-pole-position-in-gripping-conclusion-to-qualifying-for-dutch-grand-prix.2DoHZDC14R5tY7ygGaHCz": {
    "first_seen": "2026-08-23T01:01:11Z",
@@ -116,6 +136,14 @@
   "https://www.formula1.com/en/latest/article/planes-pasta-and-paralympic-gold-10-unexpected-careers-f1-drivers-pursued-away-from-the-track.4PNphB91H0zG4aRsfHKC5r": {
    "first_seen": "2026-08-30T01:00:53Z",
    "last_seen": "2026-08-30T01:00:53Z"
+  },
+  "https://www.formula1.com/en/latest/article/power-rankings-who-impressed-our-judges-at-the-spanish-grand-prix.1WDmXXNVzYQTsurO3RJpUe": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
+  },
+  "https://www.formula1.com/en/latest/article/probably-my-best-race-weekend-colapinto-reflects-on-p7-finish-in-spanish-gp.395CYAwUKuufzUiDFKhty7": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
   },
   "https://www.formula1.com/en/latest/article/russell-celebrates-being-back-in-my-groove-after-securing-front-row-start-in-zandvoort.KUd2HBv9qmqt6rdLOJYoq": {
    "first_seen": "2026-08-23T01:01:11Z",
@@ -156,6 +184,10 @@
   "https://www.formula1.com/en/latest/article/the-latest-brazilian-prodigy-eyeing-a-place-in-formula-1-who-is-ferrari-junior-rafael-camara.7rQS6bm1E1gdCizXn13CxK": {
    "first_seen": "2026-08-19T23:04:52Z",
    "last_seen": "2026-08-19T23:05:07Z"
+  },
+  "https://www.formula1.com/en/latest/article/tsunoda-reviews-spanish-gp-outing-after-sustaining-big-damage-in-sainz-clash.B03pmyjJHXsN2i88kXOSs": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
   },
   "https://www.formula1.com/en/latest/article/verstappen-didnt-leave-anything-on-the-table-as-he-explains-limitations-after-p7-in-zandvoort-qualifying.47FfDw8RAYhRuqvmF6LuKV": {
    "first_seen": "2026-08-23T01:01:11Z",
@@ -200,6 +232,14 @@
   "https://www.formula1.com/en/latest/article/what-to-watch-for-in-the-italian-grand-prix-at-monza.3vlDVtd6J587tH2EggxrfU": {
    "first_seen": "2026-09-06T01:38:10Z",
    "last_seen": "2026-09-06T01:38:10Z"
+  },
+  "https://www.formula1.com/en/latest/article/what-we-learned-from-f1s-first-visit-to-the-madring.7gkOP8vYszgWmb9e2SyfgD": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
+  },
+  "https://www.formula1.com/en/latest/article/why-ocon-and-haas-see-the-positives-after-being-disappointed-with-madrid-result.70qKBF0xR6UctzYJ3LTU1D": {
+   "first_seen": "2026-09-15T16:01:19Z",
+   "last_seen": "2026-09-15T16:01:19Z"
   }
  }
 }

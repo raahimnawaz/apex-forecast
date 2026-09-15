@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-09-06T01:38:10Z",
+ "generated_utc": "2026-09-15T16:01:19Z",
  "sources": [
   "Autosport",
   "Motorsport.com",
@@ -9,681 +9,653 @@
  ],
  "items": [
   {
-   "title": "What the teams said \u2013 Qualifying in Italy",
-   "link": "https://www.formula1.com/en/latest/article/what-the-teams-said-qualifying-in-italy-2026.5lH9hjhYdtN3xqlAu25I2D",
+   "title": "Who impressed our Power Rankings judges in Madrid?",
+   "link": "https://www.formula1.com/en/latest/article/power-rankings-who-impressed-our-judges-at-the-spanish-grand-prix.1WDmXXNVzYQTsurO3RJpUe",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "The drivers and teams report back on all the action from the Temple of Speed after Qualifying for the 2026 Italian Grand Prix.",
-   "teams": [],
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Victory went to Kimi Antonelli at the Spanish Grand Prix after the timing of the Virtual Safety Car scuppered Lando Norris\u2019 efforts. But who impressed our Power Rankings judges over the course of the weekend at the all-new Madring? Check out the latest scores\u2026",
+   "teams": [
+    "Mercedes",
+    "McLaren"
+   ],
    "date_estimated": true
   },
   {
-   "title": "What are the tyre strategy options for the Italian Grand Prix?",
-   "link": "https://www.formula1.com/en/latest/article/strategy-guide-what-are-the-tactical-options-for-the-italian-gp.6q7OuYk9GRlwaCsohFjLge",
+   "title": "How Sainz\u2019s home race in Madrid unravelled",
+   "link": "https://www.formula1.com/en/latest/article/how-sainzs-home-race-in-madrid-unravelled-as-williams-struggle.31dSI72gYFXpOTfpr37Jp0",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Matt Youson takes a look at the different pit stop and tyre options that are available to the teams on race day at Monza.",
-   "teams": [],
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Carlos Sainz did not see the chequered flag in Madrid, the Spaniard having a torrid race on home soil.",
+   "teams": [
+    "Williams"
+   ],
    "date_estimated": true
   },
   {
-   "title": "Italian GP Bet Builder after Gasly's 250/1 pole",
-   "link": "https://www.formula1.com/en/latest/article/our-italian-grand-prix-bet-builder-picks-after-pierre-gasly-seals-stunning-250-1-pole.1eTHDpPPzSzMzy8u2x0rtt",
+   "title": "Tsunoda reviews Madrid outing after sustaining 'big damage'",
+   "link": "https://www.formula1.com/en/latest/article/tsunoda-reviews-spanish-gp-outing-after-sustaining-big-damage-in-sainz-clash.B03pmyjJHXsN2i88kXOSs",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "We have picked a four-leg Bet Builder for Monza, including podium finish and top-six selections.",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Yuki Tsunoda failed to score at the Madring, coming home 14th for Racing Bulls.",
+   "teams": [
+    "Racing Bulls"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Mekies assesses Lawson's Red Bull stint after Madrid",
+   "link": "https://www.formula1.com/en/latest/article/mekies-praises-lawsons-very-strong-red-bull-stint-after-sixth-in-madrid.2LEwblt3NqOTvbiH6ccqwW",
+   "source": "Formula1.com",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Red Bull Team Principal Laurent Mekies was full of praise for stand in driver Liam Lawson after the Spanish Grand Prix.",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Why Haas see the positives after Madrid disappointment",
+   "link": "https://www.formula1.com/en/latest/article/why-ocon-and-haas-see-the-positives-after-being-disappointed-with-madrid-result.70qKBF0xR6UctzYJ3LTU1D",
+   "source": "Formula1.com",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Esteban Ocon just missed out on points at the Spanish Grand Prix with an 11th-placed finish.",
+   "teams": [
+    "Haas F1 Team"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Spanish GP 'probably my best race weekend' \u2013 Colapinto",
+   "link": "https://www.formula1.com/en/latest/article/probably-my-best-race-weekend-colapinto-reflects-on-p7-finish-in-spanish-gp.395CYAwUKuufzUiDFKhty7",
+   "source": "Formula1.com",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Franco Colapinto believes that his seventh-place finish in last weekend's Spanish Grand Prix culminated in \"probably my best race weekend\" for Alpine this season.",
    "teams": [
     "Alpine"
    ],
    "date_estimated": true
   },
   {
-   "title": "What To Watch For in the Italian Grand Prix at Monza",
-   "link": "https://www.formula1.com/en/latest/article/what-to-watch-for-in-the-italian-grand-prix-at-monza.3vlDVtd6J587tH2EggxrfU",
+   "title": "Audi junior Freddie Slater to race in F2 in 2027",
+   "link": "https://www.formula1.com/en/latest/article/audi-junior-and-f3-runner-up-freddie-slater-to-race-in-f2-in-2027.3OE1AvmCWpQuuHXW9GJs4O",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Chris Medland picks out five key things to keep an eye on when the lights go out on race day at the Temple of Speed.",
-   "teams": [],
-   "date_estimated": true
-  },
-  {
-   "title": "Bortoleto confident of 'fighting for points' in Italy",
-   "link": "https://www.formula1.com/en/latest/article/we-can-be-fighting-for-points-bortoleto-confident-for-italian-grand-prix-after-strong-qualifying-performance.5yMtOwoxmXVkrs8z5o2kyS",
-   "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Gabriel Bortoleto believes Audi \"can be fighting for points\" in the Italian Grand Prix, having just missed out on reaching the top 10 in Qualifying by the smallest of margins.",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Audi's Freddie Slater has landed a seat on next season\u2019s Formula 2 grid with Invicta Racing.",
    "teams": [
     "Audi"
    ],
    "date_estimated": true
   },
   {
-   "title": "Russell on his Monza prospects after loss to \u2018flying\u2019 Gasly",
-   "link": "https://www.formula1.com/en/latest/article/russell-evaluates-monza-prospects-after-losing-out-to-flying-gasly.4OBXUBqMPfFP8lA2gFVIuy",
+   "title": "Norris' Madring misery creates Baku betting value",
+   "link": "https://www.formula1.com/en/latest/article/lando-norris-madring-misery-creates-fresh-baku-betting-value-for-title-hopeful.3d9zXvQBVHuPWYgJF2KLEc",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "George Russell was unexpectedly pipped to pole position for the Italian Grand Prix by Alpine\u2019s Pierre Gasly.",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "The McLaren star failed to convert his Spanish Grand Prix pole into a third win of the season, but the defending World Champion is still the in-form driver heading to Azerbaijan.",
    "teams": [
-    "Mercedes",
-    "Alpine"
+    "McLaren"
    ],
    "date_estimated": true
   },
   {
-   "title": "Ferrari drivers critical of Italy Qualifying strategy",
-   "link": "https://www.formula1.com/en/latest/article/didnt-execute-that-well-hamilton-and-leclerc-critical-of-ferraris-strategy-in-italian-grand-prix-qualifying.uLiF59lxkEcREIgqynnFg",
+   "title": "5 Winners and 5 Losers from Madrid",
+   "link": "https://www.formula1.com/en/latest/article/5-winners-and-5-losers-from-madrid-2026-spanish-grand-prix.EHx7H0e24uJ5ZwVXZD90q",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Charles Leclerc and Lewis Hamilton admit that Ferrari failed to execute a good enough strategy during Qualifying for the Italian Grand Prix, with the pair only achieving P4 and P5 respectively.",
-   "teams": [
-    "Ferrari"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Duerksen wins F2 Monza Sprint Race from seventh",
-   "link": "https://www.formula1.com/en/latest/article/f2-duerksen-wins-monza-sprint-race-from-seventh.6Mi7DdDucs70C0LgujSHCu",
-   "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Invicta Racing driver Joshua Duerksen was the winner of the Formula 2 Sprint Race at Monza.",
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Lawrence Barretto picks out his winners and losers from the Spanish Grand Prix weekend",
    "teams": [],
    "date_estimated": true
   },
   {
-   "title": "Alpine targeting Monza win after Gasly pole",
-   "link": "https://www.formula1.com/en/latest/article/alpine-targeting-monza-win-as-team-react-to-class-act-gasly-claiming-pole-position.56KmlrAXqTURL57SepFqdj",
+   "title": "What we learned from F1's first visit to the Madring",
+   "link": "https://www.formula1.com/en/latest/article/what-we-learned-from-f1s-first-visit-to-the-madring.7gkOP8vYszgWmb9e2SyfgD",
    "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "The Alpine team have shared their reaction to Pierre Gasly\u2019s pole position at the Italian Grand Prix.",
-   "teams": [
-    "Alpine"
-   ],
+   "published": "2026-09-15T16:01:19Z",
+   "summary": "Plenty of talking points emerged as the Madring made its debut on the Formula 1 calendar.",
+   "teams": [],
    "date_estimated": true
   },
   {
-   "title": "Piastri hit with three-place grid penalty at Monza",
-   "link": "https://www.formula1.com/en/latest/article/piastri-hit-with-three-place-grid-penalty-for-impeding-lawson-in-monza-qualifying.5bmDgovuCPwygEbOIzDKRm",
-   "source": "Formula1.com",
-   "published": "2026-09-06T01:38:10Z",
-   "summary": "Oscar Piastri has been handed a three-place grid penalty for the Italian Grand Prix after the stewards found him guilty of impeding Liam Lawson in Qualifying.",
+   "title": "Ferrari not yet switching focus to 2027 F1 car",
+   "link": "https://www.autosport.com/f1/news/ferrari-not-switching-focus-to-f1-2027-car/10856173/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-15T15:55:15Z",
+   "summary": "Ferrari team principal Fred Vasseur says the Scuderia will keep developing its SF-26 Formula 1 car, despite its diminishing title chances. After Lewis Hamilton retired from the Spanish Grand Prix with brake issues, the seven-time world champion is 101 points a\u2026",
    "teams": [
-    "McLaren",
-    "Racing Bulls"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "F1 Italian GP: Sunday schedule, weather forecast and how to watch",
-   "link": "https://www.motorsport.com/f1/news/f1-italian-gp-sunday-schedule-weather-forecast-and-how-to-watch/10852817/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T23:08:46Z",
-   "summary": "Formula 1 heads into Sunday at Monza with Pierre Gasly on pole after a stunning qualifying result for Alpine at the Italian GP. Gasly beat George Russell by just 0.060s to take his first Formula 1 pole position, using a tow from Lewis Hamilton to vault to the\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari",
-    "Alpine"
+    "Ferrari"
    ],
    "date_estimated": false
   },
   {
-   "title": "Oscar Piastri on Monza 2025 team orders: \"I wouldn\u2019t change how I responded\"",
-   "link": "https://www.motorsport.com/f1/news/oscar-piastri-on-monza-2025-team-orders-i-wouldnt-change-how-i-responded/10852790/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Why Ferrari won't switch focus to 2027 F1 car yet",
+   "link": "https://www.motorsport.com/f1/news/why-ferrari-wont-switch-focus-to-2027-f1-car-yet/10856168/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T22:56:11Z",
-   "summary": "Exactly a year ago, Oscar Piastri arrived at Monza as the title favourite, leading team-mate Lando Norris by 34 points after the latter's retirement at Zandvoort - but it was from that weekend onwards that things started to go wrong. Piastri eventually lost th\u2026",
+   "published": "2026-09-15T15:49:53Z",
+   "summary": "Ferrari team principal Fred Vasseur says the Scuderia will keep developing its SF-26 Formula 1 car, despite its diminishing title chances. After Lewis Hamilton retired from the Spanish Grand Prix with brake issues, the seven-time world champion is 101 points a\u2026",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lando Norris lost Madring F1 win because of impossible overtaking \u2013 McLaren",
+   "link": "https://www.motorsport.com/f1/news/lando-norris-lost-madring-f1-win-because-of-impossible-overtaking-mclaren/10856133/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-15T14:37:04Z",
+   "summary": "McLaren Formula 1 team principal Andrea Stella says overtaking was too difficult at the Madring for Lando Norris to win the Spanish Grand Prix. Norris took pole position at Madrid\u2019s new street circuit and pulled away by six seconds in the first 12 laps of the\u2026",
    "teams": [
     "McLaren"
    ],
    "date_estimated": false
   },
   {
-   "title": "From chess to battle for pole, Gasly has Russell covered at Monza",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c3wjdn80g2jo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T19:17:33Z",
-   "summary": "Pierre Gasly delivered the biggest surprise pole position in F1 for years in Italy as the leading contenders had scrappy qualifying sessions.",
+   "title": "Five ways F1 can fix the Madring for next year's Spanish GP",
+   "link": "https://www.motorsport.com/f1/news/five-ways-f1-can-fix-the-madring-for-next-years-spanish-gp/10856102/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-15T12:44:29Z",
+   "summary": "F1's much-anticipated return to Madrid has left fans of the series wanting due to a lack of action, though the Madring venue itself put on a respectable event. Here are five ways organisers could improve the event for year two. By and large, Madrid's first F1\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Russell and Hamilton concede F1 2026 title chances as Antonelli dominates",
+   "link": "https://www.autosport.com/f1/news/russell-and-hamilton-concede-f1-2026-title-chances-as-antonelli-dominates/10856072/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-15T11:40:46Z",
+   "summary": "Strange things can happen in Formula 1. Just ask Max Verstappen, who couldn't believe his luck when McLaren handed him a way into the 2025 title fight on a silver platter. Although he eventually missed out by two points to Lando Norris, he was essentially batt\u2026",
    "teams": [
     "Mercedes",
-    "Alpine"
+    "Ferrari",
+    "Red Bull Racing",
+    "McLaren"
    ],
    "date_estimated": false
   },
   {
-   "title": "\"I did what the team asked\": Kimi Antonelli expects George Russell to return favour later in season",
-   "link": "https://www.motorsport.com/f1/news/i-did-what-the-team-asked-kimi-antonelli-expects-george-russell-to-return-favour-later-in-season/10852769/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Mercedes explains why George Russell pitted under VSC at Madring",
+   "link": "https://www.motorsport.com/f1/news/mercedes-explains-george-russells-two-stop-strategy-in-f1-spanish-gp/10856094/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T19:16:40Z",
-   "summary": "After helping George Russell with a tow in Monza qualifying, Kimi Antonelli says he expects his team-mate and championship rival to act in the same way later in the season. The Italian had little to gain from his own qualifying result because of a back-of-the-\u2026",
+   "published": "2026-09-15T11:37:11Z",
+   "summary": "Mercedes deputy team principal Bradley Lord has explained why George Russell pitted under the virtual safety car despite starting on hard tyres in Formula 1\u2019s Spanish Grand Prix. Russell was the only driver from the top teams not to stick to a one-stop on a Ma\u2026",
    "teams": [
     "Mercedes"
    ],
    "date_estimated": false
   },
   {
-   "title": "How Piastri's Q3 mistake denied Norris \"half a second\" in Italian GP qualifying",
-   "link": "https://www.autosport.com/f1/news/how-oscar-piastris-q3-mistake-denied-lando-norris-half-a-second-in-italian-gp-qualifying/10852750/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-05T18:23:15Z",
-   "summary": "Lando Norris believes he could have set a quicker lap in Monza qualifying had his team-mate Oscar Piastri not made a mistake in the closing moments of Italian Grand Prix qualifying, which may effectively have cost the defending Formula 1 world champion a few p\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "How Oscar Piastri's Q3 mistake denied Lando Norris \"half a second\" in Italian GP qualifying",
-   "link": "https://www.motorsport.com/f1/news/how-oscar-piastris-q3-mistake-denied-lando-norris-half-a-second-in-monza-qualifying/10852723/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "F1 world champion among drivers for Race Of Champions\u2019 first New Zealand event",
+   "link": "https://www.motorsport.com/f1/news/f1-world-champion-among-drivers-for-race-of-champions-first-new-zealand-event/10856057/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T18:19:23Z",
-   "summary": "Lando Norris believes he could have set a quicker lap in Monza qualifying had his team-mate Oscar Piastri not made a mistake in the closing moments of Italian Grand Prix qualifying, which may effectively have cost the defending Formula 1 world champion a few p\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Jeremy Clarkson makes Alpine F1 promise after Pierre Gasly Italian GP pole",
-   "link": "https://www.motorsport.com/f1/news/jeremy-clarkson-makes-alpine-f1-promise-after-pierre-gasly-italian-gp-pole/10852731/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T18:02:24Z",
-   "summary": "Former Top Gear and The Grand Tour host Jeremy Clarkson has promised the whole Alpine Formula 1 team a Hawkstone beer if Pierre Gasly wins the Italian Grand Prix. Gasly topped Saturday's qualifying session at Monza, securing his maiden pole position for Sunday\u2026",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "George Russell frustrated with Max Verstappen qualifying antics: \"He just slammed on the brakes\"",
-   "link": "https://www.motorsport.com/f1/news/george-russell-frustrated-with-max-verstappen-qualifying-antics-he-just-slammed-on-the-brakes/10852698/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T17:46:38Z",
-   "summary": "George Russell was frustrated with Max Verstappen \"slamming on the brakes\" at the start of their final Q3 laps in Formula 1 Italian Grand Prix qualifying as the Mercedes driver narrowly missed out on pole. Heading into the decisive qualifying run, Verstappen w\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "How to follow Italian Grand Prix on the BBC",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c05q5qdrmz3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T17:38:44Z",
-   "summary": "All the key BBC coverage details for the Italian Grand Prix, which takes place from 4-6 September.",
+   "published": "2026-09-15T10:39:00Z",
+   "summary": "The Race Of Champions has announced the first four drivers for its inaugural New Zealand event, taking place at Wellington\u2019s Hnry Stadium on 9-10 January 2027. The lineup will be spearheaded by four-time Formula 1 world champion Sebastian Vettel, who has taken\u2026",
    "teams": [],
    "date_estimated": false
   },
   {
-   "title": "F1 fans celebrate Pierre Gasly after \"insane\" Italian GP pole position",
-   "link": "https://www.motorsport.com/f1/news/f1-fans-celebrate-pierre-gasly-after-insane-italian-gp-pole-position/10852712/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Slater to graduate from F3 to F2 for 2027",
+   "link": "https://www.autosport.com/formula2/news/slater-to-graduate-from-f3-to-f2-for-2027/10856041/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-15T09:49:21Z",
+   "summary": "Formula 3 runner-up and Audi Formula 1 junior Freddie Slater will step up to Formula 2 with Invicta Racing in 2027. The 2024 Italian F4 and 2025 Formula Regional European champion was signed by Audi to spearhead its new Driver Development Programme in 2026, wh\u2026",
+   "teams": [
+    "Audi"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Audi F1 junior Freddie Slater signs F2 deal for 2027 season",
+   "link": "https://www.motorsport.com/fia-f2/news/f3-runner-up-freddie-slater-signs-f2-deal-for-2027-season/10856038/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T17:33:58Z",
-   "summary": "Alpine's Pierre Gasly secured his first career pole position at the Italian Grand Prix, beating Mercedes driver George Russell to the top spot by just 0.060 seconds at Monza. In the first year of the new 2026 technical regulations, the season has largely been\u2026",
+   "published": "2026-09-15T09:47:13Z",
+   "summary": "Formula 3 runner-up and Audi Formula 1 junior Freddie Slater will step up to Formula 2 with Invicta Racing in 2027. The 2024 Italian F4 and 2025 Formula Regional European champion was signed by Audi to spearhead its new Driver Development Programme in 2026, wh\u2026",
+   "teams": [
+    "Audi"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Red Bull insists \u201cthere is nothing wrong\u201d with Isack Hadjar's recovery",
+   "link": "https://www.motorsport.com/f1/news/red-bull-on-hadjars-injury-there-is-nothing-wrong-with-isacks-recovery/10856017/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-15T08:27:09Z",
+   "summary": "Red Bull team principal Laurent Mekies says Isack Hadjar\u2019s recovery from injury is on target, despite the Frenchman having missed the last three Formula 1 grands prix. Hadjar injured his wrist in training during the summer break and has since been replaced by\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Kimi Antonelli's Spanish GP win will still \"sting\", says James Hinchcliffe",
+   "link": "https://www.motorsport.com/f1/news/kimi-antonellis-spanish-gp-win-will-still-sting-says-james-hinchcliffe/10855886/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-15T08:00:03Z",
+   "summary": "Mercedes driver and current championship leader Kimi Antonelli will feel a \"sting\" after his Spanish Grand Prix victory because he knows McLaren's Lando Norris had the faster car, according to former IndyCar Series driver and F1 TV analyst James Hinchcliffe. A\u2026",
    "teams": [
     "Mercedes",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "What Colapinto learned from Gasly's Monza pole to make his Madrid breakthrough",
+   "link": "https://www.motorsport.com/f1/news/colapinto-reveals-how-monza-lessons-helped-him-shine-at-madring/10856002/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-15T07:18:31Z",
+   "summary": "Franco Colapinto says studying Pierre Gasly's qualifying performance at Monza helped him make progress at the Spanish Grand Prix, where he finished seventh after reaching Q3. Colapinto had been left searching for answers after qualifying eighth at Monza while\u2026",
+   "teams": [
     "Alpine"
    ],
    "date_estimated": false
   },
   {
-   "title": "Verstappen's \"Red Bull car made out of paper\" comment explained",
-   "link": "https://www.autosport.com/f1/news/verstappens-red-bull-car-made-out-of-paper-comment-explained/10852703/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "title": "How did they get the Madring track so wrong? - F1 Q&A",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/c4g7pljy4neo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-15T06:49:52Z",
+   "summary": "BBC Sport F1 correspondent Andrew Benson answers your latest questions after the Spanish Grand Prix.",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Norris completes first full test in McLaren\u2019s Le Mans Hypercar",
+   "link": "https://www.autosport.com/wec/news/lando-norris-completes-first-full-test-in-mclarens-le-mans-hypercar/10855957/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
    "source": "Autosport",
-   "published": "2026-09-05T17:30:10Z",
-   "summary": "After Friday practice and experiencing a \u2018disconnect\u2019 in the car balance, Max Verstappen already knew that Formula 1 qualifying at Monza would be difficult, and that proved to be the case a day later. The Red Bull driver set the sixth-fastest time on Saturday,\u2026",
+   "published": "2026-09-14T18:29:19Z",
+   "summary": "Reigning Formula 1 champion Lando Norris completed his first full-fledged test at the wheel of the McLaren MCL-HY Le Mans Hypercar at Portimao on Monday. Following last weekend\u2019s Spanish Grand Prix at the new Madring circuit in which he was denied victory by a\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lando Norris completes first full test in McLaren\u2019s Le Mans Hypercar",
+   "link": "https://www.motorsport.com/wec/news/lando-norris-completes-first-full-test-in-mclarens-le-mans-hypercar/10855952/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T18:20:49Z",
+   "summary": "Reigning Formula 1 champion Lando Norris completed his first full-fledged test at the wheel of the McLaren MCL-HY Le Mans Hypercar at Portimao on Monday. Following last weekend\u2019s Spanish Grand Prix at the new Madring circuit in which he was denied victory by a\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Who is racing Max Verstappen in \"Max vs 100\"? Entry list revealed",
+   "link": "https://www.motorsport.com/f1/news/who-is-racing-max-verstappen-in-max-vs-100-entry-list-revealed/10855944/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T17:31:04Z",
+   "summary": "The majority of the 100 karters preparing to challenge four-time Formula 1 champion Max Verstappen in the Max vs 100 event on Wednesday 16 September have been revealed. Streaming live on Disney+, the Max vs 100 event tasks the Dutchman with fighting his way th\u2026",
    "teams": [
     "Red Bull Racing"
    ],
    "date_estimated": false
   },
   {
-   "title": "Max Verstappen explains Red Bull car \"made out of paper\" comment after mysterious issue",
-   "link": "https://www.motorsport.com/f1/news/max-verstappen-explains-red-bull-car-made-out-of-paper-comment-after-mysterious-issue/10852691/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "F1 Azerbaijan GP is on a Saturday in 2026, here's why",
+   "link": "https://www.motorsport.com/f1/news/f1-azerbaijan-gp-is-on-a-saturday-in-2026-why/10855369/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T17:26:53Z",
-   "summary": "After Friday practice and experiencing a \u2018disconnect\u2019 in the car balance, Max Verstappen already knew that Formula 1 qualifying at Monza would be difficult, and that proved to be the case a day later. The Red Bull driver set the sixth-fastest time on Saturday,\u2026",
+   "published": "2026-09-14T16:46:02Z",
+   "summary": "The 2026 Formula 1 campaign is reaching its end with 14 of the currently scheduled 23 rounds now complete after last weekend\u2019s Spanish Grand Prix. Kimi Antonelli took the chequered flag in Madrid on Sunday, which marked an end to the European leg of the calend\u2026",
    "teams": [
-    "Red Bull Racing"
+    "Mercedes"
    ],
    "date_estimated": false
   },
   {
-   "title": "How Charles Leclerc's advice to Pierre Gasly came back to bite him in Italian GP qualifying",
-   "link": "https://www.motorsport.com/f1/news/how-charles-leclercs-advice-to-pierre-gasly-came-back-to-bite-him-in-italian-gp-qualifying/10852677/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Guenther Steiner criticises Lando Norris's Coca-Cola Spanish GP moment as 'unprofessional'",
+   "link": "https://www.motorsport.com/f1/news/guenther-steiner-brands-lando-norriss-coca-cola-spanish-gp-moment-unprofessional/10855926/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T17:04:30Z",
-   "summary": "A close friend of Pierre Gasly, Charles Leclerc was among the first drivers to go and congratulate the Frenchman when he arrived behind the board bearing the number 1 in parc ferme, as he stormed to pole position in Formula 1 Italian Grand Prix qualifying. Gas\u2026",
+   "published": "2026-09-14T16:18:54Z",
+   "summary": "Former Haas Formula 1 team principal Guenther Steiner has criticised Lando Norris's Coca-Cola cooldown room moment following the Spanish Grand Prix in Madrid, claiming it was unprofessional of the McLaren driver. After finishing third at the Madring circuit, N\u2026",
    "teams": [
+    "McLaren",
+    "Haas F1 Team"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Why F1 should avoid knee-jerk rule changes after Lando Norris' Madrid heartbreak",
+   "link": "https://www.motorsport.com/f1/news/why-f1-should-avoid-knee-jerk-rule-changes-after-norris-madrid-heartbreak/10855905/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T16:02:16Z",
+   "summary": "Lando Norris lost a Formula 1 race win through no fault of his own - or his team's - but simply because of the unfortunate timing of a virtual safety car, triggered on lap 14 of the Spanish Grand Prix after Lance Stroll's retirement. The McLaren driver missed\u2026",
+   "teams": [
+    "McLaren",
+    "Aston Martin"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "F2 bulks up Baku schedule with extra feature race \u2013 is this a clue for F1\u2019s future?",
+   "link": "https://www.motorsport.com/fia-f2/news/f2-expands-baku-schedule-in-possible-hint-over-f1-calendar/10855893/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T14:56:00Z",
+   "summary": "The Formula 2 championship has announced a \"supersized\" meeting for its next round in Baku. The move will see it host an additional feature race in Azerbaijan and comes just 10 days before the race weekend is due to kick off. It is an unusual and late decision\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "F2 adds extra Baku feature race and insists Qatar, Abu Dhabi still on \u2013 what does this mean for F1?",
+   "link": "https://www.autosport.com/formula2/news/f2-bulks-up-baku-schedule-with-extra-feature-race-is-this-a-clue-for-f1s-future/10855898/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-14T14:55:56Z",
+   "summary": "The Formula 2 championship has announced a \"supersized\" meeting for its next round in Baku. The move will see it host an additional feature race in Azerbaijan and comes just 10 days before the race weekend is due to kick off. It is an unusual and late decision\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Nico Rosberg stunned by Kimi Antonelli's \"unbelievable\" maturity in 2026 F1 title fight",
+   "link": "https://www.motorsport.com/f1/news/nico-rosberg-stunned-by-kimi-antonellis-unbelievable-maturity-in-2026-f1-title-fight/10855901/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T14:55:16Z",
+   "summary": "2016 Formula 1 champion Nico Rosberg says he has been astonished by Kimi Antonelli\u2019s maturity during the 2026 season. Antonelli extended his lead in the drivers\u2019 championship with his eighth win of the season at the Spanish Grand Prix. He now sits 81 points ah\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Madrid F1 circuit set for changes after criticism",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/ckwyzllzdq43o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-14T14:11:04Z",
+   "summary": "Spanish Grand Prix organisers are set to make changes to the new Madrid circuit after criticism of its inaugural race at the weekend.",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Why McLaren won\u2019t blame F1 race control for lost Spanish GP victory",
+   "link": "https://www.motorsport.com/f1/news/why-mclaren-wont-blame-race-control-for-lost-spanish-gp-victory/10855804/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T14:03:26Z",
+   "summary": "After qualifying on pole position with a stunning lap on Saturday, victory in the Formula 1 Spanish Grand Prix looked certain for Lando Norris \u2013 until an ill-timed virtual safety car cost him a shot at the win. However, Mclaren says it won\u2019t blame race control\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Williams tipped for \"huge step\" forward at Azerbaijan GP with major upgrade",
+   "link": "https://www.motorsport.com/f1/news/williams-tipped-for-huge-step-forward-at-azerbaijan-gp-with-major-upgrade/10855873/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T13:49:09Z",
+   "summary": "Former Formula 1 driver Juan Pablo Montoya expects Williams to take a \"huge step\" forward at the upcoming Azerbaijan Grand Prix as the Grove outfit prepares to introduce a much-needed upgrade package. Williams endured another difficult weekend at the inaugural\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "George Russell told to turn focus to 2027 as title bid branded \"a write-off\" after Spanish GP",
+   "link": "https://www.motorsport.com/f1/news/george-russell-told-to-turn-focus-to-2027-as-title-bid-branded-a-write-off-after-spanish-gp/10855654/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T13:00:40Z",
+   "summary": "Former IndyCar Series driver and F1 TV analyst James Hinchcliffe has argued that George Russell must treat the remainder of the 2026 season as early preparation for 2027, declaring that the Briton's current championship fight is a \"write-off\" following the Spa\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "His worst races would be enough: The remarkable stats behind Kimi Antonelli\u2019s title hopes",
+   "link": "https://www.motorsport.com/f1/news/even-antonellis-worst-races-would-be-enough-in-remarkable-f1-title-scenario/10855828/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T13:00:02Z",
+   "summary": "It takes a fair bit of imagination to find any real drama left in the 2026 Formula 1 World Championship. After 14 grands prix, Kimi Antonelli leads George Russell by 81 points, Lewis Hamilton by 101 and Lando Norris by 106. In absolute terms, the biggest defic\u2026",
+   "teams": [
+    "Mercedes",
     "Ferrari",
-    "Alpine"
+    "McLaren"
    ],
    "date_estimated": false
   },
   {
-   "title": "Mercedes pokes fun at Toto Wolff after angry Italian GP qualifying moment",
-   "link": "https://www.motorsport.com/f1/news/mercedes-pokes-fun-at-toto-wolff-after-angry-italian-gp-qualifying-moment/10852680/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Romain Grosjean apologises to McLaren after controversial, unfounded comments",
+   "link": "https://www.motorsport.com/f1/news/grosjean-apologises-to-mclaren-over-controversial-unfounded-comments/10855806/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T16:59:29Z",
-   "summary": "Mercedes has poked fun at its own team principal Toto Wolff after he was filmed striking his garage timing console in frustration during qualifying for the Italian Grand Prix. Wolff's reaction was triggered in the final moments of Q3 at Monza when Alpine's Pie\u2026",
+   "published": "2026-09-14T10:57:28Z",
+   "summary": "Formula 1 and Canal+ pundit Romain Grosjean publicly apologised to McLaren and Zak Brown over comments made during coverage of the Spanish Grand Prix at the Madring. Present in Madrid for the Spanish GP, the Frenchman sharply criticised comments made by the Mc\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "\"My race could have been over\" \u2013 Max Verstappen\u2019s take on first lap incident with Lewis Hamilton",
+   "link": "https://www.motorsport.com/f1/news/my-race-could-have-been-over-max-verstappens-take-on-first-lap-incident-with-lewis-hamilton/10855771/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T10:00:03Z",
+   "summary": "With his fifth podium finish in seven race weekends, Max Verstappen got the maximum out of the first Formula 1 race at the Madring. The Dutchman managed to take second place in the Spanish Grand Prix behind Kimi Antonelli, which according to the four-time worl\u2026",
    "teams": [
     "Mercedes",
-    "Alpine"
+    "Ferrari",
+    "Red Bull Racing"
    ],
    "date_estimated": false
   },
   {
-   "title": "F1: Chequered Flag",
-   "link": "https://www.bbc.co.uk/sounds/play/p0p865fk?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T16:49:00Z",
-   "summary": "The team react to qualifying at the Italian GP where a huge shock was on the cards.",
+   "title": "Spanish GP organisers promise Madring track changes following F1 criticism",
+   "link": "https://www.autosport.com/f1/news/spanish-gp-organisers-promise-madring-track-changes-following-f1-criticism/10855769/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-14T09:17:21Z",
+   "summary": "Organisers of Formula 1's Spanish Grand Prix in Madrid are ready to make tweaks to the Madring circuit to boost overtaking for 2027, and have already received recommendations from the FIA. The 5.4km circuit around Madrid's IFEMA fairgrounds, which made its com\u2026",
    "teams": [],
    "date_estimated": false
   },
   {
-   "title": "Alpine's Gasly beats Russell to stunning Monza pole",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c8d31qrg2neo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T16:46:01Z",
-   "summary": "Alpine driver Pierre Gasly takes a stunning pole position at the Italian Grand Prix, ahead of Mercedes' George Russell.",
-   "teams": [
-    "Mercedes",
-    "Alpine"
-   ],
+   "title": "Spanish GP promises Madring track changes following F1 criticism",
+   "link": "https://www.motorsport.com/f1/news/spanish-gp-promises-madring-f1-track-changes-following-criticism/10855761/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-14T09:15:02Z",
+   "summary": "Organisers of Formula 1's Spanish Grand Prix in Madrid are ready to make tweaks to the Madring circuit to boost overtaking for 2027, and have already received recommendations from the FIA. The 5.4km circuit around Madrid's IFEMA fairgrounds, which made its com\u2026",
+   "teams": [],
    "date_estimated": false
   },
   {
-   "title": "Lance Stroll records 100th Q1 elimination in F1",
-   "link": "https://www.motorsport.com/f1/news/lance-stroll-hits-unwanted-100-q1-eliminations-milestone-in-f1-10852655/10852655/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T16:32:12Z",
-   "summary": "Lance Stroll managed an unwanted Formula 1 record as he became the first driver to register 100 Q1 eliminations since the three-part qualifying system was introduced in 2006. The Canadian qualified last for Sunday's Italian Grand Prix, ending the session just\u2026",
+   "title": "Honda changes F1 design boss after slow start to return",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cpved014n83o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-14T08:39:13Z",
+   "summary": "Honda changes the leadership of its Formula 1 engine programme after the Japanese manufacturer's disappointing start to its return to the sport this season.",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Honda replaces F1 power unit boss in organisation shuffle",
+   "link": "https://www.autosport.com/f1/news/aston-martin-partner-honda-replaces-f1-power-unit-boss/10855755/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-14T07:53:39Z",
+   "summary": "Aston Martin's engine partner Honda has replaced the project leader of its Formula 1 power unit programme as it aims to claw its way back into contention. On Monday the Japanese manufacturer announced engine development leader Tetsushi Kakuda is set to be repl\u2026",
    "teams": [
     "Aston Martin"
    ],
    "date_estimated": false
   },
   {
-   "title": "\"Something special here\" - Pierre Gasly ecstatic to take maiden F1 pole in Monza",
-   "link": "https://www.motorsport.com/f1/news/pierre-gasly-ecstatic-with-maiden-f1-pole-in-monza-he-chased-for-nine-years/10852602/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Aston Martin partner Honda replaces F1 power unit boss",
+   "link": "https://www.motorsport.com/f1/news/aston-martin-partner-honda-replaces-f1-power-unit-boss/10855750/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T15:42:39Z",
-   "summary": "\"I like this track,\" Pierre Gasly quipped as he steered his Alpine into parc ferme. Not into the usual enclosure for the rest of the pack, but towards the bollard indicating the number 1 on the Formula 1 grid. Six years ago, Gasly took his hitherto only career\u2026",
+   "published": "2026-09-14T07:50:42Z",
+   "summary": "Aston Martin's engine partner Honda has replaced the project leader of its Formula 1 power unit programme as it aims to claw its way back into contention. On Monday the Japanese manufacturer announced engine development leader Tetsushi Kakuda is set to be repl\u2026",
    "teams": [
-    "Alpine"
+    "Aston Martin"
    ],
    "date_estimated": false
   },
   {
-   "title": "Piastri hit with three-place Italian GP grid penalty for impeding Lawson",
-   "link": "https://www.autosport.com/f1/news/piastri-at-risk-of-losing-third-in-italian-gp-qualifying-for-impeding-lawson/10852599/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-05T15:32:44Z",
-   "summary": "Oscar Piastri has been handed a three-place grid penalty for the Italian Grand Prix after impeding Liam Lawson during qualifying at Monza. The penalty drops the McLaren driver from third to sixth on the grid for Sunday's race, promoting Charles Leclerc, Lewis\u2026",
-   "teams": [
-    "Ferrari",
-    "McLaren",
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Oscar Piastri hit with three-place Italian GP grid penalty",
-   "link": "https://www.motorsport.com/f1/news/oscar-piastri-risks-losing-third-in-monza-qualifying/10852593/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Who slept worst last night: Carlos Sainz",
+   "link": "https://www.motorsport.com/f1/news/who-slept-worst-last-night-carlos-sainz/10855717/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T15:26:56Z",
-   "summary": "Oscar Piastri has been handed a three-place grid penalty for the Italian Grand Prix after impeding Liam Lawson during qualifying at Monza. The penalty drops the McLaren driver from third to sixth on the grid for Sunday's race, promoting Charles Leclerc, Lewis\u2026",
+   "published": "2026-09-14T05:46:04Z",
+   "summary": "It is almost exactly 10 years since Formula 1 first took to the streets of Baku in June 2016. Everyone was curious to see what Azerbaijan's Grand Prix debut would bring, and plenty had predicted a chaotic race littered with crashes on the street circuit. In th\u2026",
    "teams": [
-    "Ferrari",
-    "McLaren",
-    "Racing Bulls"
+    "Williams"
    ],
    "date_estimated": false
   },
   {
-   "title": "This is the starting grid for the 2026 F1 Italian Grand Prix",
-   "link": "https://www.motorsport.com/f1/news/the-starting-grid-for-the-2026-F1-Italian-GP/10852582/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Who slept best last night: Lando Norris",
+   "link": "https://www.motorsport.com/f1/news/who-slept-best-last-night-lando-norris-10855682/10855682/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T15:21:49Z",
-   "summary": "Despite their qualifying positions, Kimi Antonelli (Mercedes), Alex Albon (Williams) and Liam Lawson (Red Bull) have all been sent to the back of the grid as a result of penalties due to power unit changes. Oscar Piastri has been given a three-place grid penal\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing",
-    "McLaren",
-    "Williams",
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: Gasly takes stunning maiden pole for Alpine",
-   "link": "https://www.autosport.com/f1/news/f1-italian-gp-qualifying-report/10852579/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-05T15:18:24Z",
-   "summary": "On the scene of his maiden grand prix win, Alpine driver Pierre Gasly has written another chapter in his Formula 1 career by claiming his first-ever pole position for the Italian Grand Prix. In a thrilling Q3 shootout, Gasly trumped pre-session favourite Georg\u2026",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: Pierre Gasly takes shock maiden pole at Monza",
-   "link": "https://www.motorsport.com/f1/news/f1-italian-gp-qualifying-report/10852577/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T15:15:33Z",
-   "summary": "On the scene of his maiden grand prix win, Alpine driver Pierre Gasly has written another guilt-edged chapter in his Formula 1 career by claiming his first-ever pole in Monza. In a thrilling Q3 shootout, Gasly trumped pre-session favourite George Russell by a\u2026",
-   "teams": [
-    "Mercedes",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 2026 qualifying head-to-head: Italian GP",
-   "link": "https://www.motorsport.com/f1/news/f1-2026-qualifying-head-to-head-italian-gp/10852506/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T15:07:41Z",
-   "summary": "After every F1 qualifying session, Motorsport.com publishes each team's qualifying record in terms of team-mate battles. This record is based exclusively on qualifying results so that grid penalties don't alter the statistics. When a driver can't put in a repr\u2026",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "Don't expect new Oscar Piastri deal after Lando Norris' extension: \"I'm good for now\"",
-   "link": "https://www.motorsport.com/f1/news/dont-expect-piastri-new-deal-news-after-norris-extension-im-good-for-now/10852480/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T13:15:03Z",
-   "summary": "Oscar Piastri is adamant that \"there's no rush\" to get into contractual negotiations with McLaren despite fresh questions over his long-term position within the team. The interest has been triggered by McLaren's announcement last weekend that it had signed a c\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "\"I kept forgetting SM!\" \u2013 Yuki Tsunoda reveals amusing Monza challenge with F1's 2026 cars",
-   "link": "https://www.motorsport.com/f1/news/i-kept-forgetting-sm-yuki-tsunoda-reveals-amusing-monza-challenge-with-f1s-2026-cars/10852470/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T12:30:03Z",
-   "summary": "Two weeks after his impressive performance in Zandvoort, Yuki Tsunoda has once again made a strong start to his second 2026 Formula 1 weekend at Monza. The Japanese driver said during media day that the Italian Grand Prix would be a much bigger challenge than\u2026",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: Russell fastest from Hamilton and Verstappen in final practice",
-   "link": "https://www.autosport.com/f1/news/f1-italian-gp-russell-fastest-from-hamilton-and-verstappen-in-final-practice/10852510/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-05T11:47:10Z",
-   "summary": "Mercedes driver George Russell has beaten Ferrari's Lewis Hamilton to top spot in Formula 1's final practice session at the Italian Grand Prix. Russell comfortably held off the seven-time world champion on a toasty Monza circuit, with Max Verstappen and champi\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: George Russell leads Lewis Hamilton in FP3",
-   "link": "https://www.motorsport.com/f1/news/f1-italin-gp-fp3-report/10852508/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T11:44:53Z",
-   "summary": "Mercedes driver George Russell beat Ferrari's Lewis Hamilton to top spot in Formula 1's third and final practice session at the Italian Grand Prix. Russell comfortably held off the seven-time world champion on a toasty Monza circuit, with Max Verstappen and ch\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Haas F1 boss Ayao Komatsu gets behind wheel of historic F1 car ahead of Italian GP",
-   "link": "https://www.motorsport.com/f1/news/haas-f1-boss-ayao-komatsu-gets-behind-wheel-of-historic-f1-car-ahead-of-italian-gp/10852518/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T11:40:49Z",
-   "summary": "Haas Formula 1 team principal Ayao Komatsu has completed a track outing, driving a 1990 Footwork Arrows A11B ahead of the Italian Grand Prix. The Japanese team chief took the wheel of the Cosworth-powered chassis earlier this week. The A11B, an evolution of th\u2026",
-   "teams": [
-    "Haas F1 Team"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Antonelli 'disrupting rules of fandom' in Ferrari's Italy",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/cj03m124lp3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T10:37:00Z",
-   "summary": "BBC Sport heads to Monza to find out if Italians want Kimi Antonelli to win the F1 title or if it is all about Ferrari.",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "FIA's Court of Appeal responds to Flavio Briatore bias allegations",
-   "link": "https://www.motorsport.com/f1/news/fias-court-of-appeal-responds-flavio-briatore-bias-allegations/10852490/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T10:17:26Z",
-   "summary": "The International Court of Appeal defended and clarified the appointment of its judges in the Monaco Grand Prix appeal amid allegations by Alpine boss Flavio Briatore that one of the judges had ties to McLaren. The International Court of Appeal, which runs ind\u2026",
+   "published": "2026-09-14T05:16:06Z",
+   "summary": "Oh, the irony! Lando Norris found exactly the right words for his team on the cooldown lap in Madrid. \u201cWe were too quick, that\u2019s all it was.\u201d That\u2019s literally what happened, isn\u2019t it? Lance Stroll parked his Aston Martin at Turn 20 on lap 13 - he had a brake p\u2026",
    "teams": [
     "McLaren",
-    "Alpine"
+    "Aston Martin"
    ],
    "date_estimated": false
   },
   {
-   "title": "FIA appeal court refutes Briatore impartiality claim",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c4g56x1xxn3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-05T10:02:46Z",
-   "summary": "The FIA court of appeal refutes a claim by Alpine boss Flavio Briatore which it says \"question the independence and impartiality of the judges\".",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Red Bull urged to keep Liam Lawson for Spanish GP as Isack Hadjar recovers from injury",
-   "link": "https://www.motorsport.com/f1/news/red-bull-urged-to-keep-liam-lawson-for-spanish-gp-as-isack-hadjar-recovers-from-injury/10852301/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Kimi Antonelli's \"precious\" moment with father goes viral after Spanish GP win",
+   "link": "https://www.motorsport.com/f1/news/kimi-antonellis-precious-moment-with-father-goes-viral-after-spanish-gp-win/10855648/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T08:00:04Z",
-   "summary": "Former Formula 1 driver Juan Pablo Montoya believes Red Bull should retain Liam Lawson for next week's inaugural Spanish Grand Prix in Madrid, warning the team against prematurely rushing Isack Hadjar back into the cockpit. Lawson was called up at the last min\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Why Kimi Antonelli\u2019s Italian GP recovery may be tougher than expected",
-   "link": "https://www.motorsport.com/f1/news/why-kimi-antonellis-italian-gp-recovery-may-be-tougher-than-expected/10852359/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-05T08:00:04Z",
-   "summary": "When Mercedes put sentiment to one side and made the rational decision to let Kimi Antonelli take a fifth Formula 1 power unit in his home race, landing him a back-of-the-grid start for exceeding his allowance for the year, it did so for a good reason. With th\u2026",
+   "published": "2026-09-13T21:11:41Z",
+   "summary": "A moment shared between Kimi Antonelli and his father, Marco Antonelli, has gone viral after the Mercedes driver celebrated his eighth Formula 1 win at the Spanish Grand Prix. After the Italian driver parked his Mercedes machinery on the grid, he went to celeb\u2026",
    "teams": [
     "Mercedes"
    ],
    "date_estimated": false
   },
   {
-   "title": "Why Charles Leclerc is likely to tow Lewis Hamilton in Italian GP qualifying",
-   "link": "https://www.motorsport.com/f1/news/why-charles-leclerc-is-likely-to-tow-lewis-hamilton-in-italian-gp-qualifying/10852249/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Lewis Hamilton \u201clucky to make it round\u201d after Spanish GP brake failure",
+   "link": "https://www.motorsport.com/f1/news/lewis-hamilton-lucky-to-make-it-round-after-spanish-gp-brake-failure/10855642/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-05T07:12:12Z",
-   "summary": "Charles Leclerc is expecting to give Ferrari team-mate Lewis Hamilton a tow in Italian Grand Prix qualifying, with Kimi Antonelli ready to help Formula 1 title rival George Russell at Mercedes. Slipstreaming has always been paramount at Monza\u2019s \u2018Temple of Spee\u2026",
+   "published": "2026-09-13T20:21:18Z",
+   "summary": "Ferrari driver Lewis Hamilton says he was \"lucky to make it round\" to the garage after suffering a brake failure in the opening stages of Madrid's Spanish GP. Hamilton had been battling Max Verstappen for third when his brake pedal started going long during th\u2026",
    "teams": [
-    "Mercedes",
-    "Ferrari"
+    "Ferrari",
+    "Red Bull Racing"
    ],
    "date_estimated": false
   },
   {
-   "title": "Why Leclerc is likely to tow Hamilton in Italian GP qualifying",
-   "link": "https://www.autosport.com/f1/news/why-charles-leclerc-is-likely-to-tow-lewis-hamilton-in-italian-gp-qualifying/10852255/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-05T07:12:06Z",
-   "summary": "Charles Leclerc is expecting to give Ferrari team-mate Lewis Hamilton a tow in Italian Grand Prix qualifying, with Kimi Antonelli ready to help Formula 1 title rival George Russell at Mercedes. Slipstreaming has always been paramount at Monza\u2019s \u2018Temple of Spee\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
+   "title": "F1: Chequered Flag",
+   "link": "https://www.bbc.co.uk/sounds/play/p0p9gj44?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-13T20:14:00Z",
+   "summary": "Harry Benjamin, Alice Powell and Rebecca Clancy look back on the Spanish Grand Prix.",
+   "teams": [],
    "date_estimated": false
   },
   {
-   "title": "\"We clearly have an issue\" \u2013 Red Bull responds to Max Verstappen's radio complaints",
-   "link": "https://www.motorsport.com/f1/news/we-clearly-have-an-issue-red-bull-responds-to-max-verstappens-radio-complaints/10852336/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Lando Norris to test McLaren MCL-HY hypercar ahead of Azerbaijan GP",
+   "link": "https://www.motorsport.com/f1/news/lando-norris-to-test-mclaren-mcl-hy-hypercar-ahead-of-azerbaijan-gp/10855632/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-04T18:00:11Z",
-   "summary": "Friday ahead of the Formula 1 Italian Grand Prix was far from trouble-free for Red Bull. There had been hope beforehand that Monza\u2019s layout would suit the team better than Zandvoort, but after Friday practice both Red Bulls were behind a Racing Bulls (Arvid Li\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: Saturday schedule, weather forecast and how to watch",
-   "link": "https://www.motorsport.com/f1/news/f1-italian-gp-saturday-schedule-weather-forecast-and-how-to-watch/10852320/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T17:50:38Z",
-   "summary": "Formula 1 heads into Saturday at Monza with George Russell fastest after second practice for the Italian Grand Prix. The Mercedes driver beat Ferrari\u2019s Charles Leclerc by 0.120s in FP2, with championship leader Kimi Antonelli third as Mercedes and Ferrari trad\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Mercedes vs Ferrari: Italian GP long runs leave no clear favourite",
-   "link": "https://www.motorsport.com/f1/news/mercedes-vs-ferrari-italian-gp-long-runs-leave-no-clear-favourite/10852331/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T17:47:00Z",
-   "summary": "After Charles Leclerc topped the opening practice session for Ferrari, Mercedes struck back in the more representative second practice session, with George Russell setting the fastest time. That made the long runs at the end of FP2 particularly intriguing. The\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "McLaren \"not in the fight for Italian GP pole\", admits downbeat Lando Norris",
-   "link": "https://www.motorsport.com/f1/news/mclaren-not-in-the-fight-for-italian-gp-pole-admits-downbeat-lando-norris/10852303/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T17:35:01Z",
-   "summary": "After completing two practice sessions on Monza's Temple of Speed, reigning world champion Lando Norris has found few reasons to believe he can deliver a hat-trick of Formula 1 wins at this weekend's Italian Grand Prix. Norris claimed fourth in Monza's second\u2026",
+   "published": "2026-09-13T19:40:23Z",
+   "summary": "Lando Norris will test McLaren's new MCL-HY hypercar at the Algarve International Circuit ahead of the Azerbaijan Grand Prix. The test at the Portimao circuit is set to take place on Monday 14 September and will allow the Woking outfit to continue its developm\u2026",
    "teams": [
     "McLaren"
    ],
    "date_estimated": false
   },
   {
-   "title": "Lewis Hamilton worried about Mercedes top speed after Italian GP practice",
-   "link": "https://www.motorsport.com/f1/news/lewis-hamilton-worried-about-mercedes-top-speed-after-italian-gp-practice/10852292/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "title": "Winners and losers from F1's underwhelming Spanish Grand Prix",
+   "link": "https://www.motorsport.com/f1/news/winners-and-losers-f1-underwhelming-spanish-gp/10855625/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
    "source": "Motorsport.com",
-   "published": "2026-09-04T17:11:05Z",
-   "summary": "Lewis Hamilton feels Mercedes has a top speed advantage over Ferrari at Monza which will be crucial at the Formula 1 Italian Grand Prix. Ferrari delivered an engine upgrade at Monza as permitted under ADUO, and started its home round brightly with Charles Lecl\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Ferrari still behind Mercedes on straights - Hamilton",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/cgk5g0z26yxo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-04T17:09:35Z",
-   "summary": "Lewis Hamilton says Ferrari's new engine is \"an improvement\" but that his team are still lagging behind Mercedes on the straights at the Italian Grand Prix.",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Ralf Schumacher pays tribute to brother Michael and his lasting Ferrari F1 legacy",
-   "link": "https://www.motorsport.com/f1/news/ralf-schumacher-pays-tribute-to-brother-michael-and-his-lasting-ferrari-f1-legacy/10852280/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T16:45:38Z",
-   "summary": "Formula 1's return to Monza for the Italian Grand Prix marks 30 years since Michael Schumacher's first race for Ferrari and two decades since the seven-time champion's emotional 2006 victory and his initial retirement announcement. Speaking to Sky Sports F1, R\u2026",
-   "teams": [
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Gasly loses Monaco podium after McLaren and Red Bull win appeals",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c4gq26zglpzo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-04T15:56:25Z",
-   "summary": "McLaren and Red Bull win their appeals against the result of the Monaco Grand Prix after a controversy over multiple incorrect pit-lane speeding penalties.",
-   "teams": [
-    "Red Bull Racing",
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Andrew Benson Q&A: Send us your questions",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/ckg3y15zje8o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-04T15:15:45Z",
-   "summary": "Our F1 correspondent Andrew Benson is doing a weekly Q&A this season, so get your questions in now.",
+   "published": "2026-09-13T19:32:52Z",
+   "summary": "Formula 1's first visit to Madrid in 45 years went off to a smooth enough start off the track, but its inaugural race at the Madring left plenty to be desired. Starting from a relatively blank sheet of paper, some of the awkward corner designs and the lack of\u2026",
    "teams": [],
    "date_estimated": false
   },
   {
-   "title": "F1 Italian GP: Russell beats Leclerc to top second practice",
-   "link": "https://www.autosport.com/f1/news/f1-italian-gp-fp2-report-10852240/10852240/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-04T15:14:01Z",
-   "summary": "George Russell has topped second practice at Formula 1's Italian Grand Prix, nudging Ferrari's Charles Leclerc off the top of the timesheets. Russell set a 1m22.559s lap in the second half of the session as part of a mid-session shootout between the Briton, Fe\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Italian GP: George Russell outpaces Charles Leclerc in FP2",
-   "link": "https://www.motorsport.com/f1/news/f1-italian-gp-fp2-report/10852238/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T15:13:52Z",
-   "summary": "George Russell has topped second practice at Formula 1's Italian Grand Prix, nudging Ferrari's Charles Leclerc off the top of the timesheets. Russell set a 1m22.559s lap in the second half of the session as part of a mid-session shootout between the Briton, Fe\u2026",
-   "teams": [
-    "Mercedes",
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "FIA wrong to lift Russia ban - Ukraine minister",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c4gj0z94dw2o?at_medium=RSS&at_campaign=rss",
+   "title": "How virtual safety car cost Norris win - and should F1 change rules?",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cvgyjwxv7y3o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "published": "2026-09-04T14:27:34Z",
-   "summary": "The FIA was wrong to lift the ban on Russian competitors because nothing has changed since it was imposed, the Ukrainian Minister for Youth and Sport says.",
-   "teams": [],
+   "published": "2026-09-13T19:30:14Z",
+   "summary": "Lando Norris says he was \"insanely unlucky\" to lose what seemed like a certain win in the Spanish Grand Prix because of the timing of a virtual safety car.",
+   "teams": [
+    "McLaren"
+   ],
    "date_estimated": false
   },
   {
-   "title": "Briatore questions Monaco GP appeal integrity in explosive Italian GP press conference",
-   "link": "https://www.autosport.com/f1/news/flavio-briatore-questions-monaco-gp-appeal-integrity-in-explosive-monza-press-conference/10852231/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-04T14:26:28Z",
-   "summary": "Alpine Formula 1 boss Flavio Briatore has questioned the fairness of the appeal procedure against the Monaco Grand Prix results, claiming one judge has a close relationship with McLaren. Pierre Gasly was one of several drivers penalised in Monaco for exceeding\u2026",
+   "title": "Carlos Sainz accuses Fernando Alonso of provoking a penalty \"like always\"",
+   "link": "https://www.motorsport.com/f1/news/sainz-accuses-alonso-of-provoking-a-penalty-like-always/10855613/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T19:04:47Z",
+   "summary": "As if complaints about the track layout weren't enough, the first Formula 1 Spanish Grand Prix at the new Madring circuit provoked an unseemly spat between the two home heroes. Fernando Alonso and Carlos Sainz were all smiles before the race, but the cordialit\u2026",
    "teams": [
-    "McLaren",
+    "Aston Martin",
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Antonelli impressive and one of Colapinto's best weekends - driver ratings",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/clyjx57nqj9o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-13T18:25:05Z",
+   "summary": "BBC Radio 5 Live F1 commentator Harry Benjamin rates how the drivers performed during the Spanish Grand Prix.",
+   "teams": [
+    "Mercedes",
     "Alpine"
    ],
    "date_estimated": false
   },
   {
-   "title": "Flavio Briatore questions Monaco GP appeal integrity in explosive Monza press conference",
-   "link": "https://www.motorsport.com/f1/news/flavio-briatore-questions-monaco-gp-appeal-integrity-in-extraordinary-monza-press-conference/10852228/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-04T14:18:01Z",
-   "summary": "Alpine Formula 1 boss Flavio Briatore has questioned the fairness of the appeal procedure against the Monaco Grand Prix results, claiming one judge has a close relationship with McLaren. Pierre Gasly was one of several drivers penalised in Monaco for exceeding\u2026",
+   "title": "F1 drivers push for Madring changes after \"very poor\" Spanish GP: \"I almost fell asleep\"",
+   "link": "https://www.autosport.com/f1/news/i-almost-fell-asleep-f1-drivers-push-for-madrid-track-changes-after-very-poor-spanish-gp/10855598/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-13T18:11:24Z",
+   "summary": "The Formula 1 Spanish Grand Prix played out exactly as most drivers had feared. Max Verstappen said on Saturday that he could not see a single overtaking opportunity and added when speaking to the Dutch media, \"Just give me the track map\", to indicate that he\u2026",
    "teams": [
-    "McLaren",
-    "Alpine"
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "\"I almost fell asleep\" \u2013 F1 drivers push for Madrid track changes after \"very poor\" Spanish GP",
+   "link": "https://www.motorsport.com/f1/news/i-almost-fell-asleep-f1-drivers-push-for-madrid-track-changes-after-very-poor-spanish-gp/10855576/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T18:05:41Z",
+   "summary": "The Formula 1 Spanish Grand Prix played out exactly as most drivers had feared. Max Verstappen said on Saturday that he could not see a single overtaking opportunity and added when speaking to the Dutch media, \"Just give me the track map\", to indicate that he\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "How brutal VSC timing turned Lando Norris\u2019 Spanish GP upside down",
+   "link": "https://www.motorsport.com/f1/news/the-step-by-step-story-of-how-lando-norris-spanish-gp-miss-played-out-under-the-vsc/10855571/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T17:47:52Z",
+   "summary": "Two seconds - this was the margin between Lando Norris passing the Madring pit entry and the call for the virtual safety car that ended his victory hopes for the Spanish Grand Prix - one that Formula 1 race winner Kimi Antonelli ultimately accepted. Norris had\u2026",
+   "teams": [
+    "Mercedes",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lando Norris praised for firm response to Coca-Cola request after Spanish GP: \"Highlight of the Madring\"",
+   "link": "https://www.motorsport.com/f1/news/lando-norris-praised-for-firm-response-to-coca-cola-request-after-spanish-gp-highlight-of-the-madri/10855554/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T17:01:32Z",
+   "summary": "Formula 1 fans have praised Lando Norris after he shot down a request from an official not to drink Coca-Cola in the cooldown room after the Spanish Grand Prix. The 2025 champion finished third in the inaugural race at the Madring circuit, having lost a comfor\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Nico Rosberg: Carlos Sainz must share blame for Madring overtaking issues",
+   "link": "https://www.motorsport.com/f1/news/nico-rosberg-carlos-sainz-must-share-blame-for-madring-overtaking-issues/10855530/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T16:26:33Z",
+   "summary": "2016 Formula 1 champion Nico Rosberg says Carlos Sainz must take some responsibility for the lack of overtaking at the new Madring circuit, given his role as ambassador for the venue. The 2026 Spanish Grand Prix was hosted at a new semi-permanent track around\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "George Russell closer than ever to giving up on 2026 F1 title",
+   "link": "https://www.motorsport.com/f1/news/george-russell-so-close-to-giving-up-on-2026-f1-title-i-dont-think-i-am-in-the-fight/10855503/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-13T16:11:00Z",
+   "summary": "George Russell is now \u201cexceptionally unlikely\u201d to win the 2026 Formula 1 title, having been beaten by Mercedes team-mate Kimi Antonelli for a fifth consecutive time at the Spanish Grand Prix. Russell qualified a lowly sixth at F1\u2019s new Madring track, explainin\u2026",
+   "teams": [
+    "Mercedes"
    ],
    "date_estimated": false
   }
