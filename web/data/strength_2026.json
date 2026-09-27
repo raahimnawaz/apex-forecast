@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-09-15T16:01:18Z",
+ "generated_utc": "2026-09-27T01:11:34Z",
  "season": 2026,
  "team_colors": {
   "Alpine": "#0093cc",
@@ -2417,12 +2417,12 @@
  "weather": {
   "event": "Azerbaijan Grand Prix",
   "date": "2026-09-26",
-  "available": true,
-  "rain_probability": 0.1,
-  "precipitation_mm": 0.0,
-  "temperature_c": 25.0,
-  "wind_kph": 23.8,
-  "note": "",
+  "available": false,
+  "rain_probability": null,
+  "precipitation_mm": null,
+  "temperature_c": null,
+  "wind_kph": null,
+  "note": "forecast unavailable (ConnectionError)",
   "uncertainty_multiplier": 1.0,
   "wet_risk": false
  },
