@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-09-27T01:11:35Z",
+ "generated_utc": "2026-09-29T16:01:12Z",
  "season": 2026,
- "rounds_complete": 14,
+ "rounds_complete": 15,
  "races": [
   {
    "round": 1,
@@ -3173,13 +3173,239 @@
      "classified": false
     }
    ]
+  },
+  {
+   "round": 15,
+   "event": "Azerbaijan Grand Prix",
+   "podium": [
+    {
+     "pos": 1,
+     "driver": "RUS",
+     "team": "Mercedes"
+    },
+    {
+     "pos": 2,
+     "driver": "VER",
+     "team": "Red Bull Racing"
+    },
+    {
+     "pos": 3,
+     "driver": "HAD",
+     "team": "Red Bull Racing"
+    }
+   ],
+   "pole": "RUS",
+   "retirements": 6,
+   "entries": 22,
+   "sprint": false,
+   "forecast": null,
+   "results": [
+    {
+     "pos": 1,
+     "driver": "RUS",
+     "team": "Mercedes",
+     "grid": 1,
+     "points": 25.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 2,
+     "driver": "VER",
+     "team": "Red Bull Racing",
+     "grid": 8,
+     "points": 18.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 3,
+     "driver": "HAD",
+     "team": "Red Bull Racing",
+     "grid": 4,
+     "points": 15.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 4,
+     "driver": "LEC",
+     "team": "Ferrari",
+     "grid": 2,
+     "points": 12.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 5,
+     "driver": "ANT",
+     "team": "Mercedes",
+     "grid": 16,
+     "points": 10.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 6,
+     "driver": "HAM",
+     "team": "Ferrari",
+     "grid": 6,
+     "points": 8.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 7,
+     "driver": "LIN",
+     "team": "Racing Bulls",
+     "grid": 15,
+     "points": 6.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 8,
+     "driver": "OCO",
+     "team": "Haas F1 Team",
+     "grid": 13,
+     "points": 4.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 9,
+     "driver": "BEA",
+     "team": "Haas F1 Team",
+     "grid": 10,
+     "points": 2.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 10,
+     "driver": "SAI",
+     "team": "Williams",
+     "grid": 14,
+     "points": 1.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 11,
+     "driver": "HUL",
+     "team": "Audi",
+     "grid": 18,
+     "points": 0.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 12,
+     "driver": "LAW",
+     "team": "Racing Bulls",
+     "grid": 11,
+     "points": 0.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 13,
+     "driver": "PIA",
+     "team": "McLaren",
+     "grid": 3,
+     "points": 0.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 14,
+     "driver": "PER",
+     "team": "Cadillac",
+     "grid": 20,
+     "points": 0.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 15,
+     "driver": "BOR",
+     "team": "Audi",
+     "grid": 17,
+     "points": 0.0,
+     "status": "Finished",
+     "classified": true
+    },
+    {
+     "pos": 16,
+     "driver": "BOT",
+     "team": "Cadillac",
+     "grid": 19,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": true
+    },
+    {
+     "pos": 17,
+     "driver": "COL",
+     "team": "Alpine",
+     "grid": 9,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    },
+    {
+     "pos": 18,
+     "driver": "GAS",
+     "team": "Alpine",
+     "grid": 7,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    },
+    {
+     "pos": 19,
+     "driver": "NOR",
+     "team": "McLaren",
+     "grid": 5,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    },
+    {
+     "pos": 20,
+     "driver": "ALB",
+     "team": "Williams",
+     "grid": 12,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    },
+    {
+     "pos": 21,
+     "driver": "ALO",
+     "team": "Aston Martin",
+     "grid": 21,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    },
+    {
+     "pos": 22,
+     "driver": "STR",
+     "team": "Aston Martin",
+     "grid": 22,
+     "points": 0.0,
+     "status": "Retired",
+     "classified": false
+    }
+   ]
   }
  ],
  "drivers": [
   {
    "driver": "ANT",
    "team": "Mercedes",
-   "points": 292.0,
+   "points": 302.0,
    "wins": 8,
    "podiums": 12,
    "poles": 6
@@ -3187,15 +3413,15 @@
   {
    "driver": "RUS",
    "team": "Mercedes",
-   "points": 211.0,
-   "wins": 2,
-   "podiums": 7,
-   "poles": 4
+   "points": 236.0,
+   "wins": 3,
+   "podiums": 8,
+   "poles": 5
   },
   {
    "driver": "HAM",
    "team": "Ferrari",
-   "points": 191.0,
+   "points": 199.0,
    "wins": 1,
    "podiums": 5,
    "poles": 0
@@ -3211,7 +3437,7 @@
   {
    "driver": "LEC",
    "team": "Ferrari",
-   "points": 167.0,
+   "points": 179.0,
    "wins": 1,
    "podiums": 4,
    "poles": 0
@@ -3219,9 +3445,9 @@
   {
    "driver": "VER",
    "team": "Red Bull Racing",
-   "points": 145.0,
+   "points": 163.0,
    "wins": 0,
-   "podiums": 6,
+   "podiums": 7,
    "poles": 0
   },
   {
@@ -3235,9 +3461,9 @@
   {
    "driver": "HAD",
    "team": "Red Bull Racing",
-   "points": 68.0,
+   "points": 83.0,
    "wins": 0,
-   "podiums": 0,
+   "podiums": 1,
    "poles": 0
   },
   {
@@ -3259,7 +3485,7 @@
   {
    "driver": "LIN",
    "team": "Racing Bulls",
-   "points": 29.0,
+   "points": 35.0,
    "wins": 0,
    "podiums": 0,
    "poles": 0
@@ -3275,7 +3501,7 @@
   {
    "driver": "BEA",
    "team": "Haas F1 Team",
-   "points": 18.0,
+   "points": 20.0,
    "wins": 0,
    "podiums": 0,
    "poles": 0
@@ -3305,9 +3531,17 @@
    "poles": 0
   },
   {
+   "driver": "OCO",
+   "team": "Haas F1 Team",
+   "points": 7.0,
+   "wins": 0,
+   "podiums": 0,
+   "poles": 0
+  },
+  {
    "driver": "SAI",
    "team": "Williams",
-   "points": 6.0,
+   "points": 7.0,
    "wins": 0,
    "podiums": 0,
    "poles": 0
@@ -3323,14 +3557,6 @@
   {
    "driver": "ALO",
    "team": "Aston Martin",
-   "points": 3.0,
-   "wins": 0,
-   "podiums": 0,
-   "poles": 0
-  },
-  {
-   "driver": "OCO",
-   "team": "Haas F1 Team",
    "points": 3.0,
    "wins": 0,
    "podiums": 0,
@@ -3372,11 +3598,11 @@
  "constructors": [
   {
    "team": "Mercedes",
-   "points": 503.0
+   "points": 538.0
   },
   {
    "team": "Ferrari",
-   "points": 358.0
+   "points": 378.0
   },
   {
    "team": "McLaren",
@@ -3384,19 +3610,19 @@
   },
   {
    "team": "Red Bull Racing",
-   "points": 227.0
+   "points": 260.0
+  },
+  {
+   "team": "Racing Bulls",
+   "points": 79.0
   },
   {
    "team": "Alpine",
    "points": 77.0
   },
   {
-   "team": "Racing Bulls",
-   "points": 73.0
-  },
-  {
    "team": "Haas F1 Team",
-   "points": 21.0
+   "points": 27.0
   },
   {
    "team": "Audi",
@@ -3404,7 +3630,7 @@
   },
   {
    "team": "Williams",
-   "points": 11.0
+   "points": 12.0
   },
   {
    "team": "Aston Martin",

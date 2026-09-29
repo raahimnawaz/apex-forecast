@@ -13,3 +13,4 @@ season,round,event,baseline_s,lap_trend_s_per_lap,dirty_air_cost_s,resid_sd_s,n_
 2026,12,Dutch Grand Prix,77.82,-0.0416,0.669,0.662,1088,20,0.8166
 2026,13,Italian Grand Prix,86.549,-0.0392,0.089,0.605,877,21,0.7436
 2026,14,Spanish Grand Prix,99.564,-0.0742,1.788,1.026,957,21,0.7781
+2026,15,Azerbaijan Grand Prix,108.62,-0.0687,0.2,0.559,674,21,0.8589

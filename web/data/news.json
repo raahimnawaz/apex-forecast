@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-09-27T01:11:36Z",
+ "generated_utc": "2026-09-29T16:01:13Z",
  "sources": [
   "Autosport",
   "Motorsport.com",
@@ -9,97 +9,11 @@
  ],
  "items": [
   {
-   "title": "5 betting lessons after Russell wins in Azerbaijan",
-   "link": "https://www.formula1.com/en/latest/article/5-key-betting-lessons-learnt-after-george-russell-wins-the-azerbaijan-grand-prix.47nlYW5ylDY8AZ3EupXmrO",
+   "title": "Where does Russell\u2019s Baku win rank in the closest F1 finishes?",
+   "link": "https://www.formula1.com/en/latest/article/where-does-russells-baku-win-rank-in-the-closest-ever-f1-finishes.4bMRcAuAIS4dJY4flIHkUw",
    "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "The Mercedes star has cut the deficit in the Drivers' Championship to 66 points after his third win of the season.",
-   "teams": [
-    "Mercedes"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "All the key moments from the 2026 Azerbaijan Grand Prix",
-   "link": "https://www.formula1.com/en/latest/article/azerbaijan-lowdown-all-the-key-moments-as-russell-takes-victory-and-baku-puts-on-another-show.7l4pAjByompPX9hC6YkB8F",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Azerbaijan marked 10 years on the F1 calendar with another action-packed weekend of competition \u2013 one that saw George Russell emerge victorious and cut team mate Kimi Antonelli\u2019s advantage at the top of the championship.",
-   "teams": [
-    "Mercedes"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Azerbaijan mistake 'certainly took me by surprise' \u2013 Piastri",
-   "link": "https://www.formula1.com/en/latest/article/certainly-took-me-by-surprise-piastri-reflects-on-azerbaijan-gp-result-after-mistake.6THrL3hQt1nTOMgRqVOfmf",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Oscar Piastri admits that the lock-up which potentially cost the Australian driver a podium in the Azerbaijan Grand Prix \"certainly took me by surprise\", on a day where McLaren failed to score a point.",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Bortoleto handed penalty after yellow flag infringement",
-   "link": "https://www.formula1.com/en/latest/article/bortoleto-handed-penalty-after-yellow-flag-infringement-in-azerbaijan-gp.4IRPm8CEnPZMAjmjCeBgGI",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Gabriel Bortoleto has been handed a time penalty after the Audi driver was judged to have overtaken under a yellow flag.",
-   "teams": [
-    "Audi"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "What the teams said \u2013 Race day in Azerbaijan",
-   "link": "https://www.formula1.com/en/latest/article/what-the-teams-said-race-day-in-azerbaijan-2026.7FI05LpHsKH1PaUiI8SyVF",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "The drivers and teams report back on all the action from Baku for the 2026 Azerbaijan Grand Prix.",
-   "teams": [],
-   "date_estimated": true
-  },
-  {
-   "title": "Colapinto gets 5-place grid drop for Bahrain GP in Malaysia",
-   "link": "https://www.formula1.com/en/latest/article/colapinto-hit-with-five-place-grid-penalty-for-bahrain-gp-in-malaysia-after-baku-collision.3gWVfzDMMr5hReiwTt1fPD",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Franco Colapinto has been given a five-place grid penalty for next weekend\u2019s Bahrain Grand Prix in Malaysia after causing a multi-car incident at the Baku City Circuit on Saturday.",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Hadjar hails \u2018first proper podium\u2019 with P3 in Baku",
-   "link": "https://www.formula1.com/en/latest/article/hadjar-hails-first-proper-podium-with-p3-in-baku-after-very-long-six-weeks-on-the-sidelines.3B3LcWHpym034tQVwdIQSf",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Isack Hadjar was all smiles after completing his comeback from a \u201cvery long six weeks\u201d on the sidelines with a podium finish at the Baku City Circuit.",
-   "teams": [
-    "Red Bull Racing"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Lawson baffled by Lindblad clash in Baku that \u2018sucks\u2019",
-   "link": "https://www.formula1.com/en/latest/article/i-just-dont-understand-lawson-baffled-by-lindblad-clash-that-sucks-for-our-race-in-baku.3ls6bzks1rRKQf1KwVCmcD",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Racing Bulls\u2019 Liam Lawson and Arvid Lindblad have given their thoughts on their collision in the Azerbaijan Grand Prix.",
-   "teams": [
-    "Racing Bulls"
-   ],
-   "date_estimated": true
-  },
-  {
-   "title": "Verstappen 'was trying everything' in quest for Baku victory",
-   "link": "https://www.formula1.com/en/latest/article/i-was-trying-everything-verstappen-gives-verdict-after-missing-out-on-azerbaijan-gp-victory.6M9zlnYYDH8w4AnRIninDX",
-   "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Max Verstappen admits he \"was trying everything\" to claim victory in the Azerbaijan Grand Prix, the Red Bull driver eventually falling short by just one-tenth against George Russell.",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Which races have been won by an even tighter margin than George Russell's 0.196s victory over Max Verstappen in Azerbaijan?",
    "teams": [
     "Mercedes",
     "Red Bull Racing"
@@ -107,15 +21,638 @@
    "date_estimated": true
   },
   {
-   "title": "Antonelli vows to learn from \u2018worst weekend of the season\u2019",
-   "link": "https://www.formula1.com/en/latest/article/antonelli-vows-to-take-lessons-from-worst-weekend-of-the-season-in-azerbaijan.2gFddBKt9w2Zp3y6deTe5r",
+   "title": "The encouraging signs hidden within McLaren's Baku upgrade",
+   "link": "https://www.formula1.com/en/latest/article/the-encouraging-signs-hidden-within-mclarens-baku-upgrade.2MeiTiEWq6Dvt2GkRG4UJh",
    "source": "Formula1.com",
-   "published": "2026-09-27T01:11:36Z",
-   "summary": "Kimi Antonelli made clear that the Azerbaijan Grand Prix weekend \u201ctaught me a lot\u201d after enduring his \u201cworst weekend of the season\u201d on Baku\u2019s streets.",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Mark Hughes and Giorgio Piola analyse McLaren's major Baku upgrade package and explain why the team emerged encouraged despite an imperfect debut.",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "F1 Business Summit adds new Las Vegas speakers",
+   "link": "https://www.formula1.com/en/latest/article/f1-business-summit-adds-haas-boss-komatsu-gordon-ramsay-and-russell-wilson.7bjK395TdRilEl7AorqYMG",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "The F1 Business Summit returns on 19 November at Caesars Palace, with Haas Team Principal Ayao Komatsu, Gordon Ramsay and Russell Wilson among the speakers.",
+   "teams": [
+    "Mercedes",
+    "Haas F1 Team"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Why Alonso has re-signed with Aston Martin",
+   "link": "https://www.formula1.com/en/latest/article/analysis-why-alonso-is-staying-at-aston-martin-and-what-it-means-for-the-2027-grid.2b7yrPKHBN8kcLMJy5PbFa",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Fernando Alonso's love affair with Formula 1 will continue as the Spaniard has opted to stick around for at least another year with Aston Martin.",
+   "teams": [
+    "Aston Martin"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Aston Martin keep Alonso and Stroll for 2027",
+   "link": "https://www.formula1.com/en/latest/article/alonso-and-stroll-to-stay-at-aston-martin-in-2027-as-team-confirm-unchanged-line-up.7xg2Sct45vzW92UaiE8YXR",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Fernando Alonso says 'racing is my life' as he and Lance Stroll extend their Aston Martin contracts, leaving four seats to fill on the 2027 grid.",
+   "teams": [
+    "Aston Martin"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "BARRETTO: Why Ferrari have moved to shield Vasseur",
+   "link": "https://www.formula1.com/en/latest/article/ferrari-move-to-end-speculation-over-vasseurs-future-amid-horner-speculation-plus-barretto-analysis.5vNkTkDQSbhS9Pnh8mulTm",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Ferrari confirm they have faith in Team Principal Fred Vasseur after Christian Horner named the Scuderia his 'dream' destination.",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Binotto wants Slater in an F1 seat in the near future",
+   "link": "https://www.formula1.com/en/latest/article/binotto-wants-slater-in-an-f1-seat-in-the-near-future.IzNhz498XCeJkBpKaTPPG",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Audi CEO Mattia Binotto has made no secret of his plans for Freddie Slater, stating in Azerbaijan that he wants the youngster \u201cinto an F1 seat\u201d in the near future.",
+   "teams": [
+    "Audi"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "How Hadjar cleverly handled his comeback to claim a podium in Baku",
+   "link": "https://www.formula1.com/en/latest/article/how-hadjar-cleverly-handled-his-comeback-to-claim-a-podium-in-baku.6e5PnWMLxKo38Bj0iVBRRg",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "IndyCar race winner and F1 TV analyst James Hinchcliffe explains what was so impressive about Hadjar's racing return in Azerbaijan after three Grands Prix on the sidelines.",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": true
+  },
+  {
+   "title": "Bahrain Grand Prix betting guide and latest odds",
+   "link": "https://www.formula1.com/en/latest/article/bahrain-grand-prix-race-betting-guide-and-what-the-markets-predict-will-happen-in-malaysia.v5kxOheftCqJ3Wf7mijEr",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Our experts bring you all the important betting information you need before making your predictions as the rescheduled Bahrain Grand Prix heads to Sepang.",
+   "teams": [],
+   "date_estimated": true
+  },
+  {
+   "title": "PALMER: Why George Russell\u2019s Baku win was so impressive",
+   "link": "https://www.formula1.com/en/latest/article/why-russells-baku-win-was-so-impressive.4DjGxjpyh7WxwnhjmZfk7H",
+   "source": "Formula1.com",
+   "published": "2026-09-29T16:01:13Z",
+   "summary": "Former Renault F1 driver and F1 TV analyst Jolyon Palmer explores the details behind George Russell's victory in Azerbaijan.",
    "teams": [
     "Mercedes"
    ],
    "date_estimated": true
+  },
+  {
+   "title": "Whether Baku was Red Bull's last realistic opportunity of winning in F1 2026",
+   "link": "https://www.autosport.com/f1/news/whether-baku-was-red-bulls-last-realistic-chance-of-winning-in-f1-2026/10860093/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-29T15:30:02Z",
+   "summary": "When Max Verstappen walked into the Red Bull hospitality on Friday for his Dutch Formula 1 media session \u2013 which in Azerbaijan, incidentally, consisted of just two Dutch journalists \u2013 the message was clear. The Baku City Circuit offered Red Bull its best oppor\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Was Baku really Max Verstappen's best chance to win in F1 2026?",
+   "link": "https://www.motorsport.com/f1/news/was-baku-really-max-verstappens-best-chance-to-win-in-f1-2026/10859854/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T15:30:02Z",
+   "summary": "When Max Verstappen walked into the Red Bull hospitality on Friday for his Dutch Formula 1 media session \u2013 which in Azerbaijan, incidentally, consisted of just two Dutch journalists \u2013 the message was clear. The Baku City Circuit offered Red Bull its best oppor\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "How Isack Hadjar injured his wrist during F1 2026 summer break",
+   "link": "https://www.motorsport.com/f1/news/how-isack-hadjar-injured-his-wrist-during-f1-2026-summer-break/10859838/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T14:30:04Z",
+   "summary": "Isack Hadjar broke a bone in his wrist while training during the 2026 Formula 1 summer break, forcing him to sit out the Dutch Grand Prix at Zandvoort and requiring Red Bull and Racing Bulls to reshuffle their driver line-ups. The will-he-won't-he question of\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "Racing Bulls"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "McLaren Racing and Edward Jones join forces in multi-year F1 and IndyCar partnership",
+   "link": "https://www.motorsport.com/indycar/news/mclaren-racing-and-edward-jones-join-forces-in-multi-year-f1-and-indycar-pa/10859933/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T13:03:26Z",
+   "summary": "In a joint announcement, McLaren Racing and Edward Jones revealed a new multi-year partnership designating the St. Louis\u2013based firm as the Official Private Wealth Management Partner across both Formula 1 and IndyCar. The agreement establishes a long-term, year\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "\u201cI fear something bad is going to happen soon\u201d \u2013 2026 F1 cars are \u201ctoo dangerous\u201d, Sergio Perez warns",
+   "link": "https://www.motorsport.com/f1/news/i-fear-something-bad-is-going-to-happen-soon-2026-f1-cars-are-too-dangerous-sergio-perez-warns/10859878/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T12:39:15Z",
+   "summary": "Sergio Perez says he fears \u201csomething bad\u201d might happen due to the speed differential between cars with Formula 1\u2019s new machinery. This was a major topic early in the 2026 season, especially after Oliver Bearman had a mammoth crash in the Japanese Grand Prix.\u2026",
+   "teams": [
+    "Haas F1 Team",
+    "Cadillac"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Aston Martin retains Alonso and Stroll for F1 2027",
+   "link": "https://www.autosport.com/f1/news/aston-martin-retains-alonso-and-stroll/10860022/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-29T11:07:10Z",
+   "summary": "Fernando Alonso has finally confirmed that he will continue with Aston Martin into the 2027 Formula 1 campaign, ending all speculation surrounding his future. For months the 45-year-old had been answering questions about whether or not he will stick with F1, g\u2026",
+   "teams": [
+    "Aston Martin"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Fernando Alonso extends Aston Martin contract into F1 2027",
+   "link": "https://www.motorsport.com/f1/news/fernando-alonso-extends-aston-martin-contract-into-f1-2027/10860010/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T11:04:57Z",
+   "summary": "Fernando Alonso has finally confirmed that he will continue with Aston Martin into the 2027 Formula 1 campaign, ending all speculation surrounding his future. For months the 45-year-old had been answering questions about whether or not he will stick with F1, g\u2026",
+   "teams": [
+    "Aston Martin"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "'I still feel as fast as anybody' - Alonso on why he's staying in F1",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cde0gz51g36o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-29T11:00:06Z",
+   "summary": "Fernando Alonso commits to staying in Formula 1 with Aston Martin for at least one more year. - and explains why to BBC Sport.",
+   "teams": [
+    "Aston Martin"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Azerbaijan GP was a step forward for upgraded Williams - but real test is still to come",
+   "link": "https://www.autosport.com/f1/news/azerbaijan-gp-step-forward-for-wiliams-real-test-still-to-come/10860001/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-29T10:26:30Z",
+   "summary": "If there is a definition of a mixed bag, that's what the Baku weekend was to Williams. It progressed to Q3 for the first time in 2026, but didn't start there due to a grid penalty for Carlos Sainz. It scored points for the first time since Monaco, with some fo\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "What's next for Williams after Baku B-spec yields mixed fortunes",
+   "link": "https://www.motorsport.com/f1/news/whats-next-for-williams-after-baku-b-spec-yields-mixed-fortunes/10859882/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T10:22:20Z",
+   "summary": "If there is a definition of a mixed bag, that's what the Baku weekend was to Williams. It progressed to Q3 for the first time in 2026, but didn't start there due to a grid penalty for Carlos Sainz. It scored points for the first time since Monaco, with some fo\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Ferrari back Vasseur amid speculation over future",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cm1dlv4710g9o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-29T10:03:57Z",
+   "summary": "Ferrari back Frederic Vasseur as their F1 team principal after former Red Bull boss Christian Horner says he would be interested in joining.",
+   "teams": [
+    "Ferrari",
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Esteban Ocon: \u201cI\u2019m one of the best, and I\u2019m not afraid to say it\u201d",
+   "link": "https://www.motorsport.com/f1/news/esteban-ocon-im-one-of-the-best-and-im-not-afraid-to-say-it/10859693/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-29T08:33:02Z",
+   "summary": "Haas Formula 1 driver Esteban Ocon has always vocally expressed belief in his ability, and he now feels vindicated by his Azerbaijan Grand Prix result. Eighth position in Baku marked Ocon\u2019s highest finish of 2026 in a campaign where the Frenchman was often hel\u2026",
+   "teams": [
+    "Haas F1 Team"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Does Horner have a chance of Ferrari job? F1 Q&A",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/ckp84426lmggo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-29T06:09:34Z",
+   "summary": "BBC Sport F1 correspondent Andrew Benson answers your latest questions after the Azerbaijan Grand Prix.",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "McLaren Racing reportedly set for historic $1billion revenue milestone",
+   "link": "https://www.motorsport.com/f1/news/mclaren-racing-reportedly-set-for-historic-1billion-revenue-milestone/10859918/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T22:00:26Z",
+   "summary": "McLaren Racing is projected to become the first Formula 1 team to surpass $1billion in annual revenue, according to a report by Sky News. The report states that McLaren Racing Ltd's accounts for the 2025 calendar year will be filed this week. Sources indicate\u2026",
+   "teams": [
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Williams F1 announces huge K-pop star TZUYU collaboration",
+   "link": "https://www.motorsport.com/f1/news/williams-f1-announces-huge-k-pop-star-tzuyu-collaboration/10859893/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T17:46:54Z",
+   "summary": "Williams has announced that K-pop artist TZUYU will record the official theme song for its ongoing partnership with the global anime property DAN DA DAN. Following a mixed weekend at the Azerbaijan Grand Prix, where Carlos Sainz collected one point with a 10th\u2026",
+   "teams": [
+    "Williams"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lewis Hamilton honours Roscoe with touching tribute one year after his death",
+   "link": "https://www.motorsport.com/f1/news/lewis-hamilton-honours-roscoe-with-touching-tribute-one-year-after-his-death/10859889/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T17:31:17Z",
+   "summary": "Seven-time Formula 1 champion Lewis Hamilton has shared a touching tribute to his late dog Roscoe on the first anniversary of the English Bulldog's passing. Hamilton has taken to social media to honour the memory of his famous bulldog, Roscoe, exactly one year\u2026",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Max Verstappen was \"nightmare fuel\" for George Russell in Baku, says Alex Brundle",
+   "link": "https://www.motorsport.com/f1/news/max-verstappen-was-nightmare-fuel-for-george-russell-in-baku-says-alex-brundle/10859884/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T17:10:43Z",
+   "summary": "F1 TV pundit Alex Brundle says Max Verstappen relentlessly hunting down George Russell in the closing stages of the Azerbaijan Grand Prix was \"nightmare fuel\" for the Mercedes driver. While Russell had built a commanding lead, the safety car neutralised the fi\u2026",
+   "teams": [
+    "Mercedes",
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Herta still aiming for F1 by 2028",
+   "link": "https://www.autosport.com/f1/news/herta-still-aiming-for-f1-by-2028/10859881/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-28T17:02:04Z",
+   "summary": "\u201cIt would be foolish to sit here and think that I will be on the pace right away, that I will be on the pace and ready to win in my first race. I may be older, but speed-wise, these guys are just as fast as anybody out there.\u201d This was how Colton Herta viewed\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Colton Herta aiming at F1 by 2028: 'I still have a chance'",
+   "link": "https://www.motorsport.com/f1/news/colton-herta-aiming-at-f1-by-2028-i-still-have-a-chance/10859691/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T16:57:11Z",
+   "summary": "\u201cIt would be foolish to sit here and think that I will be on the pace right away, that I will be on the pace and ready to win in my first race. I may be older, but speed-wise, these guys are just as fast as anybody out there.\u201d This was how Colton Herta viewed\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Why Mercedes thought Max Verstappen was \"on some sort of massive bungee cord\" in Azerbaijan GP",
+   "link": "https://www.motorsport.com/f1/news/why-mercedes-thought-verstappen-was-on-some-sort-of-massive-bungee-cord-in-azerbaijan-gp/10859784/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T16:30:02Z",
+   "summary": "For the first half of the Azerbaijan Grand Prix, George Russell was able to build a gap beyond 10 seconds to the chasing pack, as the Red Bulls of Max Verstappen and Isack Hadjar struggled to pass Oscar Piastri's McLaren. That picture altered abruptly when the\u2026",
+   "teams": [
+    "Mercedes",
+    "Red Bull Racing",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "George Russell Baku F1 win sparks \"cracked the code\" theory",
+   "link": "https://www.motorsport.com/f1/news/george-russell-baku-f1-win-sparks-cracked-the-code-theory/10859862/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T15:53:37Z",
+   "summary": "Former IndyCar Series driver and F1 TV pundit James Hinchcliffe believes George Russell may have unlocked the performance of his Mercedes machinery, questioning whether the Briton has \"cracked the code\" to gain an edge over his team-mate Kimi Antonelli. Russel\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "How was Valtteri Bottas so much slower than Sergio Perez in the Azerbaijan GP?",
+   "link": "https://www.motorsport.com/f1/news/how-was-valtteri-bottas-so-much-slower-than-sergio-perez-in-the-azerbaijan-gp/10859576/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T14:45:02Z",
+   "summary": "There may never have been, so far in the 2026 Formula 1 season, such a stark contrast in intra-team performance as between Sergio Perez and Valtteri Bottas in the Azerbaijan Grand Prix. Bottas was outqualified by 1.632s on Friday, albeit hindered by a yellow f\u2026",
+   "teams": [
+    "Cadillac"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Juan Pablo Montoya admires Franco Colapinto's \"aggressive\" approach despite Baku crash",
+   "link": "https://www.motorsport.com/f1/news/juan-pablo-montoya-admires-franco-colapintos-aggressive-approach-despite-baku-crash/10859834/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T14:21:29Z",
+   "summary": "Former Formula 1 driver Juan Pablo Montoya has defended Franco Colapinto's \"aggressive\" approach following a costly multi-car collision at the Azerbaijan Grand Prix. Colapinto triggered a Turn 1 pile-up during a safety car restart at the Baku City Circuit. Mis\u2026",
+   "teams": [
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "What made Red Bull so fast in the Azerbaijan GP after Verstappen\u2019s qualifying issue",
+   "link": "https://www.autosport.com/f1/news/what-made-red-bull-so-fast-in-the-azerbaijan-gp-after-verstappens-qualifying-issue/10859823/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-28T13:54:18Z",
+   "summary": "Red Bull might consider the FIA\u2019s assessment that it has the strongest power unit as a blessing and a curse, but at the Azerbaijan Grand Prix it was key to its first double Formula 1 podium. After fixing Max Verstappen\u2019s ill-behaving internal combustion engine\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "What made Red Bull so fast in the Azerbaijan GP after Max Verstappen\u2019s qualifying issue",
+   "link": "https://www.motorsport.com/f1/news/what-made-red-bull-so-fast-in-the-azerbaijan-gp-after-max-verstappens-qualifying-issue/10859776/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T13:30:35Z",
+   "summary": "Red Bull might consider the FIA\u2019s assessment that it has the strongest power unit as a blessing and a curse, but at the Azerbaijan Grand Prix it was key to its first double Formula 1 podium. After fixing Max Verstappen\u2019s ill-behaving internal combustion engine\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Has George Russell hit his stride too late? 'With this form I would have been in the fight'",
+   "link": "https://www.motorsport.com/f1/news/has-george-russell-hit-his-stride-too-late-with-this-form-i-would-have-been-in-the-fight/10859731/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T12:03:05Z",
+   "summary": "A pole-to-flag victory in the Formula 1 Azerbaijan Grand Prix provided further evidence that Mercedes is starting to unlock the best version of George Russell - but is it too little, too late? The 28-year-old took his eighth grand prix victory and his first ca\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "F1 pundit slams Franco Colapinto's \"outrageous\" Baku crash but rejects Lando Norris's race ban call",
+   "link": "https://www.motorsport.com/f1/news/f1-pundit-slams-franco-colapintos-outrageous-baku-crash-but-rejects-lando-norriss-race-ban-call/10859752/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T11:00:03Z",
+   "summary": "Former McLaren mechanic and Formula 1 pundit Marc Priestley has branded Franco Colapinto's Turn 1 collision at the Azerbaijan Grand Prix \"outrageous\", but dismissed Lando Norris's demand for the Alpine driver to face a race ban. Colapinto went for a move down\u2026",
+   "teams": [
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Sebastian Vettel gives update on F1 future as he opens up on life after retirement",
+   "link": "https://www.motorsport.com/f1/news/sebastian-vettel-addresses-f1-future-after-retirement-always-open/10859651/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T10:30:03Z",
+   "summary": "Four-time Formula 1 champion Sebastian Vettel has discussed a potential future role within the championship, though he is not actively approaching teams for opportunities. Speaking on BBC's Chequered Flag Podcast following the Azerbaijan Grand Prix, the German\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Norris apologises to Colapinto for ban comments",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cm87vz5w4jwro?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-28T10:11:33Z",
+   "summary": "World champion Lando Norris apologises to Franco Colapinto for saying the Argentine should be banned for causing an accident at the Azerbaijan Grand Prix.",
+   "teams": [
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Norris apologises to Colapinto over F1 race ban comments",
+   "link": "https://www.autosport.com/f1/news/norris-apologises-to-colapinto-over-f1-race-ban-comments/10859741/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-28T09:24:40Z",
+   "summary": "Reigning world champion Lando Norris has apologised to Franco Colapinto for demanding a race ban for the Alpine driver after the collision at Formula 1\u2019s Azerbaijan Grand Prix. Colapinto caused a pile-up at the lap 36 restart by locking up into Turn 1 of the s\u2026",
+   "teams": [
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Lando Norris apologises to Franco Colapinto over F1 race ban comments",
+   "link": "https://www.motorsport.com/f1/news/lando-norris-apologises-to-franco-colapinto-over-f1-race-ban-comments/10859736/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T09:19:14Z",
+   "summary": "Reigning world champion Lando Norris has apologised to Franco Colapinto for demanding a race ban for the Alpine driver after the collision at Formula 1\u2019s Azerbaijan Grand Prix. Colapinto caused a pile-up at the lap 36 restart by locking up into Turn 1 of the s\u2026",
+   "teams": [
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Flavio Briatore apologises to Lando Norris after Azerbaijan GP crash",
+   "link": "https://www.motorsport.com/f1/news/flavio-briatore-apologises-to-lando-norris-after-azerbaijan-gp-crash/10859734/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-28T09:10:39Z",
+   "summary": "Alpine's Flavio Briatore has publicly apologised to Lando Norris and McLaren following the collision at the Azerbaijan Grand Prix that brought the 2025 Formula 1 champion's race to an end. The clash happened during a safety car restart in Baku when Franco Cola\u2026",
+   "teams": [
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Why McLaren was so much slower than Mercedes on Baku's straights",
+   "link": "https://www.autosport.com/f1/news/why-mclaren-was-so-much-slower-than-mercedes-on-bakus-straights/10859723/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-28T08:34:17Z",
+   "summary": "For all the talk of rivals catching Mercedes, which has held fire on its more significant upgrades until next weekend's Formula 1 Bahrain Grand Prix in Malaysia, the Brackley team has been able to weather the storm by excelling on some of the most power sensit\u2026",
+   "teams": [
+    "Mercedes",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "How to follow Bahrain Grand Prix in Malaysia on the BBC",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/ckz7zzy4d995o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-28T06:33:20Z",
+   "summary": "All the key BBC coverage details for the Bahrain Grand Prix in Malaysia, which takes place from 2-4 October.",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Arvid Lindblad issues apology after Racing Bulls team-mate clash in Baku",
+   "link": "https://www.motorsport.com/f1/news/arvid-lindblad-issues-apology-after-racing-bulls-team-mate-clash-in-baku/10859656/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T22:25:41Z",
+   "summary": "Racing Bulls Formula 1 rookie Arvid Lindblad has issued a public apology to his team-mate Liam Lawson following their collision during the Azerbaijan Grand Prix. The British driver secured six points with a seventh-place finish around the Baku City Circuit, bu\u2026",
+   "teams": [
+    "Racing Bulls"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Oscar Piastri: Error that cost me F1 Azerbaijan GP podium was \"a bit weird\"",
+   "link": "https://www.motorsport.com/f1/news/oscar-piastri-the-error-that-cost-me-baku-f1-podium-was-a-bit-weird/10859516/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T22:00:02Z",
+   "summary": "McLaren Formula 1 driver Oscar Piastri has labelled his late-race Azerbaijan Grand Prix mistake as \u201ca bit weird\u201d, after losing the podium in Baku. Piastri was running third following the second safety-car restart and came under pressure from Red Bull\u2019s Isack H\u2026",
+   "teams": [
+    "Red Bull Racing",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "George Russell after rejuvenating Baku win: \"It would have been very easy for me to lose the faith\"",
+   "link": "https://www.motorsport.com/f1/news/george-russell-after-rejuvenating-baku-win-it-would-have-been-very-easy-for-me-to-lose-the-faith/10859613/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T15:18:24Z",
+   "summary": "Saturday's Azerbaijan Grand Prix was George Russell's third victory of the 2026 Formula 1 campaign, and his first career grand slam, but leading every lap in the wind-swept streets of Baku meant much more to the Mercedes driver than just a fancy statistic. For\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Alpine condemns abuse again following Colapinto's Azerbaijan GP crash",
+   "link": "https://www.autosport.com/f1/news/alpine-condemns-abuse-again-following-colapintos-azerbaijan-gp-crash/10859570/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-27T12:11:47Z",
+   "summary": "The Alpine Formula 1 team has again spoken out against social media abuse following Franco Colapinto\u2019s shunt in the Azerbaijan Grand Prix. Argentinian fans\u2019 behaviour has been scrutinised lately following waves of hateful comments. Those were aimed at FIA stew\u2026",
+   "teams": [
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Alpine makes statement as Franco Colapinto-related abuse accelerates",
+   "link": "https://www.motorsport.com/f1/news/alpine-makes-statement-as-franco-colapinto-related-abuse-accelerates/10859568/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T12:05:29Z",
+   "summary": "The Alpine Formula 1 team has again spoken out against social media abuse following Franco Colapinto\u2019s shunt in the Azerbaijan Grand Prix. Argentinian fans\u2019 behaviour has been scrutinised lately following waves of hateful comments. Those were aimed at FIA stew\u2026",
+   "teams": [
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Horner a distraction for Ferrari, says Vasseur",
+   "link": "https://www.bbc.co.uk/sport/formula1/articles/cvwyz791096jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "published": "2026-09-27T11:44:25Z",
+   "summary": "Christian Horner is proving a distraction for Ferrari by \"looking for a job\", team principal Frederic Vasseur says.",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Charles Leclerc: \u201cMcLaren and Red Bull did a step forward that we didn\u2019t do\u201d",
+   "link": "https://www.motorsport.com/f1/news/charles-leclerc-mclaren-and-red-bull-did-a-step-forward-that-we-didnt-do/10859495/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T11:00:04Z",
+   "summary": "Red Bull now has a clear advantage over Ferrari in terms of chassis performance, with McLaren having also markedly improved, Charles Leclerc believes following the Formula 1 Azerbaijan Grand Prix. Both teams brought significant upgrade packages to Baku, focusi\u2026",
+   "teams": [
+    "Ferrari",
+    "Red Bull Racing",
+    "McLaren"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "The detail that impressed Red Bull the most about Hadjar's F1 return",
+   "link": "https://www.autosport.com/f1/news/the-one-detail-that-impresses-red-bull-most-about-isack-hadjars-outstanding-f1-return/10859537/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+   "source": "Autosport",
+   "published": "2026-09-27T10:12:48Z",
+   "summary": "After his wrist injury, Isack Hadjar certainly did not return behind the wheel of the Red Bull Racing RB22 at the easiest track on the Formula 1 calendar. The Baku City Circuit not only carries a considerable risk of crashes, but also features several very tec\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "The one detail that impresses Red Bull most about Isack Hadjar's \"outstanding\" F1 return",
+   "link": "https://www.motorsport.com/f1/news/the-one-detail-that-impresses-red-bull-most-about-isack-hadjars-outstanding-f1-return/10859532/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T10:10:41Z",
+   "summary": "After his wrist injury, Isack Hadjar certainly did not return behind the wheel of the Red Bull RB22 at the easiest track on the Formula 1 calendar. The Baku City Circuit not only carries a considerable risk of crashes, but also features several very technical\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Why is the 2026 Bahrain Grand Prix taking place in Malaysia?",
+   "link": "https://www.motorsport.com/f1/news/why-is-the-2026-bahrain-grand-prix-taking-place-in-malaysia/10859526/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T09:32:41Z",
+   "summary": "The 2026 Bahrain Grand Prix will not take place in Bahrain, but in Malaysia. The event will be held from 2-4 October at the Sepang International Circuit near Kuala Lumpur, with the race scheduled for Sunday 4 October. Its official name is the \"Formula 1 Gulf A\u2026",
+   "teams": [],
+   "date_estimated": false
+  },
+  {
+   "title": "Race ban talk \"too harsh\" on Franco Colapinto, George Russell and Max Verstappen say",
+   "link": "https://www.motorsport.com/f1/news/race-ban-talk-too-harsh-on-franco-colapinto-george-russell-and-max-verstappen-say/10859522/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T09:12:03Z",
+   "summary": "Mercedes driver George Russell feels a Formula 1 race ban would have been \"too harsh\" on Franco Colapinto after the Argentinian took out Alpine team-mate Pierre Gasly and McLaren's Lando Norris in the Azerbaijan Grand Prix. On a lap 36 restart, Colapinto made\u2026",
+   "teams": [
+    "Mercedes",
+    "Red Bull Racing",
+    "McLaren",
+    "Alpine"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Why Mercedes didn\u2019t expect \u201cMonza 2.0\u201d from Kimi Antonelli in Baku",
+   "link": "https://www.motorsport.com/f1/news/why-mercedes-didnt-expect-monza-20-from-kimi-antonelli-in-baku/10859479/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T06:55:50Z",
+   "summary": "Kimi Antonelli was never going to perform a \u201cMonza 2.0\u201d in Formula 1\u2019s Azerbaijan Grand Prix, Mercedes deputy team principal Bradley Lord said regarding his driver\u2019s recovery. Three weeks ago, Antonelli took an engine penalty at the Italian GP and clinched a m\u2026",
+   "teams": [
+    "Mercedes"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Who slept worst last night: Lewis Hamilton",
+   "link": "https://www.motorsport.com/f1/news/who-slept-worst-last-night-lewis-hamilton-10859438/10859438/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T05:36:18Z",
+   "summary": "Had anyone predicted in Abu Dhabi in 2021 that, a few years later, Lewis Hamilton would be racing in Formula 1 for Ferrari under team principal Christian Horner, few would have taken that suggestion seriously. Even as of Baku 2026, though, there is little evid\u2026",
+   "teams": [
+    "Ferrari"
+   ],
+   "date_estimated": false
+  },
+  {
+   "title": "Who slept best last night: Laurent Mekies",
+   "link": "https://www.motorsport.com/f1/news/who-slept-best-last-night-laurent-mekies/10859434/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "source": "Motorsport.com",
+   "published": "2026-09-27T05:24:48Z",
+   "summary": "Different times require different leaders. Parting ways with Christian Horner, and eventually Helmut Marko, was a bold move after all the success Red Bull enjoyed with the duo who built the squad from scratch into a title-winning machine. Perhaps that was the\u2026",
+   "teams": [
+    "Red Bull Racing"
+   ],
+   "date_estimated": false
   },
   {
    "title": "Isack Hadjar earns \"team-mate points\" after \"exceptional comeback\" in Baku, says Alex Brundle",
@@ -129,555 +666,13 @@
    "date_estimated": false
   },
   {
-   "title": "F1: Chequered Flag",
-   "link": "https://www.bbc.co.uk/sounds/play/p0pcnvrm?at_medium=RSS&at_campaign=rss",
+   "title": "The Chequered Flag Podcast",
+   "link": "https://www.bbc.co.uk/iplayer/episode/m002zvgw?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "published": "2026-09-26T18:35:00Z",
-   "summary": "Four-time world champion Sebastian Vettel joins the pod to give his verdict on the race.",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "Liam Lawson: \u201cI don\u2019t understand\u201d why Arvid Lindblad escaped penalty after wrecking my floor",
-   "link": "https://www.motorsport.com/f1/news/liam-lawson-i-dont-understand-why-arvid-lindblad-escaped-penalty-after-wrecking-my-floor/10859401/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T17:51:13Z",
-   "summary": "Liam Lawson says he \u2018doesn\u2019t understand\u2019 Azerbaijan Grand Prix stewards took no further action against Racing Bulls team-mate Arvid Lindblad, who spun him around in today\u2019s Formula 1 race. After Alexander Albon crashed out on lap 30 in Baku, causing a safety c\u2026",
-   "teams": [
-    "Williams",
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "'Mr Saturday' Russell 'comes through other side after real tough period'",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/ckly558q6jeqo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-26T17:44:04Z",
-   "summary": "George Russell described the Azerbaijan Grand Prix as \"the most dominant weekend I've had in my career\" after a win that felt like vindication.",
+   "published": "2026-09-26T19:00:00Z",
+   "summary": "Has George Russell rediscovered his mojo after a lights-to-flag victory in Baku?",
    "teams": [
     "Mercedes"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "\"Mr Horner is looking for a job\" \u2013 Frederic Vasseur claps back at Ferrari rumours",
-   "link": "https://www.motorsport.com/f1/news/mr-horner-is-looking-for-a-job-frederic-vasseur-claps-back-at-ferrari-rumours/10859397/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T17:35:29Z",
-   "summary": "Ferrari is practically Italy\u2019s second religion \u2013 so whenever it falls short of its lofty ambitions, speculation follows that its leaders are under threat. After showing considerable promise in the pre-season and early races following the 2026 rules reset, Ferr\u2026",
-   "teams": [
-    "Ferrari"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Russell faultless and Hadjar excellent on return - driver ratings",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/cq3d77zkrme8o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-26T17:04:30Z",
-   "summary": "BBC Radio 5 Live F1 commentator Harry Benjamin rates how the drivers performed during the Azerbaijan Grand Prix.",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Winners and losers from F1's Azerbaijan Grand Prix street brawl",
-   "link": "https://www.motorsport.com/f1/news/winners-losers-f1-azerbaijan-grand-prix-street-brawl/10859378/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T16:58:38Z",
-   "summary": "Not for the first time, Baku was the epitome of a race of two halves. A flavourless main course washed down with an indulgent dessert, triggered by a mid-race pair of safety cars. With one dab of the brake pedal, the lap 36 restart melee doubled the number of\u2026",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "Colapinto handed Sepang penalty for causing Baku F1 pile-up",
-   "link": "https://www.autosport.com/f1/news/franco-colapinto-penalty-revealed-for-causing-baku-f1-pile-up/10859374/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T16:28:09Z",
-   "summary": "Franco Colapinto has been given a five-place grid penalty for the Malaysian Grand Prix, following the pile-up he caused in today\u2019s Formula 1 race at Baku. The Azerbaijan GP was neutralised by the safety car when Alexander Albon crashed out shortly after mid-ra\u2026",
-   "teams": [
-    "Alpine",
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "James Vowles hails Williams factory effort after major Baku F1 upgrade",
-   "link": "https://www.motorsport.com/f1/news/james-vowles-hails-williams-factory-effort-after-major-baku-f1-upgrade/10859369/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T16:18:51Z",
-   "summary": "Williams team principal James Vowles has praised the Grove outfit's relentless factory effort to deliver a major upgrade package for the Azerbaijan Grand Prix, despite the team only walking away with one point from the weekend. Williams arrived at the Baku Cit\u2026",
-   "teams": [
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Why Verstappen says 0.196s Baku finish-line gap to Russell is slightly misleading",
-   "link": "https://www.autosport.com/f1/news/why-max-verstappen-says-0196s-baku-finish-line-gap-to-george-russell-is-slightly-misleading/10859367/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T16:09:58Z",
-   "summary": "At the Baku City Circuit, the words Russell spoke after qualifying became reality: the Mercedes driver had already predicted on Friday that, despite starting eighth, Verstappen would pose the biggest threat for victory, and that proved to be the case in a thri\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Why Max Verstappen says 0.196s Baku finish-line gap to George Russell is slightly misleading",
-   "link": "https://www.motorsport.com/f1/news/why-max-verstappen-says-0196s-baku-finish-line-gap-to-george-russell-is-slightly-misleading/10859357/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T16:08:56Z",
-   "summary": "At the Baku City Circuit, the words Russell spoke after qualifying became reality: the Mercedes driver had already predicted on Friday that, despite starting eighth, Verstappen would pose the biggest threat for victory, and that proved to be the case in a thri\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Franco Colapinto penalty revealed for causing Baku F1 pile-up",
-   "link": "https://www.motorsport.com/f1/news/franco-colapinto-penalty-revealed-for-causing-baku-f1-pile-up/10859351/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T15:59:14Z",
-   "summary": "Franco Colapinto has been given a five-place grid penalty for the Malaysian Grand Prix, following the pile-up he caused in today\u2019s Formula 1 race at Baku. The Azerbaijan GP was neutralised by the safety car when Alexander Albon crashed out shortly after mid-ra\u2026",
-   "teams": [
-    "Alpine",
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Arvid Lindblad praised for \"class\" response after Liam Lawson Azerbaijan GP clash",
-   "link": "https://www.motorsport.com/f1/news/arvid-lindblad-praised-for-class-response-after-liam-lawson-azerbaijan-gp-clash/10859347/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T15:44:56Z",
-   "summary": "Racing Bulls rookie Arvid Lindblad has received overall praise from Formula 1 fans following his media pen apology to team-mate Liam Lawson after their collision at the Azerbaijan Grand Prix. The team was in contention for a strong double-points finish in Baku\u2026",
-   "teams": [
-    "Racing Bulls"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Norris says Colapinto should be banned after accident",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/c9vgyyd5n4yjo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-26T15:38:33Z",
-   "summary": "World champion Lando Norris calls for Alpine's Franco Colapinto to be banned for causing an accident at a restart at the Azerbaijan Grand Prix.",
-   "teams": [
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Briatore to reflect on necessary action after Colapinto's \"poor\" Baku blunder",
-   "link": "https://www.autosport.com/f1/news/alpines-flavio-briatore-rips-into-franco-colapintos-baku-blunder-a-very-poor-move/10859341/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T15:38:09Z",
-   "summary": "Alpine F1 executive Flavio Briatore has been left \"extremely disappointed\" with his team's double DNF in F1's Azerbaijan GP, criticising Franco Colapinto for \"a very poor move\" to take out team-mate Peirre Gasly. On a lap 36 restart, Colapinto locked his front\u2026",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Alpine's Flavio Briatore rips into Franco Colapinto's Baku blunder: \"A very poor move\"",
-   "link": "https://www.motorsport.com/f1/news/alpines-flavio-briatore-rips-into-franco-colapintos-baku-blunder-a-very-poor-move/10859337/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T15:36:17Z",
-   "summary": "Alpine F1 executive Flavio Briatore has been left \"extremely disappointed\" with his team's double DNF in F1's Azerbaijan GP, criticising Franco Colapinto for \"a very poor move\" to take out team-mate Peirre Gasly. On a lap 36 restart, Colapinto locked his front\u2026",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Pierre Gasly feeling \u201ccrushed\u201d after Franco Colapinto took him out of Azerbaijan GP",
-   "link": "https://www.motorsport.com/f1/news/pierre-gasly-feeling-crushed-after-franco-colapinto-took-him-out-of-azerbaijan-gp/10859312/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T15:09:15Z",
-   "summary": "\u201cI cannot believe it, so many points gone...\u201d Pierre Gasly\u2019s initial reaction to the pile-up that occurred at the restart of Formula 1\u2019s Azerbaijan Grand Prix said it all. Gasly led the midfield throughout the race and was seventh when the safety car intervent\u2026",
-   "teams": [
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Kimi Antonelli: I was \"driving like my grandmother\" in Baku F1 race",
-   "link": "https://www.motorsport.com/f1/news/kimi-antonelli-driving-like-my-grandmother-in-baku-f1-race/10859321/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T15:04:11Z",
-   "summary": "If Kimi Antonelli's sensational Monza comeback win was a drive for the ages, then his much more subdued encore in the streets of Baku was just a footnote in his fledgling career. After tagging the wall in qualifying, Antonelli was facing his second comeback ra\u2026",
-   "teams": [
-    "Mercedes"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Top 10 F1 closest finishes",
-   "link": "https://www.autosport.com/f1/news/top-10-f1-closest-finishes-/10859318/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T15:02:40Z",
-   "summary": "For those watching the Azerbaijan Grand Prix, many would agree that George Russell delivered a dominant drive to take a lights-to-flag Formula 1 victory from Red Bull's Max Verstappen. Yet dominance isn't a word often used when the margin of victory is as smal\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1's top 10 closest finishes after George Russell holds off Max Verstappen's late Baku challenge",
-   "link": "https://www.motorsport.com/f1/news/f1s-top-10-closest-finishes-after-george-russell-holds-off-max-verstappens-late-baku-challenge/10859295/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T14:59:11Z",
-   "summary": "For those watching the Azerbaijan Grand Prix, many would agree that George Russell delivered a dominant drive to take a lights-to-flag Formula 1 victory from Red Bull's Max Verstappen. Yet dominance isn't a word often used when the margin of victory is as smal\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Jacques Villeneuve calls out Oscar Piastri after costly Azerbaijan GP error: \"Rookie mistake\"",
-   "link": "https://www.motorsport.com/f1/news/jacques-villeneuve-calls-out-oscar-piastri-after-costly-azerbaijan-gp-error-rookie-mistake/10859302/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T14:44:54Z",
-   "summary": "1997 Formula 1 champion Jacques Villeneuve branded Oscar Piastri's Azerbaijan Grand Prix lock-up as a \"rookie mistake\". The Australian driver suffered a double lock-up during the race at the Baku City Circuit while he was running third. Defending from Red Bull\u2026",
-   "teams": [
-    "Red Bull Racing",
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Jacques Villeneuve defends Red Bull team orders call at F1 Azerbaijan GP",
-   "link": "https://www.motorsport.com/f1/news/jacques-villeneuve-defends-red-bull-team-orders-call-at-f1-azerbaijan-gp/10859283/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T14:20:51Z",
-   "summary": "1997 Formula 1 champion Jacques Villeneuve has backed Red Bull's Azerbaijan Grand Prix strategy. During the closing stages of the race on the demanding Baku City Circuit, Max Verstappen and team-mate Isack Hadjar were running one behind the other. Although Had\u2026",
-   "teams": [
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "\"A big mistake\" - Devastated Franco Colapinto apologises to Pierre Gasly and Lando Norris for Baku F1 crash",
-   "link": "https://www.motorsport.com/f1/news/a-big-mistake-devastated-franco-colapinto-apologises-to-pierre-gasly-and-lando-norris-for-baku-f1-c/10859264/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T13:37:52Z",
-   "summary": "Alpine driver Franco Colapinto has apologised for the \"big mistake\" that saw him knock team-mate Pierre Gasly and McLaren driver Lando Norris out of F1's Azerbaijan GP. On a lap 36 restart in the streets of Baku, Colapinto locked up his cold front tyres on the\u2026",
-   "teams": [
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Norris demands ban for Colapinto after Azerbaijan GP crash",
-   "link": "https://www.autosport.com/f1/news/norris-demands-ban-for-colapinto-after-azerbaijan-gp-crash/10859259/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T13:30:43Z",
-   "summary": "Reigning world champion Lando Norris thinks Franco Colapinto deserves \"at least a one-race ban\" for causing a pile-up at Formula 1's Azerbaijan Grand Prix. On a lap 36 restart in the streets of Baku, Colapinto locked up his cold front tyres and aimlessly spear\u2026",
-   "teams": [
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Lando Norris: FIA should hand out race ban for Franco Colapinto's Baku F1 crash",
-   "link": "https://www.motorsport.com/f1/news/lando-norris-fia-should-hand-out-race-ban-for-franco-colapintos-baku-f1-crash/10859253/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T13:21:30Z",
-   "summary": "Reigning world champion Lando Norris says he thinks Franco Colapinto deserves \"at least a one-race ban\" for causing a pile-up at F1's Azerbaijan GP. On a lap 36 restart in the streets of Baku, Colapinto locked up his cold front tyres and aimlessly speared into\u2026",
-   "teams": [
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Russell wins despite late Verstappen challenge",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/ck8d33760j63o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-26T13:16:13Z",
-   "summary": "Mercedes' George Russell holds off a late challenge from Red Bull's Max Verstappen to win an Azerbaijan Grand Prix enlivened by two late safety car periods.",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Azerbaijan GP: Russell fends off Verstappen for victory; Colapinto takes out Gasly and Norris",
-   "link": "https://www.autosport.com/f1/news/f1-azerbaijan-gp-russell-fends-off-verstappen-for-victory-colapinto-takes-out-gasly-and-norris/10859225/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T12:49:27Z",
-   "summary": "Mercedes driver George Russell has taken a dominant pole-to-flag victory at Formula 1's Azerbaijan Grand Prix, overcoming two safety cars to beat Max Verstappen and clinch his third grand prix win of 2026. Russell took pole by a massive eight tenths on Friday\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing",
-    "McLaren",
-    "Alpine"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Five quick takeaways from Azerbaijan GP",
-   "link": "https://www.motorsport.com/f1/news/five-quick-takeaways-from-azerbaijan-gp/10859211/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T12:48:44Z",
-   "summary": "Russell uses his chance to close the gap Well, let\u2019s not overstate anything. There\u2019s no championship battle as such - and George Russell\u2019s Baku win didn\u2019t really increase his chances dramatically. From one percent to about two, probably - but hardly more. Yet,\u2026",
-   "teams": [
-    "Mercedes"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 Azerbaijan GP: George Russell holds off late Max Verstappen charge for victory",
-   "link": "https://www.motorsport.com/f1/news/f1-azerbaijan-gp-report/10859223/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T12:47:43Z",
-   "summary": "Mercedes driver George Russell has taken a dominant pole-to-flag victory at F1's Azerbaijan GP, overcoming two safety cars to beat Max Verstappen and clinch his third grand prix win of 2026. Russell took pole by a massive eight tenths on Friday and confirmed M\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Alex Albon and Carlos Sainz reveal F1 boys' trip plans",
-   "link": "https://www.motorsport.com/f1/news/alex-albon-and-carlos-sainz-reveal-f1-boys-trip-plans/10859204/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T10:43:25Z",
-   "summary": "Williams team-mates Alex Albon and Carlos Sainz have revealed that a small group of Formula 1 drivers will be using the time between the Bahrain Grand Prix (in Malaysia) and the Singapore Grand Prix to go on a boys' trip. The rescheduling of the Bahrain Grand\u2026",
-   "teams": [
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "How McLaren\u2019s major F1 upgrade has been working in Baku",
-   "link": "https://www.motorsport.com/f1/news/how-mclarens-major-f1-upgrade-has-been-working-in-baku/10859110/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T09:20:02Z",
-   "summary": "After three pole positions in the last four rounds, qualifying for the Azerbaijan Grand Prix was underwhelming for the McLaren Formula 1 team, which has struggled all weekend. The MCL40 was described as \u201cmiles off\u201d by Lando Norris following Thursday practice,\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Max Verstappen backs Kimi Antonelli after Baku F1 qualifying crash: \u201cPeople forget how young he is\u201d",
-   "link": "https://www.motorsport.com/f1/news/max-verstappen-backs-kimi-antonelli-after-baku-f1-qualifying-crash-people-forget-how-young-he-is/10859160/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T08:47:28Z",
-   "summary": "After a very strong European leg of the Formula 1 season \u2013 which was actually an Achilles\u2019 heel last year \u2013 Kimi Antonelli made a rare mistake during qualifying in Baku. The championship leader hit the inside wall at Turn 1 during his second Q1 push lap, bring\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Jacques Villeneuve delivers verdict on Esteban Ocon's F1 future",
-   "link": "https://www.motorsport.com/f1/news/jacques-villeneuve-delivers-verdict-on-esteban-ocons-f1-future/10858886/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T08:00:04Z",
-   "summary": "1997 Formula 1 champion Jacques Villeneuve believes Esteban Ocon's grand prix career will end when his time with Haas concludes, arguing the Frenchman is running out of options on the grid. Ocon joined Haas in 2025 after a five-year stint with Renault, which l\u2026",
-   "teams": [
-    "Haas F1 Team"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Lando Norris: \u2018I have to go for it or die trying\u2019 to win 2026 F1 title",
-   "link": "https://www.motorsport.com/f1/news/lando-norris-i-have-to-go-for-it-or-die-trying-to-win-2026-f1-title/10859120/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T07:37:46Z",
-   "summary": "Lando Norris believes he now must give it all to have the slightest chance of winning the 2026 Formula 1 world title \u2013 hence a driving error in qualifying for the Azerbaijan Grand Prix. Norris has scored 83 points since McLaren introduced its most substantial\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Why Verstappen feels Baku was Red Bull's best chance to win in F1 2026",
-   "link": "https://www.autosport.com/f1/news/why-verstappen-feels-baku-was-red-bulls-best-chance-to-win-in-f1-2026/10859128/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-26T06:54:55Z",
-   "summary": "A problem with the internal combustion engine cost Max Verstappen a good starting position for the Formula 1 Azerbaijan Grand Prix. The four-time world champion readily acknowledged that he probably could not have matched George Russell\u2019s pole time, but given\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "\"Great job messing it up\" \u2013 Why Max Verstappen feels Baku was Red Bull's best chance to win",
-   "link": "https://www.motorsport.com/f1/news/great-job-messing-it-up-why-max-verstappen-feels-baku-was-red-bulls-best-chance-to-win/10859123/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T06:53:02Z",
-   "summary": "A problem with the internal combustion engine cost Max Verstappen a good starting position for the Formula 1 Azerbaijan Grand Prix. The four-time world champion readily acknowledged that he probably could not have matched George Russell\u2019s pole time, but given\u2026",
-   "teams": [
-    "Mercedes",
-    "Red Bull Racing"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Fernando Alonso's only goal in no-hope Baku: Save parts for F1's triple-header",
-   "link": "https://www.motorsport.com/f1/news/fernando-alonsos-only-baku-goal-save-parts-for-f1s-triple-header/10859064/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T06:29:58Z",
-   "summary": "Despite a wretched campaign with Aston Martin and its new engine partner Honda, or perhaps because of it, Fernando Alonso hasn't lost his biting sense of humour. \"I pushed into Turn 15 and I locked up. So, a driver error there, and because of that we are not o\u2026",
-   "teams": [
-    "Aston Martin"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 2026 qualifying head-to-head: Azerbaijan GP",
-   "link": "https://www.motorsport.com/f1/news/f1-2026-qualifying-head-to-head-azerbaijan-gp/10858855/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-26T06:11:42Z",
-   "summary": "After every Formula 1 qualifying session, Motorsport.com publishes each team's qualifying record in terms of team-mate battles. This record is based exclusively on qualifying results so that grid penalties don't alter the statistics. When a driver can't put in\u2026",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "Chadwick says driving F1 car 'top of bucket list'",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/ck5ywrn20z3vo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-26T06:09:46Z",
-   "summary": "Jamie Chadwick says testing a Formula 1 car is the highlight of her motorsport career.",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "Oscar Piastri: I need a tow bar to hook onto Mercedes to fight for Baku win",
-   "link": "https://www.motorsport.com/f1/news/oscar-piastri-i-need-a-tow-bar-to-hook-onto-mercedes-to-fight-for-baku-win/10859038/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T23:00:02Z",
-   "summary": "Having qualified third in Baku after enduring a difficult build-up to the main sessions, Oscar Piastri was happy with the grid position he earned for Formula 1's Azerbaijan Grand Prix. However, the McLaren driver thinks expecting to go much further in the race\u2026",
-   "teams": [
-    "Mercedes",
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Guenther Steiner calls out Williams over F1 infrastructure complaints: \"Crocodile tears\"",
-   "link": "https://www.motorsport.com/f1/news/guenther-steiner-calls-out-williams-over-f1-infrastructure-complaints-crocodile-tears/10859062/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T20:23:14Z",
-   "summary": "Former Haas Formula 1 team principal Guenther Steiner has labelled Williams's complaints regarding capital expenditure limits \"crocodile tears\", questioning team boss James Vowles for continually moving the timeline for the Grove outfit's recovery. Since takin\u2026",
-   "teams": [
-    "Williams",
-    "Haas F1 Team"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Stefano Domenicali reveals bizarre Jimmy Fallon prank at Miami GP Michelin-starred dinner",
-   "link": "https://www.motorsport.com/f1/news/stefano-domenicali-reveals-bizarre-jimmy-fallon-prank-at-miami-gp-michelin-starred-dinner/10859056/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T19:58:49Z",
-   "summary": "Formula 1 CEO Stefano Domenicali has detailed a bizarre off-track encounter with American television host Jimmy Fallon, who interrupted his business dinner at a Michelin-starred restaurant by sending a takeaway pizza to his table. Domenicali made an appearance\u2026",
-   "teams": [],
-   "date_estimated": false
-  },
-  {
-   "title": "F1 closing in on 1 billion fans as Stefano Domenicali hails female audience growth",
-   "link": "https://www.motorsport.com/f1/news/f1-closing-in-on-1-billion-fans-as-stefano-domenicali-hails-female-audience-growth/10859054/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T19:31:31Z",
-   "summary": "Formula 1 CEO Stefano Domenicali says the championship is closing in on 1 billion global fans, driven by a younger audience, an increase in female viewership and more access to driver personalities. Speaking during an appearance on The Tonight Show Starring Ji\u2026",
-   "teams": [
-    "Audi"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Williams\u2019 long-awaited F1 upgrade is delivering in Baku \u2013 but was Q3 an \u201coverachievement\u201d?",
-   "link": "https://www.motorsport.com/f1/news/williams-upgrade-delivering-baku-overachievement/10859048/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T18:36:43Z",
-   "summary": "Williams\u2019 2026 car had infamously been overweight after Formula 1 switched to a new technical ruleset, but a brand-new chassis introduced at the Azerbaijan Grand Prix has provided substantial performance. Carlos Sainz was consistently quick in Baku, finishing\u2026",
-   "teams": [
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Esteban Ocon fed up after Baku mishap: \u2018I don\u2019t deserve all this sh*t\u2019",
-   "link": "https://www.motorsport.com/f1/news/shit-esteban-ocon-baku-mishap/10859022/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T17:04:07Z",
-   "summary": "Esteban Ocon has blamed his Q2 exit at the Azerbaijan Grand Prix on yellow flags \u2013 and rued \u201call the s**t\u201d he\u2019s been dealing with across a tough 2026 Formula 1 campaign at Haas. Ocon has infamously been plagued by inconsistency in the way car parts perform \u2013 a\u2026",
-   "teams": [
-    "Haas F1 Team"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "What\u2019s behind Norris\u2019 top-speed issue in Baku \u2013 and why McLaren itself is down on Mercedes",
-   "link": "https://www.autosport.com/f1/news/whats-behind-lando-norris-top-speed-problem-in-baku-and-why-mclaren-itself-is-down-on-mercedes/10859014/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-25T16:26:12Z",
-   "summary": "A technical problem caused a lack of top speed on Lando Norris\u2019 McLaren Formula 1 car in Azerbaijan Grand Prix qualifying, with the reigning world champion down in fifth. Despite having outqualified team-mate Oscar Piastri 9-1 in the 10 previous sessions, Norr\u2026",
-   "teams": [
-    "Mercedes",
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "What was Lando Norris' top-speed problem in Baku qualifying?",
-   "link": "https://www.motorsport.com/f1/news/whats-behind-lando-norris-top-speed-problem-in-baku-and-why-mclaren-itself-is-down-on-mercedes/10859012/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T16:24:46Z",
-   "summary": "A technical problem caused a lack of top speed on Lando Norris\u2019 McLaren Formula 1 car in Azerbaijan Grand Prix qualifying, with the reigning world champion down in fifth. Despite having outqualified team-mate Oscar Piastri 9-1 in the 10 previous sessions, Norr\u2026",
-   "teams": [
-    "McLaren"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Antonelli 'comes back to earth' with qualifying crash",
-   "link": "https://www.bbc.co.uk/sport/formula1/articles/cqd0885k3d28o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "published": "2026-09-25T16:19:04Z",
-   "summary": "Kimi Antonelli says he is \"very mad\" about his crash in qualifying at the Azerbaijan Grand Prix, which means he will start from 16th on the grid.",
-   "teams": [
-    "Mercedes"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Carlos Sainz handed Azerbaijan F1 grid drop for yellow flag breach",
-   "link": "https://www.motorsport.com/f1/news/carlos-sainz-handed-azerbaijan-f1-grid-drop-for-yellow-flag-breach/10859007/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "source": "Motorsport.com",
-   "published": "2026-09-25T16:07:53Z",
-   "summary": "Williams driver Carlos Sainz has been handed a five-place grid drop for Saturday's Azerbaijan GP in Baku as a punishment for speeding under yellow flags in qualifying. At the end of Q3, Sainz was the last of three cars to be hindered by a yellow flag in Turn 3\u2026",
-   "teams": [
-    "Williams"
-   ],
-   "date_estimated": false
-  },
-  {
-   "title": "Verstappen reveals why Red Bull's engine problem in Baku was different than it seemed",
-   "link": "https://www.autosport.com/f1/news/max-verstappen-reveals-why-red-bulls-engine-problem-in-baku-was-different-than-it-seemed/10858986/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
-   "source": "Autosport",
-   "published": "2026-09-25T15:38:42Z",
-   "summary": "After setting the fastest time in final practice and feeling good about the upgrades, Verstappen hoped to pull off a surprise in Baku, but an engine problem threw a spanner in the works. Initially, it appeared to be related to deployment issues and therefore p\u2026",
-   "teams": [
-    "Red Bull Racing"
    ],
    "date_estimated": false
   }
