@@ -15,10 +15,17 @@ def main() -> int:
     ap.add_argument("--season", type=int, default=2026)
     ap.add_argument("--through-round", type=int, default=None)
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--completed-only", action="store_true",
+                    help="skip the qualifying of a weekend whose race has not started")
     args = ap.parse_args()
 
+    # The pending weekend's qualifying is taken by default: without it the Saturday run
+    # rebuilds Tuesday's grid-free forecast and never writes a prediction log, which is how
+    # rounds 12-15 went unscored. A historical rebuild (--through-round) never wants it.
+    current = not args.completed_only and args.through_round is None
     print(f"Ingesting {args.season}\n")
-    laps, qual = ingest_season(args.season, through_round=args.through_round, force=args.force)
+    laps, qual = ingest_season(args.season, through_round=args.through_round, force=args.force,
+                               include_current=current)
 
     if laps.empty:
         print("\nNo laps ingested.")

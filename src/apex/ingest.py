@@ -160,27 +160,67 @@ def ingest_session(season: int, rnd: int, session: str, force: bool = False
     return laps, q
 
 
+# Qualifying is only taken once its archive has had time to settle. The session runs about
+# an hour and FastF1's upstream publishes some time after it ends. A classification caught
+# half-written would be read into the write-once prediction log and could never be fixed.
+QUALI_SETTLE = pd.Timedelta(hours=3)
+
+
+def session_start_utc(event: pd.Series, name: str) -> pd.Timestamp | None:
+    """Scheduled start of the named session ("Qualifying", "Race", ...) in naive UTC."""
+    for i in range(1, 6):
+        if event.get(f"Session{i}") == name:
+            t = event.get(f"Session{i}DateUtc")
+            return None if pd.isna(t) else pd.Timestamp(t)
+    return None
+
+
+def weekend_awaiting_race(sched: pd.DataFrame, now_utc: pd.Timestamp) -> int | None:
+    """The round whose qualifying has settled and whose race has not started, if any.
+
+    That window is the only time a grid-conditional forecast can be made honestly: before
+    it there is no grid, and after the start the result is already on the timing screens.
+    Session times are used rather than `EventDate` because the event date is race day, and
+    races do not all fall on a Sunday — Baku ran on a Saturday in 2026.
+    """
+    for _, ev in sched.iterrows():
+        q = session_start_utc(ev, "Qualifying")
+        r = session_start_utc(ev, "Race")
+        if q is not None and r is not None and q + QUALI_SETTLE <= now_utc < r:
+            return int(ev["RoundNumber"])
+    return None
+
+
 def ingest_season(season: int, sessions=("FP1", "FP2", "FP3", "Q", "R"), through_round: int | None = None,
                   force: bool = False, include_current: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Ingest every completed round of a season. Sprint weekends are handled by session availability.
 
-    `include_current` keeps the in-progress race weekend, whose practice and qualifying
-    sessions have run even though the grand prix has not. Sessions that have not happened
-    yet simply fail to load and are recorded as such, so this is safe to run mid-weekend.
+    `include_current` also takes the *qualifying* of a weekend whose race has not started,
+    which is what lets the Saturday run publish a grid-conditional forecast and write its
+    prediction log. It takes nothing else from that weekend on purpose: the walk-forward
+    backtest fits on strictly earlier rounds plus the target grid, and a same-weekend sprint
+    or practice session in the live fit would ship a model the calibration never scored.
     """
     sched = fastf1.get_event_schedule(season, include_testing=False)
     today = pd.Timestamp.now().normalize()
-    cutoff = today + pd.Timedelta(days=1) if include_current else today
-    sched = sched[sched["EventDate"] < cutoff]
+    done = sched[sched["EventDate"] < today]
     if through_round is not None:
-        sched = sched[sched["RoundNumber"] <= through_round]
+        done = done[done["RoundNumber"] <= through_round]
 
-    all_laps, quals = [], []
-    for _, ev in sched.iterrows():
-        rnd = int(ev["RoundNumber"])
+    todo = []
+    for _, ev in done.iterrows():
         is_sprint = "sprint" in str(ev["EventFormat"]).lower()
         # Sprint weekends replace FP2/FP3 with SQ + Sprint.
-        want = ("FP1", "SQ", "S", "Q", "R") if is_sprint else sessions
+        todo.append((ev, ("FP1", "SQ", "S", "Q", "R") if is_sprint else sessions))
+
+    if include_current:
+        rnd = weekend_awaiting_race(sched, pd.Timestamp.now(tz="UTC").tz_localize(None))
+        if rnd is not None and rnd not in set(done["RoundNumber"]):
+            todo.append((sched[sched["RoundNumber"] == rnd].iloc[0], ("Q",)))
+
+    all_laps, quals = [], []
+    for ev, want in todo:
+        rnd = int(ev["RoundNumber"])
         for s in want:
             laps, q = ingest_session(season, rnd, s, force=force)
             if laps is not None and not laps.empty:

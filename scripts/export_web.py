@@ -19,6 +19,7 @@ import fastf1.plotting
 import numpy as np
 import pandas as pd
 
+from apex.ingest import session_start_utc
 from apex.paths import CACHE, PROCESSED, RAW, REPORTS, WEB_DATA
 
 fastf1.Cache.enable_cache(str(CACHE))
@@ -284,6 +285,19 @@ def _append_prediction_log(season: int, payload: dict, diag: dict) -> None:
         print("  forecast is grid-free — prediction log deferred until qualifying")
         return
 
+    # The log is the record of what was said *before* the race. A build that runs after the
+    # start — a Saturday race, or a late manual run — would log a forecast with the result
+    # already known, so it is refused. An unknown start time refuses too: this file is
+    # write-once, and a forecast that cannot be shown to predate the race is not evidence.
+    try:
+        start = session_start_utc(fastf1.get_event(season, int(rnd)), "Race")
+    except Exception:  # noqa: BLE001 - reported below as an unknown start
+        start = None
+    if start is None or pd.Timestamp.now(tz="UTC").tz_localize(None) >= start:
+        print(f"  R{int(rnd)} race start is {'unknown' if start is None else 'past'} "
+              f"— prediction log not written")
+        return
+
     log_dir = WEB_DATA / "predictions"
     log_dir.mkdir(parents=True, exist_ok=True)
     path = log_dir / f"{season}_R{int(rnd):02d}.json"
@@ -395,7 +409,12 @@ def export_season(season: int) -> None:
     wins = res[res["Position"] == 1]["Abbreviation"].value_counts()
     poles = res[res["GridPosition"] == 1]["Abbreviation"].value_counts()
     pods = res[res["Position"] <= 3]["Abbreviation"].value_counts()
-    drv = (all_pts.groupby(["Abbreviation", "TeamName"], as_index=False)["Points"].sum()
+    # One row per driver, under the team they raced for most recently. Grouping by driver
+    # and team split Lawson in two after he covered rounds 12-14 at Red Bull, which is not
+    # how a championship table reads; constructors are summed separately below.
+    latest_team = res.sort_values("round").groupby("Abbreviation")["TeamName"].last()
+    drv = (all_pts.groupby("Abbreviation", as_index=False)["Points"].sum()
+                  .assign(TeamName=lambda d: d["Abbreviation"].map(latest_team))
                   .sort_values("Points", ascending=False))
     drivers = [{"driver": r.Abbreviation, "team": r.TeamName, "points": float(r.Points),
                 "wins": int(wins.get(r.Abbreviation, 0)),

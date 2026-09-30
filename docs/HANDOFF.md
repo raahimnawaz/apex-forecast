@@ -381,6 +381,18 @@ not the forecast this project ships and is not comparable to the rounds already 
 F1 qualifies at very different local times, so the Saturday agent will sometimes fire
 early; that is harmless, the log just defers again.
 
+**It did nothing from round 12 to round 15.** `make data` only ingested weekends whose
+`EventDate` (race day) was already past, so on a Saturday the weekend's own qualifying was
+never fetched, every Saturday build came out grid-free, and the log deferred four times
+running — R12–R15 have no forecast and can never be scored. `ingest_season` had an
+`include_current` switch for exactly this, but the CLI never passed it, and its `+1 day`
+cutoff would have missed a Saturday anyway. It now takes the qualifying of the weekend
+whose qualifying has settled (`QUALI_SETTLE`, 3 h) and whose race has not started, and
+nothing else from that weekend, so the live fit matches what the walk-forward scored.
+`export_web.py` also refuses to log a round whose race has started: Baku raced on a
+Saturday, and an 18:00 run there would otherwise have "forecast" a finished race.
+`tests/test_ingest.py` pins both edges.
+
 Guards worth knowing about, because each one exists for something that actually
 happened:
 
