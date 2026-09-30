@@ -1151,7 +1151,7 @@ function renderChampionship(s, colors) {
 
 /* =================== SEASON SO FAR =================== */
 
-function renderSeason(season, colors) {
+function renderSeason(season, colors, totalRounds) {
   if (!season) return;
 
   const swatch = (team) =>
@@ -1213,7 +1213,7 @@ function renderSeason(season, colors) {
 
   const tr = season.track_record;
   const note = document.getElementById("season-note");
-  note.textContent = `${season.rounds_complete} of 22 rounds complete. `
+  note.textContent = `${season.rounds_complete} of ${totalRounds} rounds complete. `
     + (tr.scored
       ? `${tr.winner_called} of ${tr.scored} published forecast`
         + `${tr.scored === 1 ? "" : "s"} called the winner. `
@@ -1288,6 +1288,7 @@ function renderHeader(data, s) {
   const base = `${ne.location}, ${ne.country} · ${ne.date}`
     + (ne.format.includes("sprint") ? " · sprint weekend" : "");
   meta.dataset.base = base;      // hero.js appends the pole time once the trace loads
+  meta.dataset.location = ne.location;
   meta.textContent = base;
 
   const fav = [...s.forecast].sort((a, b) => b.p_win - a.p_win)[0];
@@ -1353,7 +1354,7 @@ Promise.all([
 
   renderHeader(pace, strength);
   renderCalibration(strength);
-  renderSeason(season, colors);
+  renderSeason(season, colors, pace.next_event.total_rounds);
   renderPostRace(season);
   renderContenders(strength, colors);
   renderChampionship(strength, colors);

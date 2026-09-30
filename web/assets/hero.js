@@ -10,8 +10,8 @@
 // `hero.js?v=N` busts hero.js alone and leaves silk.js and glass.js served from cache —
 // which is exactly how a rewritten background can appear not to have changed at all.
 // Keep these in step with the ?v= in index.html.
-import { mountSilk } from "./silk.js?v=26";
-import { mountLiquidGlass } from "./glass.js?v=26";
+import { mountSilk } from "./silk.js?v=27";
+import { mountLiquidGlass } from "./glass.js?v=27";
 
 const NS = "http://www.w3.org/2000/svg";
 const mk = (t, a = {}, p = null) => {
@@ -64,8 +64,10 @@ fetch("data/trackart_2026_R11.json")
     const fast = P[art.fastest_ix];
     mk("circle", { cx: fast[0], cy: fast[1], r: 6, fill: "#b9d4f7", filter: "url(#hero-glow)" }, g);
 
+    // The trace is one fixed lap from one circuit. Only credit it as the pole of the race
+    // on the card when it is that race — otherwise every later round inherits R11's pole.
     const meta = document.getElementById("race-meta");
-    if (meta && meta.dataset.base) {
+    if (meta && meta.dataset.base && meta.dataset.location === art.circuit) {
       meta.textContent = `${meta.dataset.base} · pole ${art.driver} ${art.lap_time}`;
     }
   })

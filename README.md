@@ -6,6 +6,9 @@
 
 Probabilistic Formula 1 race forecasting for the 2026 regulation era, with a dark analytical dashboard.
 
+**Live dashboard: [raahimnawaz.github.io/apex-forecast](https://raahimnawaz.github.io/apex-forecast/)**
+— refreshed after every race weekend, forecasting the next one.
+
 2026 is a ground-up regulation reset — new power units (350 kW MGU-K, ~8 MJ/lap, 50/50 ICE/electric),
 active aero replacing DRS, driver-managed Overtake/Boost energy modes, an 11-team grid. Pre-2026 car
 pace does not transfer. This project treats that as the central modelling constraint rather than

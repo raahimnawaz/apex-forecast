@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_utc": "2026-09-29T16:01:12Z",
+ "generated_utc": "2026-09-30T05:07:39Z",
  "season": 2026,
  "rounds_complete": 15,
  "races": [
@@ -3467,20 +3467,20 @@
    "poles": 0
   },
   {
+   "driver": "LAW",
+   "team": "Racing Bulls",
+   "points": 57.0,
+   "wins": 0,
+   "podiums": 0,
+   "poles": 0
+  },
+  {
    "driver": "GAS",
    "team": "Alpine",
    "points": 50.0,
    "wins": 0,
    "podiums": 1,
    "poles": 1
-  },
-  {
-   "driver": "LAW",
-   "team": "Racing Bulls",
-   "points": 43.0,
-   "wins": 0,
-   "podiums": 0,
-   "poles": 0
   },
   {
    "driver": "LIN",
@@ -3502,14 +3502,6 @@
    "driver": "BEA",
    "team": "Haas F1 Team",
    "points": 20.0,
-   "wins": 0,
-   "podiums": 0,
-   "poles": 0
-  },
-  {
-   "driver": "LAW",
-   "team": "Red Bull Racing",
-   "points": 14.0,
    "wins": 0,
    "podiums": 0,
    "poles": 0
@@ -3571,7 +3563,7 @@
    "poles": 0
   },
   {
-   "driver": "PER",
+   "driver": "BOT",
    "team": "Cadillac",
    "points": 0.0,
    "wins": 0,
@@ -3579,7 +3571,7 @@
    "poles": 0
   },
   {
-   "driver": "BOT",
+   "driver": "PER",
    "team": "Cadillac",
    "points": 0.0,
    "wins": 0,
