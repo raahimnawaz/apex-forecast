@@ -1,2 +1,2 @@
 n_races,n_2025,n_2026,n_drivers,n_constructors,shared_drivers,constructor_share,sigma_skill,sigma_delta,sigma_walk,worst_rhat,layer0_spearman,top_m,likelihood,forecast_round,grid_source,beta_grid,circuit,circuit_mult,sc_rate,vsc_rate,grid_mean_dnf,weather_multiplier,n_sprints,beta_grid_lo,beta_grid_hi
-44,24,20,24,11,20,0.9123,0.8570950627326965,0.2545910179615021,0.37898847460746765,1.0091,0.9909,10,attrition,16,none,,Bahrain Grand Prix,,0.5333,0.6667,0.1389,1.0,5,,
+44,24,20,24,11,20,0.9123,0.8570950627326965,0.2545910179615021,0.37898847460746765,1.0091,0.9909,10,attrition,16,R16 qualifying classification (grid penalties NOT applied),1.7913,Bahrain Grand Prix,1.0212,0.5333,0.6667,0.1389,1.0,5,1.4653,2.1459

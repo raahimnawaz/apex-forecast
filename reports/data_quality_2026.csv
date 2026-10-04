@@ -1,6 +1,2 @@
 season,round,event,session,n_drivers,n_laps,n_accurate,pct_accurate,n_no_laptime,ghost_drivers,compounds,median_lap_s,ok,note
-2026,15,Azerbaijan Grand Prix,FP1,22,465,274,58.9,123,,"HARD,MEDIUM,SOFT,UNKNOWN",111.794,True,
-2026,15,Azerbaijan Grand Prix,FP2,22,456,295,64.7,126,,"HARD,MEDIUM,SOFT,UNKNOWN",109.982,True,
-2026,15,Azerbaijan Grand Prix,FP3,22,446,306,68.6,89,,"MEDIUM,SOFT",121.284,True,
-2026,15,Azerbaijan Grand Prix,Q,22,373,241,64.6,71,,SOFT,115.39,True,
-2026,15,Azerbaijan Grand Prix,R,22,981,790,80.5,91,,"MEDIUM,SOFT",108.673,True,
+2026,16,Bahrain Grand Prix,Q,22,239,77,32.2,89,,"MEDIUM,SOFT",97.179,True,
