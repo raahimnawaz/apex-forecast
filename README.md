@@ -6,7 +6,7 @@
 
 Probabilistic Formula 1 race forecasting for the 2026 regulation era, with a dark analytical dashboard.
 
-> **Next:** this becomes part of **Parc fermé**, an F1 telemetry and simulation platform in progress, together with [vehicle-dynamics-estimation](https://github.com/raahimnawaz/vehicle-dynamics-estimation) and [engine-map-pinn](https://github.com/raahimnawaz/engine-map-pinn).
+> **Planned for** [parc-ferme](https://github.com/raahimnawaz/parc-ferme), post-session engineering debriefs for 2026 F1, for its race-strategy replays.
 
 **Live dashboard: [raahimnawaz.github.io/apex-forecast](https://raahimnawaz.github.io/apex-forecast/)**
 — refreshed after every race weekend, forecasting the next one.
